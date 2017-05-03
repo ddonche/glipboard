@@ -3,5 +3,7 @@
   %p
     Posted 
     = time_ago_in_words(glip.created_at)
+    ago by
+    = glip.user.email
     
 = link_to "New Glip", new_glip_path

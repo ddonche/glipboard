@@ -12,7 +12,7 @@ class GlipsController < ApplicationController
 
   # GET /glips/new
   def new
-    @glip = Glip.new
+    @glip = current_user.glips.build
   end
 
   # GET /glips/1/edit
@@ -21,7 +21,7 @@ class GlipsController < ApplicationController
 
   # POST /glips
   def create
-    @glip = Glip.new(glip_params)
+    @glip = current_user.glips.build(glip_params)
 
     respond_to do |format|
       if @glip.save
@@ -59,6 +59,6 @@ class GlipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def glip_params
-      params.require(:glip).permit(:title, :content)
+      params.require(:glip).permit(:title, :content, :user_id)
     end
 end
