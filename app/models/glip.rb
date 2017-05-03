@@ -1,0 +1,2 @@
+class Glip < ApplicationRecord
+end
