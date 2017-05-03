@@ -1,5 +1,5 @@
 - @glips.each do |glip|
-  %h2= glip.title
+  %h2= link_to glip.title, glip
   %p
     Posted 
     = time_ago_in_words(glip.created_at)
