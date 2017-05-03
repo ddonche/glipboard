@@ -1,0 +1,6 @@
+<p id="notice"><%= notice %></p>
+ 
+<% @glips.each do |glip| %>
+  <h2><%= link_to glip.title, glip %></h2>
+  <p>Posted by <%= time_ago_in_words(glip.created_at) %> ago by <%= glip.user.email %></p>
+<% end %>
