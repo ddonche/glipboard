@@ -1,8 +1,9 @@
 <h1><%= @glip.title %></h1>
-<p>
-  <%= @glip.content %>
-</p>
+  <div class="date">Posted <%= time_ago_in_words(@glip.created_at) %> ago by <%= @glip.user.email %></div>
+  <p>
+    <%= @glip.content %>
+  </p>
 
-<%= link_to "Edit", edit_glip_path(@glip) %>
-<%= link_to "Delete", glip_path(@glip), method: :delete, data: { confirm: "Are you sure?" } %>
+<%= link_to "Edit", edit_glip_path(@glip) %> |
+<%= link_to "Delete", glip_path(@glip), method: :delete, data: { confirm: "Are you sure?" } %> |
 <%= link_to "List", glips_path %>

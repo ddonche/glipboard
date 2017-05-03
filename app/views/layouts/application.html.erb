@@ -4,14 +4,29 @@
     <title>Glipboard</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="main-header">
+      <div class="logo-wrapper">
+        <%= link_to image_tag("logo.png", alt: "logo") %>
+          <div class="buttons"><%= link_to 'New Glip', new_glip_path %></div>
+          <div class="buttons"><%= link_to 'New Blog', new_blog_path %></div>
+      </div>
+    </div>
     
-    <%= yield %>
+    <div class="wrapper">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>  
+    
+    <div class="wrapper">
+      <%= yield %>
+    </div>
+
   </body>
 </html>
