@@ -1,1 +1,7 @@
-%h1 These are the Glips
+- @glips.each do |glip|
+  %h2= glip.title
+  %p
+    Posted 
+    = time_ago_in_words(glip.created_at)
+    
+= link_to "New Glip", new_glip_path

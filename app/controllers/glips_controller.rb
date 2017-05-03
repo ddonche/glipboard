@@ -3,7 +3,7 @@ class GlipsController < ApplicationController
 
   # GET /glips
   def index
-    @glips = Glip.all
+    @glips = Glip.all.order("created_at DESC")
   end
 
   # GET /glips/1
