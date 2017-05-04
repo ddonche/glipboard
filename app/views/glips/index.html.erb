@@ -2,7 +2,7 @@
     <% @glips.each do |glip| %>
       <div class="glips">
         <div class="post-title"><%= link_to glip.title, glip %></div>
-        <div class="date">Posted <%= time_ago_in_words(glip.created_at) %> ago by <%= glip.user.email %></div>
+        <div class="date">Posted <%= time_ago_in_words(glip.created_at) %> ago by <%= link_to glip.user.username, user_path(glip.user) %></div>
       </div>
     <% end %>
 </div>

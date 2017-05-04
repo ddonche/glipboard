@@ -1,0 +1,8 @@
+<div id="glips-wrapper">
+    <% @users = User.all %>
+    <% @users.each do |user| %>
+      <div class="glips">
+        <div class="post-title"><%= link_to user.username, user %></div>
+      </div>
+    <% end %>
+</div

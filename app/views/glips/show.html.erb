@@ -1,7 +1,7 @@
 <div id="glips-wrapper">
   <div class="glips">
     <h3><%= @glip.title %></h3>
-      <div class="date">Posted <%= time_ago_in_words(@glip.created_at) %> ago by <%= @glip.user.email %></div>
+      <div class="date">Posted <%= time_ago_in_words(@glip.created_at) %> ago by <%= link_to @glip.user.username, user_path(@glip.user) %></div>
       <p class="content">
         <%= @glip.content %>
       </p>

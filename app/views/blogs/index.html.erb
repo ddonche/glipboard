@@ -1,6 +1,8 @@
-<% @blogs.each do |blog| %>
-  <h2><%= link_to blog.title, blog %></h2>
-  <p>Posted <%= time_ago_in_words(blog.created_at) %> ago by <%= blog.user.email %></p>
-<% end %>
-
-<br>
+<div id="glips-wrapper">
+    <% @blogs.each do |blog| %>
+      <div class="glips">
+        <div class="post-title"><%= link_to blog.title, blog %></div>
+        <div class="date">Posted <%= time_ago_in_words(blog.created_at) %> ago by <%= link_to blog.user.username, user_path(blog.user) %></div>
+      </div>
+    <% end %>
+</div>
