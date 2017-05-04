@@ -6,4 +6,5 @@ class User < ApplicationRecord
   
   has_many :glips
   has_many :blogs
+  has_many :comments
 end
