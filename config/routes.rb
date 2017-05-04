@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+
   devise_for :users
-  resources :blogs
-  resources :glips
+  resources :blogs do
+    resources :comments
+  end
+  resources :glips do
+    resources :comments
+  end
   match '/users', to: 'users#index', via: 'get'
   match '/users/:id', to: 'users#show', via: 'get'
   root to: "glips#index"

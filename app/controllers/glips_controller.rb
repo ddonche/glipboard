@@ -9,6 +9,9 @@ class GlipsController < ApplicationController
 
   # GET /glips/1
   def show
+    @commentable = @glip
+    @comments = @commentable.comments
+    @comment = Comment.new
   end
 
   # GET /glips/new
