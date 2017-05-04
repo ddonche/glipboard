@@ -17,7 +17,7 @@
  
 body {
   font-family: 'Roboto', sans-serif;
-  background: white;
+  background: #f3f4f5;
 }
 
 .wrapper {
@@ -35,7 +35,7 @@ body {
   width: 100%;
   margin: 0 auto;
   padding-top: 5px;
-  background: #d7d0ca;
+  background: #222;
   .buttons {
     float:right;
     /*background: #d20001;*/
@@ -43,7 +43,7 @@ body {
     margin: 0px 5px;
     border: 2px solid #d10000;
     a {
-      color: #d10000;
+      color: #fff;
       text-decoration: none;
       padding: 1px;
       font-weight: bold;
@@ -57,9 +57,9 @@ body {
   /*background: #000;*/
   padding: 5px 10px;
   margin: 0px 5px;
-  border: 2px solid #000;
+  border: 2px solid #f3f4f5;
   a {
-    color: black;
+    color: #f3f4f5;
     text-decoration: none;
     padding: 1px;
     font-weight: bold;
@@ -85,8 +85,9 @@ p {
 
 .glips {
   margin-bottom: 10px;
-  background: #f3f4f5;
+  background: #fff;
   padding: 1em 5%;
+  box-shadow: 5px 5px 3px #999;
 }
 
 .post-title{
@@ -121,7 +122,7 @@ input[type=button], input[type=submit], input[type=reset] {
 .footer{
   width: 100%;
   margin: 30px, 30px 0px 30px;
-  border-top: 1px solid #999;
+  border-top: 1px solid #e5e5e5;
   background: white;
   display: flex;
 }
@@ -157,4 +158,5 @@ input[type=button], input[type=submit], input[type=reset] {
   margin: 10px 0px;
   font-size: .9em;
   color: #555;
+  line-height: 1.5em;
 }
