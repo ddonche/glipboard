@@ -2,28 +2,23 @@ class GlipsController < ApplicationController
   before_action :set_glip, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
-  # GET /glips
   def index
     @glips = Glip.all.order("created_at DESC")
   end
 
-  # GET /glips/1
   def show
     @commentable = @glip
     @comments = @commentable.comments
     @comment = Comment.new
   end
 
-  # GET /glips/new
   def new
     @glip = current_user.glips.build
   end
 
-  # GET /glips/1/edit
   def edit
   end
 
-  # POST /glips
   def create
     @glip = current_user.glips.build(glip_params)
 
@@ -36,7 +31,6 @@ class GlipsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /glips/1
   def update
     respond_to do |format|
       if @glip.update(glip_params)
@@ -47,7 +41,6 @@ class GlipsController < ApplicationController
     end
   end
 
-  # DELETE /glips/1
   def destroy
     @glip.destroy
     respond_to do |format|
@@ -56,12 +49,10 @@ class GlipsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_glip
       @glip = Glip.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def glip_params
       params.require(:glip).permit(:title, :content, :user_id)
     end

@@ -20,6 +20,23 @@ class CommentsController < ApplicationController
       render :new
     end
   end
+  
+  def update
+    respond_to do |format|
+      if @comment.update(allowed_params)
+        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
+  end
+
+  def destroy
+    @comment.destroy
+    respond_to do |format|
+      format.html { redirect_to glips_url, notice: 'Comment was eradicated.' }
+    end
+  end
 
   private
 

@@ -1,0 +1,117 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require trix
+ */
+ 
+body {
+  font-family: 'Roboto', sans-serif;
+  background: white;
+}
+
+.wrapper {
+  width: 60%;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.logo-wrapper {
+  width: 94%;
+  margin: 0 auto;
+}
+
+.main-header{
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 5px;
+  background: #d7d0ca;
+  .buttons {
+    float:right;
+    background: #d20001;
+    padding: 5px 10px;
+    margin: 0px 5px;
+    a {
+      color: white;
+      text-decoration: none;
+      padding: 1px;
+      font-weight: bold;
+      font-size: .9em;
+    }
+  }
+}
+
+.buttons-black {
+  float:right;
+  background: #000;
+  padding: 5px 10px;
+  margin: 0px 5px;
+  a {
+    color: white;
+    text-decoration: none;
+    padding: 1px;
+    font-weight: bold;
+    font-size: .9em;
+  }
+}
+
+a {
+  color: #d10000; 
+  text-decoration: none;
+}
+
+p {
+  line-height: 2em;
+}
+
+.content {
+  border-bottom: 1px solid #c5c3c1;
+  padding: 20px 0px;
+  margin-bottom: 20px;
+  line-height: 1.8em;
+}
+
+.glips {
+  margin-bottom: 10px;
+  background: #f3f4f5;
+  padding: 1em 5%;
+}
+
+.post-title{
+  font-weight: 100;
+  font-size: 1.25em;
+}
+
+.date {
+  margin-top: .5em;
+  font-size: 0.8em;
+  font-style: italic;
+  color: #646661;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #d20001;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}

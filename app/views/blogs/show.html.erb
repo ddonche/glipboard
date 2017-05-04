@@ -2,9 +2,9 @@
   <div class="glips">
     <h3><%= @blog.title %></h3>
       <div class="date">Posted <%= time_ago_in_words(@blog.created_at) %> ago by <%= link_to @blog.user.username, user_path(@blog.user) %></div>
-      <p class="content">
-        <%= @blog.body %>
-      </p>
+      <div class="content">
+        <%= @blog.body.html_safe %>
+      </div>
       <%= link_to "Edit", edit_blog_path(@blog) %>
       <%= link_to "Delete", blog_path(@blog), method: :delete, data: { confirm: "Are you sure?" } %>
       <%= link_to "List", blogs_path %>
@@ -12,5 +12,5 @@
 </div>
 
 <h3>Comments</h3>
-<%= render "comments/form" %>
+<%= render "comments/form" %><br/>
 <%= render "comments/comments" %>

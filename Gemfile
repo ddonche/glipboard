@@ -18,6 +18,7 @@ gem 'jbuilder', '~> 2.5'
 # gems I've installed my damn self
 gem 'simple_form', '~> 3.4'
 gem 'devise', '~> 4.2', '>= 4.2.1'
+gem 'trix'
 
 group :development, :test do
   gem 'byebug', platform: :mri

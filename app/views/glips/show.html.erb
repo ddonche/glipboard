@@ -2,15 +2,15 @@
   <div class="glips">
     <h3><%= @glip.title %></h3>
       <div class="date">Posted <%= time_ago_in_words(@glip.created_at) %> ago by <%= link_to @glip.user.username, user_path(@glip.user) %></div>
-      <p class="content">
-        <%= @glip.content %>
-      </p>
+      <div class="content">
+        <%= @glip.content.html_safe %>
+      </div>
     <%= link_to "Edit", edit_glip_path(@glip) %> |
     <%= link_to "Delete", glip_path(@glip), method: :delete, data: { confirm: "Are you sure?" } %> |
     <%= link_to "List", glips_path %>
-  </div>
+    </div>
 </div>
 
 <h3>Comments</h3>
-<%= render "comments/form" %>
+<%= render "comments/form" %><br/>
 <%= render "comments/comments" %>
