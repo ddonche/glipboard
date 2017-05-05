@@ -19,6 +19,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'simple_form', '~> 3.4'
 gem 'devise', '~> 4.2', '>= 4.2.1'
 gem 'trix'
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 
 group :development, :test do
   gem 'byebug', platform: :mri

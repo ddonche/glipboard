@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: "glips#index"
 
   get 'pages/home'
 
@@ -15,7 +16,6 @@ Rails.application.routes.draw do
   end
   match '/users', to: 'users#index', via: 'get'
   match '/users/:id', to: 'users#show', via: 'get'
-  root to: "glips#index"
   
   #devise_for :users, :path_prefix => 'd'
   resources :users, :only =>[:show]
