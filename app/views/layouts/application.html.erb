@@ -12,19 +12,25 @@
 
   <body>
     <div class="main-header">
-      <div class="logo-wrapper">
-        <%= link_to image_tag("logo.png", alt: "logo"), root_path %>
-          <div class="buttons"><%= link_to 'New Glip', new_glip_path %></div>
-          <div class="buttons"><%= link_to 'New Blog', new_blog_path %></div>
-
-          <%- if user_signed_in? %>
-            <div class="buttons-black"><%= link_to t('auth.sign_out'), destroy_user_session_path, method: 'delete' %></div>
-          <% else %>
-            <div class="buttons-black"><%= link_to t('auth.sign_in'), new_user_session_path %></div>
-            <div class="buttons-black"><%= link_to t('auth.sign_up'), new_user_registration_path %></div>
-          <% end %>
-
+      <div class="logo">
+      <%= link_to root_path do %>
+        <%= image_tag 'logo.png', width: 180, alt: 'Glipboard logo'%>
+      <% end %>
       </div>
+      
+        <div class="buttons-no-border"><%= link_to 'About' %></div>
+        <div class="buttons-no-border"><%= link_to 'Blog' %></div>
+        <div class="buttons-no-border"><%= link_to 'Users', users_path %></div>
+
+        <div class="buttons"><%= link_to 'New Glip', new_glip_path %></div>
+        <div class="buttons"><%= link_to 'New Blog', new_blog_path %></div>
+
+        <%- if user_signed_in? %>
+          <div class="buttons-black"><%= link_to t('auth.sign_out'), destroy_user_session_path, method: 'delete' %></div>
+        <% else %>
+          <div class="buttons-black"><%= link_to t('auth.sign_in'), new_user_session_path %></div>
+          <div class="buttons-black"><%= link_to t('auth.sign_up'), new_user_registration_path %></div>
+        <% end %>
     </div>
     
     <div class="wrapper">
@@ -35,6 +41,39 @@
     <div class="wrapper">
       <%= yield %>
     </div>
-
+    
+    <div class="footer">
+      <div class="footer-left">
+        <%= link_to image_tag("logo2.png", alt: "logo", width: "120px"), root_path %><br />
+        <div class="footer-text">
+          <em><strong>Winning at life, one Glip at a time.</em></strong><br/><br />
+          What is a Glip, you ask? It's a little road block, a "glip" in your path to success. Glipboard is a place to overcome Glips.
+        </p><br />
+        &copy;Copyright 2017 Glipboard
+        </div>
+      </div>
+      
+      <div class="footer-middle">
+        <div class="footer-text">
+          <ul>
+            <li><%= link_to "Home" %></li>
+            <li><%= link_to "About" %></li>
+            <li><%= link_to "Contact" %></li>
+            <li><%= link_to "Terms" %></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-middle-2">
+        <div class="footer-text">
+          <ul>
+            <li><%= link_to "Privacy" %></li>
+            <li><%= link_to "Advertise" %></li>
+            <li><%= link_to "Blog" %></li>
+            <li><%= link_to "Guidelines" %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

@@ -1,5 +1,4 @@
-<div id="glips-wrapper">
-  <div class="glips">
+<div class="glips">
     <h3><%= @glip.title %></h3>
       <div class="date">Posted <%= time_ago_in_words(@glip.created_at) %> ago by <%= link_to @glip.user.username, user_path(@glip.user) %></div>
       <div class="content">
@@ -8,7 +7,6 @@
     <%= link_to "Edit", edit_glip_path(@glip) %> |
     <%= link_to "Delete", glip_path(@glip), method: :delete, data: { confirm: "Are you sure?" } %> |
     <%= link_to "List", glips_path %>
-    </div>
 </div>
 
 <h3>Comments</h3>
