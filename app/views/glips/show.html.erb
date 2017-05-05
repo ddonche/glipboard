@@ -1,6 +1,7 @@
 <div class="glips">
     <h3><%= @glip.title %></h3>
       <div class="date">Posted <%= time_ago_in_words(@glip.created_at) %> ago by <%= link_to @glip.user.username, user_path(@glip.user) %></div>
+      <div class="date"><i class="fa fa-tags"></i>&nbsp;&nbsp;<%= raw(@glip.tag_list.map { |t| link_to t, tag_path(t) }.join(' , ')) %></div>  
       <div class="content">
         <%= @glip.content.html_safe %>
       </div>
