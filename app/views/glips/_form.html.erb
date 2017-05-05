@@ -1,5 +1,7 @@
 <%= simple_form_for @glip do |f| %>
   <p><%= f.input :title %></p>
+  <p><%= f.label :tag_list, 'Tags (separated by commas)' %></p>
+  <p><%= f.text_field :tag_list %></p>
   <p><%= f.trix_editor :content %></p>
   <p><%= f.submit %></p>
 <% end %>

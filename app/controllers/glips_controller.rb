@@ -3,7 +3,11 @@ class GlipsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @glips = Glip.all.order("created_at DESC")
+    if params[:tag]
+      @glips = Glip.tagged_with(params[:tag])
+    else
+       @glips = Glip.all.order("created_at DESC")
+    end
   end
 
   def show
@@ -54,6 +58,6 @@ class GlipsController < ApplicationController
     end
 
     def glip_params
-      params.require(:glip).permit(:title, :content, :user_id)
+      params.require(:glip).permit(:title, :content, :user_id, :tag_list)
     end
 end

@@ -2,10 +2,9 @@ Rails.application.routes.draw do
   root to: "glips#index"
 
   get 'pages/home'
-
   get 'pages/about'
-
   get 'pages/contact'
+  get 'tags/:tag', to: 'glips#index', as: :tag
 
   devise_for :users
   resources :blogs do
