@@ -12,19 +12,24 @@
 
   <body>
     <div class="main-header">
-      <div class="logo-wrapper">
-        <%= link_to image_tag("logo.png", alt: "logo"), root_path %>
-          <div class="buttons"><%= link_to 'New Glip', new_glip_path %></div>
-          <div class="buttons"><%= link_to 'New Blog', new_blog_path %></div>
-
-          <%- if user_signed_in? %>
-            <div class="buttons-black"><%= link_to t('auth.sign_out'), destroy_user_session_path, method: 'delete' %></div>
-          <% else %>
-            <div class="buttons-black"><%= link_to t('auth.sign_in'), new_user_session_path %></div>
-            <div class="buttons-black"><%= link_to t('auth.sign_up'), new_user_registration_path %></div>
-          <% end %>
-
+      <div class="logo">
+      <%= link_to root_path do %>
+        <%= image_tag 'logo.png', width: 180, alt: 'Glipboard logo'%>
+      <% end %>
       </div>
+      
+        <div class="buttons-no-border"><%= link_to 'About' %></div>
+        <div class="buttons-no-border"><%= link_to 'Blog' %></div>
+
+        <div class="buttons"><%= link_to 'New Glip', new_glip_path %></div>
+        <div class="buttons"><%= link_to 'New Blog', new_blog_path %></div>
+
+        <%- if user_signed_in? %>
+          <div class="buttons-black"><%= link_to t('auth.sign_out'), destroy_user_session_path, method: 'delete' %></div>
+        <% else %>
+          <div class="buttons-black"><%= link_to t('auth.sign_in'), new_user_session_path %></div>
+          <div class="buttons-black"><%= link_to t('auth.sign_up'), new_user_registration_path %></div>
+        <% end %>
     </div>
     
     <div class="wrapper">
