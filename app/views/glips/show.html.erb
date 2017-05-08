@@ -5,9 +5,11 @@
       <div class="content">
         <%= @glip.content.html_safe %>
       </div>
-    <%= link_to "Edit", edit_glip_path(@glip) %> |
-    <%= link_to "Delete", glip_path(@glip), method: :delete, data: { confirm: "Are you sure?" } %> |
-    <%= link_to "List", glips_path %>
+      <div class="date">
+        <i class="fa fa-pencil"></i>&nbsp;&nbsp;<%= link_to "Edit", edit_glip_path(@glip) %> |
+        <i class="fa fa-times"></i>&nbsp;&nbsp;<%= link_to "Delete", glip_path(@glip), method: :delete, data: { confirm: "Are you sure?" } %> |
+        <%= link_to "List", glips_path %>
+      </div>
 </div>
 
 <h3>Comments</h3>

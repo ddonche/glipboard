@@ -5,9 +5,11 @@
       <div class="content">
         <%= @blog.body.html_safe %>
       </div>
-      <%= link_to "Edit", edit_blog_path(@blog) %>
-      <%= link_to "Delete", blog_path(@blog), method: :delete, data: { confirm: "Are you sure?" } %>
-      <%= link_to "List", blogs_path %>
+      <div class="date">
+        <%= link_to "Edit", edit_blog_path(@blog) %> |
+        <%= link_to "Delete", blog_path(@blog), method: :delete, data: { confirm: "Are you sure?" } %> |
+        <%= link_to "List", blogs_path %>
+      </div>
   </div>
 </div>
 

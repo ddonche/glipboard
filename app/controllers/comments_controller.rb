@@ -21,10 +21,15 @@ class CommentsController < ApplicationController
     end
   end
   
+  def edit
+    @comment = Comment.find(params[:id])
+  end
+  
   def update
+    @comment = Comment.find(params[:id])
     respond_to do |format|
       if @comment.update(allowed_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to @commentable, notice: 'Comment was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -32,9 +37,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to glips_url, notice: 'Comment was eradicated.' }
+      format.html { redirect_to @commentable, notice: 'Comment was eradicated.' }
     end
   end
 
