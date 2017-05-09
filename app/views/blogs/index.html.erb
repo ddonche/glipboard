@@ -1,6 +1,6 @@
-<div id="glips-wrapper">
+<div id="wrapper">
     <% @blogs.each do |blog| %>
-      <div class="glips">
+      <div class="index-boxes">
         <div class="post-title"><%= link_to blog.title, blog %></div>
         <div class="date">Posted <%= time_ago_in_words(blog.created_at) %> ago by <%= link_to blog.user.username, user_path(blog.user) %></div>
         <div class="date"><%= blog.comments.count %> comments</div>
