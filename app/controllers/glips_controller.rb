@@ -14,6 +14,8 @@ class GlipsController < ApplicationController
     @commentable = @glip
     @comments = @commentable.comments
     @comment = Comment.new
+    @log = Log.new
+    @log.user = current_user
   end
 
   def new

@@ -15,12 +15,22 @@
       <i class="fa fa-tags"></i>&nbsp;&nbsp;<%= raw(@glip.tag_list.map { |t| link_to t, tag_path(t) }.join(' , ')) %>
     </div>  
     
+    <div class="date">
+      <i class="fa fa-book"></i>&nbsp;&nbsp;<%= @glip.logs.count %>&nbsp;<%= link_to "logs", glip_logs_path(@glip) %> 
+    </div>
+    
     <div class="content">
       <%= @glip.content.html_safe %>
     </div>
     <div class="completion-criteria">
       <i class="fa fa-check-circle" aria-hidden="true"></i>&nbsp;&nbsp;<em>Completion Criteria:</em><%= raw(@glip.completion_criteria) %>
     </div>
+    
+    <% if (user_signed_in? && (current_user.id == @glip.user_id)) %>
+      <div class "date">Submit a new log entry:</div>
+      <%= render "logs/form" %><br/>
+    <% end %>
+    
 </div>
 
 <h3>Comments</h3>

@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   end
   resources :glips do
     resources :comments
+    resources :logs
   end
+
   match '/users', to: 'users#index', via: 'get'
   match '/users/:id', to: 'users#show', via: 'get'
   

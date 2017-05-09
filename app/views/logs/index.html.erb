@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<div class="index-title"><%= link_to @glip.title, @glip %></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Logs</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @logs.each do |log| %>
+      <tr>
+        <td><%= log.content %></td>
+        <td><%= log.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

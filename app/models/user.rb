@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :glips
   has_many :blogs
   has_many :comments
+  has_many :logs
   
   private
     def picture_size_validation
