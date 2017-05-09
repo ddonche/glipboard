@@ -1,7 +1,8 @@
 <%= simple_form_for @blog do |f| %>
-  <p><%= f.input :title %></p>
+  <p><%= f.label :title, 'Title:' %></p>
+  <p><%= f.text_field :title %></p>
   <p><%= f.trix_editor :body %></p>
   <p><%= f.label :tag_list, 'Tags (separated by commas)' %> <em>Example: fitness, weight loss, marathon</em></p>
-  <p><%= f.text_field :tag_list %></p>
+  <p><%= f.text_area :tag_list, value: @blog.tag_list.join(", ") %></p>
   <p><%= f.submit %></p>
 <% end %>

@@ -23,7 +23,7 @@
       <%= @glip.content.html_safe %>
     </div>
     <div class="completion-criteria">
-      <i class="fa fa-check-circle" aria-hidden="true"></i>&nbsp;&nbsp;<em>Completion Criteria:</em><%= raw(@glip.completion_criteria) %>
+      <i class="fa fa-check-circle" aria-hidden="true"></i>&nbsp;&nbsp;<em>Completion Criteria:</em><br /><%= raw(@glip.completion_criteria) %>
     </div>
     
     <% if (user_signed_in? && (current_user.id == @glip.user_id)) %>

@@ -1,11 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <div class="index-title"><%= link_to @glip.title, @glip %></div>
-
+<div class="logs">
 <table>
   <thead>
     <tr>
       <th>Logs</th>
+      <th>Submitted</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -14,10 +15,10 @@
     <% @logs.each do |log| %>
       <tr>
         <td><%= log.content %></td>
-        <td><%= log.created_at %></td>
+        <td><%= time_ago_in_words(log.created_at) %> ago on <%= log.created_at.strftime("%d-%m-%Y") %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>

@@ -1,11 +1,12 @@
 <%= simple_form_for @glip do |f| %>
-  <p><%= f.input :title %></p>
+  <p><%= f.label :title, 'Title:' %></p>
+  <p><%= f.text_field :title %></p>
   <p>What do you want to accomplish? Set specific goals that you can measure.</p>
   <p><%= f.trix_editor :content %></p>
   <p>What is the completion criteria for this glip? How will you know you achieved your goal?</p>
   <p><%= f.text_area :completion_criteria %></p>
   <p><%= f.label :tag_list, 'Tags (separated by commas)' %> <em>Example: fitness, weight loss, marathon</em></p>
-  <p><%= f.text_field :tag_list %></p>
+  <p><%= f.text_area :tag_list, value: @glip.tag_list.join(", ") %></p>
   <p><%= f.submit %></p>
 <% end %>
   
