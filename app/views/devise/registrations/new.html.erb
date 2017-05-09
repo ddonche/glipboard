@@ -4,12 +4,14 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %><br />
     <%= f.label :email %><br />
-    <%= f.email_field :email %><br />
+    <%= f.email_field :email, autofocus: true %><br />
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
     <%= f.input :password_confirmation, required: true %>
+    <%= f.label :username %><br />
+    <%= f.text_field :username %><br />
+    <%= f.label :name %><br />
+    <%= f.text_field :name %><br />    
   </div>
 
   <div class="form-actions">

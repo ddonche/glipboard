@@ -6,7 +6,10 @@
   <div class="form-inputs">
     <%= f.label :username %><br />
     <%= f.text_field :username %><br />
-    <%= f.input :email, required: true %>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %><br />
+    <%= f.label :email %><br />
+    <%= f.input :email %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
