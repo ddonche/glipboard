@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   get 'pages/contact'
   get 'tags/:tag', to: 'glips#index', as: :tag
 
-  devise_for :users
+  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
+  
   resources :blogs do
     resources :comments
   end
