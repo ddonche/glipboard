@@ -33,9 +33,15 @@
           <div class="buttons-black"><%= link_to 'Login', new_user_session_path %></div>
           <div class="buttons-black"><%= link_to 'Register', new_user_registration_path %></div>
         <% end %>
+        
     </div>
     
+    <% if current_user %>
+      <div class="user-welcome">Good to see you, <%= link_to current_user.username, current_user %>!</div>
+    <% end %>
+    
     <div class="wrapper">
+        
       <% if flash[:notice] %>
         <div class="notice"><%= notice %></div>
       <% end %>
