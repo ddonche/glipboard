@@ -3,7 +3,11 @@ class BlogsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @blogs = Blog.all
+    if params[:tag]
+      @blogs = Blog.tagged_with(params[:tag])
+    else
+       @blogs = Blog.all.order("created_at DESC")
+    end
   end
 
   def show
@@ -55,6 +59,6 @@ class BlogsController < ApplicationController
     end
 
     def blog_params
-      params.require(:blog).permit(:title, :body, :user_id)
+      params.require(:blog).permit(:title, :body, :user_id, :tag_list)
     end
 end

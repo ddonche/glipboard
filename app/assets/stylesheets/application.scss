@@ -101,13 +101,10 @@ p {
   background: #fff;
   padding: 1em 5%;
   box-shadow: 5px 5px 3px #999;
-}
-
-.date {
-  margin-top: .5em;
-  font-size: 0.8em;
-  font-style: italic;
-  color: #646661;
+  .index-title {
+    font-weight: 100;
+    font-size: 1.05em;
+  }
 }
 
 textarea {

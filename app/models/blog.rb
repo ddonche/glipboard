@@ -3,4 +3,6 @@ class Blog < ApplicationRecord
   has_many :comments, as: :commentable
   
   validates_presence_of :title, :body
+  
+  acts_as_taggable
 end

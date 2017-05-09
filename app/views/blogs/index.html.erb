@@ -1,9 +1,11 @@
 <div id="wrapper">
     <% @blogs.each do |blog| %>
       <div class="index-boxes">
-        <div class="post-title"><%= link_to blog.title, blog %></div>
-        <div class="date">Posted <%= time_ago_in_words(blog.created_at) %> ago by <%= link_to blog.user.username, user_path(blog.user) %></div>
-        <div class="date"><%= blog.comments.count %> comments</div>
+        <div class="index-title"><%= link_to blog.title, blog %></div>
+        <div class="date">Posted <%= time_ago_in_words(blog.created_at) %> ago by <%= link_to blog.user.username, user_path(blog.user) %>
+        &nbsp;&nbsp;<%= image_tag blog.user.picture, width: 15, alt: 'user avatar'%></div>
+        <div class="date"><i class="fa fa-comments"></i>&nbsp;&nbsp;<%= blog.comments.count %> comments&nbsp;&nbsp;&nbsp;&nbsp;
+        <i class="fa fa-tags"></i>&nbsp;&nbsp;<%= raw(blog.tag_list.map { |t| link_to t, tag_path(t) }.join(' , ')) %></div>
       </div>
     <% end %>
 </div>

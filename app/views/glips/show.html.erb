@@ -1,24 +1,26 @@
 <div class="glips">
-    <% if (user_signed_in? && (current_user.id == @glip.user_id)) %>
-    <div class="content-alter">
-      <%= link_to edit_glip_path(@glip) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
-      <%= link_to glip_path(@glip), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-times"></i><% end %>
-    </div>
-    <% end %>
+  <% if (user_signed_in? && (current_user.id == @glip.user_id)) %>
+  <div class="content-alter">
+    <%= link_to edit_glip_path(@glip) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
+    <%= link_to glip_path(@glip), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-times"></i><% end %>
+  </div>
+  <% end %>
     
-      <h3><%= @glip.title %></h3>
-        <div class="date">
-          Posted <%= time_ago_in_words(@glip.created_at) %> ago by <%= link_to @glip.user.username, user_path(@glip.user) %>
-        </div>
-        <div class="date">
-          <i class="fa fa-tags"></i>&nbsp;&nbsp;<%= raw(@glip.tag_list.map { |t| link_to t, tag_path(t) }.join(' , ')) %>
-        </div>  
-        <div class="content">
-          <%= @glip.content.html_safe %>
-        </div>
-        <div class="completion-criteria">
-          <i class="fa fa-check-circle" aria-hidden="true"></i>&nbsp;&nbsp;<em>Completion Criteria:</em><%= @glip.completion_criteria %>
-        </div>
+  <div class="post-title"><%= @glip.title %></div>
+    <div class="date">
+      Posted <%= time_ago_in_words(@glip.created_at) %> ago by <%= link_to @glip.user.username, user_path(@glip.user) %>
+    </div>
+    
+    <div class="date">
+      <i class="fa fa-tags"></i>&nbsp;&nbsp;<%= raw(@glip.tag_list.map { |t| link_to t, tag_path(t) }.join(' , ')) %>
+    </div>  
+    
+    <div class="content">
+      <%= @glip.content.html_safe %>
+    </div>
+    <div class="completion-criteria">
+      <i class="fa fa-check-circle" aria-hidden="true"></i>&nbsp;&nbsp;<em>Completion Criteria:</em><%= raw(@glip.completion_criteria) %>
+    </div>
 </div>
 
 <h3>Comments</h3>
