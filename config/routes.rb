@@ -9,10 +9,29 @@ Rails.application.routes.draw do
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
   
   resources :blogs do
-    resources :comments
+    member do
+      put 'like', to: 'blogs#upvote'
+      put 'dislike', to: 'blogs#downvote'
+    end
+    resources :comments do
+      member do
+        put 'like', to: 'comments#upvote'
+        put 'dislike', to: 'comments#downvote'
+      end
+    end
   end
+  
   resources :glips do
-    resources :comments
+    member do
+      put 'like', to: 'glips#upvote'
+      put 'dislike', to: 'glips#downvote'
+    end
+    resources :comments do
+      member do
+        put 'like', to: 'comments#upvote'
+        put 'dislike', to: 'comments#downvote'
+      end
+    end
     resources :logs
   end
 

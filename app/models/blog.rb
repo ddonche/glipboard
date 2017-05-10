@@ -5,4 +5,5 @@ class Blog < ApplicationRecord
   validates_presence_of :title, :body
   
   acts_as_taggable
+  acts_as_votable
 end

@@ -3,9 +3,13 @@
     
     <%= 
       if comment.user.picture?
-        image_tag comment.user.picture, width: 45, alt: 'user avatar'
+        link_to user_path(comment.user) do
+          image_tag comment.user.picture, width: 45, alt: 'user avatar'
+        end
       else
-        image_tag 'default_avatar.jpg', width: 45, alt: 'default user avatar'
+        link_to user_path(comment.user) do
+          image_tag 'default_avatar.jpg', width: 45, alt: 'default user avatar'
+        end
       end
     %>          
 
@@ -23,5 +27,34 @@
     <% end %>
     
     </div>
+    
+    <% if @commentable = @glip %>
+      <div class="btn-group">
+        <%= link_to like_glip_comment_path(@glip, comment), method: :put, class: "btn btn-default btn-sm" do %>
+          <span class="glyphicon glyphicon-chevron-up"></span>
+          Upvote
+          <%= comment.get_upvotes.size %>
+        <% end %>
+        <%= link_to dislike_glip_comment_path(@glip, comment), method: :put, class: "btn btn-default btn-sm" do %>
+          <span class="glyphicon glyphicon-chevron-down"></span>
+          Downvote
+          <%= comment.get_downvotes.size %>
+        <% end %>
+      </div>
+      <% else %>
+      <div class="btn-group">
+        <%= link_to like_blog_comment_path(@blog, comment), method: :put, class: "btn btn-default btn-sm" do %>
+          <span class="glyphicon glyphicon-chevron-up"></span>
+          Upvote
+          <%= comment.get_upvotes.size %>
+        <% end %>
+        <%= link_to dislike_blog_comment_path(@blog, comment), method: :put, class: "btn btn-default btn-sm" do %>
+          <span class="glyphicon glyphicon-chevron-down"></span>
+          Downvote
+          <%= comment.get_downvotes.size %>
+        <% end %>
+      </div>      
+    <% end %>
+
   </div>
 <% end %>

@@ -43,6 +43,18 @@ class CommentsController < ApplicationController
       format.html { redirect_to @commentable, notice: 'Comment was eradicated.' }
     end
   end
+  
+  def upvote
+    @comment = Comment.find(params[:id])
+    @comment.upvote_by current_user
+    redirect_to @commentable
+  end
+  
+  def downvote
+    @comment = Comment.find(params[:id])
+    @comment.downvote_by current_user
+    redirect_to @commentable
+  end
 
   private
 

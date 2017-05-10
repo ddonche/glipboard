@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :set_blog, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -53,6 +53,21 @@ class BlogsController < ApplicationController
       format.html { redirect_to blogs_url, notice: 'Blog post was eradicated.' }
       format.json { head :no_content }
     end
+  end
+  
+  def upvote
+    @blog.upvote_by current_user
+    
+    #update user reputation in the database
+    5.times do 
+      User.increment_counter(:reputation, @blog.user_id)
+    end
+    redirect_to :back
+  end
+  
+  def downvote
+    @blog.downvote_by current_user
+    redirect_to :back
   end
 
   private

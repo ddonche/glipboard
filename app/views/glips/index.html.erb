@@ -8,9 +8,13 @@
            &nbsp;&nbsp;
           <%= 
             if glip.user.picture?
-              image_tag glip.user.picture, width: 15, alt: 'user avatar'
+              link_to user_path(glip.user) do
+                image_tag glip.user.picture, width: 15, alt: 'user avatar'
+              end
             else
-              image_tag 'default_avatar.jpg', width: 15, alt: 'default user avatar'
+              link_to user_path(glip.user) do
+                image_tag 'default_avatar.jpg', width: 15, alt: 'default user avatar'
+              end
             end
           %>          
         </div>
@@ -21,6 +25,18 @@
           <i class="fa fa-book"></i>&nbsp;&nbsp;<%= glip.logs.count %>&nbsp;<%= link_to "logs", glip_logs_path(glip) %>
         </div>
         
+      <div class="btn-group">
+        <%= link_to like_glip_path(glip), method: :put, class: "btn btn-default btn-sm" do %>
+          <span class="glyphicon glyphicon-chevron-up"></span>
+          <%= glip.get_upvotes.size %>
+        <% end %>
+        <%= link_to dislike_glip_path(glip), method: :put, class: "btn btn-default btn-sm" do %>
+          <span class="glyphicon glyphicon-chevron-down"></span>
+          <%= glip.get_downvotes.size %>
+        <% end %>
       </div>
+        
+      </div>
+      
     <% end %>
 </div>
