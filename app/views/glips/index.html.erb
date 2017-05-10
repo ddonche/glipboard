@@ -5,6 +5,7 @@
         
         <div class="date-right">
           Posted <%= time_ago_in_words(glip.created_at) %> ago by <%= link_to glip.user.username, user_path(glip.user) %>
+           &nbsp;&nbsp;
           <%= 
             if glip.user.picture?
               image_tag glip.user.picture, width: 15, alt: 'user avatar'
