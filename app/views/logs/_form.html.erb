@@ -10,10 +10,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.text_field :content, rows: 3 %>
-  </div>
+  <%= f.text_area :content, rows: 2 %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit Log Entry" %>
   </div>
 <% end %>

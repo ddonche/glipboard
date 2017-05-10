@@ -6,7 +6,10 @@
   </div>
   <% end %>
     
-  <div class="post-title"><%= @glip.title %></div>
+  <div class="post-title">
+    <%= @glip.title %>
+  </div>
+  
     <div class="date">
       Posted <%= time_ago_in_words(@glip.created_at) %> ago by <%= link_to @glip.user.username, user_path(@glip.user) %>
     </div>
@@ -26,12 +29,12 @@
       <i class="fa fa-check-circle" aria-hidden="true"></i>&nbsp;&nbsp;<em>Completion Criteria:</em><br /><%= raw(@glip.completion_criteria) %>
     </div>
     
+</div>
+
     <% if (user_signed_in? && (current_user.id == @glip.user_id)) %>
-      <div class "date">Submit a new log entry:</div>
+      <div class ="date">Submit a new log entry: (200 characters max)</div>
       <%= render "logs/form" %><br/>
     <% end %>
-    
-</div>
 
 <h3>Comments</h3>
 <%= render "comments/form" %><br/>

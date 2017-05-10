@@ -3,6 +3,7 @@ class BlogsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
+    @page_title = "Glipboard Blogs"
     if params[:tag]
       @blogs = Blog.tagged_with(params[:tag])
     else
@@ -11,6 +12,7 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @page_title = @blog.title
     @commentable = @blog
     @comments = @commentable.comments
     @comment = Comment.new

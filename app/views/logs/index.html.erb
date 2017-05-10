@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="index-title"><%= link_to @glip.title, @glip %></div>
+    
 <div class="logs">
 <table>
   <thead>
@@ -22,3 +23,6 @@
 </table>
 </div>
 <br>
+    <% if (user_signed_in? && (current_user.id == @glip.user_id)) %>
+      <%= link_to "Submit New Log Entry", glip_path(@glip) %>
+    <% end %>

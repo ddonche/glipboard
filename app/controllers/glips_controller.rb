@@ -3,6 +3,7 @@ class GlipsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
+    @page_title = "Glips"
     if params[:tag]
       @glips = Glip.tagged_with(params[:tag])
     else
@@ -11,6 +12,7 @@ class GlipsController < ApplicationController
   end
 
   def show
+    @page_title = @glip.title
     @commentable = @glip
     @comments = @commentable.comments
     @comment = Comment.new

@@ -8,7 +8,6 @@
 }
 
 .content {
-  border-bottom: 1px solid #c5c3c1;
   padding: 20px 0px 5px 0px;
   line-height: 1.8em;
   font-size: 14px;
@@ -43,4 +42,11 @@
   font-size: 10px;
   font-style: italic;
   color: #646661;
+}
+
+.date-right {
+  font-size: 10px;
+  font-style: italic;
+  color: #646661;
+  float: right;
 }

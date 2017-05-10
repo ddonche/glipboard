@@ -2,6 +2,7 @@ class LogsController < ApplicationController
   before_action :set_log, only: [:show, :edit, :update, :destroy]
   
   def index
+    @page_title = "Log Entries"
     @glip = Glip.find(params[:glip_id])
     @logs = @glip.logs
   end

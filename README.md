@@ -4,9 +4,10 @@
 
 ### Features
 
-- Real time chat engine for comments
-- Blog
-- Post annotations
+- Posting of Goals with completion criteria
+- Logs for tracking small progress
+- Blogs
+- Comments
 - Achievements
 - Invite capability
 

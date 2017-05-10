@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Glipboard</title>
+    <title><%= @page_title %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -37,7 +37,7 @@
     </div>
     
     <% if current_user %>
-      <div class="user-welcome">Good to see you, <%= link_to current_user.username, current_user %>!&nbsp;&nbsp;<%= image_tag current_user.picture, width: 15, alt: 'user avatar'%></div>
+      <div class="user-welcome">Good to see you, <%= link_to current_user.username, current_user %>!
     <% end %>
     
     <div class="wrapper">
