@@ -12,10 +12,11 @@
 
   <body>
     <div class="main-header">
+      
       <div class="logo">
-      <%= link_to root_path do %>
-        <%= image_tag 'logo.png', width: 180, alt: 'Glipboard logo'%>
-      <% end %>
+        <%= link_to root_path do %>
+          <%= image_tag 'logo.png', width: 180, alt: 'Glipboard logo'%>
+        <% end %>
       </div>
       
         <div class="buttons-no-border"><%= link_to 'About' %></div>
@@ -37,7 +38,7 @@
     </div>
     
     <% if current_user %>
-      <div class="user-welcome">Good to see you, <%= link_to current_user.username, current_user %>!
+      <div class="user-welcome">Good to see you, <%= link_to current_user.username, current_user %>!</div>
     <% end %>
     
     <div class="wrapper">

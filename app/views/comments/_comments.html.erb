@@ -1,29 +1,27 @@
-<div id="glips-wrapper">
-    <% @comments.each do |comment| %>
-      <div class="comments">
-        
-        <%= 
-          if comment.user.picture?
-            image_tag comment.user.picture, width: 45, alt: 'user avatar'
-          else
-            image_tag 'default_avatar.jpg', width: 45, alt: 'default user avatar'
-          end
-        %>          
+<% @comments.each do |comment| %>
+  <div class="comments">
+    
+    <%= 
+      if comment.user.picture?
+        image_tag comment.user.picture, width: 45, alt: 'user avatar'
+      else
+        image_tag 'default_avatar.jpg', width: 45, alt: 'default user avatar'
+      end
+    %>          
 
-        <div class="comment-content"><%= comment.content.html_safe %></div>
-        <div class="date">Posted <%= time_ago_in_words(comment.created_at) %> ago by <%= link_to comment.user.username, user_path(comment.user) %>
-        
-        <% if (user_signed_in? && (current_user.id == comment.user_id)) %>
-          <% if @commentable = @glip %>
-            <div class="comments-alter"><%= link_to edit_glip_comment_path(@glip, comment) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
-            <%= link_to glip_comment_path(@glip, comment), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-times"></i><% end %></div>
-          <% else %>
-            <div class="comments-alter"><%= link_to edit_blog_comment_path(@blog, comment) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
-            <%= link_to blog_comment_path(@blog, comment), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-times"></i><% end %></div>
-          <% end %>
-        <% end %>
-        
-        </div>
-      </div>
+    <div class="comment-content"><%= comment.content.html_safe %></div>
+    <div class="date">Posted <%= time_ago_in_words(comment.created_at) %> ago by <%= link_to comment.user.username, user_path(comment.user) %>
+    
+    <% if (user_signed_in? && (current_user.id == comment.user_id)) %>
+      <% if @commentable = @glip %>
+        <div class="comments-alter"><%= link_to edit_glip_comment_path(@glip, comment) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
+        <%= link_to glip_comment_path(@glip, comment), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-times"></i><% end %></div>
+      <% else %>
+        <div class="comments-alter"><%= link_to edit_blog_comment_path(@blog, comment) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
+        <%= link_to blog_comment_path(@blog, comment), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-times"></i><% end %></div>
+      <% end %>
     <% end %>
-</div>
+    
+    </div>
+  </div>
+<% end %>
