@@ -13,11 +13,29 @@
     
       <% if everything.model_name.human == "Glip" %>
         <div class="index-boxes">
-      <% else %>
+      <% elsif everything.model_name.human == "Blog" %>
         <div class="index-blog-boxes">
+      <% else %>
+        <div class="index-log-boxes">
       <% end %>
       
-        <div class="index-title"><%= link_to everything.title, everything %></div>
+        <% if (user_signed_in? && (current_user.id == everything.user_id)) %>
+        <div class="content-alter">
+            <% if everything.model_name.human == "Glip" %>
+              <%= link_to edit_glip_path(everything) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
+              <%= link_to glip_path(everything), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-times"></i><% end %>
+            <% elsif everything.model_name.human == "Blog" %>
+              <%= link_to edit_blog_path(everything) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
+              <%= link_to blog_path(everything), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-times"></i><% end %>
+            <% else %>
+              <%= link_to glip_log_path(everything, everything), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-times"></i><% end %>
+            <% end %>
+        </div>
+        <% end %>
+      
+        <% if everything.model_name.human != "Log" %>
+          <div class="index-title"><%= link_to everything.title, everything %></div>
+        <% end %>
         <div class="content"><%= everything.content.html_safe %></div>
         
         <div class="date-right">
@@ -26,8 +44,18 @@
         </div>
         
         <div class="date">
+        <% if everything.model_name.human != "Log" %>
           <i class="fa fa-tags"></i>&nbsp;&nbsp;<%= raw(everything.tag_list.map { |t| link_to t, tag_path(t) }.join(' , ')) %>&nbsp;&nbsp;&nbsp;&nbsp;
           <i class="fa fa-comments"></i>&nbsp;&nbsp;<%= everything.comments.count %>&nbsp;<%= link_to "comments", everything %>&nbsp;&nbsp;&nbsp;
+          <% if everything.model_name.human == "Glip" %>
+            <i class="fa fa-book"></i>&nbsp;&nbsp;<%= everything.logs.count %>&nbsp;<%= link_to "logs", glip_logs_path(everything) %>&nbsp;&nbsp;&nbsp;
+            <%= link_to like_glip_path(everything), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= everything.get_upvotes.size %>&nbsp;&nbsp;
+            <%= link_to dislike_glip_path(everything), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= everything.get_downvotes.size %>
+          <% else %>
+            <%= link_to like_blog_path(everything), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= everything.get_upvotes.size %>&nbsp;&nbsp;
+            <%= link_to dislike_blog_path(everything), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= everything.get_downvotes.size %>
+          <% end %>
+        <% end %>
         </div>
         
       </div>

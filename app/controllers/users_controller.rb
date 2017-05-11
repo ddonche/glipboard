@@ -10,7 +10,9 @@ class UsersController < ApplicationController
     @page_title = @user.username
     @blogs = @user.blogs
     @glips = @user.glips
-    @everything = (@blogs + @glips).sort{|b,a| a.updated_at <=> b.updated_at }
+    @logs = @user.logs
+    @almost_everything = (@blogs + @glips).sort{|b,a| a.updated_at <=> b.updated_at }
+    @everything = (@almost_everything + @logs).sort{|b,a| a.updated_at <=> b.updated_at }
     @result = @everything.class.name
   end
   
