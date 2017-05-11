@@ -10,12 +10,9 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require trix
+ *= require_tree .
+ *= require_self
  */
-// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
-@import "bootstrap-sprockets";
-@import "bootstrap";
- 
 body {
   font-family: 'Roboto', sans-serif;
   background: #f3f4f5;
@@ -30,13 +27,13 @@ body {
 .main-header{
   width: 100%;
   margin: 0 auto;
-  height: 80px;
+  height: 60px;
   background: #222;
   .buttons {
     float:right;
     padding: 5px 10px;
-    margin: 25px 15px 25px 0px;
-    border: 2px solid #d10000;
+    margin: 15px 15px 15px 0px;
+    border: 1px solid #d10000;
     a {
       color: #fff;
       text-decoration: none;
@@ -49,7 +46,7 @@ body {
     float:left;
     display:flex;
     padding: 5px 0px;
-    margin: 25px 15px;
+    margin: 15px 15px;
     a {
       color: #fff;
       text-decoration: none;
@@ -61,7 +58,8 @@ body {
 }
 
 .logo {
-  margin: 10px 10px;
+  margin: 15px 10px;
+  vertical-align: middle;
   float:left;
   position: relative;
 }
@@ -76,8 +74,8 @@ body {
 .buttons-black {
   float:right;
   padding: 5px 10px;
-  margin: 25px 15px 25px 0px;
-  border: 2px solid #f3f4f5;
+  margin: 15px 15px 15px 0px;
+  border: 1px solid #f3f4f5;
   a {
     color: #f3f4f5;
     text-decoration: none;

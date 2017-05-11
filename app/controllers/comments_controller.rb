@@ -47,12 +47,22 @@ class CommentsController < ApplicationController
   def upvote
     @comment = Comment.find(params[:id])
     @comment.upvote_by current_user
+    
+    #update user reputation in the database
+    2.times.collect do 
+      User.increment_counter(:reputation, @comment.user_id)
+    end
     redirect_to @commentable
   end
   
   def downvote
     @comment = Comment.find(params[:id])
     @comment.downvote_by current_user
+    
+    #update user reputation in the database
+    2.times.collect do 
+      User.decrement_counter(:reputation, @comment.user_id)
+    end
     redirect_to @commentable
   end
 

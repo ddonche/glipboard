@@ -21,22 +21,15 @@
         
         <div class="date">
           <i class="fa fa-tags"></i>&nbsp;&nbsp;<%= raw(glip.tag_list.map { |t| link_to t, tag_path(t) }.join(' , ')) %>&nbsp;&nbsp;&nbsp;&nbsp;
-          <i class="fa fa-comments"></i>&nbsp;&nbsp;<%= glip.comments.count %> comments&nbsp;&nbsp;&nbsp;
-          <i class="fa fa-book"></i>&nbsp;&nbsp;<%= glip.logs.count %>&nbsp;<%= link_to "logs", glip_logs_path(glip) %>
+          <i class="fa fa-comments"></i>&nbsp;&nbsp;<%= glip.comments.count %>&nbsp;<%= link_to "comments", glip %>&nbsp;&nbsp;&nbsp;
+          <i class="fa fa-book"></i>&nbsp;&nbsp;<%= glip.logs.count %>&nbsp;<%= link_to "logs", glip_logs_path(glip) %>&nbsp;&nbsp;&nbsp;
+          
+          <%= link_to like_glip_path(glip), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= glip.get_upvotes.size %>&nbsp;&nbsp;
+          <%= link_to dislike_glip_path(glip), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= glip.get_downvotes.size %>
         </div>
-        
-      <div class="btn-group">
-        <%= link_to like_glip_path(glip), method: :put, class: "btn btn-default btn-sm" do %>
-          <span class="glyphicon glyphicon-chevron-up"></span>
-          <%= glip.get_upvotes.size %>
-        <% end %>
-        <%= link_to dislike_glip_path(glip), method: :put, class: "btn btn-default btn-sm" do %>
-          <span class="glyphicon glyphicon-chevron-down"></span>
-          <%= glip.get_downvotes.size %>
-        <% end %>
-      </div>
         
       </div>
       
     <% end %>
+
 </div>

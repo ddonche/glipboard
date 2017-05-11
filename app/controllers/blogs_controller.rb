@@ -59,7 +59,7 @@ class BlogsController < ApplicationController
     @blog.upvote_by current_user
     
     #update user reputation in the database
-    5.times do 
+    5.times.collect do 
       User.increment_counter(:reputation, @blog.user_id)
     end
     redirect_to :back
@@ -67,6 +67,11 @@ class BlogsController < ApplicationController
   
   def downvote
     @blog.downvote_by current_user
+
+    #update user reputation in the database
+    5.times.collect do 
+      User.decrement_counter(:reputation, @blog.user_id)
+    end
     redirect_to :back
   end
 

@@ -58,12 +58,21 @@ class GlipsController < ApplicationController
   
   def upvote
     @glip.upvote_by current_user
-    User.increment_counter(:reputation, @glip.user_id)
+    
+    #update user reputation in the database
+    5.times.collect do 
+      User.increment_counter(:reputation, @glip.user_id)
+    end
     redirect_to :back
   end
   
   def downvote
     @glip.downvote_by current_user
+    
+    #update user reputation in the database
+    5.times.collect do 
+      User.decrement_counter(:reputation, @glip.user_id)
+    end
     redirect_to :back
   end
 

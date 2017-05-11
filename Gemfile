@@ -18,12 +18,10 @@ gem 'jbuilder', '~> 2.5'
 # gems I've installed my damn self
 gem 'simple_form', '~> 3.4'
 gem 'devise', '~> 4.2', '>= 4.2.1'
-gem 'trix'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 gem 'acts-as-taggable-on', '~> 4.0'
 gem 'font-awesome-sass', '~> 4.2.0'
-gem 'bootstrap-sass', '~> 3.3.6'
 gem 'acts_as_votable', '~> 0.10.0'
 
 group :development, :test do
