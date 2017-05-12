@@ -18,10 +18,12 @@ body {
   background: #f3f4f5;
 }
 
-.wrapper {
-  width: 60%;
-  max-width: 1140px;
-  margin: 0 auto;
+#index-container {
+  width: 85%;
+  margin: 10px auto;
+  background: #f7f7f7;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
 }
 
 .main-header{
@@ -94,38 +96,6 @@ p {
   line-height: 2em;
 }
 
-.index-boxes {
-  margin-bottom: 10px;
-  margin-top: 10px;
-  background: #fff;
-  padding: 1em 5%;
-  box-shadow: 5px 5px 3px #999;
-  .index-title {
-    font-weight: 100;
-    font-size: 1.05em;
-  }
-}
-
-.index-blog-boxes {
-  margin-bottom: 10px;
-  margin-top: 10px;
-  background: #eff0f1;
-  padding: 1em 5%;
-  box-shadow: 5px 5px 3px #999;
-  .index-title {
-    font-weight: 100;
-    font-size: 1.05em;
-  }
-}
-
-.index-log-boxes {
-  margin-bottom: 5px;
-  margin-top: 0;
-  background: #E1ECF4;
-  padding: 1em 5%;
-  box-shadow: 5px 5px 3px #999;
-}
-
 textarea {
     width: 100%;
     padding: 12px 20px;
@@ -142,6 +112,23 @@ input[type=button], input[type=submit], input[type=reset] {
     margin: 4px 2px;
     cursor: pointer;
 }
+
+.table{
+  display: table;
+  width:100%;
+  border-collapse:collapse;
+}
+  .table-row{
+    display: table-row;
+  }
+    .table-cell, .table-head{
+      display: table-cell;
+      padding:1em;
+      border-bottom: #e5e5e5 1px solid;
+    }
+    .table-head{
+        font-weight:bold;
+    }
 
 .footer{
   width: 100%;

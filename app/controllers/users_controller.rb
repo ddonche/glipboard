@@ -13,7 +13,6 @@ class UsersController < ApplicationController
     @logs = @user.logs
     @almost_everything = (@blogs + @glips).sort{|b,a| a.updated_at <=> b.updated_at }
     @everything = (@almost_everything + @logs).sort{|b,a| a.updated_at <=> b.updated_at }
-    @result = @everything.class.name
   end
   
 end

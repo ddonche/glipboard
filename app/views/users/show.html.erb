@@ -5,7 +5,7 @@
   else
     image_tag 'default_avatar.jpg', width: 100, alt: 'default user avatar'
   end
-  %><br/>
+  %>
     
     
 <div id="wrapper">
@@ -37,7 +37,6 @@
           <div class="index-title"><%= link_to everything.title, everything %></div>
         <% end %>
         <div class="content"><%= everything.content.html_safe %></div>
-        
         <div class="date-right">
           Posted <%= time_ago_in_words(everything.created_at) %> ago
            &nbsp;&nbsp;

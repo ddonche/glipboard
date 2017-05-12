@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "glips#index"
+  root to: "home#index"
 
   get 'pages/home'
   get 'pages/about'
