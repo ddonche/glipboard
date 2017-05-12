@@ -1,48 +1,36 @@
-<p id="notice"><%= notice %></p>
-<div id="index-container">
-  <div class="logs">
-    <div class="table">
-      <div class="table-row">
-        
-        <thead>
-          <div class="table-row">
-            <div class="table-head">Votes</div>
-            <div class="table-head">Comments</div>
-            <div class="table-head">Content</div>
-            <div class="table-head">Submitted</div>
-            <div class="table-head">User</div>
-            <div class="table-head">Tagged</div>
+<div id ="index-container">
+  <div class= "logs">
+    <div class= "table">
+          
+      <% @everything.each do |everything| %>
+              
+        <div class="table-row">
+          <div class="table-cell"><i class="fa fa-chevron-up"></i>&nbsp;<%= everything.get_upvotes.size %>&nbsp;&nbsp;<i class="fa fa-chevron-down"></i>&nbsp;<%= everything.get_downvotes.size %></div>
+          <div class="table-cell"><i class="fa fa-comments"></i>&nbsp;&nbsp;<%= everything.comments.count %></div>
+          <div class="table-cell">
+            <% if everything.model_name.human == "Glip" %>
+              <div class="glip-button">glip</div>
+            <% else %>
+              <div class="blog-button">blog</div>
+            <% end %>
           </div>
-        </thead>
-    
-        <tbody>
-          <% @everything.each do |everything| %>
-            
-              <div class="table-row">
-                <div class="table-cell"><i class="fa fa-chevron-up"></i>&nbsp;<%= everything.get_upvotes.size %>&nbsp;&nbsp;
-                    <i class="fa fa-chevron-down"></i>&nbsp;<%= everything.get_downvotes.size %></div>
-                <div class="table-cell"><i class="fa fa-comments"></i>&nbsp;&nbsp;<%= everything.comments.count %></div>
-                <div class="table-cell"><%= link_to everything.title, everything %></div>
-                <div class="table-cell"><%= time_ago_in_words(everything.created_at) %></div>
-                <div class="table-cell">
-                  <%= if everything.user.picture?
-                        link_to user_path(everything.user) do
-                          image_tag everything.user.picture, width: 15, alt: 'user avatar'
-                        end
-                      else
-                        link_to user_path(everything.user) do
-                          image_tag 'default_avatar.jpg', width: 15, alt: 'default user avatar'
-                        end
-                      end
-                  %>&nbsp;&nbsp;<%= link_to everything.user.username, user_path(everything.user) %>          
-                </div>
-                <div class="table-cell"><i class="fa fa-tags"></i>&nbsp;&nbsp;<%= raw(everything.tag_list.map { |t| link_to t, tag_path(t) }.join(' , ')) %></td>
-              </div>
-            </div>
-          <% end %>
-        </tbody>
+          <div class="table-cell"><%= link_to everything.title, everything %></div>
+          <div class="table-cell"><%= time_ago_in_words(everything.created_at) %></div>
+          <div class="table-cell">
+            <%= if everything.user.picture?
+                  link_to user_path(everything.user) do
+                    image_tag everything.user.picture, width: 15, alt: 'user avatar'
+                  end
+                else
+                  link_to user_path(everything.user) do
+                    image_tag 'default_avatar.jpg', width: 15, alt: 'default user avatar'
+                  end
+                end %></div>
+          <div class="table-cell"><i class="fa fa-tags"></i>&nbsp;&nbsp;<%= raw(everything.tag_list.map { |t| link_to t, tag_path(t) }.join(' , ')) %></div>
+        </div>
         
-      </div>
+      <% end %>
+      
     </div>
   </div>
 </div>

@@ -7,7 +7,7 @@ class BlogsController < ApplicationController
     if params[:tag]
       @blogs = Blog.tagged_with(params[:tag])
     else
-       @blogs = Blog.all.order("created_at DESC")
+      @blogs = Blog.all.order("created_at DESC")
     end
   end
 
@@ -81,6 +81,6 @@ class BlogsController < ApplicationController
     end
 
     def blog_params
-      params.require(:blog).permit(:title, :body, :user_id, :tag_list)
+      params.require(:blog).permit(:title, :content, :user_id, :tag_list)
     end
 end

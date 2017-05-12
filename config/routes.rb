@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'pages/about'
   get 'pages/contact'
-  get 'tags/:tag', to: 'glips#index', as: :tag
+  get 'tags/:tag', to: 'tags#show', as: :tag
 
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
   
