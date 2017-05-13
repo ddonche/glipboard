@@ -10,9 +10,9 @@ class User < ApplicationRecord
   friendly_id :username, use: :slugged
          
   validates_presence_of :username
-  validates_presence_of :picture
-  validates_integrity_of :picture
-  validates_processing_of :picture
+  #validates_presence_of :picture
+  #validates_integrity_of :picture
+  #validates_processing_of :picture
 
   has_many :glips
   has_many :blogs
