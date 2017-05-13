@@ -1,12 +1,7 @@
 Rails.application.routes.draw do
   root to: "home#index"
-
-  get 'pages/home'
-  get 'pages/about'
-  get 'pages/contact'
-  get 'tags/:tag', to: 'tags#show', as: :tag
-
-  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
+  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }, 
+    controllers: { registrations: "registrations" }
   
   resources :blogs do
     member do
@@ -34,6 +29,8 @@ Rails.application.routes.draw do
     end
     resources :logs
   end
+  
+  get 'tags/:tag', to: 'tags#show', as: :tag
 
   match '/users', to: 'users#index', via: 'get'
   match '/users/:id', to: 'users#show', via: 'get'

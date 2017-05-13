@@ -1,4 +1,9 @@
-<h1><%= @user.username %></h1>
+<div class="post-title"><%= @user.username %>&nbsp;&nbsp;
+  <% if (user_signed_in? && (current_user.id == @user.id)) %>
+    <%= link_to edit_user_registration_path(@user) do %><i class="fa fa-pencil"><% end %></i>
+  <% end %>  
+</div>
+
   <%= 
   if @user.picture?
     image_tag @user.picture, width: 100, alt: 'user avatar'

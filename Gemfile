@@ -23,6 +23,7 @@ gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 gem 'acts-as-taggable-on', '~> 4.0'
 gem 'font-awesome-sass', '~> 4.2.0'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'friendly_id', '~> 5.1.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri
