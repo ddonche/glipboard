@@ -19,11 +19,30 @@ body {
 }
 
 #index-container {
-  width: 85%;
+  width: 75%;
   margin: 10px auto;
   background: #f7f7f7;
   border: 1px solid #e5e5e5;
   border-radius: 5px;
+}
+
+#index-container-wide {
+  width: 100%;
+  margin: 10px auto;
+  background: #f7f7f7;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+}
+
+#content-wrap {
+    min-height: 450px;
+    margin: 0 auto;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    width: 1060px;
+    padding: 15px;
+    background-color: #FFF;
 }
 
 .main-header{
@@ -134,16 +153,19 @@ input[type=button], input[type=submit], input[type=reset] {
         font-weight:bold;
     }
     
+.index-top-buttons {
+  font-size: .75em;
+}
+    
 .glip-button {
-  padding: 3px 3px;
+  padding: 4px 9px;
   text-align: center;
   color: #d10000;
   border: 1px solid #d10000;
-  font-size: .8em;
 }
 
 .blog-button {
-  padding: 3px;
+  padding: 4px 9px;
   text-align: center;
   color: #76aeac;
   border: 1px solid #76aeac;
@@ -217,6 +239,14 @@ input[type=button], input[type=submit], input[type=reset] {
   line-height: 1.5em;
 }
 
+.footer-icons {
+  margin-top: 5px;
+  font-size: 16px;
+  color: #646661;
+  padding-top: 7px;
+  float: right;
+}
+
 .notice {
     padding: 5px 10px;
     margin: 25px 15px 25px 5px;
@@ -232,101 +262,88 @@ input[type=button], input[type=submit], input[type=reset] {
 
 * { box-sizing: border-box; }
 
-/*!
- * table-grid (http://mdo.github.io/table-grid)
- * Released under MIT, (c) 2014 Mark Otto
- */
 
 
-/*
- * Container
- */
-
-/* Holds and centers the site content */
-.container {
-  max-width: 940px;
-  margin-right: auto;
-  margin-left: auto;
+.test-container {
+  width: 675px;
+  font-family: helvetica;
+  font-size: .85em;
+  float: left;
+  margin-left: 2%;
 }
 
-
-/*
- * The Grid
- */
-
-@media (min-width: 600px) {
-  /* Add `.grid` for the table */
-  .grid {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-  }
-
-  /* Add `.col` for the table cells, or columns */
-  .col {
-    display: table-cell;
-  }
-
-  /* Set the widths */
-  .col-1 { width: 8.333333%; }
-  .col-2 { width: 16.666667%; }
-  .col-3 { width: 25%; }
-  .col-4 { width: 33.333333%; }
-  .col-5 { width: 41.666667%; }
-  .col-6 { width: 50%; }
-  .col-7 { width: 58.333333%; }
-  .col-8 { width: 66.666667%; }
-  .col-9 { width: 75%; }
-  .col-10 { width: 83.333333%; }
-  .col-11 { width: 91.666667%; }
-  .col-12 { width: 100%; }
-
-  /* Padded columns */
-  .grid-padded {
-    margin-left:  -1rem;
-    margin-right: -1rem;
-  }
-  .grid-padded .grid {
-    border-spacing: 1rem 0;
-  }
+.test-container-right{
+  width: 300px;
+  margin-right: 2%;
+  background-color: #333;
+  overflow: hidden;
+  float: right;
 }
 
-
-/*
- * Vertically center grid content
- *
- * Requires content within the column to be inline or inline-block.
- */
-
-.grid-align-middle .col {
-  vertical-align: middle;
+.test-header-text {
+  font-weight: bold;
+  font-size: .65em;
+  font-family: sans-serif;
+  margin-bottom: 4px;
 }
 
-/* Make it red for easy views */
-.grid-example {
-  margin-bottom: 1rem;
-}
-.grid-example .col {
-  line-height: 3;
-  text-align: center;
-  color: #333;
-  background-color: rgba(255,0,0,.15);
-}
-.grid-example .col:nth-child(odd) {
-  background-color: rgba(255,0,0,.3);
+.test-header-left-top {
+  border-top: 1px solid #DC0000;
+  border-right: 1px solid #DC0000;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 6px;
+  float: left;
+  width: 73%;
 }
 
-/* Nested grid examples need outdenting because padding. */
-.grid-example .grid-example {
-  margin-top: .5rem;
-  margin-bottom: 0;
+.test-header-middle-top {
+  border-top: 1px solid #DC0000;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 6px;
+  width: 12%;
+  float:left;
 }
 
-/* Increase height of vertically centered example */
-.grid-example.grid-align-middle {
-  height: 200px;
+.test-header-right-top {
+  border-top: 1px solid #DC0000;
+  border-left: 1px solid #DC0000;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 6px;
+  width: 15%;
+  float: left;
 }
-.grid-example.grid-align-middle .col {
-  min-height: 3rem;
-  line-height: 1.5;
+
+.test-header-left-bottom {
+  border-top: 1px solid #DC0000;
+  border-right: 1px solid #DC0000;
+  border-bottom: 1px solid #DC0000;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 6px;
+  width: 13%;
+  float: left;
+}
+
+.test-header-middle-bottom {
+  border-top: 1px solid #DC0000;
+  border-bottom: 1px solid #DC0000;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 6px;
+  width: 13%;
+  float: left;
+}
+
+.test-header-right-bottom {
+  border-top: 1px solid #DC0000;
+  border-left: 1px solid #DC0000;
+  border-bottom: 1px solid #DC0000;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 6px;
+  width: 74%;
+  float: left;
 }

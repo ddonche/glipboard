@@ -1,41 +1,37 @@
-<div class="glips">
-  <% if (user_signed_in? && (current_user.id == @glip.user_id)) %>
-  <div class="content-alter">
-    <%= link_to edit_glip_path(@glip) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
-    <%= link_to glip_path(@glip), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-times"></i><% end %>
-  </div>
-  <% end %>
-    
-  <div class="post-title">
-    <%= @glip.title %>
-  </div>
-  
-    <div class="date">
-      Posted <%= time_ago_in_words(@glip.created_at) %> ago by <%= link_to @glip.user.username, user_path(@glip.user) %>
+<div id="content-wrap">
+  <div class="test-container">
+    <% if (user_signed_in? && (current_user.id == @glip.user_id)) %>
+      <div class="content-alter">
+        <%= link_to edit_glip_path(@glip) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
+        <%= link_to glip_path(@glip), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-times"></i><% end %>
+      </div>
+    <% end %>
+    <div class="post-title">
+      <%= @glip.title %>
     </div>
-    
-    <div class="date">
-      <i class="fa fa-tags"></i>&nbsp;&nbsp;<%= raw(@glip.tag_list.map { |t| link_to t, tag_path(t) }.join(' , ')) %>
-    </div>  
-    
-    <div class="date">
-      <i class="fa fa-book"></i>&nbsp;&nbsp;<%= @glip.logs.count %>&nbsp;<%= link_to "logs", glip_logs_path(@glip) %> 
-    </div>
-    
-    <div class="content">
-      <%= @glip.content.html_safe %>
-    </div>
+    <div class="content"><%= @glip.content.html_safe %></div>
     <div class="completion-criteria">
       <i class="fa fa-check-circle" aria-hidden="true"></i>&nbsp;&nbsp;<em>Completion Criteria:</em><br /><%= raw(@glip.completion_criteria) %>
     </div>
     
-</div>
-
+    <div class="test-header-left-top"><div class="test-header-text">POSTED BY</div><%= link_to @glip.user.username, user_path(@glip.user) %>&nbsp;<%= time_ago_in_words(@glip.created_at) %> ago
+    </div>
+    <div class="test-header-middle-top"><div class="test-header-text">LOGS</div><i class="fa fa-book"></i>&nbsp;&nbsp;<%= @glip.logs.count %>&nbsp;<%= link_to "logs", glip_logs_path(@glip) %></div>
+    <div class="test-header-right-top"><div class="test-header-text">TYPE</div>public</div>
+    
+    <div class="test-header-left-bottom"><div class="test-header-text">VOTES</div><%= link_to like_glip_path(@glip), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= @glip.get_upvotes.size %>&nbsp;&nbsp;
+          <%= link_to dislike_glip_path(@glip), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= @glip.get_downvotes.size %></div>
+   <div class="test-header-middle-bottom"><div class="test-header-text">COMMENTS</div><i class="fa fa-comments"></i>&nbsp;&nbsp;<%= @glip.comments.count %></div>
+    <div class="test-header-right-bottom"><div class="test-header-text">TAGS</div><i class="fa fa-tags"></i>&nbsp;&nbsp;<%= raw(@glip.tag_list.map { |t| link_to t, tag_path(t) }.join(' , ')) %></div>
+    <div class="comments-wrap">Comments</div>
+      <%= render "comments/form" %><br/>
+      <%= render "comments/comments" %>
+  </div>
+  
+  <div class="test-container-right">
     <% if (user_signed_in? && (current_user.id == @glip.user_id)) %>
       <div class ="date">Submit a new log entry: (200 characters max)</div>
       <%= render "logs/form" %><br/>
-    <% end %>
-
-<h3>Comments</h3>
-<%= render "comments/form" %><br/>
-<%= render "comments/comments" %>
+    <% end %> 
+  </div>
+</index-box-container>
