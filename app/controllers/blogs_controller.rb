@@ -3,11 +3,11 @@ class BlogsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @page_title = "Glipboard Blogs"
+    @page_title = "Blogs"
     if params[:tag]
       @blogs = Blog.tagged_with(params[:tag])
     else
-      @blogs = Blog.all.order("created_at DESC")
+      @blogs = Blog.order('created_at DESC').page(params[:page]).per(3)
     end
   end
 

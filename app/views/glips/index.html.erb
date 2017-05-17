@@ -1,4 +1,5 @@
 <div id="wrapper">
+  <%= paginate @glips %>
     <% @glips.each do |glip| %>
       <div class="index-boxes">
         <div class="index-title"><%= link_to glip.title, glip %></div>

@@ -1,4 +1,5 @@
 <div id="wrapper">
+  <%= paginate @blogs %>
     <% @blogs.each do |blog| %>
       <div class="index-boxes">
         <div class="index-title"><%= link_to blog.title, blog %></div>
