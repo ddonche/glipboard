@@ -1,17 +1,19 @@
-<%= form_for [@glip, @log] do |f| %>
-  <% if @log.errors.any? %>
-    <div class="error_messages">
-      <h3>Please correct the following errors.</h3>
-      <ul>
-      <% @log.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<div class="log-form">
+  <%= form_for [@glip, @log] do |f| %>
+    <% if @log.errors.any? %>
+      <div class="error_messages">
+        <h3>Please correct the following errors.</h3>
+        <ul>
+        <% @log.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <%= f.text_area :content, rows: 2 %>
+    <div class="actions">
+      <%= f.submit "Submit Log Entry" %>
     </div>
   <% end %>
-
-  <%= f.text_area :content, rows: 2 %>
-  <div class="actions">
-    <%= f.submit "Submit Log Entry" %>
-  </div>
-<% end %>
+</div>

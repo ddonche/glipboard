@@ -6,12 +6,24 @@
 .content {
   padding: 10px 0px 5px 0px;
   line-height: 1.8em;
-  font-size: 14px;
+  font-size: 12px;
+  display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+}
+
+.details-header {
+  padding: 8px 0px 5px 0px;
+  font-size: 12px;
+  line-height: 1.4em;
 }
 
 .completion-criteria {
   border: 1px solid #c5c3c1;
-  background-color: #cccccc;
+  border-radius: 3px;
+  background-color: #8ddbc0;
   padding: 5px 2%;
   margin-bottom: 10px;
   line-height: 1.8em;
@@ -26,10 +38,11 @@
   box-shadow: 5px 5px 3px #999;
 }
 
-.post-title{
-  font-weight: 100;
-  font-size: 1.25em;
-  margin-top: 15px;
+.post-title {
+  font-size: 24px;
+  line-height: 1.35;
+  font-weight: normal;
+  margin-bottom: 1px;
 }
 
 .date {

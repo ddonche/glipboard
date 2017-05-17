@@ -1,21 +1,11 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
  *= require_tree .
  *= require_self
  */
 body {
-  font-family: 'Roboto', sans-serif;
-  background: #f3f4f5;
+  font-family: Robot, sans-serif;  
+  background: #fff;
+  width: 100%;
 }
 
 #index-container {
@@ -35,14 +25,74 @@ body {
 }
 
 #content-wrap {
-    min-height: 450px;
-    margin: 0 auto;
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
-    width: 1060px;
-    padding: 15px;
-    background-color: #FFF;
+  margin: 0 auto;
+  min-height: 450px;
+  width: 980px;
+  padding: 15px;
+  background-color: #FFF;
+  overflow: auto;
+}
+
+.left-column {
+  width: 72%;
+  margin-left: 0;
+  margin-top: 0;
+  float: left;
+}
+
+.right-column {
+  width: 28%;
+  margin-right: 0;
+  margin-top: 0;
+  float: right;
+}
+
+.title-box {
+  width: 100%;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 1.35;
+}
+
+.log-box {
+  width: 86%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.avatar-show {
+  width: 71px;
+  height: 65px;
+  margin-top: 6px;
+  border-left: 6px solid #DC0000;
+  float: left;
+}
+
+.avatar-show-details {
+  width: 65px;
+  margin-top: 6px;
+  float: left;
+  padding: 3px 6px;
+}
+
+.details-show {
+  width: 100%;
+  height: 65px;
+  margin-top: 6px;
+  margin-left: 76px;
+  font-size: 10px;
+  color: #646661;
+}
+
+.content-show {
+  padding: 10px 0px 5px 76px;
+  line-height: 1.8em;
+  font-size: 12px;
+  display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
 }
 
 .main-header{
@@ -262,57 +312,93 @@ input[type=button], input[type=submit], input[type=reset] {
 
 * { box-sizing: border-box; }
 
-
-
 .test-container {
-  width: 675px;
+  width: 666px;
   font-family: helvetica;
+  position: absolute;
   font-size: .85em;
+  margin: 0px 16px;
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+}
+
+.test-container-left-column {
+  width: 10%;
+  margin: 0px;
+  height: 100%;
+  vertical-align: top;
   float: left;
-  margin-left: 2%;
 }
 
 .test-container-right{
-  width: 300px;
-  margin-right: 2%;
-  background-color: #333;
+  width: 28%;
+  margin: 0 0;
+  background-color: #666;
   overflow: hidden;
-  float: right;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.test-container-right-log-form{
+  margin: 0 0;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.test-container-right-header {
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.test-container-right-footer {
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 15px;
+  margin-right: 15px;
+  margin-left: 15px;
 }
 
 .test-header-text {
   font-weight: bold;
   font-size: .65em;
-  font-family: sans-serif;
-  margin-bottom: 4px;
+  font-family: museo-sans, sans-serif;
 }
 
 .test-header-left-top {
   border-top: 1px solid #DC0000;
   border-right: 1px solid #DC0000;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   padding-left: 6px;
   float: left;
-  width: 73%;
+  width: 63%;
 }
 
 .test-header-middle-top {
   border-top: 1px solid #DC0000;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   padding-left: 6px;
   width: 12%;
-  float:left;
+  float: left;
+  clear: right;
 }
 
 .test-header-right-top {
   border-top: 1px solid #DC0000;
   border-left: 1px solid #DC0000;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   padding-left: 6px;
-  width: 15%;
+  width: 10%;
   float: left;
 }
 
@@ -320,20 +406,22 @@ input[type=button], input[type=submit], input[type=reset] {
   border-top: 1px solid #DC0000;
   border-right: 1px solid #DC0000;
   border-bottom: 1px solid #DC0000;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   padding-left: 6px;
-  width: 13%;
+  margin-bottom: 6px;
+  width: 12%;
   float: left;
 }
 
 .test-header-middle-bottom {
   border-top: 1px solid #DC0000;
   border-bottom: 1px solid #DC0000;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   padding-left: 6px;
-  width: 13%;
+  margin-bottom: 6px;
+  width: 10%;
   float: left;
 }
 
@@ -341,9 +429,10 @@ input[type=button], input[type=submit], input[type=reset] {
   border-top: 1px solid #DC0000;
   border-left: 1px solid #DC0000;
   border-bottom: 1px solid #DC0000;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   padding-left: 6px;
-  width: 74%;
+  margin-bottom: 6px;
+  width: 63%;
   float: left;
 }
