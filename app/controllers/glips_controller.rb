@@ -6,7 +6,6 @@ class GlipsController < ApplicationController
     @page_title = "Glips"
     if params[:tag]
       @glips = Glip.tagged_with(params[:tag])
-      #@glips = Glip.order('created_at DESC').page(params[:page]).per(5)
     else
       @glips = Glip.order('created_at DESC').page(params[:page]).per(25)
     end
