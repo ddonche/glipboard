@@ -16,7 +16,7 @@
     <% end %> 
     
     <div class="content">
-      <%= @blog.content.html_safe %>
+      <%= markdown @blog.content %>
     </div>
 
 </div>

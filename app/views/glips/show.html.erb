@@ -57,7 +57,7 @@
       </div>
       
       <div class="content-show">
-          <%= @glip.content.html_safe %>
+          <%= markdown @glip.content %>
         <div class="completion-criteria">
           <i class="fa fa-check-circle" aria-hidden="true"></i>&nbsp;&nbsp;<em>Completion Criteria:</em><br /><%= raw(@glip.completion_criteria) %>
         </div>

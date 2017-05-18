@@ -25,6 +25,8 @@ gem 'font-awesome-sass', '~> 4.2.0'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'friendly_id', '~> 5.1.0'
 gem 'kaminari', '~> 1.0', '>= 1.0.1'
+gem 'redcarpet', '~> 3.4'
+gem 'coderay', '~> 1.1', '>= 1.1.1'
 
 group :development, :test do
   gem 'byebug', platform: :mri
