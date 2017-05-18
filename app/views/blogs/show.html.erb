@@ -11,9 +11,9 @@
       Posted <%= time_ago_in_words(@blog.created_at) %> ago by <%= link_to @blog.user.username, user_path(@blog.user) %>
     </div>
     
-    <div class="date">
-      <i class="fa fa-tags"></i>&nbsp;&nbsp;<%= raw(@blog.tag_list.map { |t| link_to t, tag_path(t) }.join(' , ')) %>
-    </div>  
+    <% @blog.tag_list.map.each do |tag| %>
+      <div class="tags"><%= link_to tag, tag_path(tag) %></div>
+    <% end %> 
     
     <div class="content">
       <%= @blog.content.html_safe %>

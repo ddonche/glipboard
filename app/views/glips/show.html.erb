@@ -50,8 +50,9 @@
           <i class="fa fa-comments"></i>&nbsp;&nbsp;<%= @glip.comments.count %>
         </div>
         <div class="test-header-right-bottom">
-          <div class="test-header-text">TAGS</div>
-          <i class="fa fa-tags"></i>&nbsp;&nbsp;<%= raw(@glip.tag_list.map { |t| link_to t, tag_path(t) }.join(' , ')) %>
+          <% @glip.tag_list.map.each do |tag| %>
+            <div class="tags"><%= link_to tag, tag_path(tag) %></div>
+          <% end %>
         </div>
       </div>
       

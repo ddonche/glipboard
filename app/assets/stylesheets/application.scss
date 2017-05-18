@@ -64,7 +64,6 @@ body {
   width: 71px;
   height: 65px;
   margin-top: 6px;
-  border-left: 6px solid #DC0000;
   float: left;
 }
 
@@ -133,6 +132,22 @@ body {
   vertical-align: middle;
   float:left;
   position: relative;
+}
+
+.tags {
+  padding: .4em .5em;
+  display: inline-block;
+  margin: 2px 2px 2px 0;
+  font-size: 10px;
+  line-height: 1;
+  a {
+    color: #dc0000;
+  }
+  white-space: nowrap;
+  text-decoration: none;
+  text-align: center;
+  transition: all .15s ease-in-out;
+  border: 1px solid #dc0000;
 }
 
 .user-welcome {

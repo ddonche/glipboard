@@ -37,7 +37,9 @@
                     image_tag 'default_avatar.jpg', width: 15, alt: 'default user avatar'
                   end
                 end %></div>
-          <div class="table-cell"><i class="fa fa-tags"></i>&nbsp;&nbsp;<%= raw(everything.tag_list.map { |t| link_to t, tag_path(t) }.join(' , ')) %></div>
+          <div class="table-cell"><% everything.tag_list.map.each do |tag| %>
+              <div class="tags"><%= link_to tag, tag_path(tag) %></div>
+          <% end %></div>
         </div>
         
       <% end %>

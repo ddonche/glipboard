@@ -17,7 +17,7 @@ class LogsController < ApplicationController
       if @log.save
         format.html { redirect_to @glip, notice: 'Log was successfully created.' }
       else
-        format.html { redirect_to @glip, alert: "There was a problem with your log entry. Maybe it's too long?" }
+        format.html { redirect_to @glip, alert: "There was a problem with your log entry. Maybe it's too long? Logs cannot exceed 200 characters." }
       end
     end
   end
