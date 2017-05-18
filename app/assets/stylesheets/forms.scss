@@ -1,6 +1,6 @@
 .log-form{
     font: 95% Arial, Helvetica, sans-serif;
-    max-width: 400px;
+    max-width: 700px;
     margin: 10px auto;
     padding: 16px;
     background: #F7F7F7;
@@ -19,6 +19,7 @@
 .log-form input[type="datetime"],
 .log-form input[type="email"],
 .log-form input[type="number"],
+.log-form input[type="password"]
 .log-form input[type="search"],
 .log-form input[type="time"],
 .log-form input[type="url"],
@@ -35,9 +36,9 @@
     -moz-box-sizing: border-box;
     width: 100%;
     background: #fff;
-    margin-bottom: 4%;
+    margin-bottom: 6px;
     border: 1px solid #ccc;
-    padding: 3%;
+    padding: 6px;
     color: #555;
     font: 95% Arial, Helvetica, sans-serif;
 }
@@ -46,6 +47,7 @@
 .log-form input[type="datetime"]:focus,
 .log-form input[type="email"]:focus,
 .log-form input[type="number"]:focus,
+.log-form input[type="password"]:focus,
 .log-form input[type="search"]:focus,
 .log-form input[type="time"]:focus,
 .log-form input[type="url"]:focus,
@@ -53,7 +55,7 @@
 .log-form select:focus
 {
     box-shadow: 0 0 5px #43D1AF;
-    padding: 3%;
+    padding: 12px;
     border: 1px solid #43D1AF;
 }
 

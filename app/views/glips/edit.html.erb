@@ -1,6 +1,8 @@
-<h1>Editing Glip</h1>
+<div id="content-wrap">
+<h2>Editing <%= @glip.title %></h2>
 
 <%= render 'form', glip: @glip %>
 
 <%= link_to 'Cancel', @glip %> |
 <%= link_to 'Back', glips_path %>
+</div>

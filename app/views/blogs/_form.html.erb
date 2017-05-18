@@ -1,8 +1,12 @@
-<%= simple_form_for @blog do |f| %>
-  <p><%= f.label :title, 'Title:' %></p>
-  <p><%= f.text_field :title %></p>
-  <p><%= f.text_area :content, rows: 3 %></p>
-  <p><%= f.label :tag_list, 'Tags (separated by commas)' %> <em>Example: fitness, weight loss, marathon</em></p>
-  <p><%= f.text_area :tag_list, value: @blog.tag_list.join(", "), rows: 1 %></p>
-  <p><%= f.submit %></p>
-<% end %>
+<div class="log-form">
+  <%= simple_form_for @blog do |f| %>
+    <%= f.text_field :title, placeholder: 'Title' %><br />
+    <%= f.text_area :content, placeholder: 'Content', rows: 6 %>
+    <div class="helper"><div class="small">#creates a heading&nbsp;&nbsp;&nbsp;&nbsp;<em>_creates italics_</em>&nbsp;&nbsp;&nbsp;&nbsp;<strong>**creates bold**</strong> 
+    &nbsp;&nbsp;&nbsp;&nbsp;```backtick to escape code```&nbsp;&nbsp;&nbsp;&nbsp;use a > to quote&nbsp;&nbsp;&nbsp;&nbsp;get formatting help</div></div><br />
+    <%= f.text_field :tag_list, placeholder: 'Tags (separated by commas)', value: @blog.tag_list.join(", ") %>
+    <div class="small"><em>Example: fitness, weight loss, marathon</em></div><br />
+    <%= f.submit %>
+  <% end %>
+</div>
+

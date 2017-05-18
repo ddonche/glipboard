@@ -1,16 +1,16 @@
 <h2>Log in</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.label :email %><br />
-    <%= f.email_field :email %><br />
-    <%= f.input :password, required: true, autocomplete: "off" %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+<div class="log-form">
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
+      <%= f.email_field :email, autofocus: true, placeholder: 'Email address' %><br />
+      <%= f.password_field :password, placeholder: 'Password', autocomplete: "off" %>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
 
+  
+    <div class="form-actions">
+      <%= f.button :submit, "Log in" %>
+    </div>
+  <% end %>
+</div>
 <%= render "devise/shared/links" %>

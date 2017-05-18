@@ -1,4 +1,6 @@
 module GlipsHelper
+  
+  # Start here and take code to partial
   class CodeRayify < Redcarpet::Render::HTML
     def block_code(code, language)
       CodeRay.scan(code, language).div
@@ -18,4 +20,5 @@ module GlipsHelper
     markdown_to_html = Redcarpet::Markdown.new(coderayified, options)
     markdown_to_html.render(text).html_safe
   end
+  # End the partial here
 end
