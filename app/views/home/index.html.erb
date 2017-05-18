@@ -28,15 +28,8 @@
           <div class="table-cell"><%= link_to everything.title, everything %></div>
           <div class="table-cell"><%= time_ago_in_words(everything.created_at) %></div>
           <div class="table-cell">
-            <%= if everything.user.picture?
-                  link_to user_path(everything.user) do
-                    image_tag everything.user.picture, width: 15, alt: 'user avatar'
-                  end
-                else
-                  link_to user_path(everything.user) do
-                    image_tag 'default_avatar.jpg', width: 15, alt: 'default user avatar'
-                  end
-                end %></div>
+            <%= link_to everything.user.username, user_path(everything.user) %>
+                &nbsp;<%= everything.user.reputation %></div>
           <div class="table-cell"><% everything.tag_list.map.each do |tag| %>
               <div class="tags"><%= link_to tag, tag_path(tag) %></div>
           <% end %></div>

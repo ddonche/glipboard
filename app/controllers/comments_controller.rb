@@ -49,9 +49,7 @@ class CommentsController < ApplicationController
     @comment.upvote_by current_user
     
     #update user reputation in the database
-    2.times.collect do 
-      User.increment_counter(:reputation, @comment.user_id)
-    end
+    User.increment_counter(:reputation, @comment.user_id)
     redirect_to @commentable
   end
   
@@ -60,9 +58,7 @@ class CommentsController < ApplicationController
     @comment.downvote_by current_user
     
     #update user reputation in the database
-    2.times.collect do 
-      User.decrement_counter(:reputation, @comment.user_id)
-    end
+    User.decrement_counter(:reputation, @comment.user_id)
     redirect_to @commentable
   end
 
