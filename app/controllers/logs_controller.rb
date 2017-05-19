@@ -26,7 +26,6 @@ class LogsController < ApplicationController
     @log.destroy
     respond_to do |format|
       format.html { redirect_to user_path(current_user), notice: 'Log entry was successfully deleted.' }
-      format.json { head :no_content }
     end
   end
 

@@ -1,5 +1,19 @@
 <div class="log-form">
+    
   <%= simple_form_for @glip do |f| %>
+  
+    <% if @glip.errors.any? %>
+      <div class="alert">
+        <h2><%= pluralize(@glip.errors.count, "error") %> prohibited this glip from being saved:</h2>
+     
+        <ul>
+        <% @glip.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
     <%= f.text_field :title, placeholder: 'Title' %><br />
     
     <div class="small">What is it you want to accomplish? Set specific goals that you can measure. "Learning a new language" is a good goal, but it's vague.
@@ -11,7 +25,7 @@
     <div class="small">What is the completion criteria for this glip? How will you know you achieved your goal? Is it verifiable? What is your metric of success for this?</div>
     <%= f.text_area :completion_criteria, placeholder: 'Completion criteria' %>
     
-    <%= f.text_field :tag_list, placeholder: 'Tags (separated by commas)', value: @glip.tag_list.join(", ") %>
+    <%= f.text_field :tag_list, placeholder: 'Add up to 5 tags (separated by commas)', value: @glip.tag_list.join(", ") %>
     <div class="small"><em>Example: fitness, weight loss, marathon</em></div><br />
     
     <p><%= f.submit %></p>
