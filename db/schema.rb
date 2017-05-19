@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170518173337) do
+ActiveRecord::Schema.define(version: 20170519040314) do
 
   create_table "blogs", force: :cascade do |t|
     t.string   "title"
@@ -37,19 +37,51 @@ ActiveRecord::Schema.define(version: 20170518173337) do
   create_table "glips", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "user_id"
     t.text     "completion_criteria"
+    t.integer  "status",              default: 0
+  end
+
+  create_table "group_memberships", force: :cascade do |t|
+    t.string   "member_type",     null: false
+    t.integer  "member_id",       null: false
+    t.string   "group_type"
+    t.integer  "group_id"
+    t.string   "group_name"
+    t.string   "membership_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["group_name"], name: "index_group_memberships_on_group_name"
+    t.index ["group_type", "group_id"], name: "index_group_memberships_on_group_type_and_group_id"
+    t.index ["member_type", "member_id"], name: "index_group_memberships_on_member_type_and_member_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "logs", force: :cascade do |t|
     t.integer  "glip_id"
     t.text     "content"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "status",     default: 0
     t.index ["user_id"], name: "index_logs_on_user_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "taggings", force: :cascade do |t|
