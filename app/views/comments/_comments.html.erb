@@ -19,10 +19,10 @@
     <% if (user_signed_in? && (current_user.id == comment.user_id)) %>
       <% if @commentable = @glip %>
         <div class="comments-alter"><%= link_to edit_glip_comment_path(@glip, comment) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
-        <%= link_to glip_comment_path(@glip, comment), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-times"></i><% end %></div>
+        <%= link_to glip_comment_path(@glip, comment), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %></div>
       <% else %>
         <div class="comments-alter"><%= link_to edit_blog_comment_path(@blog, comment) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
-        <%= link_to blog_comment_path(@blog, comment), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-times"></i><% end %></div>&nbsp;&nbsp;&nbsp;
+        <%= link_to blog_comment_path(@blog, comment), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %></div>&nbsp;&nbsp;&nbsp;
       <% end %>
     <% end %>
     

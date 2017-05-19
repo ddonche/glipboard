@@ -2,7 +2,7 @@
   <% if (user_signed_in? && (current_user.id == @blog.user_id)) %>
   <div class="content-alter">
     <%= link_to edit_blog_path(@blog) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
-    <%= link_to blog_path(@blog), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-times"></i><% end %>
+    <%= link_to blog_path(@blog), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %>
   </div>
   <% end %>
   

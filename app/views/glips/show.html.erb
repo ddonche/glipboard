@@ -4,7 +4,7 @@
       <% if (user_signed_in? && (current_user.id == @glip.user_id)) %>
         <div class="content-alter">
           <%= link_to edit_glip_path(@glip) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
-          <%= link_to glip_path(@glip), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-times"></i><% end %>
+          <%= link_to glip_path(@glip), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %>
         </div>
       <% end %>
       
@@ -27,33 +27,14 @@
       </div>
 
       <div class="details-show">
-        <div class="test-header-left-top">
-          <div class="test-header-text">POSTED BY</div>
-          <%= link_to @glip.user.username, user_path(@glip.user) %>&nbsp;<%= time_ago_in_words(@glip.created_at) %> ago
-        </div>
-        <div class="test-header-middle-top">
-          <div class="test-header-text">LOGS</div>
-          <i class="fa fa-book"></i>&nbsp;&nbsp;<%= @glip.logs.count %>&nbsp;<%= link_to "logs", glip_logs_path(@glip) %>
-        </div>
-        <div class="test-header-right-top">
-          <div class="test-header-text">TYPE</div>
-          public
-        </div>
-        
-        <div class="test-header-left-bottom">
-          <div class="test-header-text">VOTES</div>
+          posted by <%= link_to @glip.user.username, user_path(@glip.user) %>&nbsp;<%= time_ago_in_words(@glip.created_at) %> ago<br/>
           <%= link_to like_glip_path(@glip), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= @glip.get_upvotes.size %>&nbsp;&nbsp;
-          <%= link_to dislike_glip_path(@glip), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= @glip.get_downvotes.size %>
-          </div>
-        <div class="test-header-middle-bottom">
-          <div class="test-header-text">COMMENTS</div>
-          <i class="fa fa-comments"></i>&nbsp;&nbsp;<%= @glip.comments.count %>
-        </div>
-        <div class="test-header-right-bottom">
+          <%= link_to dislike_glip_path(@glip), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= @glip.get_downvotes.size %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <i class="fa fa-comments"></i>&nbsp;&nbsp;<%= @glip.comments.count %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <i class="fa fa-book"></i>&nbsp;&nbsp;<%= @glip.logs.count %>&nbsp;<%= link_to "logs", glip_logs_path(@glip) %><br />
           <% @glip.tag_list.map.each do |tag| %>
             <div class="tags"><%= link_to tag, tag_path(tag) %></div>
           <% end %>
-        </div>
       </div>
       
       <div class="content-show">
