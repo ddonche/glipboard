@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170519040314) do
+ActiveRecord::Schema.define(version: 20170520141045) do
 
   create_table "blogs", force: :cascade do |t|
     t.string   "title"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 20170519040314) do
     t.integer  "user_id"
     t.text     "completion_criteria"
     t.integer  "status",              default: 0
+    t.string   "slug"
+    t.index ["slug"], name: "index_glips_on_slug", unique: true
   end
 
   create_table "group_memberships", force: :cascade do |t|

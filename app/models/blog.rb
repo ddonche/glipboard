@@ -7,7 +7,15 @@ class Blog < ApplicationRecord
   validate :maximum_amount_of_tags
   
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  #friendly_id :title, use: :slugged
+  friendly_id :slug_candidates, use: :slugged
+  delegate :username, to: :user, prefix: true
+  
+  def slug_candidates
+    [
+      [user.username, :title]
+    ]
+  end
   
   acts_as_taggable
   acts_as_votable

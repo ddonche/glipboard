@@ -7,6 +7,16 @@ class Glip < ApplicationRecord
   validates_presence_of :title, :content, :completion_criteria
   validate :maximum_amount_of_tags
   
+  extend FriendlyId
+  friendly_id :slug_candidates, use: :slugged
+  delegate :username, to: :user, prefix: true
+  
+  def slug_candidates
+    [
+      [user.username, :title]
+    ]
+  end
+  
   acts_as_taggable
   acts_as_votable
   

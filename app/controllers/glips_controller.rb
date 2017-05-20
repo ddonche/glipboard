@@ -74,7 +74,7 @@ class GlipsController < ApplicationController
 
   private
     def set_glip
-      @glip = Glip.find(params[:id])
+      @glip = Glip.friendly.find(params[:id])
     end
 
     def glip_params
