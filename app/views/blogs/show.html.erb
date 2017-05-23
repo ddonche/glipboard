@@ -38,12 +38,14 @@
       
       <div class="content-show">
           <%= markdown @blog.content %>
-        
+      </div>
+      
+      <div class="content-show">
+        <em><i class="fa fa-comments"></i>&nbsp;&nbsp;<%= @blog.comments.count %> Comments</em>
         <div class="comments-wrap">
-          Comments
-        </div>
           <%= render "comments/form" %><br/>
           <%= render "comments/comments" %>
+        </div>
       </div>
 
     </div>

@@ -4,12 +4,16 @@ class LogsController < ApplicationController
   
   def index
     @page_title = "Log Entries"
-    @glip = Glip.find(params[:glip_id])
+    @glip = Glip.friendly.find(params[:glip_id])
     @logs = @glip.logs
+  end
+  
+  def new
+    @log = Log.new
   end
 
   def create
-    @glip = Glip.find(params[:glip_id])
+    @glip = Glip.friendly.find(params[:glip_id])
     @log = @glip.logs.new(log_params)
     @log.user = current_user
 
@@ -37,6 +41,6 @@ class LogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def log_params
-      params.require(:log).permit(:glip_id, :content, :user_id)
+        params.permit(:glip_id, :user_id, :content)
     end
 end

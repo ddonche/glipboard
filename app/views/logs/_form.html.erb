@@ -12,9 +12,9 @@
     <% end %>
   
     <div class="small"><em>200 characters limit</em></div>
-    <%= f.text_area :content, rows: 2 %>
+    <%= text_field_tag :content, "", :maxlength => 200 %>
     <div class="actions">
-      <%= f.submit "Submit Log Entry" %>
+      <%= f.submit "Submit Quicklog" %>
     </div>
   <% end %>
 </div>
