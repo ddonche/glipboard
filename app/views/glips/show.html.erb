@@ -9,6 +9,11 @@
       <% end %>
       
       <div class="title-box">
+        <% if @glip.status == "incomplete" %>
+          <i class="fa fa-star-half-o"></i>
+        <% else %>
+          <i class="fa fa-star"></i>
+        <% end %>
         <%= @glip.title %>
       </div>
       

@@ -1,5 +1,5 @@
 class Glip < ApplicationRecord
-  enum status: { incomplete: 0, complete: 1 }
+  enum status: { incomplete: 0, COMPLETE: 1 }
   belongs_to :user, optional: true
   has_many :comments, as: :commentable
   has_many :logs

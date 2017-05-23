@@ -25,7 +25,15 @@
               <div class="article-button">article</div>
             <% end %>
           </div>
-          <div class="table-cell"><%= link_to everything.title, everything %></div>
+          <div class="table-cell">
+            <% if everything.model_name.human == "Glip" %>
+              <% if everything.status == "incomplete" %>
+                <i class="fa fa-star-half-o"></i>
+              <% else %>
+                <i class="fa fa-star"></i>
+              <% end %>
+            <% end %>
+            <%= link_to everything.title.truncate(40), everything %></div>
           <div class="table-cell"><%= time_ago_in_words(everything.created_at) %></div>
           <div class="table-cell">
             <%= link_to everything.user.username, user_path(everything.user) %>

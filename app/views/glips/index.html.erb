@@ -2,7 +2,14 @@
   <%= paginate @glips %>
     <% @glips.each do |glip| %>
       <div class="index-boxes">
-        <div class="index-title"><%= link_to glip.title, glip %></div>
+        <div class="index-title">
+          <% if glip.status == "incomplete" %>
+            <i class="fa fa-star-half-o"></i>
+          <% else %>
+            <i class="fa fa-star"></i>
+          <% end %>
+          <%= link_to glip.title, glip %>
+        </div>
         
         <div class="date-right">
           Posted <%= time_ago_in_words(glip.created_at) %> ago by <%= link_to glip.user.username, user_path(glip.user) %>
