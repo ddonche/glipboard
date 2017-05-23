@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :toggle_feature, :toggle_status]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -55,6 +55,33 @@ class ArticlesController < ApplicationController
     end
   end
   
+  def toggle_feature
+    if @article.standard?
+      @article.featured!
+      
+      #update user reputation in the database
+      15.times.collect do
+        User.increment_counter(:reputation, @article.user_id)
+      end
+    elsif @article.featured?
+      @article.standard!
+      
+      15.times.collect do
+        User.decrement_counter(:reputation, @article.user_id)
+      end
+    end
+    redirect_to article_path(@article), notice: 'Article status has been updated.'
+  end
+  
+  def toggle_status
+    if @article.draft?
+      @article.published! 
+    elsif @article.published?
+      @article.draft!
+    end
+    redirect_to article_path(@article), notice: 'Article status has been updated.'
+  end
+  
   def upvote
     @article.upvote_by current_user
     
@@ -77,6 +104,6 @@ class ArticlesController < ApplicationController
     end
 
     def article_params
-      params.require(:aticle).permit(:title, :content, :user_id, :tag_list)
+      params.require(:article).permit(:title, :content, :user_id, :tag_list)
     end
 end

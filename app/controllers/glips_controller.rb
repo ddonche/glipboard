@@ -1,5 +1,5 @@
 class GlipsController < ApplicationController
-  before_action :set_glip, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+  before_action :set_glip, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :toggle_status]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -54,6 +54,15 @@ class GlipsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to glips_url, notice: 'Glip was eradicated.' }
     end
+  end
+  
+  def toggle_status
+    if @glip.incomplete?
+      @glip.complete! 
+    elsif  @glip.complete?
+      @glip.incomplete!
+    end
+    redirect_to glip_path(@glip), notice: 'Glip status has been updated.'
   end
   
   def upvote

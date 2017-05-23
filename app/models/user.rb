@@ -15,7 +15,7 @@ class User < ApplicationRecord
   #validates_processing_of :picture
 
   has_many :glips
-  has_many :blogs
+  has_many :articles
   has_many :comments
   has_many :logs
   

@@ -29,7 +29,12 @@
             <% if everything.model_name.human == "Glip" %>
               <%= link_to edit_glip_path(everything) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
               <%= link_to glip_path(everything), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %>
-            <% elsif everything.model_name.human == "article" %>
+            <% elsif everything.model_name.human == "Article" %>
+              <% if everything.status == "draft" %>
+                <i class="fa fa-lock"></i>&nbsp;<%= link_to everything.status, toggle_status_article_path(everything) %>&nbsp;&nbsp;
+              <% else %>
+                <i class="fa fa-unlock"></i>&nbsp;<%= link_to everything.status, toggle_status_article_path(everything) %>&nbsp;&nbsp;
+              <% end %>
               <%= link_to edit_article_path(everything) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
               <%= link_to article_path(everything), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %>
             <% else %>

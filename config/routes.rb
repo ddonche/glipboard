@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     member do
       put 'like', to: 'blogs#upvote'
       put 'dislike', to: 'blogs#downvote'
+      get :toggle_feature
+      get :toggle_status
     end
     resources :comments do
       member do
@@ -20,6 +22,7 @@ Rails.application.routes.draw do
     member do
       put 'like', to: 'glips#upvote'
       put 'dislike', to: 'glips#downvote'
+      get :toggle_status
     end
     resources :comments do
       member do

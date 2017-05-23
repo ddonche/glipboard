@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   def index
-    @page_title = "Glipboard Users"
+    @page_title = "Glipboarders"
     @users = User.all
   end
   

@@ -457,6 +457,14 @@ input[type=button], input[type=submit], input[type=reset] {
   float: left;
 }
 
+pre {
+border: dashed 1px #749a6d;
+padding: 1em 1.5em 1em 1em;
+font-size: 1em;
+min-height: 60px;
+background-color: #e3f7e0;
+}
+
 /*BLOCKQUOTE STYLING*/
 blockquote{
 border-left: solid 4px #dc0000;
