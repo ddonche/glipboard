@@ -1,0 +1,56 @@
+<div id="content-wrap">
+  
+    <div class="left-column">
+      <% if (user_signed_in? && (current_user.id == @article.user_id)) %>
+        <div class="content-alter">
+          <%= link_to edit_article_path(@article) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
+          <%= link_to article_path(@article), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %>
+        </div>
+      <% end %>
+      
+      <div class="title-box">
+        <%= @article.title %>
+      </div>
+      
+      <div class="avatar-show">
+        <%= 
+          if @article.user.picture?
+            link_to user_path(@article.user) do
+              image_tag @article.user.picture, width: 65, alt: 'user avatar'
+            end
+          else
+            link_to user_path(@article.user) do
+              image_tag 'default_avatar.jpg', width: 65, alt: 'default user avatar'
+            end
+          end
+        %>      
+      </div>
+
+      <div class="details-show">
+          posted by <%= link_to @article.user.username, user_path(@article.user) %>&nbsp;<%= time_ago_in_words(@article.created_at) %> ago&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-lock"></i>&nbsp;&nbsp;<%= @article.status %>&nbsp;&nbsp;<br/>
+          <%= link_to like_article_path(@article), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= @article.get_upvotes.size %>&nbsp;&nbsp;
+          <%= link_to dislike_article_path(@article), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= @article.get_downvotes.size %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <i class="fa fa-comments"></i>&nbsp;&nbsp;<%= @article.comments.count %><br />
+          <% @article.tag_list.map.each do |tag| %>
+            <div class="tags"><%= link_to tag, tag_path(tag) %></div>
+          <% end %>
+      </div>
+      
+      <div class="content-show">
+          <%= markdown @article.content %>
+      </div>
+      
+      <div class="content-show">
+        <em><i class="fa fa-comments"></i>&nbsp;&nbsp;<%= @article.comments.count %> Comments</em>
+        <div class="comments-wrap">
+          <%= render "comments/form" %><br/>
+          <%= render "comments/comments" %>
+        </div>
+      </div>
+
+    </div>
+    
+  <div class="right-column">
+  </div>
+
+</div>

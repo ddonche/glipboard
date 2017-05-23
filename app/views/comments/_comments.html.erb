@@ -21,8 +21,8 @@
         <div class="comments-alter"><%= link_to edit_glip_comment_path(@glip, comment) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
         <%= link_to glip_comment_path(@glip, comment), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %></div>
       <% else %>
-        <div class="comments-alter"><%= link_to edit_blog_comment_path(@blog, comment) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
-        <%= link_to blog_comment_path(@blog, comment), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %></div>&nbsp;&nbsp;&nbsp;
+        <div class="comments-alter"><%= link_to edit_article_comment_path(@article, comment) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
+        <%= link_to article_comment_path(@article, comment), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %></div>&nbsp;&nbsp;&nbsp;
       <% end %>
     <% end %>
     
@@ -30,8 +30,8 @@
       <%= link_to like_glip_comment_path(@glip, comment), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= comment.get_upvotes.size %>&nbsp;&nbsp;
       <%= link_to dislike_glip_comment_path(@glip, comment), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= comment.get_downvotes.size %>
     <% else %>
-      <%= link_to like_blog_comment_path(@blog, comment), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= comment.get_upvotes.size %>&nbsp;&nbsp;
-      <%= link_to dislike_blog_comment_path(@blog, comment), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= comment.get_downvotes.size %>
+      <%= link_to like_article_comment_path(@article, comment), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= comment.get_upvotes.size %>&nbsp;&nbsp;
+      <%= link_to dislike_article_comment_path(@article, comment), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= comment.get_downvotes.size %>
     <% end %>
     
     </div>

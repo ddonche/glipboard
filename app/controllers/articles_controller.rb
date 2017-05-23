@@ -1,0 +1,82 @@
+class ArticlesController < ApplicationController
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+  before_action :authenticate_user!, except: [:index, :show]
+
+  def index
+    @page_title = "Articles"
+    if params[:tag]
+      @articles = Article.tagged_with(params[:tag])
+    else
+      @articles = Article.order('created_at DESC').page(params[:page]).per(20)
+    end
+  end
+
+  def show
+    @page_title = @article.title
+    @commentable = @article
+    @comments = @commentable.comments
+    @comment = Comment.new
+  end
+
+  def new
+    @article = current_user.articles.build
+  end
+
+  def edit
+  end
+
+  def create
+    @article = current_user.articles.build(article_params)
+
+    respond_to do |format|
+      if @article.save
+        format.html { redirect_to @article, notice: 'Article was a success!' }
+      else
+        format.html { render :new }
+      end
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @article.update(article_params)
+        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
+  end
+
+  def destroy
+    @article.destroy
+    respond_to do |format|
+      format.html { redirect_to articles_url, notice: 'Article was eradicated.' }
+      format.json { head :no_content }
+    end
+  end
+  
+  def upvote
+    @article.upvote_by current_user
+    
+    #update user reputation in the database
+    User.increment_counter(:reputation, @article.user_id)
+    redirect_to :back
+  end
+  
+  def downvote
+    @article.downvote_by current_user
+
+    #update user reputation in the database
+    User.decrement_counter(:reputation, @article.user_id)
+    redirect_to :back
+  end
+
+  private
+    def set_article
+      @article = Article.friendly.find(params[:id])
+    end
+
+    def article_params
+      params.require(:aticle).permit(:title, :content, :user_id, :tag_list)
+    end
+end

@@ -1,9 +1,9 @@
 class HomeController < ApplicationController
   
   def index
-    @blogs = Blog.all
+    @articles = Article.all
     @glips = Glip.all
-    @everything = (@blogs + @glips).sort{|b,a| a.created_at <=> b.created_at }
+    @everything = (@articles + @glips).sort{|b,a| a.created_at <=> b.created_at }
   end
   
 end

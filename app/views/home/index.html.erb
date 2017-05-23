@@ -3,10 +3,10 @@
         <div class="table-cell"><div class="post-title">Latest Content</div></div>
         <div class="table-cell"><div class="index-top-buttons"><div class="all-button">all</div></div></div>
         <div class="table-cell"><div class="index-top-buttons"><div class="glip-button">glips</div></div></div>
-        <div class="table-cell"><div class="index-top-buttons"><div class="blog-button">blogs</div></div></div>
-        <div class="table-cell"><div class="index-top-buttons"><div class="blog-button">blogs</div></div></div>
-        <div class="table-cell"><div class="index-top-buttons"><div class="blog-button">blogs</div></div></div>
-        <div class="table-cell"><div class="index-top-buttons"><div class="blog-button">blogs</div></div></div>
+        <div class="table-cell"><div class="index-top-buttons"><div class="article-button">articles</div></div></div>
+        <div class="table-cell"><div class="index-top-buttons"><div class="article-button">articles</div></div></div>
+        <div class="table-cell"><div class="index-top-buttons"><div class="article-button">articles</div></div></div>
+        <div class="table-cell"><div class="index-top-buttons"><div class="article-button">articles</div></div></div>
       </div>
 </div>
 <div id ="index-container">
@@ -22,7 +22,7 @@
             <% if everything.model_name.human == "Glip" %>
               <div class="glip-button">glip</div>
             <% else %>
-              <div class="blog-button">blog</div>
+              <div class="article-button">article</div>
             <% end %>
           </div>
           <div class="table-cell"><%= link_to everything.title, everything %></div>

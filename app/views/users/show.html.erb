@@ -18,8 +18,8 @@
     
       <% if everything.model_name.human == "Glip" %>
         <div class="index-boxes">
-      <% elsif everything.model_name.human == "Blog" %>
-        <div class="index-blog-boxes">
+      <% elsif everything.model_name.human == "article" %>
+        <div class="index-article-boxes">
       <% else %>
         <div class="index-log-boxes">
       <% end %>
@@ -29,9 +29,9 @@
             <% if everything.model_name.human == "Glip" %>
               <%= link_to edit_glip_path(everything) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
               <%= link_to glip_path(everything), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %>
-            <% elsif everything.model_name.human == "Blog" %>
-              <%= link_to edit_blog_path(everything) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
-              <%= link_to blog_path(everything), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %>
+            <% elsif everything.model_name.human == "article" %>
+              <%= link_to edit_article_path(everything) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
+              <%= link_to article_path(everything), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %>
             <% else %>
               <%= link_to glip_log_path(everything, everything), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %>
             <% end %>
@@ -56,8 +56,8 @@
             <%= link_to like_glip_path(everything), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= everything.get_upvotes.size %>&nbsp;&nbsp;
             <%= link_to dislike_glip_path(everything), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= everything.get_downvotes.size %>
           <% else %>
-            <%= link_to like_blog_path(everything), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= everything.get_upvotes.size %>&nbsp;&nbsp;
-            <%= link_to dislike_blog_path(everything), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= everything.get_downvotes.size %>
+            <%= link_to like_article_path(everything), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= everything.get_upvotes.size %>&nbsp;&nbsp;
+            <%= link_to dislike_article_path(everything), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= everything.get_downvotes.size %>
           <% end %>
         <% end %>
         </div>

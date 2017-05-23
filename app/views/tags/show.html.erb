@@ -4,8 +4,8 @@
 
       <% if pager.model_name.human == "Glip" %>
         <div class="index-boxes">
-      <% else pager.model_name.human == "Blog" %>
-        <div class="index-blog-boxes">
+      <% else pager.model_name.human == "article" %>
+        <div class="index-article-boxes">
       <% end %>
       
         <% if (user_signed_in? && (current_user.id == pager.user_id)) %>
@@ -13,9 +13,9 @@
             <% if pager.model_name.human == "Glip" %>
               <%= link_to edit_glip_path(pager) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
               <%= link_to glip_path(pager), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-times"></i><% end %>
-            <% elsif pager.model_name.human == "Blog" %>
-              <%= link_to edit_blog_path(pager) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
-              <%= link_to blog_path(pager), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-times"></i><% end %>
+            <% elsif pager.model_name.human == "article" %>
+              <%= link_to edit_article_path(pager) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
+              <%= link_to article_path(pager), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-times"></i><% end %>
             <% else %>
               <%= link_to glip_log_path(pager, pager), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-times"></i><% end %>
             <% end %>
@@ -40,8 +40,8 @@
             <%= link_to like_glip_path(pager), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= pager.get_upvotes.size %>&nbsp;&nbsp;
             <%= link_to dislike_glip_path(pager), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= pager.get_downvotes.size %>
           <% else %>
-            <%= link_to like_blog_path(pager), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= pager.get_upvotes.size %>&nbsp;&nbsp;
-            <%= link_to dislike_blog_path(pager), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= pager.get_downvotes.size %>
+            <%= link_to like_article_path(pager), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= pager.get_upvotes.size %>&nbsp;&nbsp;
+            <%= link_to dislike_article_path(pager), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= pager.get_downvotes.size %>
           <% end %>
         <% end %>
         </div>
