@@ -48,8 +48,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.upvote_by current_user
     
-    #update user reputation in the database
-    User.increment_counter(:reputation, @comment.user_id)
+    voltaire_up(1, :reputation, @comment.user_id)
     redirect_to @commentable
   end
   
@@ -57,8 +56,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.downvote_by current_user
     
-    #update user reputation in the database
-    User.decrement_counter(:reputation, @comment.user_id)
+    voltaire_down(1, :reputation, @comment.user_id)
     redirect_to @commentable
   end
 

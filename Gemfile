@@ -27,7 +27,7 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'kaminari', '~> 1.0', '>= 1.0.1'
 gem 'redcarpet', '~> 3.4'
 gem 'coderay', '~> 1.1', '>= 1.1.1'
-gem 'voltaire', '~> 0.1.0', git: 'https://github.com/ddonche/voltaire'
+gem 'voltaire', '~> 0.2.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri

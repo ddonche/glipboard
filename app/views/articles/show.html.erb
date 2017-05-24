@@ -1,15 +1,15 @@
 <div id="content-wrap">
   
     <div class="left-column">
-        <div class="content-alter">
-          <%= link_to toggle_feature_article_path(@article), method: :get do %><i class="fa fa-trophy"></i><% end %>&nbsp;&nbsp;
-        </div>
       <% if (user_signed_in? && (current_user.id == @article.user_id)) %>
         <div class="content-alter">
-          <%= link_to edit_article_path(@article) do %><i class="fa fa-pencil"></i><% end %>&nbsp;&nbsp;
+          <%= link_to edit_article_path(@article) do %><i class="fa fa-pencil"></i><% end %>&nbsp;
           <%= link_to article_path(@article), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %>
         </div>
       <% end %>
+      <div class="content-alter">
+        <%= link_to toggle_feature_article_path(@article), method: :get do %><i class="fa fa-trophy"></i><% end %>&nbsp;&nbsp;
+      </div>
       
       <div class="title-box">
           <% if @article.feature == "featured" %>
