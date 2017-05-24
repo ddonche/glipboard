@@ -1,6 +1,7 @@
 class GlipsController < ApplicationController
   before_action :set_glip, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :toggle_status]
   before_action :authenticate_user!, except: [:index, :show]
+  include Voltaire
 
   def index
     @page_title = "Glips"
@@ -69,7 +70,8 @@ class GlipsController < ApplicationController
     @glip.upvote_by current_user
     
     #update user reputation in the database
-    User.increment_counter(:reputation, @glip.user_id)
+    #User.increment_counter(:reputation, @glip.user_id)
+    voltaire_up(1, :reputation, @glip.user_id)
     redirect_to :back
   end
   
@@ -77,7 +79,8 @@ class GlipsController < ApplicationController
     @glip.downvote_by current_user
     
     #update user reputation in the database
-    User.decrement_counter(:reputation, @glip.user_id)
+    #User.decrement_counter(:reputation, @glip.user_id)
+    voltaire_down(1, :reputation, @glip.user_id)
     redirect_to :back
   end
 

@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   
   resources :articles do
     member do
-      put 'like', to: 'blogs#upvote'
-      put 'dislike', to: 'blogs#downvote'
+      put 'like', to: 'articles#upvote'
+      put 'dislike', to: 'articles#downvote'
       get :toggle_feature
       get :toggle_status
     end

@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :toggle_feature, :toggle_status]
   before_action :authenticate_user!, except: [:index, :show]
+  include Voltaire
 
   def index
     @page_title = "Articles"
@@ -60,15 +61,11 @@ class ArticlesController < ApplicationController
       @article.featured!
       
       #update user reputation in the database
-      15.times.collect do
-        User.increment_counter(:reputation, @article.user_id)
-      end
+      Voltaire::voltaire_up(15, :reputation, @article.user_id)
     elsif @article.featured?
       @article.standard!
       
-      15.times.collect do
-        User.decrement_counter(:reputation, @article.user_id)
-      end
+      Voltaire::voltaire_down(15, :reputation, @article.user_id)
     end
     redirect_to article_path(@article), notice: 'Article status has been updated.'
   end
@@ -86,7 +83,8 @@ class ArticlesController < ApplicationController
     @article.upvote_by current_user
     
     #update user reputation in the database
-    User.increment_counter(:reputation, @article.user_id)
+    #User.increment_counter(:reputation, @article.user_id)
+    Voltaire::voltaire_up(1, :reputation, @article.user_id)
     redirect_to :back
   end
   
@@ -94,7 +92,8 @@ class ArticlesController < ApplicationController
     @article.downvote_by current_user
 
     #update user reputation in the database
-    User.decrement_counter(:reputation, @article.user_id)
+    #User.decrement_counter(:reputation, @article.user_id)
+    Voltaire::voltaire_down(1, :reputation, @article.user_id)
     redirect_to :back
   end
 
