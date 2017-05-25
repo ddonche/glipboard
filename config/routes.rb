@@ -39,6 +39,11 @@ Rails.application.routes.draw do
   match '/users/:id', to: 'users#show', via: 'get'
   
   #devise_for :users, :path_prefix => 'd'
-  resources :users, :only =>[:show]
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  
+  resources :relationships,       only: [:create, :destroy]
 end

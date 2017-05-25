@@ -11,6 +11,11 @@
     image_tag 'default_avatar.jpg', width: 100, alt: 'default user avatar'
   end
   %>
+
+  <section class="stats">
+    <%= render 'shared/stats' %><br />
+    <%= render 'follow_form' if user_signed_in? %>
+  </section>
     
     
 <div id="wrapper">
