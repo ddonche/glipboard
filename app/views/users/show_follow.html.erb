@@ -1,7 +1,6 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <%= paginate @users %>
       <%= 
       if @user.picture?
         image_tag @user.picture, width: 100, alt: 'user avatar'
@@ -9,6 +8,7 @@
         image_tag 'default_avatar.jpg', width: 100, alt: 'default user avatar'
       end
       %>
+      
       <h1><%= @user.username %></h1>
       <span><%= link_to "view my profile", @user %></span>
       <span><b>Glips:</b> <%= @user.glips.count %></span>
@@ -18,7 +18,9 @@
       <% if @users.any? %>
         <div class="user_avatars">
           <% @users.each do |user| %>
-            <%= link_to user.picture, user %>
+            <%= link_to user do %>
+              <%= image_tag user.picture, width: 30 %>
+            <% end %>
           <% end %>
         </div>
       <% end %>
@@ -27,9 +29,13 @@
   <div class="col-md-8">
     <h3><%= @title %></h3>
     <% if @users.any? %>
-      <ul class="users follow">
-        <%= render @users %>
-      </ul>
+        <div class="user_avatars">
+          <% @users.each do |user| %>
+            <%= link_to user do %>
+              <%= image_tag user.picture, width: 30 %>
+            <% end %>
+          <% end %>
+        </div>
     <% end %>
   </div>
 </div>
