@@ -1,8 +1,11 @@
 class Glip < ApplicationRecord
   enum status: { incomplete: 0, complete: 1 }
+  enum verified: { unverified: 0, verified: 1 }
+  
   belongs_to :user, optional: true
   has_many :comments, as: :commentable
-  has_many :mentorships, through: :articles
+  has_many :mentorships
+  has_many :articles, through: :mentorships
   has_many :logs
   
   validates_presence_of :title, :content, :completion_criteria

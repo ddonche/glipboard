@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       put 'dislike', to: 'articles#downvote'
       get :toggle_feature
       get :toggle_status
-      get :helpful_to
+      get :helped
     end
     resources :comments do
       member do
@@ -48,4 +48,5 @@ Rails.application.routes.draw do
   end
   
   resources :relationships,       only: [:create, :destroy]
+  resources :mentorships,         only: [:create, :destroy]
 end

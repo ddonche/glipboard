@@ -1,0 +1,19 @@
+<div class="row">
+  
+    <section class="user_info">
+      <h1><%= @article.title %></h1>
+      <span><%= link_to @article.username, @article.user %></span>
+      <span><%= @article.helped.count %> Glips helped</span>
+    </section>
+    
+    <section class="stats">
+      <% if @glips.any? %>
+        <div class="user_avatars">
+          <% @glips.each do |glip| %>
+            <%= link_to glip.name, glip %>
+          <% end %>
+        </div>
+      <% end %>
+    </section>
+    
+</div>

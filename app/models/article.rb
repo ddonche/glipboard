@@ -4,7 +4,8 @@ class Article < ApplicationRecord
   
   belongs_to :user, required: true
   has_many :comments, as: :commentable
-  has_many :mentorships, through: :glips
+  has_many :mentorships
+  has_many :glips, through: :mentorships
   
   validates_presence_of :title, :content
   validate :maximum_amount_of_tags
@@ -13,6 +14,11 @@ class Article < ApplicationRecord
   #friendly_id :title, use: :slugged
   friendly_id :slug_candidates, use: :slugged
   delegate :username, to: :user, prefix: true
+  
+   # Follows a user.
+  def helpful_to
+    helpful_to << glip
+  end
   
   def slug_candidates
     [

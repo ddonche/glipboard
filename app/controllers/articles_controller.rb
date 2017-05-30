@@ -17,6 +17,9 @@ class ArticlesController < ApplicationController
     @comments = @commentable.comments
     @comment = Comment.new
   end
+  
+  def helped
+  end
 
   def new
     @article = current_user.articles.build
