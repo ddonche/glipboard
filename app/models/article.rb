@@ -4,6 +4,7 @@ class Article < ApplicationRecord
   
   belongs_to :user, required: true
   has_many :comments, as: :commentable
+  has_many :mentorships, through: :glips
   
   validates_presence_of :title, :content
   validate :maximum_amount_of_tags

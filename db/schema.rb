@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170524172724) do
+ActiveRecord::Schema.define(version: 20170530123457) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -56,6 +56,16 @@ ActiveRecord::Schema.define(version: 20170524172724) do
     t.datetime "updated_at",             null: false
     t.integer  "status",     default: 0
     t.index ["user_id"], name: "index_logs_on_user_id"
+  end
+
+  create_table "mentorships", force: :cascade do |t|
+    t.integer  "article_id"
+    t.integer  "glip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id", "glip_id"], name: "index_mentorships_on_article_id_and_glip_id", unique: true
+    t.index ["article_id"], name: "index_mentorships_on_article_id"
+    t.index ["glip_id"], name: "index_mentorships_on_glip_id"
   end
 
   create_table "relationships", force: :cascade do |t|
