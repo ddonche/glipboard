@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170530173652) do
+ActiveRecord::Schema.define(version: 20170530202445) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -49,6 +49,18 @@ ActiveRecord::Schema.define(version: 20170530173652) do
     t.index ["slug"], name: "index_glips_on_slug", unique: true
   end
 
+  create_table "groups", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "slug"
+    t.index ["name"], name: "index_groups_on_name", unique: true
+    t.index ["slug"], name: "index_groups_on_slug", unique: true
+    t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
   create_table "logs", force: :cascade do |t|
     t.integer  "glip_id"
     t.text     "content"
@@ -57,6 +69,16 @@ ActiveRecord::Schema.define(version: 20170530173652) do
     t.datetime "updated_at",             null: false
     t.integer  "status",     default: 0
     t.index ["user_id"], name: "index_logs_on_user_id"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
+    t.index ["group_id"], name: "index_memberships_on_group_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
   create_table "mentorships", force: :cascade do |t|

@@ -10,9 +10,6 @@ class User < ApplicationRecord
   friendly_id :username, use: :slugged
          
   validates_presence_of :username
-  #validates_presence_of :picture
-  #validates_integrity_of :picture
-  #validates_processing_of :picture
   
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
@@ -25,6 +22,9 @@ class User < ApplicationRecord
   has_many :glips
   has_many :articles
   has_many :comments
+  has_many :created_groups, class_name: "Group"
+  has_many :memberships
+  has_many :groups, through: :memberships
   has_many :logs, dependent: :destroy
 
   # Follows a user.

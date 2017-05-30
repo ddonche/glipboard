@@ -35,6 +35,8 @@ Rails.application.routes.draw do
     resources :logs
   end
   
+  resources :groups, except: :destroy
+  
   get 'tags/:tag', to: 'tags#show', as: :tag
 
   match '/users', to: 'users#index', via: 'get'

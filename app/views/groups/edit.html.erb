@@ -1,0 +1,31 @@
+<div id="content-wrap">
+<h2>Editing <%= @group.name %></h2>
+
+<div class="log-form">
+    
+  <%= simple_form_for @group do |f| %>
+  
+    <% if @group.errors.any? %>
+      <div class="alert">
+        <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+     
+        <ul>
+        <% @group.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <%= f.text_area :description, placeholder: 'Description', rows: 3, maxlength="300" %>
+    
+    <%= f.text_field :tag_list, placeholder: 'Add up to 5 tags (separated by commas)', value: @group.tag_list.join(", ") %>
+    <div class="small"><em>Example: fitness, weight loss, marathon</em></div><br />
+    
+    <p><%= f.submit %></p>
+  <% end %>
+</div>
+
+<%= link_to 'Cancel', @group %> |
+<%= link_to 'Back', groups_path %>
+</div>

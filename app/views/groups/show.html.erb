@@ -1,0 +1,32 @@
+<div id="content-wrap">
+  
+    <div class="left-column">
+      <% if (user_signed_in? && (current_user.id == @group.user_id)) %>
+        <div class="content-alter">
+          <%= link_to edit_group_path(@group) do %><i class="fa fa-pencil"></i><% end %>
+        </div>
+      <% end %>
+      
+      <div class="title-box">
+        <%= @group.name %>
+      </div>
+      
+      <div class="content-show">
+        <%= @group.description %>
+      </div>
+
+    </div>
+    
+  <div class="right-column">
+    <div class="log-box">
+      <%= @group.description %><br />
+        <div class="content-show">
+          <%= @group.users.size %>&nbsp <%= "members" %><br />
+        </div>
+        <% @group.tag_list.map.each do |tag| %>
+          <div class="tags"><%= link_to tag, tag_path(tag) %></div>
+        <% end %>
+    </div>
+  </div>
+
+</div>
