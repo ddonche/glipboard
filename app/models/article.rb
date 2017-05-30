@@ -15,9 +15,9 @@ class Article < ApplicationRecord
   friendly_id :slug_candidates, use: :slugged
   delegate :username, to: :user, prefix: true
   
-   # Follows a user.
-  def helpful_to
-    helpful_to << glip
+   # Defines Glips that were helped
+  def helped
+    helped << glip
   end
   
   def slug_candidates

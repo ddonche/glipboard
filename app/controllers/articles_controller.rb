@@ -19,6 +19,7 @@ class ArticlesController < ApplicationController
   end
   
   def helped
+    @article = Article.friendly.find(params[:id])
   end
 
   def new

@@ -1,0 +1,23 @@
+<div class="row">
+  
+    <section class="user_info">
+      <h1><%= @article.title %></h1>
+      <span><%= link_to @article.user.username, user_path(@article.user)%></span>
+      <span><%=  @article.glips.size %> Glips helped</span>
+    </section>
+    
+    <section class="stats">
+      <% if @article.glips.any? %>
+        <div class="user_avatars">
+          <% @article.glips.each do |glip| %>
+            <%= link_to glip.title, glip %>
+          <% end %>
+        </div>
+      <% else %>
+        <% if @article.glips.empty? %>
+          This article has not helped any glips yet. 
+        <% end %>
+      <% end %>
+    </section>
+    
+</div>
