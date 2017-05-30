@@ -1,5 +1,5 @@
 class GlipsController < ApplicationController
-  before_action :set_glip, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :toggle_status]
+  before_action :set_glip, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :helpers, :toggle_status]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -18,6 +18,9 @@ class GlipsController < ApplicationController
     @comment = Comment.new
     @log = Log.new
     @log.user = current_user
+  end
+  
+  def helpers
   end
 
   def new

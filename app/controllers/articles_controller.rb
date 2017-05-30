@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :toggle_feature, :toggle_status]
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :upvote, :downvote, 
+                                      :helped, :toggle_feature, :toggle_status]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -19,7 +20,6 @@ class ArticlesController < ApplicationController
   end
   
   def helped
-    @article = Article.friendly.find(params[:id])
   end
 
   def new
