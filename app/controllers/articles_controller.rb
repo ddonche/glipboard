@@ -48,11 +48,13 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
-      else
-        format.html { render :edit }
+    if current_user == @article.user
+      respond_to do |format|
+        if @article.update(article_params)
+          format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        else
+          format.html { render :edit }
+        end
       end
     end
   end
