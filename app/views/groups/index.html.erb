@@ -1,0 +1,22 @@
+<div id="wrapper">
+  
+  <%= paginate @groups %>
+    <% @groups.each do |group| %>
+      
+      <% if (user_signed_in? && (current_user.id == group.user_id)) %>
+        <div class="content-alter">
+          <%= link_to edit_group_path(pager) do %><i class="fa fa-pencil"></i><% end %>
+        </div>
+      <% end %>
+      
+        <div class="index-title"><%= link_to group.title, group %></div>
+        <div class="content"><%= group.description.truncate(200) %></div>
+        
+      <div class="date">
+          <i class="fa fa-tags"></i>&nbsp;&nbsp;<%= raw(group.tag_list.map { |t| link_to t, tag_path(t) }.join(' , ')) %>&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= group.users.size %> members
+      </div>
+      
+  <% end %>
+
+</div>
