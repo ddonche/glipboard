@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @page_title = @group.name
+    @page_title = @group.title
   end
   
   def members

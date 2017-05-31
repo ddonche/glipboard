@@ -5,7 +5,7 @@
       
       <% if (user_signed_in? && (current_user.id == group.user_id)) %>
         <div class="content-alter">
-          <%= link_to edit_group_path(pager) do %><i class="fa fa-pencil"></i><% end %>
+          <%= link_to edit_group_path(group) do %><i class="fa fa-pencil"></i><% end %>
         </div>
       <% end %>
       

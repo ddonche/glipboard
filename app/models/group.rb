@@ -5,14 +5,14 @@ class Group < ApplicationRecord
   has_many :memberships
   has_many :users, through: :memberships
   
-  validates_presence_of :name, :description, :user_id
+  validates_presence_of :title, :description, :user_id
   validate :maximum_amount_of_tags
   
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :title, use: :slugged
   
   def should_generate_new_friendly_id?
-    slug.blank? || name_changed?
+    slug.blank? || title_changed?
   end
   
   acts_as_taggable
