@@ -8,7 +8,9 @@
         </div>
       <% end %>
       <div class="content-alter">
-        <%= link_to toggle_feature_article_path(@article), method: :get do %><i class="fa fa-trophy"></i><% end %>&nbsp;&nbsp;
+        <% if current_user.has_roles?(:admin) %>
+          <%= link_to toggle_feature_article_path(@article), method: :get do %><i class="fa fa-trophy"></i><% end %>&nbsp;&nbsp;
+        <% end %>
       </div>
       
       <div class="title-box">
@@ -37,10 +39,12 @@
           <% if @article.feature == "featured" %>
             <i class="fa fa-trophy"></i>&nbsp;Featured Article&nbsp;&nbsp;&nbsp;&nbsp;
           <% end %>
-          <% if @article.status == "draft" %>
-            <i class="fa fa-lock"></i>&nbsp;<%= link_to @article.status, toggle_status_article_path(@article) %><br/>
-          <% else %>
+          <% if current_user == @article.user %>
+            <% if @article.status == "draft" %>
+              <i class="fa fa-lock"></i>&nbsp;<%= link_to @article.status, toggle_status_article_path(@article) %><br/>
+            <% else %>
             <i class="fa fa-unlock"></i>&nbsp;<%= link_to @article.status, toggle_status_article_path(@article) %><br/>
+            <% end %>
           <% end %>
           <%= link_to like_article_path(@article), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= @article.get_upvotes.size %>&nbsp;&nbsp;
           <%= link_to dislike_article_path(@article), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= @article.get_downvotes.size %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -17,6 +17,10 @@
       </div>
     <% end %>
     
+    <% if current_user.has_roles?(:admin) %>
+      <%= f.text_field :title, placeholder: 'Group Name' %><br />
+    <% end %>
+    
     <%= f.text_area :description, placeholder: 'Description', rows: 3, :maxlength => 300 %><br />
     
     <%= f.text_field :tag_list, placeholder: 'Add up to 5 tags (separated by commas)', value: @group.tag_list.join(", ") %>

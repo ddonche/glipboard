@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy, :upvote, :downvote, 
                                       :helped, :toggle_feature, :toggle_status]
   before_action :authenticate_user!, except: [:index, :show]
+  access all: [:show, :index, :new, :create, :update, :edit, :destroy, :toggle_status], user: {except: [:toggle_feature]}, admin: :all
 
   def index
     @page_title = "Articles"
@@ -87,17 +88,21 @@ class ArticlesController < ApplicationController
   end
   
   def upvote
-    @article.upvote_by current_user
+    if @article.user != current_user
+      @article.upvote_by current_user
     
-    voltaire_up(1, :reputation, @article.user_id)
-    redirect_to :back
+      voltaire_up(1, :reputation, @article.user_id)
+      redirect_to :back
+    end
   end
   
   def downvote
-    @article.downvote_by current_user
-
-    voltaire_down(1, :reputation, @article.user_id)
-    redirect_to :back
+    if @article.user != current_user
+      @article.downvote_by current_user
+  
+      voltaire_down(1, :reputation, @article.user_id)
+      redirect_to :back
+    end
   end
 
   private

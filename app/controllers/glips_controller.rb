@@ -71,17 +71,21 @@ class GlipsController < ApplicationController
   end
   
   def upvote
-    @glip.upvote_by current_user
-    
-    voltaire_up(1, :reputation, @glip.user_id)
-    redirect_to :back
+    if @glip.user != current_user
+      @glip.upvote_by current_user
+      
+      voltaire_up(1, :reputation, @glip.user_id)
+      redirect_to :back
+    end
   end
   
   def downvote
-    @glip.downvote_by current_user
-    
-    voltaire_down(1, :reputation, @glip.user_id)
-    redirect_to :back
+    if @glip.user != current_user
+      @glip.downvote_by current_user
+      
+      voltaire_down(1, :reputation, @glip.user_id)
+      redirect_to :back
+    end
   end
 
   private

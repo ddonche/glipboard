@@ -46,18 +46,22 @@ class CommentsController < ApplicationController
   
   def upvote
     @comment = Comment.find(params[:id])
-    @comment.upvote_by current_user
-    
-    voltaire_up(1, :reputation, @comment.user_id)
-    redirect_to @commentable
+    if @comment.user_id != current_user.id
+      @comment.upvote_by current_user
+      
+      voltaire_up(1, :reputation, @comment.user_id)
+      redirect_to @commentable
+    end
   end
   
   def downvote
     @comment = Comment.find(params[:id])
-    @comment.downvote_by current_user
-    
-    voltaire_down(1, :reputation, @comment.user_id)
-    redirect_to @commentable
+    if @comment.user_id != current_user.id
+      @comment.downvote_by current_user
+      
+      voltaire_down(1, :reputation, @comment.user_id)
+      redirect_to @commentable
+    end
   end
 
   private

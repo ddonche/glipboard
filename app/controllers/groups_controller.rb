@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :members]
+  access all: [:show, :index, :new, :create, :update, :edit], user: {except: [:destroy]}, admin: :all
 
   def index
     @page_title = "Groups"
