@@ -52,6 +52,6 @@ class GroupsController < ApplicationController
     end
 
     def group_params
-      params.require(:group).permit(:name, :description, :user_id, :tag_list)
+      params.require(:group).permit(:title, :description, :user_id, :tag_list)
     end
 end

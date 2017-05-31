@@ -1,5 +1,5 @@
 <div id="content-wrap">
-<h2>Editing <%= @group.name %></h2>
+<h2>Editing <%= @group.title %></h2>
 
 <div class="log-form">
     
@@ -17,7 +17,7 @@
       </div>
     <% end %>
     
-    <%= f.text_area :description, placeholder: 'Description', rows: 3, maxlength="300" %>
+    <%= f.text_area :description, placeholder: 'Description', rows: 3, :maxlength => 300 %><br />
     
     <%= f.text_field :tag_list, placeholder: 'Add up to 5 tags (separated by commas)', value: @group.tag_list.join(", ") %>
     <div class="small"><em>Example: fitness, weight loss, marathon</em></div><br />
