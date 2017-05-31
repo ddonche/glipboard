@@ -11,6 +11,11 @@ class ArticlesController < ApplicationController
       @articles = Article.order('created_at DESC').page(params[:page]).per(20)
     end
   end
+  
+  def featured
+    @page_title = "Featured Articles"
+    @articles = Article.where({ feature: "featured" }).order("created_at DESC").page(params[:page]).per(20)
+  end
 
   def show
     @page_title = @article.title

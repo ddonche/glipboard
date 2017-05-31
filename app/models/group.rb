@@ -6,6 +6,7 @@ class Group < ApplicationRecord
   has_many :users, through: :memberships
   
   validates_presence_of :title, :description, :user_id
+  validates_uniqueness_of :title
   validate :maximum_amount_of_tags
   
   extend FriendlyId

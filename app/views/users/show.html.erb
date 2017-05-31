@@ -51,7 +51,7 @@
         <% if everything.model_name.human != "Log" %>
           <div class="index-title"><%= link_to everything.title, everything %></div>
         <% end %>
-        <div class="content"><%= everything.content.html_safe %></div>
+        <div class="content"><%= everything.content.html_safe.truncate(360) %></div>
         <div class="date-right">
           Posted <%= time_ago_in_words(everything.created_at) %> ago
            &nbsp;&nbsp;

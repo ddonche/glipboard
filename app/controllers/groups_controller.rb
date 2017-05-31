@@ -31,7 +31,7 @@ class GroupsController < ApplicationController
       if @group.save
         format.html { redirect_to @group, notice: 'You have a new Group!' }
       else
-        format.html { render :new }
+        format.html { render :new, alert: 'There seems to be an error.' }
       end
     end
   end
