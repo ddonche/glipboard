@@ -23,9 +23,7 @@ class ArticlesController < ApplicationController
     @commentable = @article
     @comments = @commentable.comments
     @comment = Comment.new
-  end
-  
-  def helped
+    @glips = @article.glips.order("created_at DESC")
   end
 
   def new

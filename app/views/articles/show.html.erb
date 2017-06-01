@@ -8,7 +8,7 @@
         </div>
       <% end %>
       <div class="content-alter">
-        <% if current_user.has_roles?(:admin) %>
+        <% if logged_in?(:admin) %>
           <%= link_to toggle_feature_article_path(@article), method: :get do %><i class="fa fa-trophy"></i><% end %>&nbsp;&nbsp;
         <% end %>
       </div>
@@ -70,6 +70,17 @@
     </div>
     
   <div class="right-column">
+    <div class="side-box">
+      <div class="side-content">
+        <b><%= @article.glips.size %> Glips helped by this article.</b>
+        <% if @article.glips.size > 0 %>
+          <br /><br />
+        <% end %>
+          <% @glips.each do |glip| %>
+            <li><%= link_to glip.title, glip %></li>
+           <% end %>
+      </div>
+    </div>
   </div>
 
 </div>

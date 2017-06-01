@@ -1,0 +1,8 @@
+<div id="follow_form">
+  <% #if Membership.exists?(user_id: current_user.id && group_id: @group_id) 
+      if current_user.id == 1 %>
+    <%= render 'leave' %>
+  <% else %>
+    <%= render 'join' %>
+  <% end %>
+</div>

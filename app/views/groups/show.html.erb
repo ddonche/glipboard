@@ -26,6 +26,10 @@
         <% @group.tag_list.map.each do |tag| %>
           <div class="tags"><%= link_to tag, tag_path(tag) %></div>
         <% end %>
+        
+      <section class="stats">
+        <%= render 'join_form' if user_signed_in? %>
+      </section>
     </div>
   </div>
 

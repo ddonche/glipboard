@@ -2,10 +2,12 @@
  *= require_tree .
  *= require_self
  */
-body {
+html, body {
   font-family: Robot, sans-serif;  
   background: #fff;
   width: 100%;
+  padding-top: 30px;
+  margin: 0;
 }
 
 #index-container {
@@ -62,6 +64,23 @@ body {
   overflow: hidden;
 }
 
+.side-box {
+  width: 86%;
+  margin: 0 auto;
+  background: #F7F7F7;
+  overflow: hidden;
+}
+
+.side-content {
+  margin: 15px;
+  font-size: .75em;
+  li {
+    list-style-type: none;
+    padding: 3px;
+    border-bottom: 1px solid #d0d9e2;
+  }
+}
+
 .avatar-show {
   width: 71px;
   height: 65px;
@@ -100,6 +119,9 @@ body {
 }
 
 .main-header{
+  overflow: hidden;
+  position: fixed;
+  top: 0;
   width: 100%;
   margin: 0 auto;
   height: 60px;
@@ -126,7 +148,6 @@ body {
       color: #fff;
       text-decoration: none;
       padding: 1px;
-      font-weight: bold;
       font-size: .9em;
     }
   }
