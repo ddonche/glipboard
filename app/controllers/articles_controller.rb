@@ -7,9 +7,9 @@ class ArticlesController < ApplicationController
   def index
     @page_title = "Articles"
     if params[:tag]
-      @articles = Article.tagged_with(params[:tag])
+      @articles = Article.where({ status: "published" }).tagged_with(params[:tag])
     else
-      @articles = Article.order('created_at DESC').page(params[:page]).per(20)
+      @articles = Article.where({ status: "published" }).order('created_at DESC').page(params[:page]).per(20)
     end
   end
   

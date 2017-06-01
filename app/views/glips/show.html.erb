@@ -75,6 +75,17 @@
         <%= render "logs/form" %><br/>
       </div>
     <% end %> 
+    <div class="side-box">
+      <div class="side-content">
+        <b><%= @glip.articles.size %> Articles that helped this Glip.</b>
+        <% if @glip.articles.size > 0 %>
+          <br /><br />
+        <% end %>
+          <% @articles.each do |article| %>
+            <li><%= link_to article.title, article %></li>
+           <% end %>
+      </div>
+    </div>
   </div>
 
 </div>

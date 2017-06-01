@@ -10,8 +10,8 @@ class UsersController < ApplicationController
   def show
     @user = User.friendly.find(params[:id])
     @page_title = @user.username
-    @articles = @user.articles
-    @glips = @user.glips
+    @articles = @user.articles.where({ status: "published" })
+    @glips = @user.glips.where({ status: "published" })
     @logs = @user.logs
     @almost_everything = (@articles + @glips).sort{|b,a| a.updated_at <=> b.updated_at }
     @everything = (@almost_everything + @logs).sort{|b,a| a.updated_at <=> b.updated_at }

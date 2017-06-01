@@ -1,43 +1,54 @@
-<div id="wrapper">
-  <%= paginate @glips %>
-    <% @glips.each do |glip| %>
-      <div class="index-boxes">
-        <div class="index-title">
-          <% if glip.status == "incomplete" %>
-            <i class="fa fa-star-half-o"></i>
-          <% else %>
-            <i class="fa fa-star"></i>
-          <% end %>
-          <%= link_to glip.title, glip %>
-        </div>
-        
-        <div class="date-right">
-          Posted <%= time_ago_in_words(glip.created_at) %> ago by <%= link_to glip.user.username, user_path(glip.user) %>
-           &nbsp;&nbsp;
-          <%= 
-            if glip.user.picture?
-              link_to user_path(glip.user) do
-                image_tag glip.user.picture, width: 15, alt: 'user avatar'
-              end
-            else
-              link_to user_path(glip.user) do
-                image_tag 'default_avatar.jpg', width: 15, alt: 'default user avatar'
-              end
-            end
-          %>          
-        </div>
-        
-        <div class="date">
-          <i class="fa fa-tags"></i>&nbsp;&nbsp;<%= raw(glip.tag_list.map { |t| link_to t, tag_path(t) }.join(' , ')) %>&nbsp;&nbsp;&nbsp;&nbsp;
-          <i class="fa fa-comments"></i>&nbsp;&nbsp;<%= glip.comments.count %>&nbsp;<%= link_to "comments", glip %>&nbsp;&nbsp;&nbsp;
-          <i class="fa fa-book"></i>&nbsp;&nbsp;<%= glip.logs.count %>&nbsp;<%= link_to "logs", glip_logs_path(glip) %>&nbsp;&nbsp;&nbsp;
-          
-          <%= link_to like_glip_path(glip), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= glip.get_upvotes.size %>&nbsp;&nbsp;
-          <%= link_to dislike_glip_path(glip), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= glip.get_downvotes.size %>
-        </div>
-        
-      </div>
-      
-    <% end %>
+<div id ="index-container">
+  <div class = "table-row">
+    <div class="table-cell"><div class="post-title">Latest Glips</div></div>
+  </div>
+</div>
 
+<div id ="index-container">
+  <div class= "logs">
+    <div class= "table">
+      <%= paginate @glips %>
+        <% @glips.each do |glip| %>
+              
+          <div class="table-row">
+            <div class="table-cell">
+              <%= link_to like_glip_path(glip), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= glip.get_upvotes.size %>&nbsp;&nbsp;
+              <%= link_to dislike_glip_path(glip), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= glip.get_downvotes.size %>
+            </div>
+          
+            <div class="table-cell">
+              <i class="fa fa-comments"></i>&nbsp;&nbsp;<%= glip.comments.count %>
+            </div>
+          
+            <div class="table-cell">
+              <% if glip.status == "incomplete" %>
+                <i class="fa fa-star-half-o"></i>
+              <% else %>
+                <i class="fa fa-star"></i>
+              <% end %>
+              <%= link_to glip.title.truncate(40), glip %>
+            </div>
+          
+            <div class="table-cell">
+              <%= time_ago_in_words(glip.created_at) %>
+            </div>
+            
+            <div class="table-cell">
+              <%= link_to glip.user.username, user_path(glip.user) %>
+                &nbsp;<%= glip.user.reputation %>
+            </div>
+            
+            <div class="table-cell">
+              <% glip.tag_list.map.each do |tag| %>
+                <div class="tags">
+                  <%= link_to tag, tag_path(tag) %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        
+      <% end %>
+      
+    </div>
+  </div>
 </div>

@@ -1,34 +1,52 @@
-<div id="wrapper">
-  <%= paginate @articles %>
-    <% @articles.each do |article| %>
-      <div class="index-boxes">
-        <div class="index-title"><%= link_to article.title, article %></div>
-        
-        <div class="date-right">
-          Posted <%= time_ago_in_words(article.created_at) %> ago by <%= link_to article.user.username, user_path(article.user) %>
-          &nbsp;&nbsp;
-          <%= 
-            if article.user.picture?
-              link_to user_path(article.user) do
-                image_tag article.user.picture, width: 15, alt: 'user avatar'
-              end
-            else
-              link_to user_path(article.user) do
-                image_tag 'default_avatar.jpg', width: 15, alt: 'default user avatar'
-              end
-            end
-          %> 
+<div id ="index-container">
+  <div class = "table-row">
+    <div class="table-cell"><div class="post-title">Latest Articles</div></div>
+  </div>
+</div>
+
+<div id ="index-container">
+  <div class= "logs">
+    <div class= "table">
+      <%= paginate @articles %>
+        <% @articles.each do |article| %>
+              
+          <div class="table-row">
+            <div class="table-cell">
+              <%= link_to like_article_path(article), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= article.get_upvotes.size %>&nbsp;&nbsp;
+              <%= link_to dislike_article_path(article), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= article.get_downvotes.size %>
+            </div>
+          
+            <div class="table-cell">
+              <i class="fa fa-comments"></i>&nbsp;&nbsp;<%= article.comments.count %>
+            </div>
+          
+            <div class="table-cell">
+              <% if article.feature == "featured" %>
+                <i class="fa fa-trophy"></i>&nbsp;
+              <% end %>
+              <%= link_to article.title.truncate(40), article %>
+            </div>
+          
+            <div class="table-cell">
+              <%= time_ago_in_words(article.created_at) %>
+            </div>
+            
+            <div class="table-cell">
+              <%= link_to article.user.username, user_path(article.user) %>
+                &nbsp;<%= article.user.reputation %>
+            </div>
+            
+            <div class="table-cell">
+              <% article.tag_list.map.each do |tag| %>
+                <div class="tags">
+                  <%= link_to tag, tag_path(tag) %>
+                </div>
+              <% end %>
+            </div>
           </div>
         
-        <div class="date">
-          <i class="fa fa-comments"></i>&nbsp;&nbsp;<%= article.comments.count %>&nbsp;<%= link_to "comments", article %>&nbsp;&nbsp;&nbsp;&nbsp;
-          <i class="fa fa-tags"></i>&nbsp;&nbsp;<%= raw(article.tag_list.map { |t| link_to t, tag_path(t) }.join(' , ')) %>&nbsp;&nbsp;&nbsp;
-          
-          <%= link_to like_article_path(article), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= article.get_upvotes.size %>&nbsp;&nbsp;
-          <%= link_to dislike_article_path(article), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= article.get_downvotes.size %>
-        </div>
-        
-      </div>
+      <% end %>
       
-    <% end %>
+    </div>
   </div>
+</div>

@@ -7,7 +7,7 @@ class GlipsController < ApplicationController
     if params[:tag]
       @glips = Glip.tagged_with(params[:tag])
     else
-      @glips = Glip.order('created_at DESC').page(params[:page]).per(25)
+      @glips = Glip.order('created_at DESC').page(params[:page]).per(20)
     end
   end
 
@@ -18,6 +18,7 @@ class GlipsController < ApplicationController
     @comment = Comment.new
     @log = Log.new
     @log.user = current_user
+    @articles = @glip.articles.order("created_at DESC")
   end
   
   def helpers
