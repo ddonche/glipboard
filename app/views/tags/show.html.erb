@@ -1,59 +1,87 @@
-<div id="wrapper">
-  
-  <%= paginate @pager %>
-    <% @pager.each do |pager| %>
-
-      <% if pager.model_name.human == "Glip" %>
-        <div class="index-boxes">
-      <% elsif pager.model_name.human == "Group" %>
-        <div class="group-boxes">
-      <% else pager.model_name.human == "Article" %>
-        <div class="index-article-boxes">
-      <% end %>
+<div id ="index-container">
+  <div class= "logs">
+    <div class= "table">
       
-      <% if (user_signed_in? && (current_user.id == pager.user_id)) %>
-        <div class="content-alter">
+      <%= paginate @pager %>
+        <% @pager.each do |pager| %>
+              
+        <div class="table-row">
+          
+          <% if pager.model_name.human == "Glip" %>
+            <div class="table-cell">
+              <%= link_to like_glip_path(pager), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= pager.get_upvotes.size %>&nbsp;&nbsp;
+              <%= link_to dislike_glip_path(pager), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= pager.get_downvotes.size %>
+            </div>
+          <% elsif pager.model_name.human == "Article" %>
+            <div class="table-cell">
+              <%= link_to like_article_path(pager), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= pager.get_upvotes.size %>&nbsp;&nbsp;
+              <%= link_to dislike_article_path(pager), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= pager.get_downvotes.size %>
+            </div>
+          <% else %>
+            <div class="table-cell">
+              &nbsp;
+            </div>
+          <% end %>
+          
+          <% if pager.model_name.human != "Group" %>
+            <div class="table-cell">
+              <i class="fa fa-comments"></i>&nbsp;&nbsp;
+              <%= pager.comments.count %>
+            </div>
+          <% else %>
+            <div class="table-cell">
+              &nbsp;
+            </div>
+          <% end %>
+          
+          <div class="table-cell">
             <% if pager.model_name.human == "Glip" %>
-              <%= link_to edit_glip_path(pager) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
-              <%= link_to glip_path(pager), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-times"></i><% end %>
+              <div class="glip-button">glip</div>
             <% elsif pager.model_name.human == "Article" %>
-              <%= link_to edit_article_path(pager) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
-              <%= link_to article_path(pager), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-times"></i><% end %>
+              <div class="article-button">article</div>
             <% else %>
-              <%= link_to edit_group_path(pager) do %><i class="fa fa-pencil"></i><% end %>
+              <div class="group-button">group</div>
             <% end %>
+          </div>
+          
+          <div class="table-cell">
+            <% if pager.model_name.human == "Glip" %>
+              <% if pager.status == "incomplete" %>
+                <i class="fa fa-star-half-o"></i>
+              <% else %>
+                <i class="fa fa-star"></i>
+              <% end %>
+            <% elsif pager.model_name.human == "Article" %>
+              <% if pager.feature == "featured" %>
+                <i class="fa fa-trophy"></i>&nbsp;
+              <% end %>
+            <% else %>
+            <% end %>
+            
+            <%= link_to pager.title.truncate(40), pager %></div>
+          
+          <div class="table-cell"><%= time_ago_in_words(pager.created_at) %> ago</div>
+          
+          <div class="table-cell">
+            <% if pager.model_name.human != "Group" %>
+            <%= link_to pager.user.username, user_path(pager.user) %>
+                &nbsp;<%= pager.user.reputation %>
+            <% else %>
+              <%= pager.users.size %> Members
+            <% end %>
+          </div>
+          
+          <div class="table-cell">
+            <% pager.tag_list.map.each do |tag| %>
+              <div class="tags">
+                <%= link_to tag, tag_path(tag) %>
+              </div>
+            <% end %>
+          </div>
         </div>
+        
       <% end %>
       
-      <% if pager.model_name.human != "Group" %>
-        <div class="index-title"><%= link_to pager.title, pager %></div>
-        <div class="content"><%= pager.content.truncate(200) %></div>
-        <div class="date-right">
-          Posted <%= time_ago_in_words(pager.created_at) %> ago
-        </div>
-      <% else %>
-        <div class="index-title"><%= link_to pager.title, pager %></div>
-        <div class="content"><%= pager.description.truncate(200) %></div>
-      <% end %>
-        
-      <div class="date">
-          <i class="fa fa-tags"></i>&nbsp;&nbsp;<%= raw(pager.tag_list.map { |t| link_to t, tag_path(t) }.join(' , ')) %>&nbsp;&nbsp;&nbsp;&nbsp;
-        <% if pager.model_name.human != "Group" %>  
-          <i class="fa fa-comments"></i>&nbsp;&nbsp;<%= pager.comments.count %>&nbsp;<%= link_to "comments", pager %>&nbsp;&nbsp;&nbsp;
-        <% end %>
-        
-        <% if pager.model_name.human == "Glip" %>
-          <i class="fa fa-book"></i>&nbsp;&nbsp;<%= pager.logs.count %>&nbsp;<%= link_to "logs", glip_logs_path(pager) %>&nbsp;&nbsp;&nbsp;
-          <%= link_to like_glip_path(pager), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= pager.get_upvotes.size %>&nbsp;&nbsp;
-          <%= link_to dislike_glip_path(pager), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= pager.get_downvotes.size %>
-        <% elsif pager.model_name.human == "Article" %>
-          <%= link_to like_article_path(pager), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= pager.get_upvotes.size %>&nbsp;&nbsp;
-          <%= link_to dislike_article_path(pager), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= pager.get_downvotes.size %>
-        <% else %>
-          <%= pager.users.size %> members
-        <% end %>
-      </div>
-      
-  <% end %>
-
+    </div>
+  </div>
 </div>

@@ -11,7 +11,7 @@ html, body {
 }
 
 #index-container {
-  width: 85%;
+  width: 90%;
   margin: 10px auto;
   background: #f7f7f7;
   border: 1px solid #e5e5e5;
@@ -236,8 +236,9 @@ input[type=button], input[type=submit], input[type=reset] {
   }
     .table-cell, .table-head{
       display: table-cell;
-      padding:1em;
+      padding: 1em;
       border-bottom: #e5e5e5 1px solid;
+      vertical-align: middle;
     }
     .table-head{
         font-weight:bold;
@@ -259,6 +260,13 @@ input[type=button], input[type=submit], input[type=reset] {
   text-align: center;
   color: #76aeac;
   border: 1px solid #76aeac;
+}
+
+.group-button {
+  padding: 4px 9px;
+  text-align: center;
+  color: #efa900;
+  border: 1px solid #efa900;
 }
 
 .footer{
