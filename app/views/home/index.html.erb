@@ -9,13 +9,15 @@
         <div class="table-cell"><div class="index-top-buttons"><div class="article-button">articles</div></div></div>
       </div>
 </div>
+
+<div class ="pagination-container">
+  <%= paginate @everything %>
+</div>
+
 <div id ="index-container">
   <div class= "logs">
     <div class= "table">
-          
-    <%= paginate @everything %>   
       <% @everything.each do |everything| %>
-              
         <div class="table-row">
           <% if everything.model_name.human == "Glip" %>
             <div class="table-cell">
@@ -59,7 +61,11 @@
         </div>
         
       <% end %>
-      <%= paginate @everything %>
     </div>
+    
   </div>
+</div>
+
+<div class ="pagination-container">
+  <%= paginate @everything %>
 </div>

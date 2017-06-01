@@ -12,7 +12,7 @@ html, body {
 
 #index-container {
   width: 90%;
-  margin: 10px auto;
+  margin: 0 auto 10px auto;
   background: #f7f7f7;
   border: 1px solid #e5e5e5;
   border-radius: 5px;
@@ -593,18 +593,27 @@ blockquote em{
   }
 }
 
+.pagination-container {
+  width: 80%;
+  height: 40px;
+  margin: 0 auto;
+}
+
 .pagination a, .pagination span.current, .pagination span.gap {
     float: left;
-    padding: 0 14px;
-    line-height: 38px;
+    padding: 6px 9px;
+    margin: 0 5px;
+    font-size: .7em;
     text-decoration: none;
     background-color: white;
-    border: 1px solid #DDD;
-    border-left-width: 0;
+    border: 1px solid #dc0000;
 }
 
 .pagination {
-    border-left: 1px solid #ddd;
+    span.current {
+      background-color: #dc0000;
+      color: white;
+    }
     .first{
         padding : 0;
         float: none;
