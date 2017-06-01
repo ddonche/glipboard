@@ -65,7 +65,7 @@
           <div class="table-cell">
             <% if pager.model_name.human != "Group" %>
             <%= link_to pager.user.username, user_path(pager.user) %>
-                &nbsp;<%= pager.user.reputation %>
+                &nbsp;<%= number_to_human(pager.user.reputation) %>
             <% else %>
               <%= pager.users.size %> Members
             <% end %>

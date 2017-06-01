@@ -33,7 +33,7 @@
             
             <div class="table-cell">
               <%= link_to article.user.username, user_path(article.user) %>
-                &nbsp;<%= article.user.reputation %>
+                &nbsp;<%= number_to_human(article.user.reputation) %>
             </div>
             
             <div class="table-cell">
