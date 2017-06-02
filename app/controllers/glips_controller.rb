@@ -19,6 +19,7 @@ class GlipsController < ApplicationController
     @log = Log.new
     @log.user = current_user
     @articles = @glip.articles.order("created_at DESC")
+    @logs = @glip.logs.order("created_at DESC").page(params[:page]).per(10)
   end
   
   def helpers

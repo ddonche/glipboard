@@ -75,6 +75,7 @@
         <%= render "logs/form" %><br/>
       </div>
     <% end %> 
+    
     <div class="side-box">
       <div class="side-content">
         <b><%= @glip.articles.size %> Articles that helped this Glip.</b>
@@ -84,6 +85,16 @@
           <% @articles.each do |article| %>
             <li><%= link_to article.title, article %></li>
            <% end %>
+      </div>
+    </div>
+    <br />
+    <div class="side-box">
+      <div class="side-content">
+        <b><%= @glip.logs.size %> progress logs on this Glip.</b>
+            <% @logs.each do |log| %>
+              <li><%= log.content.truncate(50) %></li>
+            <% end %><br />
+        <%= link_to_previous_page @logs, 'Previous' %><%= link_to_next_page @logs, 'Next' %>
       </div>
     </div>
   </div>

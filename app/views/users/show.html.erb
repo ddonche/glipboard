@@ -1,79 +1,154 @@
-<div class="post-title"><%= @user.username %>&nbsp;&nbsp;
-  <% if (user_signed_in? && (current_user.id == @user.id)) %>
-    <%= link_to edit_user_registration_path(@user) do %><i class="fa fa-pencil"><% end %></i>
-  <% end %>  
-</div>
+<div class="user-left-column">
 
-  <%= 
-  if @user.picture?
-    image_tag @user.picture, width: 100, alt: 'user avatar'
-  else
-    image_tag 'default_avatar.jpg', width: 100, alt: 'default user avatar'
-  end
-  %>
-
-  <section class="stats">
-    <%= render 'shared/stats' %><br />
-    <%= render 'follow_form' if user_signed_in? %>
-  </section>
+  <div class="side-box">
     
-    
-<div id="wrapper">
-    <% @everything.each do |everything| %>
-    
-      <% if everything.model_name.human == "Glip" %>
-        <div class="index-boxes">
-      <% elsif everything.model_name.human == "article" %>
-        <div class="index-article-boxes">
-      <% else %>
-        <div class="index-log-boxes">
-      <% end %>
-      
-        <% if (user_signed_in? && (current_user.id == everything.user_id)) %>
-        <div class="content-alter">
-            <% if everything.model_name.human == "Glip" %>
-              <%= link_to edit_glip_path(everything) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
-              <%= link_to glip_path(everything), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %>
-            <% elsif everything.model_name.human == "Article" %>
-              <% if everything.status == "draft" %>
-                <i class="fa fa-lock"></i>&nbsp;<%= link_to everything.status, toggle_status_article_path(everything) %>&nbsp;&nbsp;
-              <% else %>
-                <i class="fa fa-unlock"></i>&nbsp;<%= link_to everything.status, toggle_status_article_path(everything) %>&nbsp;&nbsp;
-              <% end %>
-              <%= link_to edit_article_path(everything) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
-              <%= link_to article_path(everything), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %>
-            <% else %>
-              <%= link_to glip_log_path(everything, everything), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %>
-            <% end %>
-        </div>
-        <% end %>
-      
-        <% if everything.model_name.human != "Log" %>
-          <div class="index-title"><%= link_to everything.title, everything %></div>
-        <% end %>
-        <div class="content"><%= everything.content.html_safe.truncate(360) %></div>
-        <div class="date-right">
-          Posted <%= time_ago_in_words(everything.created_at) %> ago
-           &nbsp;&nbsp;
+      <div class="content-center">
+        <%= 
+        if @user.picture?
+          image_tag @user.picture, width: 160, alt: 'user avatar'
+        else
+          image_tag 'default_avatar.jpg', width: 160, alt: 'default user avatar'
+        end
+        %>
+        
+        <div class="post-title">
+          <%= @user.username %>
         </div>
         
-        <div class="date">
-        <% if everything.model_name.human != "Log" %>
-          <i class="fa fa-tags"></i>&nbsp;&nbsp;<%= raw(everything.tag_list.map { |t| link_to t, tag_path(t) }.join(' , ')) %>&nbsp;&nbsp;&nbsp;&nbsp;
-          <i class="fa fa-comments"></i>&nbsp;&nbsp;<%= everything.comments.count %>&nbsp;<%= link_to "comments", everything %>&nbsp;&nbsp;&nbsp;
-          <% if everything.model_name.human == "Glip" %>
-            <i class="fa fa-book"></i>&nbsp;&nbsp;<%= everything.logs.count %>&nbsp;<%= link_to "logs", glip_logs_path(everything) %>&nbsp;&nbsp;&nbsp;
-            <%= link_to like_glip_path(everything), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= everything.get_upvotes.size %>&nbsp;&nbsp;
-            <%= link_to dislike_glip_path(everything), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= everything.get_downvotes.size %>
-          <% else %>
-            <%= link_to like_article_path(everything), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= everything.get_upvotes.size %>&nbsp;&nbsp;
-            <%= link_to dislike_article_path(everything), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= everything.get_downvotes.size %>
+        <div class="post-content">
+          <% if current_user.id == @user.id %>
+            <%= link_to "Edit Profile", edit_user_registration_path(@user) %>
           <% end %>
-        <% end %>
         </div>
+        
+        <section class="stats">
+          <%= render 'shared/stats' %><br /><br />
+          <%= render 'follow_form' if user_signed_in? %>
+        </section>
         
       </div>
+  </div>
+  
+<br />
+  <div class="side-box">
+    <div class="side-content">
       
+    <% unless @user.bio.nil? %>
+      <%= @user.bio %><br /><br />
     <% end %>
+    
+    <% unless @user.website.nil? %>
+      <div class="table-row">
+        <div class="tiny-table-cell">
+          <i class="fa fa-globe" aria-hidden="true"></i>
+        </div>
+        <div class="tiny-table-cell">
+          <%= link_to @user.website, @user.website %>
+        </div>
+      </div>
+    <% end %>
+    <% unless @user.city.nil? %>
+      <div class="table-row">
+        <div class="tiny-table-cell">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+        </div>
+        <div class="tiny-table-cell">
+          <%= @user.city %>
+        </div>
+      </div>
+    <% end %>
+    
+    <% unless @user.country.nil? %>
+        <div class="tiny-table-cell">
+          <i class="fa fa-flag" aria-hidden="true"></i>
+        </div>
+        <div class="tiny-table-cell">
+          <%= @user.country %>
+        </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+    
+    
+<div class="user-right-column">
 
+  <div id ="index-nav-container">
+        <div class = "table-row">
+          <div class="table-cell">Top Content</div>
+          <div class="table-cell"><div class="index-top-buttons"><div class="all-button"><%= link_to "latest", root_path %></div></div></div>
+          <div class="table-cell"><div class="index-top-buttons"><div class="glip-button"><%= link_to "glips", glips_path %></div></div></div>
+          <div class="table-cell"><div class="index-top-buttons"><div class="article-button"><%= link_to "articles", articles_path %></div></div></div>
+          <div class="table-cell"><div class="index-top-buttons"><div class="group-button"><%= link_to "groups", groups_path %></div></div></div>
+          <div class="table-cell"><div class="index-top-buttons"><div class="user-button"><%= link_to "users", users_path %></div></div></div>
+        </div>
+  </div>
+  
+  <div class= "logs">
+    <div class= "table">
+      <% @everything.each do |everything| %>
+        
+        <% if everything.model_name.human == "Log" %>
+          <div class="table-row">
+            <div class="table-cell">
+              <div class="log-button">log</div>
+            </div>
+            <div class="table-cell">
+              <%= everything.content.truncate(80) %>
+            </div>
+            <div class="table-cell">
+              <%= time_ago_in_words(everything.created_at) %> ago
+            </div>
+          </div>
+        
+        <% elsif everything.model_name.human == "Glip" %>
+          <div class="table-row">
+            <div class="table-cell">
+              <div class="glip-button">glip</div>
+            </div>
+            <div class="table-cell">
+              <% if everything.status == "incomplete" %>
+                <i class="fa fa-star-half-o"></i>&nbsp;<%= link_to everything.title.truncate(80), everything %>
+              <% else %>
+                <i class="fa fa-star"></i>&nbsp;<%= link_to everything.title.truncate(80), everything %>
+              <% end %>
+            </div>
+            <div class="table-cell">
+              <% everything.tag_list.map.each do |tag| %>
+                <div class="tags">
+                  <%= link_to tag, tag_path(tag) %>
+                </div>
+              <% end %>
+            </div>
+            
+          </div>
+        
+        <% else %>
+          <div class="table-row">
+            <div class="table-cell">
+              <div class="article-button">article</div>
+            </div>
+            <div class="table-cell">
+              <% if everything.feature == "featured" %>
+                <i class="fa fa-trophy"></i><% end %>&nbsp;<%= link_to everything.title.truncate(80), everything %>
+            </div>
+            <div class="table-cell">
+              <% everything.tag_list.map.each do |tag| %>
+                <div class="tags">
+                  <%= link_to tag, tag_path(tag) %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+        
+      <% end %>
+
+    </div>
+  </div>
+  <br />
+  <div class ="pagination-container">
+    <%= paginate @everything %>
+  </div>
+  
 </div>

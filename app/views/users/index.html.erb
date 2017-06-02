@@ -1,13 +1,16 @@
-<div id ="index-container">
+<div id ="index-nav-container">
   <div class = "table-row">
-    <div class="table-cell"><div class="post-title">Glipboard Users</div></div>
+    <div class="table-cell">Glipboard Users</div>
   </div>
+</div>
+
+<div class ="pagination-container">
+  <%= paginate @users %>
 </div>
 
 <div id ="index-container">
   <div class= "logs">
     <div class= "table">
-      <%= paginate @users %>
         <% @users.each do |user| %>
               
           <div class="table-row">
@@ -47,4 +50,8 @@
       
     </div>
   </div>
+</div>
+
+<div class ="pagination-container">
+  <%= paginate @users %>
 </div>

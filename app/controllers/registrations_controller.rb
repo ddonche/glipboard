@@ -5,9 +5,10 @@ class RegistrationsController < Devise::RegistrationsController
     :user
   end
   
-  wrap_parameters :user, include: [:username, :email, :password, :password_confirmation, :picture]
+  wrap_parameters :user, include: [:username, :email, :password, :password_confirmation, :picture,
+                                  :bio, :website, :city, :country]
 
   def after_sign_up_path_for(resource)
-    root_path
+    users_path
   end
 end

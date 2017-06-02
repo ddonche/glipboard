@@ -11,10 +11,11 @@ class UsersController < ApplicationController
     @user = User.friendly.find(params[:id])
     @page_title = @user.username
     @articles = @user.articles.where({ status: "published" })
-    @glips = @user.glips.where({ status: "published" })
+    @glips = @user.glips
     @logs = @user.logs
     @almost_everything = (@articles + @glips).sort{|b,a| a.updated_at <=> b.updated_at }
-    @everything = (@almost_everything + @logs).sort{|b,a| a.updated_at <=> b.updated_at }
+    @everything_prepage = (@almost_everything + @logs).sort{|b,a| a.updated_at <=> b.updated_at }
+    @everything = Kaminari.paginate_array(@everything_prepage).page(params[:page]).per(9)
   end
   
   def following

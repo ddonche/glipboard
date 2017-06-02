@@ -18,6 +18,16 @@
       <%= f.input :password_confirmation, required: false %>
       <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
       
+      <%= f.label :bio %><br />
+      <%= f.text_field :bio %><br />
+      
+      <%= f.label :website %><br />
+      <%= f.text_field :website %><br />
+      <%= f.label :city %><br />
+      <%= f.text_field :city %><br />
+      <%= f.label :country %><br />
+      <%= f.text_field :country %><br />
+      
       <%= f.label :picture do %>
         <%= f.file_field :picture %>
         <%= f.hidden_field :picture_cache %>

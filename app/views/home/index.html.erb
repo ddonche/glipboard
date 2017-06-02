@@ -1,12 +1,11 @@
-<div id ="index-container">
+<div id ="index-nav-container">
       <div class = "table-row">
-        <div class="table-cell"><div class="post-title">Latest Content</div></div>
-        <div class="table-cell"><div class="index-top-buttons"><div class="all-button">all</div></div></div>
-        <div class="table-cell"><div class="index-top-buttons"><div class="glip-button">glips</div></div></div>
-        <div class="table-cell"><div class="index-top-buttons"><div class="article-button">articles</div></div></div>
-        <div class="table-cell"><div class="index-top-buttons"><div class="article-button">articles</div></div></div>
-        <div class="table-cell"><div class="index-top-buttons"><div class="article-button">articles</div></div></div>
-        <div class="table-cell"><div class="index-top-buttons"><div class="article-button">articles</div></div></div>
+        <div class="table-cell">Top Content</div>
+        <div class="table-cell"><div class="index-top-buttons"><div class="all-button"><%= link_to "latest", root_path %></div></div></div>
+        <div class="table-cell"><div class="index-top-buttons"><div class="glip-button"><%= link_to "glips", glips_path %></div></div></div>
+        <div class="table-cell"><div class="index-top-buttons"><div class="article-button"><%= link_to "articles", articles_path %></div></div></div>
+        <div class="table-cell"><div class="index-top-buttons"><div class="group-button"><%= link_to "groups", groups_path %></div></div></div>
+        <div class="table-cell"><div class="index-top-buttons"><div class="user-button"><%= link_to "users", users_path %></div></div></div>
       </div>
 </div>
 

@@ -18,6 +18,13 @@ html, body {
   border-radius: 5px;
 }
 
+#index-nav-container {
+  width: 90%;
+  margin: 0 auto 10px auto;
+  background: #f9faea;
+  border: 1px solid #e5e5e5;
+}
+
 #index-container-wide {
   width: 100%;
   margin: 10px auto;
@@ -115,6 +122,13 @@ html, body {
   -webkit-margin-end: 0px;
   margin-bottom: 5px;
   border-top: 1px solid #dadbdc;
+}
+
+.content-center {
+  padding: 15px 0 10px 0;
+  text-align: center;
+  font-size: 12px;
+  display: block;
 }
 
 .main-header{
@@ -231,21 +245,39 @@ input[type=button], input[type=submit], input[type=reset] {
   width:100%;
   border-collapse:collapse;
 }
-  .table-row{
+  .table-row {
     display: table-row;
+    border-bottom: #e5e5e5 1px solid;
   }
     .table-cell, .table-head{
       display: table-cell;
       padding: 1em;
-      border-bottom: #e5e5e5 1px solid;
       vertical-align: middle;
     }
     .table-head{
         font-weight:bold;
     }
+
+.tiny-table-cell {
+  display: table-cell;
+  padding: 4px;
+  vertical-align: middle;
+}
     
 .index-top-buttons {
   font-size: .75em;
+}
+
+.all-button {
+  padding: 4px 9px;
+  text-align: center;
+  border: 1px solid black;
+  a {
+    color: black;
+  }
+  a:hover {
+    color: #76aeac;
+  }
 }
     
 .glip-button {
@@ -255,11 +287,24 @@ input[type=button], input[type=submit], input[type=reset] {
   border: 1px solid #d10000;
 }
 
+.log-button {
+  padding: 4px 9px;
+  text-align: center;
+  color: #9b949b;
+  border: 1px solid #9b949b;
+}
+
 .article-button {
   padding: 4px 9px;
   text-align: center;
   color: #76aeac;
   border: 1px solid #76aeac;
+  a {
+    color: #76aeac;
+  }
+  a:hover {
+    color: #dc0000;
+  }
 }
 
 .group-button {
@@ -267,6 +312,25 @@ input[type=button], input[type=submit], input[type=reset] {
   text-align: center;
   color: #efa900;
   border: 1px solid #efa900;
+  a {
+    color: #efa900;
+  }
+  a:hover {
+    color: #76aeac;
+  }
+}
+
+.user-button {
+  padding: 4px 9px;
+  text-align: center;
+  color: #96c498;
+  border: 1px solid #96c498;
+  a {
+    color: #96c498;
+  }
+  a:hover {
+    color: #76aeac;
+  }
 }
 
 .footer{
@@ -572,20 +636,21 @@ blockquote em{
 
 .stats {
   overflow: auto;
-  margin-top: 0;
+  margin: 0 auto;
   padding: 0;
+  color: gray;
   a {
     float: left;
     padding: 0 10px;
     border-left: 1px solid;
-    color: gray;
+    color: #dc0000;
     &:first-child {
-      padding-left: 0;
+      /* padding-left: 0; */
       border: 0;
     }
     &:hover {
       text-decoration: none;
-      color: blue;
+      color: #76aeac;
     }
   }
   strong {
