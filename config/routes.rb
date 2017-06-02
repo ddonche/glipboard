@@ -35,7 +35,22 @@ Rails.application.routes.draw do
     resources :logs
   end
   
-  resources :groups, except: :destroy
+  resources :groups do
+    member do
+    end
+    resources :posts do
+      member do
+        put 'like', to: 'posts#upvote'
+        put 'dislike', to: 'posts#downvote'
+      end
+      resources :comments do
+        member do
+          put 'like', to: 'comments#upvote'
+          put 'dislike', to: 'comments#downvote'
+        end
+      end
+    end
+  end
   
   get 'tags/:tag', to: 'tags#show', as: :tag
   match '/users', to: 'users#index', via: 'get'

@@ -13,6 +13,7 @@ class GroupsController < ApplicationController
 
   def show
     @page_title = @group.title
+    @posts = Post.where({ group_id: @group.id }).order('created_at DESC').page(params[:page]).per(20)
   end
   
   def members

@@ -31,6 +31,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :glips
   has_many :articles
+  has_many :posts
   has_many :comments
   has_many :created_groups, class_name: "Group"
   has_many :memberships

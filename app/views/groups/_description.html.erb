@@ -1,0 +1,8 @@
+<%= @group.description %><br />
+  <div class="content-show">
+    <%= @group.users.size %>&nbsp <%= "members" %><br />
+  </div>
+  <% @group.tag_list.map.each do |tag| %>
+    <div class="tags"><%= link_to tag, tag_path(tag) %></div>
+  <% end %>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170601183220) do
+ActiveRecord::Schema.define(version: 20170602021546) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -89,6 +89,19 @@ ActiveRecord::Schema.define(version: 20170601183220) do
     t.index ["article_id", "glip_id"], name: "index_mentorships_on_article_id_and_glip_id", unique: true
     t.index ["article_id"], name: "index_mentorships_on_article_id"
     t.index ["glip_id"], name: "index_mentorships_on_glip_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "slug"
+    t.index ["group_id"], name: "index_posts_on_group_id"
+    t.index ["slug"], name: "index_posts_on_slug", unique: true
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|

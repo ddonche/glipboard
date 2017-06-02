@@ -4,6 +4,9 @@ class Group < ApplicationRecord
   belongs_to :creator, class_name: "User"
   has_many :memberships
   has_many :users, through: :memberships
+  has_many :posts
+  
+  mount_uploader :picture, PictureUploader
   
   validates_presence_of :title, :description, :user_id
   validates_uniqueness_of :title
