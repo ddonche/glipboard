@@ -29,6 +29,9 @@ class User < ApplicationRecord
                                   dependent:   :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :sent_conversations, class_name: 'Conversation', foreign_key: 'sender_id'
+  has_many :received_conversations, class_name: 'Conversation', foreign_key: 'received_id'
+  has_many :messages, dependent: :destroy
   has_many :glips
   has_many :articles
   has_many :posts
