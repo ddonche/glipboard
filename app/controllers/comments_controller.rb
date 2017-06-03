@@ -11,7 +11,6 @@ class CommentsController < ApplicationController
   end
   
   def create
-    @group = Group.friendly.find(params[:id])
     @comment = @commentable.comments.new(allowed_params) 
     @comment.user_id=current_user.id if current_user
     if @comment.save
