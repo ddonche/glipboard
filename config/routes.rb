@@ -68,4 +68,5 @@ Rails.application.routes.draw do
   resources :mentorships,         only: [:create, :destroy]
   resources :messages, only: [:new, :create]
   resources :conversations, only: [:index, :show]
+  match '/conversations', to: 'conversations#index', via: 'get'
 end
