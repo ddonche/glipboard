@@ -4,10 +4,10 @@ class Glip < ApplicationRecord
   
   belongs_to :user, optional: true
   has_many :comments, as: :commentable
-  has_many :mentorships
   has_many :articles, through: :mentorships
   has_many :logs
-  
+  has_many :mentorships
+
   validates_presence_of :title, :content, :completion_criteria
   validate :maximum_amount_of_tags
   
@@ -31,5 +31,20 @@ class Glip < ApplicationRecord
   def maximum_amount_of_tags
     number_of_tags = tag_list_cache_on("tags").uniq.length
     errors.add(:base, "Only 5 tags allowed") if number_of_tags > 5
+  end
+  
+ # Helped by an article
+  def help(article)
+    helped << article
+  end
+  
+  # Unhelped
+  def unhelp(article)
+    helped.delete(article)
+  end
+
+  # Returns true if the current user is following the other user.
+  def helped?(article)
+    helped.include?(article)
   end
 end

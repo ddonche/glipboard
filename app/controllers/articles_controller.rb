@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
                                       :helped, :toggle_feature, :toggle_status]
   before_action :authenticate_user!, except: [:index, :show]
   access all: [:show, :index, :new, :create, :update, :edit, :destroy, :toggle_status], user: {except: [:toggle_feature]}, admin: :all
-
+  
   def index
     @page_title = "Articles"
     if params[:tag]
@@ -24,6 +24,7 @@ class ArticlesController < ApplicationController
     @comments = @commentable.comments
     @comment = Comment.new
     @glips = @article.glips.order("created_at DESC")
+    @mentorship = Mentorship.new
   end
 
   def new

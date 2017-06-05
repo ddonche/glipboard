@@ -1,0 +1,26 @@
+<div class="log-form">
+  <%= form_for(@mentorship) do |f| %>
+    <% if @mentorship.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@mentorship.errors.count, "error") %> prohibited this from being saved:</h2>
+    
+        <ul>
+        <% @mentorship.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <%= label_tag 'Mark This As Helpful' %><br />
+    
+      <%= f.collection_select(:glip_id, current_user.glips, :id, :title, prompt: '--select glip--') %><br />
+    
+    <div><%= f.hidden_field :article_id, :value => @article.id %></div>
+    
+    <p><%= f.submit "Mark As Helpful" %></p>
+  <% end %>
+</div>
+  
+
+
