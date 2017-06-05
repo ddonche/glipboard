@@ -18,6 +18,7 @@
     <div class= "table">
       <% @everything.each do |everything| %>
         <div class="table-row">
+          
           <% if everything.model_name.human == "Glip" %>
             <div class="table-cell">
               <%= link_to like_glip_path(everything), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= number_to_human(everything.get_upvotes.size) %>&nbsp;&nbsp;
@@ -29,7 +30,11 @@
               <%= link_to dislike_article_path(everything), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= number_to_human(everything.get_downvotes.size) %>
             </div>
           <% end %>
-          <div class="table-cell"><i class="fa fa-comments"></i>&nbsp;&nbsp;<%= number_to_human(everything.comments.count) %></div>
+          
+          <div class="table-cell">
+            <i class="fa fa-comments"></i>&nbsp;&nbsp;<%= number_to_human(everything.comments.count) %>
+          </div>
+          
           <div class="table-cell">
             <% if everything.model_name.human == "Glip" %>
               <div class="glip-button">glip</div>
@@ -37,6 +42,7 @@
               <div class="article-button">article</div>
             <% end %>
           </div>
+          
           <div class="table-cell">
             <% if everything.model_name.human == "Glip" %>
               <% if everything.status == "incomplete" %>
@@ -49,14 +55,35 @@
                 <i class="fa fa-trophy"></i>&nbsp;
               <% end %>
             <% end %>
-            <%= link_to everything.title.truncate(40), everything %></div>
-          <div class="table-cell"><%= time_ago_in_words(everything.created_at) %></div>
+            <%= link_to everything.title.truncate(40), everything %>
+          </div>
+          
+          <div class="table-cell">
+            <%= 
+              if everything.user.picture?
+                link_to user_path(everything.user) do
+                  image_tag everything.user.picture, width: 20, alt: 'user avatar'
+                end
+              else
+                link_to user_path(everything.user) do
+                  image_tag 'default_avatar.jpg', width: 20, alt: 'default user avatar'
+                end
+              end
+            %> 
+          </div>
+            
           <div class="table-cell">
             <%= link_to everything.user.username, user_path(everything.user) %>
-                &nbsp;<%= number_to_human(everything.user.reputation) %></div>
+          </div>
+          
           <div class="table-cell"><% everything.tag_list.map.each do |tag| %>
               <div class="tags"><%= link_to tag, tag_path(tag) %></div>
           <% end %></div>
+        
+          <div class="table-cell">
+            <%= time_ago_in_words(everything.created_at) %> ago
+          </div>
+          
         </div>
         
       <% end %>

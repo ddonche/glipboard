@@ -5,6 +5,10 @@ class RegistrationsController < Devise::RegistrationsController
     :user
   end
   
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+  
   wrap_parameters :user, include: [:username, :email, :password, :password_confirmation, :picture,
                                   :bio, :website, :city, :country]
 

@@ -29,14 +29,23 @@
               <% end %>
               <%= link_to article.title.truncate(40), article %>
             </div>
-          
+            
             <div class="table-cell">
-              <%= time_ago_in_words(article.created_at) %> ago
+              <%= 
+                if article.user.picture?
+                  link_to user_path(article.user) do
+                    image_tag article.user.picture, width: 20, alt: 'user avatar'
+                  end
+                else
+                  link_to user_path(article.user) do
+                    image_tag 'default_avatar.jpg', width: 20, alt: 'default user avatar'
+                  end
+                end
+              %> 
             </div>
             
             <div class="table-cell">
               <%= link_to article.user.username, user_path(article.user) %>
-                &nbsp;<%= number_to_human(article.user.reputation) %>
             </div>
             
             <div class="table-cell">
@@ -46,6 +55,11 @@
                 </div>
               <% end %>
             </div>
+            
+            <div class="table-cell">
+              <%= time_ago_in_words(article.created_at) %> ago
+            </div>
+            
           </div>
         
       <% end %>

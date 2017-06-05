@@ -1,8 +1,22 @@
-<div>
-  Chatting with <%= conversation.with(current_user).username %>
-  <br>
-  <em><%= conversation.messages.last.body.truncate(50) %></em>
-  <br>
-  <%= link_to 'View conversation', conversation_path(conversation) %>
-  <hr>
+<div class="log-form">
+    <%= 
+      if conversation.with(current_user).picture?
+        link_to user_path(conversation.with(current_user)) do
+          image_tag conversation.with(current_user).picture, width: 20, alt: 'user avatar'
+        end
+      else
+        link_to user_path(conversation.with(current_user)) do
+          image_tag 'default_avatar.jpg', width: 20, alt: 'default user avatar'
+        end
+      end
+    %>  
+    <%= link_to conversation.with(current_user).username, conversation_path(conversation) %><br />
+    <em><%= conversation.messages.last.body.truncate(50) %></em> 
+    <div class="small">- <%= time_ago_in_words(conversation.messages.last.created_at) %> ago 
+      <% if conversation.messages.last.user == current_user %>
+        by you
+      <% else %>
+        by them
+      <% end %>
+    </div>
 </div>

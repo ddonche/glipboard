@@ -1,10 +1,10 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_conversation, except: [:index]
+  before_action :set_conversations, only: [:index, :show]
   before_action :check_participating!, except: [:index]
 
   def index
-    @conversations = Conversation.participating(current_user).order('updated_at DESC')
   end
 
   def show
@@ -15,6 +15,10 @@ class ConversationsController < ApplicationController
 
   def set_conversation
     @conversation = Conversation.find_by(id: params[:id])
+  end
+  
+  def set_conversations
+    @conversations = Conversation.participating(current_user).order('updated_at DESC')
   end
 
   def check_participating!
