@@ -53,6 +53,7 @@ Rails.application.routes.draw do
   end
   
   get 'tags/:tag', to: 'tags#show', as: :tag
+  get 'tags', to: 'tags#index'
   match '/users', to: 'users#index', via: 'get'
   match '/users/:id', to: 'users#show', via: 'get'
   match '/featured', to: 'articles#featured', via: 'get'

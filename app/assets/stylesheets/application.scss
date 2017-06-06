@@ -95,10 +95,18 @@ html, body {
 }
 
 .avatar-show {
-  width: 71px;
-  height: 65px;
+  width: 100px;
+  height: 130px;
   margin-top: 6px;
+  margin-bottom: 0;
   float: left;
+}
+
+#small-follow {
+  width: 71px;
+  float: left;
+  font-size: .8em;
+  text-align: center;
 }
 
 .avatar-show-details {
@@ -110,9 +118,9 @@ html, body {
 
 .details-show {
   width: 100%;
-  height: 85px;
+  height: 130px;
   margin-top: 6px;
-  margin-left: 76px;
+  margin-left: 85px;
   font-size: 14px;
   line-height: 2em;
   color: #646661;
@@ -178,22 +186,6 @@ html, body {
   vertical-align: middle;
   float:left;
   position: relative;
-}
-
-.tags {
-  padding: .4em .5em;
-  display: inline-block;
-  margin: 2px 2px 2px 0;
-  font-size: 10px;
-  line-height: 1;
-  a {
-    color: #000;
-  }
-  white-space: nowrap;
-  text-decoration: none;
-  text-align: center;
-  transition: all .15s ease-in-out;
-  border: 1px solid #000;
 }
 
 .user-welcome {

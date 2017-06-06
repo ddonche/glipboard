@@ -1,57 +1,62 @@
 <div id ="index-nav-container">
   <div class = "table-row">
     <div class="table-cell">Glipboard Users</div>
+    <div class="table-cell"><div class="index-top-buttons"><div class="user-button"><%= link_to "all users", users_path %></div></div></div>
+    <div class="table-cell"><div class="index-top-buttons"><div class="user-button"><%= link_to "most reputable", users_path %></div></div></div>
   </div>
 </div>
+
 
 <div class ="pagination-container">
   <%= paginate @users %>
 </div>
 
-<div id ="index-container">
-  <div class= "logs">
-    <div class= "table">
-        <% @users.each do |user| %>
+  <div class="left-column">
+
+    <div id ="index-container">
+      <div class= "logs">
+        <div class= "table">
+            <% @users.each do |user| %>
+                  
+              <div class="table-row">
+                <div class="table-cell">
+                  <%= 
+                  if user.picture?
+                    image_tag user.picture, width: 20, alt: 'user avatar'
+                  else
+                    image_tag 'default_avatar.jpg', width: 20, alt: 'default user avatar'
+                  end
+                  %>  
+                </div>
+                
+                <div class="table-cell">
+                  <%= link_to user.username, user %>&nbsp;<%= user.reputation %> | <%= link_to 'message', new_message_path(receiver_id: user.id) %>
+                </div>
+                
+                <div class="table-cell">
+                  Member since <%= time_ago_in_words(user.created_at) %> ago
+                </div>
               
-          <div class="table-row">
-            <div class="table-cell">
-              <%= 
-              if user.picture?
-                image_tag user.picture, width: 20, alt: 'user avatar'
-              else
-                image_tag 'default_avatar.jpg', width: 20, alt: 'default user avatar'
-              end
-              %>  
-            </div>
+                <div class="table-cell">
+                  <%= user.glips.count %> Glips
+                </div>
+                
+                <div class="table-cell">
+                  <%= user.articles.count %> Articles
+                </div>
+                
+                <div class="table-cell">
+                  <%= user.memberships.count %> Groups
+                </div>
+    
+              </div>
             
-            <div class="table-cell">
-              <%= link_to user.username, user %>&nbsp;<%= user.reputation %> | <%= link_to 'message', new_message_path(receiver_id: user.id) %>
-            </div>
-            
-            <div class="table-cell">
-              Member since <%= time_ago_in_words(user.created_at) %> ago
-            </div>
+          <% end %>
           
-            <div class="table-cell">
-              <%= user.glips.count %> Glips
-            </div>
-            
-            <div class="table-cell">
-              <%= user.articles.count %> Articles
-            </div>
-            
-            <div class="table-cell">
-              <%= user.memberships.count %> Groups
-            </div>
-
-          </div>
-        
-      <% end %>
-      
+        </div>
+      </div>
     </div>
+  <div class ="pagination-container">
+    <%= paginate @users %>
   </div>
-</div>
-
-<div class ="pagination-container">
-  <%= paginate @users %>
-</div>
+  </div>

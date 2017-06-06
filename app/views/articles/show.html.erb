@@ -24,14 +24,14 @@
         <%= 
           if @article.user.picture?
             link_to user_path(@article.user) do
-              image_tag @article.user.picture, width: 65, alt: 'user avatar'
+              image_tag @article.user.picture, width: 84, alt: 'user avatar'
             end
           else
             link_to user_path(@article.user) do
-              image_tag 'default_avatar.jpg', width: 65, alt: 'default user avatar'
+              image_tag 'default_avatar.jpg', width: 84, alt: 'default user avatar'
             end
           end
-        %>      
+        %><div id="small-follow"><%= render 'users/follow_form' if user_signed_in? %></div>
       </div>
 
       <div class="details-show">
@@ -47,12 +47,13 @@
             <% end %>
           <% end %>
           <br />
+          <% @article.tag_list.map.each do |tag| %>
+            <div class="tags"><%= link_to tag, tag_path(tag) %></div>
+          <% end %><br />
           <%= link_to like_article_path(@article), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= @article.get_upvotes.size %>&nbsp;&nbsp;
           <%= link_to dislike_article_path(@article), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= @article.get_downvotes.size %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <i class="fa fa-comments"></i>&nbsp;&nbsp;<%= @article.comments.count %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <% @article.tag_list.map.each do |tag| %>
-            <div class="tags"><%= link_to tag, tag_path(tag) %></div>
-          <% end %>
+          <i class="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;&nbsp;Helpful to <%= @article.glips.size %> Glips
       </div>
       
       <div class="content-show">

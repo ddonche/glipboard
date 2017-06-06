@@ -20,6 +20,7 @@ class ArticlesController < ApplicationController
 
   def show
     @page_title = @article.title
+    @user = @article.user
     @commentable = @article
     @comments = @commentable.comments
     @comment = Comment.new

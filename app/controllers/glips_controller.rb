@@ -13,6 +13,7 @@ class GlipsController < ApplicationController
 
   def show
     @page_title = @glip.title
+    @user = @glip.user
     @commentable = @glip
     @comments = @commentable.comments
     @comment = Comment.new
