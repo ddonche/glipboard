@@ -1,9 +1,9 @@
-<%= form_for [@group, @commentable, @comment] do |f| %>
-  <% if @comment.errors.any? %>
+<%= form_for [@group, @post, @response] do |f| %>
+  <% if @response.errors.any? %>
       <div class="error_messages">
         <h3>Please correct the following errors.</h3>
         <ul>
-        <% @comment.errors.full_messages.each do |msg| %>
+        <% @response.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
         </ul>
@@ -14,7 +14,10 @@
       <%= f.text_area :content, rows: 3 %>
     </div>
     
+    <div><%= f.hidden_field :post_id, :value => @post %></div>
+    <div><%= f.hidden_field :group_id, :value => @group %></div>
+    
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit 'Reply' %>
     </div>
 <% end %>

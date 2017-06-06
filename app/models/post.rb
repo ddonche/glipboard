@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :group
   belongs_to :user
-  has_many :comments, as: :commentable
+  has_many :responses
   
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged

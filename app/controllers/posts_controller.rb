@@ -10,9 +10,8 @@ class PostsController < ApplicationController
   def show
     @page_title = @post.title
     @user = @post.user
-    @commentable = @post
-    @comments = @commentable.comments
-    @comment = Comment.new
+    @responses = @post.responses
+    @response = Response.new
     @group = Group.friendly.find(params[:group_id])
   end
 
