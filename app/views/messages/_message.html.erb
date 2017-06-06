@@ -1,3 +1,6 @@
-<p><%= message.body %></p>
-  by <strong><%= message.user.username %></strong> <%= time_ago_in_words(message.created_at) %> ago</p>
-<hr>
+<div class="log-form">
+  <%= markdown message.body %><br />
+  <div class="date">
+    by <strong><%= link_to message.user.username, user_path(message.user) %></strong> <%= time_ago_in_words(message.created_at) %> ago
+  </div>
+</div>

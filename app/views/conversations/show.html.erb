@@ -25,13 +25,12 @@
       </div>
     
     <div class="content-show">
+      <div id="conversation-body">
         <%= render @conversation.messages %>
-    </div>
-    
-    <div class="log-form">
+      </div><br />
       <%= form_for @message do |f| %>
         <%= hidden_field_tag 'conversation_id', @conversation.id %>
-        <%= f.label :body %>
+        <%= f.label 'Send message' %>
         <%= f.text_area :body %>
     
         <%= f.submit "Send" %>
@@ -43,6 +42,7 @@
   <div class="right-column">
     <div class= "side-box-clear">
       <%= render @conversations %>
+      <div class="small"><%= link_to_previous_page @conversations, 'Previous' %><%= link_to_next_page @conversations, 'Next' %></div>
     </div>
   </div>
 </div>
