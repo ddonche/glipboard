@@ -1,5 +1,15 @@
+<div class="content-center">
+  <%= link_to group_path(@group) do %>
+    <%= if @group.picture?
+      image_tag @group.picture, width: 160, alt: 'group image' 
+    else
+      image_tag 'default_avatar.jpg', width: 160, alt: 'group image'
+    end %>
+  <% end %>
+</div>
+
 <%= @group.description %><br />
-  <div class="content-show">
+  <div class="side-content">
     <%= @group.users.size %>&nbsp <%= "members" %><br />
   </div>
   <% @group.tag_list.map.each do |tag| %>

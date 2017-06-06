@@ -23,6 +23,14 @@
     <%= f.text_field :tag_list, placeholder: 'Add up to 5 tags (separated by commas)', value: @group.tag_list.join(", ") %>
     <div class="small"><em>Example: fitness, weight loss, marathon</em></div><br />
     
+    <fieldset>
+      <legend>Image</legend>
+      <%= f.label :picture do %>
+        <%= f.file_field :picture %>
+        <%= f.hidden_field :picture_cache %>
+      <% end %>
+    </fieldset>
+    
     <p><%= f.submit %></p>
   <% end %>
 </div>

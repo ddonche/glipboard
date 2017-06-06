@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170604045041) do
+ActiveRecord::Schema.define(version: 20170606035328) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20170604045041) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "slug"
+    t.string   "picture"
     t.index ["slug"], name: "index_groups_on_slug", unique: true
     t.index ["title"], name: "index_groups_on_title", unique: true
     t.index ["user_id"], name: "index_groups_on_user_id"
@@ -186,6 +187,7 @@ ActiveRecord::Schema.define(version: 20170604045041) do
     t.string   "website"
     t.string   "country"
     t.string   "city"
+    t.string   "thumbnail"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

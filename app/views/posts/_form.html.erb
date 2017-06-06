@@ -20,8 +20,9 @@
     <div class="helper"><div class="small">#creates a heading&nbsp;&nbsp;&nbsp;&nbsp;<em>_creates italics_</em>&nbsp;&nbsp;&nbsp;&nbsp;<strong>**creates bold**</strong> 
     &nbsp;&nbsp;&nbsp;&nbsp;```backtick to escape code```&nbsp;&nbsp;&nbsp;&nbsp;use a > to quote&nbsp;&nbsp;&nbsp;&nbsp;get formatting help</div></div><br />
 
+    <div><%= f.hidden_field :group_id, :value => @group %></div>
     
-    <p><%= f.submit %></p>
+    <p><%= f.submit 'Submit Post' %></p>
   <% end %>
 </div>
   

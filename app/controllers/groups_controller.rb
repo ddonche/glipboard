@@ -14,6 +14,7 @@ class GroupsController < ApplicationController
   def show
     @page_title = @group.title
     @posts = Post.where({ group_id: @group.id }).order('created_at DESC').page(params[:page]).per(20)
+    @post = Post.new
   end
   
   def members
@@ -54,6 +55,6 @@ class GroupsController < ApplicationController
     end
 
     def group_params
-      params.require(:group).permit(:title, :description, :user_id, :tag_list)
+      params.require(:group).permit(:title, :description, :user_id, :tag_list, :picture, :picture_cache, :remove_picture)
     end
 end

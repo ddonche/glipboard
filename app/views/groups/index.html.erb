@@ -14,6 +14,13 @@
         <% @groups.each do |group| %>
               
           <div class="table-row">
+            <div class="table-cell">
+              <%= if group.picture?
+                image_tag group.picture, width: 30, alt: 'group image' 
+              else
+                image_tag 'default_avatar.jpg', width: 30, alt: 'group image'
+              end %>
+            </div>
           
             <div class="table-cell">
               <%= link_to group.title, group %>

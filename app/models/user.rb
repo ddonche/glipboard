@@ -14,6 +14,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
          
   mount_uploader :picture, PictureUploader
+  mount_uploader :thumbnail, PictureUploader
+  
   acts_as_voter
   extend FriendlyId
   friendly_id :username, use: :slugged

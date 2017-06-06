@@ -31,4 +31,8 @@ class Group < ApplicationRecord
   def set_membership
     Membership.create!(user_id: user_id, group_id: id)
   end
+  
+  def picture_size_validation
+    errors[:picture] << "should be less than 500KB" if picture.size > 0.5.megabytes
+  end
 end

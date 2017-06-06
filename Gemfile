@@ -30,6 +30,8 @@ gem 'coderay', '~> 1.1', '>= 1.1.1'
 gem 'voltaire', '~> 0.3.0'
 gem 'petergate', '~> 1.7', '>= 1.7.5'
 gem 'faker', '~> 1.7', '>= 1.7.3'
+gem 'carrierwave-aws', '~> 1.1'
+gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'
 
 group :development, :test do
   gem 'byebug', platform: :mri

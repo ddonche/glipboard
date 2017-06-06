@@ -9,6 +9,7 @@ class PostsController < ApplicationController
 
   def show
     @page_title = @post.title
+    @user = @post.user
     @commentable = @post
     @comments = @commentable.comments
     @comment = Comment.new
@@ -23,11 +24,11 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(glip_params)
+    @post = current_user.posts.build(post_params)
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Your post was successful.' }
+        format.html { redirect_to group_post_path(@group, @post), notice: 'Your post was successful.' }
       else
         format.html { render :new }
       end
