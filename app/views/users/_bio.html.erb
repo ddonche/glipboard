@@ -1,0 +1,69 @@
+<div class="side-box">
+  <div class="content-center">
+    <%= 
+    if @user.picture?
+      image_tag @user.picture, width: 160, alt: 'user avatar'
+    else
+      image_tag 'default_avatar.jpg', width: 160, alt: 'default user avatar'
+    end
+    %>
+    
+    <div class="post-title">
+      <%= @user.username %>
+    </div>
+    
+    <div class="post-content">
+      <% if current_user.id == @user.id %>
+        <%= link_to "Edit Profile", edit_user_registration_path(@user) %>
+      <% else %>
+        <%= link_to 'message', new_message_path(receiver_id: @user.id) %>
+      <% end %>
+    </div>
+    
+    <section class="stats">
+      <%= render 'shared/stats' %>
+      <%= render 'follow_form' if user_signed_in? %>
+    </section>
+          
+  </div>
+</div>
+<br />
+<div class="side-box">
+  <div class="side-content">
+    
+    <% unless @user.bio.nil? %>
+      <%= @user.bio %><br /><br />
+    <% end %>
+  
+    <% unless @user.website.nil? %>
+      <div class="table-row">
+        <div class="tiny-table-cell">
+          <i class="fa fa-globe" aria-hidden="true"></i>
+        </div>
+        <div class="tiny-table-cell">
+          <%= link_to @user.website, @user.website %>
+        </div>
+      </div>
+    <% end %>
+    
+    <% unless @user.city.nil? %>
+      <div class="table-row">
+        <div class="tiny-table-cell">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+        </div>
+        <div class="tiny-table-cell">
+          <%= @user.city %>
+        </div>
+      </div>
+    <% end %>
+  
+    <% unless @user.country.nil? %>
+        <div class="tiny-table-cell">
+          <i class="fa fa-flag" aria-hidden="true"></i>
+        </div>
+        <div class="tiny-table-cell">
+          <%= @user.country %>
+        </div>
+    <% end %>
+  </div>
+</div>
