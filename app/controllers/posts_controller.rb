@@ -17,15 +17,15 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = current_user.posts.build
+    @post = @group.posts.new
   end
 
   def edit
   end
 
   def create
-    @post = current_user.posts.build(post_params)
-
+    @post = @group.posts.new(post_params)
+    @post.user_id = current_user.id if current_user
     respond_to do |format|
       if @post.save
         format.html { redirect_to group_post_path(@group, @post), notice: 'Your post was successful.' }
