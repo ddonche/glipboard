@@ -33,8 +33,19 @@
           <%= f.file_field :picture %>
           <%= f.hidden_field :picture_cache %>
         <% end %>
+        <div class="small"><em>MAIN GROUP IMAGE: for best results, upload an image of the same height and width.</em></div><br />
+        
+        <%= f.label :icon do %>
+          <%= f.file_field :icon %>
+        <% end %>
+        <div class="small"><em>GROUP ICON: for best results, upload an image of the same height and width.</em></div><br />
+        
+        <%= f.label :banner do %>
+          <%= f.file_field :banner %>
+        <% end %>
+        <div class="small"><em>GROUP BANNER: This image must be 950px wide by 80px tall!</em></div><br />
       </fieldset>
-      
+
       <p><%= f.submit %></p>
     <% end %>
   <% else %>

@@ -7,6 +7,8 @@ class Group < ApplicationRecord
   has_many :posts
   
   mount_uploader :picture, PictureUploader
+  mount_uploader :icon, IconUploader
+  mount_uploader :banner, BannerUploader
   
   validates_presence_of :title, :description, :user_id
   validates_uniqueness_of :title

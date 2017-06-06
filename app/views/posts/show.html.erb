@@ -1,3 +1,4 @@
+<%= render 'groups/header' %>
 <div id="content-wrap">
   <div class="left-column">
     <%= render 'groups/title' %>
@@ -30,7 +31,7 @@
       </div>
       
       <div class="content-show">
-          <%= @post.content %>
+          <%= markdown @post.content %>
       </div>
       
       <div class="content-show">
@@ -46,6 +47,7 @@
   <div class="right-column">
     <div class="log-box">
       <%= render 'groups/description' %>
+    </div>
   </div>
 
 </div>
