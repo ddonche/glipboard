@@ -19,7 +19,7 @@
 </a>
 <a href="#">
   <strong id="glips" class="stat">
-    <%= @user.glips.count %>*
+    <%= @user.glips.where({ status: "complete" }).count %>*
   </strong>
   glips
 </a><br /><br />

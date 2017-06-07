@@ -58,12 +58,24 @@
     <% end %>
   
     <% unless @user.country.nil? %>
+      <div class="table-row">
         <div class="tiny-table-cell">
           <i class="fa fa-flag" aria-hidden="true"></i>
         </div>
         <div class="tiny-table-cell">
           <%= @user.country %>
         </div>
+      </div>
     <% end %>
+    
+      <div class="table-row">
+        <div class="tiny-table-cell">
+          <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+        </div>
+        <div class="tiny-table-cell">
+          Member for <%= time_ago_in_words(@user.created_at) %>
+        </div>
+      </div>
+      
   </div>
 </div>
