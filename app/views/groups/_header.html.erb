@@ -6,9 +6,11 @@
   end %>
 </div>
 <div class="group-icon">
-  <%= if @group.icon?
-    image_tag @group.icon, width: 80, alt: 'group icon' 
-  else
-    image_tag 'default_avatar.jpg', width: 80, alt: 'group icon'
-  end %>
+  <%= link_to group_path(@group) do %>
+    <%= if @group.icon?
+      image_tag @group.icon, width: 80, alt: 'group icon' 
+    else
+      image_tag 'default_avatar.jpg', width: 80, alt: 'group icon'
+    end %>
+  <% end %>
 </div>
