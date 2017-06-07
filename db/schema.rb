@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170606211246) do
+ActiveRecord::Schema.define(version: 20170607211002) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -23,6 +23,18 @@ ActiveRecord::Schema.define(version: 20170606211246) do
     t.integer  "glip_id"
     t.integer  "feature",    default: 0
     t.index ["slug"], name: "index_articles_on_slug", unique: true
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.text     "title"
+    t.integer  "group_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "slug"
+    t.string   "icon"
+    t.text     "description"
+    t.index ["group_id"], name: "index_categories_on_group_id"
+    t.index ["slug"], name: "index_categories_on_slug", unique: true
   end
 
   create_table "comments", force: :cascade do |t|
@@ -120,9 +132,11 @@ ActiveRecord::Schema.define(version: 20170606211246) do
     t.text     "content"
     t.integer  "group_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "slug"
+    t.integer  "category_id"
+    t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["group_id"], name: "index_posts_on_group_id"
     t.index ["slug"], name: "index_posts_on_slug", unique: true
     t.index ["user_id"], name: "index_posts_on_user_id"

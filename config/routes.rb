@@ -50,6 +50,7 @@ Rails.application.routes.draw do
         end
       end
     end
+    resources :categories
   end
   
   get 'tags/:tag', to: 'tags#show', as: :tag

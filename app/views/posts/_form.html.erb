@@ -1,4 +1,5 @@
 <div class="log-form">
+  <div class="small"><%= link_to "hide", group_path(@group) %><br /></div>
     
   <%= simple_form_for [@group, @post] do |f| %>
   
@@ -16,11 +17,13 @@
     
     <%= f.text_field :title, placeholder: 'Title' %><br />
     
+    <%= f.collection_select(:category_id, @group.categories, :id, :title, prompt: '--select category--') %><br />
+    
     <%= f.text_area :content, placeholder: 'Content', rows: 6 %>
     <div class="helper"><div class="small">#creates a heading&nbsp;&nbsp;&nbsp;&nbsp;<em>_creates italics_</em>&nbsp;&nbsp;&nbsp;&nbsp;<strong>**creates bold**</strong> 
     &nbsp;&nbsp;&nbsp;&nbsp;```backtick to escape code```&nbsp;&nbsp;&nbsp;&nbsp;use a > to quote&nbsp;&nbsp;&nbsp;&nbsp;get formatting help</div></div><br />
 
-    <div><%= f.hidden_field :group_id, :value => @group %></div>
+    <div><%= f.hidden_field :group_id, :value => @group_d %></div>
     
     <p><%= f.submit 'Submit Post' %></p>
   <% end %>

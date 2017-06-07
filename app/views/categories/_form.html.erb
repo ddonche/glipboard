@@ -1,0 +1,35 @@
+<div class="log-form">
+    
+  <%= simple_form_for [@group, @category] do |f| %>
+      <%= f.error_notification %>
+  
+    <% if @category.errors.any? %>
+      <div class="alert">
+        <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
+     
+        <ul>
+        <% @category.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <%= f.text_field :title, placeholder: 'Name' %><br />
+    
+    <%= f.text_area :description, placeholder: 'Description', rows: 3, :maxlength => 200 %><br />
+    <div class="small">A basic description of this category. 200 characters max.</div><br />
+    
+    <fieldset>
+      <legend>Icon</legend>
+      <br/>
+        <label class="upload-button">Upload Category Icon<%= f.file_field :icon, style: 'display:none;' %>
+        </label>
+      <div class="small"><br/><em>Upload an image of the same height and width, no more than 60px x 60px.</em></div>
+    </fieldset>
+
+    <div><%= f.hidden_field :group_id, :value => @group %></div>
+    
+    <p><%= f.submit 'Submit' %></p>
+  <% end %>
+</div>

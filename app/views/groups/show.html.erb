@@ -3,8 +3,35 @@
   <div class="left-column">
     <%= render 'title' %>
       
-      <em><i class="fa fa-heartbeat" aria-hidden="true"></i>&nbsp;&nbsp;<%= @group.posts.count %> Posts</em><br />
-      <%= render 'posts/form' %>
+      <div class="category-box">
+        <div class="table-row">
+          <% @categories.each do |category| %>
+            <div class="category-items">
+              <div class="tiny-table-cell">
+                <% if !category.icon.nil? %><%= image_tag category.icon, size: '25' %><% end %>
+              </div>
+              
+              <div class="tiny-table-cell">
+                <%= link_to category.title, root_path %>
+              </div>
+            </div>
+          <% end %>
+        
+        <% if (user_signed_in? && (current_user.id == @group.user_id)) %>
+          <%= link_to new_group_category_path(@group), :remote => true do %><div class="float-right"><i class="fa fa-plus-circle"></i></div><% end %>
+        <% end %>
+        
+        </div>
+
+      </div>
+      
+      <div id="categories-form">
+        &nbsp;
+      </div>
+      
+      <div id="posts-form">
+        <%= link_to "New Post", new_group_post_path(@group), :remote => true %>
+      </div><br />
 
       <div class="content">
         <% @posts.each do |post| %>

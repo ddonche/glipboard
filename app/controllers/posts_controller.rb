@@ -13,10 +13,14 @@ class PostsController < ApplicationController
     @responses = @post.responses
     @response = Response.new
     @group = Group.friendly.find(params[:group_id])
+    @category = @post.category
   end
 
   def new
     @post = @group.posts.new
+    respond_to do |format|               
+      format.js
+    end
   end
 
   def edit
@@ -79,6 +83,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :content, :user_id, :group_id)
+      params.require(:post).permit(:title, :content, :category_id, :user_id, :group_id)
     end
 end

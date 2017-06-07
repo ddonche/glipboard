@@ -1,11 +1,12 @@
 class Group < ApplicationRecord
   after_create :set_membership
-  
+
   belongs_to :creator, class_name: "User"
   has_many :memberships
   has_many :users, through: :memberships
   has_many :posts
-  
+  has_many :categories
+
   mount_uploader :picture, PictureUploader
   mount_uploader :icon, IconUploader
   mount_uploader :banner, BannerUploader

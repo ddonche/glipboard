@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :group
   belongs_to :user
   has_many :responses
+  belongs_to :category
   
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged

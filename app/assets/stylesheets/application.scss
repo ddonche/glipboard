@@ -10,6 +10,10 @@ html, body {
   margin: 0;
 }
 
+.float-right {
+  float: right;
+}
+
 #index-container {
   width: 90%;
   margin: 0 auto 10px auto;
@@ -443,134 +447,31 @@ input[type=button], input[type=submit], input[type=reset] {
     border: 2px solid #d20001;
 }
 
-
-* { box-sizing: border-box; }
-
-.test-container {
-  width: 666px;
-  font-family: helvetica;
-  position: absolute;
-  font-size: .85em;
-  margin: 0px 16px;
-  display: inline-block;
-  vertical-align: top;
-  overflow: hidden;
+/*CATEGORY STYLING*/
+.category-box {
+  height: 30px;
+  margin-top: 0;
 }
 
-.test-container-left-column {
-  width: 10%;
-  margin: 0px;
-  height: 100%;
-  vertical-align: top;
+#categories-form {
+  font-size: .8em;
+  margin: 5px 0;
   float: left;
 }
 
-.test-container-right{
-  width: 28%;
-  margin: 0 0;
-  background-color: #666;
-  overflow: hidden;
-  display: inline-block;
-  vertical-align: top;
-}
-
-.test-container-right-log-form{
-  margin: 0 0;
-  overflow: hidden;
-  display: inline-block;
-  vertical-align: top;
-}
-
-.test-container-right-header {
-  color: white;
-  font-size: 11px;
-  font-weight: 700;
-  margin-top: 15px;
-  margin-left: 15px;
-}
-
-.test-container-right-footer {
-  color: white;
-  font-size: 11px;
-  font-weight: 700;
-  font-style: italic;
-  text-align: center;
-  margin-bottom: 15px;
-  margin-right: 15px;
-  margin-left: 15px;
-}
-
-.test-header-text {
-  font-weight: bold;
-  font-size: .65em;
-  font-family: museo-sans, sans-serif;
-}
-
-.test-header-left-top {
-  border-top: 1px solid #DC0000;
-  border-right: 1px solid #DC0000;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 6px;
+.category-items {
+  font-size: .8em;
   float: left;
-  width: 63%;
+  margin-right: 30px;
+  vertical-align: middle;
 }
 
-.test-header-middle-top {
-  border-top: 1px solid #DC0000;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 6px;
-  width: 12%;
-  float: left;
-  clear: right;
+#posts-form {
+  clear: left;
+  margin-top: 6px;
 }
 
-.test-header-right-top {
-  border-top: 1px solid #DC0000;
-  border-left: 1px solid #DC0000;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 6px;
-  width: 10%;
-  float: left;
-}
-
-.test-header-left-bottom {
-  border-top: 1px solid #DC0000;
-  border-right: 1px solid #DC0000;
-  border-bottom: 1px solid #DC0000;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 6px;
-  margin-bottom: 6px;
-  width: 12%;
-  float: left;
-}
-
-.test-header-middle-bottom {
-  border-top: 1px solid #DC0000;
-  border-bottom: 1px solid #DC0000;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 6px;
-  margin-bottom: 6px;
-  width: 10%;
-  float: left;
-}
-
-.test-header-right-bottom {
-  border-top: 1px solid #DC0000;
-  border-left: 1px solid #DC0000;
-  border-bottom: 1px solid #DC0000;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 6px;
-  margin-bottom: 6px;
-  width: 63%;
-  float: left;
-}
-
+/*CODE STYLING*/
 pre {
 border: dashed 1px #749a6d;
 padding: 1em 1.5em 1em 1em;

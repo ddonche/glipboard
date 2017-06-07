@@ -16,6 +16,7 @@ class GroupsController < ApplicationController
     @page_title = @group.title
     @posts = Post.where({ group_id: @group.id }).order('created_at DESC').page(params[:page]).per(20)
     @post = Post.new
+    @categories = @group.categories
   end
   
   def members
