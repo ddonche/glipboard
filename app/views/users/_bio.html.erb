@@ -13,10 +13,12 @@
     </div>
     
     <div class="post-content">
-      <% if current_user.id == @user.id %>
-        <%= link_to "Edit Profile", edit_user_registration_path(@user) %>
-      <% else %>
-        <%= link_to 'message', new_message_path(receiver_id: @user.id) %>
+      <% if user_signed_in? %>
+        <% if current_user.id == @user.id %>
+          <%= link_to "Edit Profile", edit_user_registration_path(@user) %>
+        <% else %>
+          <%= link_to 'message', new_message_path(receiver_id: @user.id) %>
+        <% end %>
       <% end %>
     </div>
     

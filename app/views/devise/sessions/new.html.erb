@@ -1,16 +1,32 @@
-<h2>Log in</h2>
-
-<div class="log-form">
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-      <%= f.email_field :email, autofocus: true, placeholder: 'Email address' %><br />
-      <%= f.password_field :password, placeholder: 'Password', autocomplete: "off" %>
-      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-
-  
-    <div class="form-actions">
-      <%= f.button :submit, "Log in" %>
+<div id="content-wrap">
+  <div class="left-column">
+    <div class="title-box">
+      Sign In
     </div>
-  <% end %>
+  
+    <div class="log-form">
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    
+          <%= f.email_field :email, autofocus: true, placeholder: 'Email address' %><br />
+          <%= f.password_field :password, placeholder: 'Password', autocomplete: "off" %><br /><br />
+          
+          <% if devise_mapping.rememberable? %>
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+          <% end %><br />
+          
+          <%= f.button :submit, "Log in" %>
+          
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="right-column">
+    <div class="side-box"> 
+      <div class="side-content">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
 </div>
-<%= render "devise/shared/links" %>
+

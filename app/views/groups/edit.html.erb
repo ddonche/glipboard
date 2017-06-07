@@ -1,58 +1,69 @@
 <div id="content-wrap">
-<% if current_user.id == @group.user_id || current_user.has_roles?(:admin) %>
-  <h2>Editing <%= @group.title %></h2>
+  <div class="left-column">
+    <% if current_user.id == @group.user_id || current_user.has_roles?(:admin) %>
+        
+      <div class="title-box">
+        Editing <%= @group.title %>
+      </div>
   
-  <div class="log-form">
-      
-    <%= simple_form_for @group do |f| %>
-    
-      <% if @group.errors.any? %>
-        <div class="alert">
-          <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
-       
-          <ul>
-          <% @group.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
+      <div class="log-form">
+          
+        <%= simple_form_for @group do |f| %>
+          
+          <% if @group.errors.any? %>
+            <div class="alert">
+              <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+           
+              <ul>
+              <% @group.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
           <% end %>
-          </ul>
-        </div>
-      <% end %>
-      
-      <% if logged_in?(:admin) %>
-        <%= f.text_field :title, placeholder: 'Group Name' %><br />
-      <% end %>
-      
-      <%= f.text_area :description, placeholder: 'Description', rows: 3, :maxlength => 300 %><br />
-      
-      <%= f.text_field :tag_list, placeholder: 'Add up to 5 tags (separated by commas)', value: @group.tag_list.join(", ") %>
-      <div class="small"><em>Example: fitness, weight loss, marathon</em></div><br />
-      
-      <fieldset>
-        <legend>Image</legend>
-        <%= f.label :picture do %>
-          <%= f.file_field :picture %>
-          <%= f.hidden_field :picture_cache %>
+            
+          <% if logged_in?(:admin) %>
+            <%= f.text_field :title, placeholder: 'Group Name' %><br />
+          <% end %>
+          
+          <%= f.text_area :description, placeholder: 'Description', rows: 3, :maxlength => 300 %><br />
+          
+          <%= f.text_field :tag_list, placeholder: 'Add up to 5 tags (separated by commas)', value: @group.tag_list.join(", ") %>
+          <div class="small"><em>Example: fitness, weight loss, marathon</em></div><br />
+          
+          <fieldset>
+            <legend>Image</legend>
+              <br />
+              <label class="upload-button">Upload Group Image<%= f.file_field :picture, style: 'display:none;' %>
+              </label>
+              <div class="small"><br/><em>For best results, upload an image of the same height and width.</em></div>
+    
+            <br />
+            <label class="upload-button">Upload Icon Image<%= f.file_field :icon, style: 'display:none;' %>
+            </label>
+            <div class="small"><br/><em>For best results, upload an image of the same height and width.</em></div>
+            
+            <br />
+            <label class="upload-button">Upload Banner Image<%= f.file_field :banner, style: 'display:none;' %>
+            </label>
+            <div class="small"><br/><em>This image must be 950px wide by 80px tall!</em></div>
+          </fieldset>
+    
+          <%= f.submit %>
+          
         <% end %>
-        <div class="small"><em>MAIN GROUP IMAGE: for best results, upload an image of the same height and width.</em></div><br />
-        
-        <%= f.label :icon do %>
-          <%= f.file_field :icon %>
-        <% end %>
-        <div class="small"><em>GROUP ICON: for best results, upload an image of the same height and width.</em></div><br />
-        
-        <%= f.label :banner do %>
-          <%= f.file_field :banner %>
-        <% end %>
-        <div class="small"><em>GROUP BANNER: This image must be 950px wide by 80px tall!</em></div><br />
-      </fieldset>
-
-      <p><%= f.submit %></p>
+      </div>   
+      
+    <% else %>
+      <div class="alert">You do not have permission to access this page.</div>
     <% end %>
-  <% else %>
-  <div class="alert">You do not have permission to access this page.</div>
-  <% end %>
-</div>
-
-<%= link_to 'Cancel', @group %> |
-<%= link_to 'Back', groups_path %>
+  </div>
+  
+  <div class="right-column">
+    <div class="side-box"> 
+      <div class="side-content">
+        <%= link_to 'Cancel', @group %> | <%= link_to 'Back', groups_path %>
+      </div>
+    </div>
+  </div>
 </div>

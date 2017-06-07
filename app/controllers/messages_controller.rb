@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :find_conversation!
+  before_action :authenticate_user!
 
   def new
     redirect_to conversation_path(@conversation) and return if @conversation

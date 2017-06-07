@@ -73,7 +73,9 @@
   <div class="right-column">
     <div class="side-box">
       <div class="side-content">
-        <%= render 'mentorships/form' %><br />
+        <% if user_signed_in? %>
+          <%= render 'mentorships/form' %><br />
+        <% end %>
         <b><%= @article.glips.size %> Glips helped by this article.</b>
         <% if @article.glips.size > 0 %>
           <br /><br />

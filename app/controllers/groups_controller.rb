@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :members]
+  before_action :authenticate_user!, except: [:index, :show]
   access all: [:show, :index, :new, :create, :update, :edit], user: {except: [:destroy]}, admin: :all
 
   def index
