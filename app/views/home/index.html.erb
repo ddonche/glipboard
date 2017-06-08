@@ -56,7 +56,7 @@
                 <i class="fa fa-trophy"></i>&nbsp;
               <% end %>
             <% end %>
-            <%= link_to everything.title.truncate(40), everything %>
+            <%= link_to everything.title.truncate(30), everything, :title => everything.title %>
           </div>
           
           <div class="table-cell">

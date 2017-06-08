@@ -84,7 +84,7 @@
         <% end %>
         
         <% @glips.each do |glip| %>
-          <li><%= link_to glip.title, glip %></li>
+          <li><%= link_to glip.title, glip %>, by <%= link_to glip.user.username, glip.user %></li>
         <% end %>
       </div>
     </div>
