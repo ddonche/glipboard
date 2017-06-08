@@ -38,7 +38,7 @@
             
             <div class="table-cell">
               <%= link_to glip.user.username, user_path(glip.user) %>
-                &nbsp;<%= glip.user.reputation %>
+                &nbsp;<%= number_to_human(glip.user.reputation, :format => '%n%u', :precision => 2, :units => { :thousand => 'K' }) %>
             </div>
             
             <div class="table-cell">

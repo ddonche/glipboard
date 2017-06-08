@@ -10,6 +10,11 @@ html, body {
   margin: 0;
 }
 
+.center {
+  margin: 0 auto;
+  text-align: center;
+}
+
 .float-right {
   float: right;
 }
@@ -19,7 +24,6 @@ html, body {
   margin: 0 auto 10px auto;
   background: #f7f7f7;
   border: 1px solid #e5e5e5;
-  border-radius: 5px;
 }
 
 #index-nav-container {

@@ -19,7 +19,13 @@
             </div>
           <% else %>
             <div class="table-cell">
-              &nbsp;
+              <%= 
+              if pager.icon?
+                image_tag pager.icon, width: 40, alt: 'group icon'
+              else
+                image_tag 'default_avatar.jpg', width: 40, alt: 'default group icon'
+              end
+              %>  
             </div>
           <% end %>
           
@@ -30,7 +36,8 @@
             </div>
           <% else %>
             <div class="table-cell">
-              &nbsp;
+              <i class="fa fa-comments"></i>&nbsp;&nbsp;
+              <%= pager.posts.count %>
             </div>
           <% end %>
           
@@ -65,7 +72,7 @@
           <div class="table-cell">
             <% if pager.model_name.human != "Group" %>
             <%= link_to pager.user.username, user_path(pager.user) %>
-                &nbsp;<%= number_to_human(pager.user.reputation) %>
+                &nbsp;<%= number_to_human(pager.user.reputation, :format => '%n%u', :precision => 2, :units => { :thousand => 'K' }) %>
             <% else %>
               <%= pager.users.size %> Members
             <% end %>

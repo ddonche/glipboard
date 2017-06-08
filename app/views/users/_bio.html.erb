@@ -23,7 +23,9 @@
     </div>
   </div>    
     <%= render 'shared/stats' %>
-    <%= render 'follow_form' if user_signed_in? %>
+    <div class="center">
+      <%= render 'follow_form' if user_signed_in? %>
+    </div>
 </div>
 <br />
 <div class="side-box">
