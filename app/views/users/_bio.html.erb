@@ -21,13 +21,9 @@
         <% end %>
       <% end %>
     </div>
-    
-    <section class="stats">
-      <%= render 'shared/stats' %>
-      <%= render 'follow_form' if user_signed_in? %>
-    </section>
-          
-  </div>
+  </div>    
+    <%= render 'shared/stats' %>
+    <%= render 'follow_form' if user_signed_in? %>
 </div>
 <br />
 <div class="side-box">

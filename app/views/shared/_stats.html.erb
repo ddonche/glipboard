@@ -1,26 +1,37 @@
-<% @user ||= current_user %>
-<a href="<%= following_user_path(@user) %>">
-  <strong id="following" class="stat">
-    <%= @user.following.count %>
-  </strong>
-  following
-</a>
-<a href="<%= followers_user_path(@user) %>">
-  <strong id="followers" class="stat">
-    <%= @user.followers.count %>
-  </strong>
-  followers
-</a>
-<a href="#">
-  <strong id="reputation" class="stat">
-    <%= @user.reputation %>
-  </strong>
-  reputation
-</a>
-<a href="#">
-  <strong id="glips" class="stat">
-    <%= @user.glips.where({ status: "complete" }).count %>*
-  </strong>
-  glips
-</a><br /><br />
-<div class="small"><em>*completed</em></div><br />
+<div class="stats-center">
+  <% @user ||= current_user %>
+  
+  <div class="stat-box">
+    <a href="<%= following_user_path(@user) %>">
+      <b><%= @user.following.count %></b><br />
+      following
+    </a>
+  </div>
+  
+  <div class="stat-box">
+    <a href="<%= followers_user_path(@user) %>">
+      <b><%= @user.followers.count %></b><br/>
+      followers
+    </a>
+  </div>
+  
+  <div class="stat-box">
+    <a href="#">
+      <b><%= number_to_human(@user.reputation, :format => '%n%u', :precision => 2, :units => { :thousand => 'K' }) %></b><br/>
+      reputation
+    </a>
+  </div>
+  
+  <div class="stat-box">
+    <a href="#">
+      <b><%= @user.glips.where({ status: "complete" }).count %></b><br/>
+      glips*
+    </a>
+  </div>
+  
+</div>
+  
+<div class="content-center">
+  <em>*completed</em>
+</div>
+<br />

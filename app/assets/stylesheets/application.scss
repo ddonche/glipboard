@@ -76,7 +76,7 @@ html, body {
 }
 
 .side-box {
-  width: 86%;
+  width: 87%;
   margin: 0 auto;
   background: #F7F7F7;
   overflow: hidden;
@@ -157,10 +157,9 @@ html, body {
 }
 
 .content-center {
-  padding: 15px 0 10px 0;
+  padding: 15px 0 3px 0;
   text-align: center;
   font-size: 12px;
-  display: block;
 }
 
 .main-header{
@@ -563,28 +562,20 @@ blockquote em{
   margin-bottom: 2em;
 }
 
-.stats {
-  overflow: auto;
-  margin: 8px auto 8px;
-  padding: 0;
-  color: gray;
-  a {
-    float: left;
-    padding: 0 10px;
-    border-left: 1px solid;
-    color: #dc0000;
-    &:first-child {
-      /* padding-left: 0; */
-      border: 0;
-    }
-    &:hover {
-      text-decoration: none;
-      color: #76aeac;
-    }
-  }
-  strong {
-    display: block;
-  }
+.stats-center {
+  padding: 5px 0 10px 0;
+  display: flexbox;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  font-size: 12px;
+}
+
+.stat-box {
+  width: 25%;
+  float: left;
+  font-size: 12px;
+  margin-bottom: 6px;
 }
 
 .pagination-container {
