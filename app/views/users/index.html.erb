@@ -30,7 +30,15 @@
                 </div>
                 
                 <div class="table-cell">
-                  <%= link_to user.username, user %>&nbsp;<%= number_to_human(user.reputation, :format => '%n%u', :precision => 2, :units => { :thousand => 'K' }) %><% if user_signed_in? %> | <%= link_to 'message', new_message_path(receiver_id: user.id) %><% end %>
+                  <%= link_to user.username, user %>&nbsp;<%= number_to_human(user.reputation, :format => '%n%u', :precision => 2, :units => { :thousand => 'K' }) %>
+                </div>
+                
+                <div class="table-cell">
+                  <div class="small">
+                    <% if user_signed_in? %>
+                      <%= render 'index_follow_form', :user => user %>
+                    <% end %>
+                  </div>
                 </div>
                 
                 <div class="table-cell">
