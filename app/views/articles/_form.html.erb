@@ -22,6 +22,12 @@
     <%= f.text_field :tag_list, placeholder: 'Add up to 5 tags (separated by commas)', value: @article.tag_list.join(", ") %>
     <div class="small"><em>Example: fitness, weight loss, marathon</em></div><br />
     
+    <%= f.radio_button :status, 'published' %> 
+    <%= label :status_published, 'Published' %>
+    <%= f.radio_button :status, 'draft', :checked => true %>
+    <%= label :status_draft, 'Draft' %>
+    <div class="small"><em>You can toggle article status directly from the article as well.</em></div><br />
+    
     <%= f.submit %>
   <% end %>
 </div>
