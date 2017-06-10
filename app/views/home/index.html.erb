@@ -63,18 +63,14 @@
             <%= 
               if everything.user.picture?
                 link_to user_path(everything.user) do
-                  image_tag everything.user.picture, width: 20, alt: 'user avatar'
+                  image_tag everything.user.picture, width: 20, alt: 'user avatar', title: everything.user.username
                 end
               else
                 link_to user_path(everything.user) do
-                  image_tag 'default_avatar.jpg', width: 20, alt: 'default user avatar'
+                  image_tag 'default_avatar.jpg', width: 20, alt: 'default user avatar', title: everything.user.username
                 end
               end
             %> 
-          </div>
-            
-          <div class="table-cell">
-            <%= link_to everything.user.username, user_path(everything.user) %>
           </div>
           
           <div class="table-cell"><% everything.tag_list.map.each do |tag| %>

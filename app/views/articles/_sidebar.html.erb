@@ -1,0 +1,17 @@
+<div class="side-box">
+  <div class="side-content">
+    <% if user_signed_in? %>
+      <%= render 'mentorships/form' %><br />
+    <% end %>
+    
+    <b><%= @article.glips.size %> Glips helped by this article.</b>
+    
+    <% if @article.glips.size > 0 %>
+      <br /><br />
+    <% end %>
+    
+    <% @glips.each do |glip| %>
+      <li><%= link_to glip.title, glip %>, by <%= link_to glip.user.username, glip.user %></li>
+    <% end %>
+  </div>
+</div>

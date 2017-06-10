@@ -33,6 +33,12 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    @mentorship = Mentorship.new
+    @glips = @article.glips.order("created_at DESC")
+    @user = @article.user
+    @commentable = @article
+    @comments = @commentable.comments
+    @comment = Comment.new
   end
 
   def create

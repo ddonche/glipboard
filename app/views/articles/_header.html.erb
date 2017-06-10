@@ -1,0 +1,54 @@
+<% if (user_signed_in? && (current_user.id == @article.user_id)) %>
+  <div class="content-alter">
+    <%= link_to edit_article_path(@article) do %><i class="fa fa-pencil"></i><% end %>&nbsp;
+    <%= link_to article_path(@article), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %>
+  </div>
+<% end %>
+<div class="content-alter">
+  <% if logged_in?(:admin) %>
+    <%= link_to toggle_feature_article_path(@article), method: :get do %><i class="fa fa-trophy"></i><% end %>&nbsp;&nbsp;
+  <% end %>
+</div>
+
+<div class="title-box">
+    <% if @article.feature == "featured" %>
+      <i class="fa fa-trophy"></i>&nbsp;
+    <% end %>
+  <%= @article.title %>
+</div>
+
+<div class="avatar-show">
+  <%= 
+    if @article.user.picture?
+      link_to user_path(@article.user) do
+        image_tag @article.user.picture, width: 84, alt: 'user avatar'
+      end
+    else
+      link_to user_path(@article.user) do
+        image_tag 'default_avatar.jpg', width: 84, alt: 'default user avatar'
+      end
+    end
+  %><div id="small-follow"><%= render 'users/follow_form' if user_signed_in? %></div>
+</div>
+
+<div class="details-show">
+    posted by <%= link_to @article.user.username, user_path(@article.user) %>&nbsp;<%= time_ago_in_words(@article.created_at) %> ago&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <% if @article.feature == "featured" %>
+      <i class="fa fa-trophy"></i>&nbsp;Featured Article&nbsp;&nbsp;&nbsp;&nbsp;
+    <% end %>
+    <% if current_user == @article.user %>
+      <% if @article.status == "draft" %>
+        <i class="fa fa-lock"></i>&nbsp;<%= link_to @article.status, toggle_status_article_path(@article) %>
+      <% else %>
+      <i class="fa fa-unlock"></i>&nbsp;<%= link_to @article.status, toggle_status_article_path(@article) %>
+      <% end %>
+    <% end %>
+    <br />
+    <% @article.tag_list.map.each do |tag| %>
+      <div class="tags"><%= link_to tag, tag_path(tag) %></div>
+    <% end %><br />
+    <%= link_to like_article_path(@article), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= @article.get_upvotes.size %>&nbsp;&nbsp;
+    <%= link_to dislike_article_path(@article), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= @article.get_downvotes.size %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <i class="fa fa-comments"></i>&nbsp;&nbsp;<%= @article.comments.count %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <i class="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;&nbsp;Helpful to <%= @article.glips.size %> Glips
+</div>

@@ -55,7 +55,7 @@
             
             <div class="table-cell">
               <%= link_to post.user.username, user_path(post.user) %>
-                &nbsp;<%= number_to_human(post.user.reputation) %>
+                &nbsp;<b><%= number_to_human(post.user.reputation, :format => '%n%u', :precision => 2, :units => { :thousand => 'K' }) %></b>
             </div>
           </div>
         <% end %>

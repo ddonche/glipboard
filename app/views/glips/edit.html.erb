@@ -1,8 +1,23 @@
 <div id="content-wrap">
-<h2>Editing <%= @glip.title %></h2>
+  <% if current_user == @glip.user %>
+    <div class="left-column">
+      <%= render 'header' %>
+      <%= render 'form', glip: @glip %>
+      <div class="log-form">
+        <div class="center">
+          <%= link_to 'Cancel', @grlip %>
+        </div>
+      </div>
+      
+      <%= render "glips/comments" %>
 
-<%= render 'form', glip: @glip %>
+    </div>
+      
+    <div class="right-column">
+      <%= render 'sidebar' %>
+    </div>
 
-<%= link_to 'Cancel', @glip %> |
-<%= link_to 'Back', glips_path %>
+  <% else %>
+    <div class="alert">You do not have permission to access this page.</div>
+  <% end %>
 </div>

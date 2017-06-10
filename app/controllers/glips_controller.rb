@@ -31,6 +31,14 @@ class GlipsController < ApplicationController
   end
 
   def edit
+    @user = @glip.user
+    @commentable = @glip
+    @comments = @commentable.comments
+    @comment = Comment.new
+    @log = Log.new
+    @log.user = current_user
+    @articles = @glip.articles.order("created_at DESC")
+    @logs = @glip.logs.order("created_at DESC").page(params[:page]).per(10)
   end
 
   def create

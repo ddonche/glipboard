@@ -1,0 +1,27 @@
+<% if (user_signed_in? && (current_user.id == @glip.user_id)) %>
+  <div class="log-box">
+    <%= render "logs/form" %><br/>
+  </div>
+<% end %> 
+
+<div class="side-box">
+  <div class="side-content">
+    <b><%= @glip.articles.size %> Articles that helped this Glip.</b>
+    <% if @glip.articles.size > 0 %>
+      <br /><br />
+    <% end %>
+      <% @articles.each do |article| %>
+        <li><%= link_to article.title, article %>, by <%= link_to article.user.username, article.user %></li>
+       <% end %>
+  </div>
+</div>
+<br />
+<div class="side-box">
+  <div class="side-content">
+    <b><%= @glip.logs.size %> progress logs on this Glip.</b>
+        <% @logs.each do |log| %>
+          <li><%= log.content.truncate(50) %></li>
+        <% end %><br />
+    <%= link_to_previous_page @logs, 'Previous' %><%= link_to_next_page @logs, 'Next' %>
+  </div>
+</div>

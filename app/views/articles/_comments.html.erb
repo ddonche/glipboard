@@ -1,0 +1,7 @@
+<div class="content-show">
+  <div id="posts-form">
+    <%= link_to "New Comment", new_article_comment_path(@article), :remote => true %>
+    &nbsp;&nbsp;<em><i class="fa fa-comments"></i>&nbsp;&nbsp;<%= @article.comments.count %> Comments</em>
+  </div>
+    <%= render "comments/comments" %>
+</div>

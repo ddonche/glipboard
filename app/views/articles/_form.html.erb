@@ -15,7 +15,7 @@
     
     <%= f.text_field :title, placeholder: 'Title' %><br />
     
-    <%= f.text_area :content, placeholder: 'Content', rows: 6 %>
+    <%= f.text_area :content, placeholder: 'Content', rows: 15 %>
     <div class="helper"><div class="small">#creates a heading&nbsp;&nbsp;&nbsp;&nbsp;<em>_creates italics_</em>&nbsp;&nbsp;&nbsp;&nbsp;<strong>**creates bold**</strong> 
     &nbsp;&nbsp;&nbsp;&nbsp;```backtick to escape code```&nbsp;&nbsp;&nbsp;&nbsp;use a > to quote&nbsp;&nbsp;&nbsp;&nbsp;get formatting help</div></div><br />
     
@@ -24,7 +24,7 @@
     
     <%= f.radio_button :status, 'published' %> 
     <%= label :status_published, 'Published' %>
-    <%= f.radio_button :status, 'draft', :checked => true %>
+    <%= f.radio_button :status, 'draft' %>
     <%= label :status_draft, 'Draft' %>
     <div class="small"><em>You can toggle article status directly from the article as well.</em></div><br />
     
