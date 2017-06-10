@@ -58,6 +58,22 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
   
+  ##########GROUP STUFF
+  # Joins a group.
+  def join(group)
+    memberships << group
+  end
+
+  # Leaves a group.
+  def leave(group)
+    memberships.delete(group)
+  end
+
+  # Returns true if the current user is a member of the group.
+  def memberships?(group)
+    memberships.include?(group)
+  end
+  
   private
     def picture_size_validation
       errors[:picture] << "should be less than 500KB" if picture.size > 0.5.megabytes

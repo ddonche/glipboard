@@ -1,4 +1,12 @@
 <div class="side-box"> 
+    <div class="small">
+      <div class="center">
+        <%= render 'memberships/join_form' if user_signed_in? %>
+      </div>
+    </div>
+</div>
+  <br />
+<div class="side-box"> 
   <div class="content-center">
     <%= link_to group_path(@group) do %>
       <%= if @group.picture?

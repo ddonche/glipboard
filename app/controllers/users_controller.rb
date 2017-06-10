@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  before_action :set_user, except: [:index]
 
   def index
     @page_title = "Glipboarders"
@@ -7,7 +8,6 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.friendly.find(params[:id])
     @page_title = @user.username
     @articles = @user.articles.where({ status: "published" })
     @glips = @user.glips
@@ -19,16 +19,25 @@ class UsersController < ApplicationController
   
   def following
     @title = "Following"
-    @user  = User.friendly.find(params[:id])
     @users = @user.following.page(params[:page]).per(25)
     render 'show_follow'
   end
 
   def followers
     @title = "Followers"
-    @user  = User.friendly.find(params[:id])
     @users = @user.followers.page(params[:page]).per(25)
     render 'show_follow'
+  end
+  
+  def membership
+    @groups = @user.groups.page(params[:page]).per(25)
+    render 'show_groups'
+  end
+  
+  private
+  
+  def set_user
+    @user  = User.friendly.find(params[:id])
   end
   
 end

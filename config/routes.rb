@@ -67,6 +67,7 @@ Rails.application.routes.draw do
   end
   
   resources :relationships,       only: [:create, :destroy]
+  resources :memberships,         only: [:create, :destroy]
   resources :mentorships,         only: [:create, :destroy]
   resources :messages, only: [:new, :create]
   resources :conversations, only: [:index, :show]
