@@ -17,7 +17,7 @@
   
   <div class="stat-box">
     <a href="#">
-      <b><%= number_to_human(@user.reputation, :format => '%n%u', :precision => 2, :units => { :thousand => 'K' }) %></b><br/>
+      <b><%= number_to_human(@user.reputation, :format => '%n%u', :precision => 3, :units => { :thousand => 'K' }) %></b><br/>
       reputation
     </a>
   </div>

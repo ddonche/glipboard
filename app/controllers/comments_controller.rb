@@ -51,7 +51,7 @@ class CommentsController < ApplicationController
     if @comment.user_id != current_user.id
       @comment.upvote_by current_user
       
-      voltaire_up(1, :reputation, @comment.user_id)
+      voltaire_plus(1, :reputation, @comment.user_id)
       redirect_to @commentable
     end
   end
@@ -61,7 +61,7 @@ class CommentsController < ApplicationController
     if @comment.user_id != current_user.id
       @comment.downvote_by current_user
       
-      voltaire_down(1, :reputation, @comment.user_id)
+      voltaire_minus(1, :reputation, @comment.user_id)
       redirect_to @commentable
     end
   end

@@ -1,6 +1,6 @@
 <div id ="index-nav-container">
   <div class = "table-row">
-    <div class="table-cell">Glipboard Users</div>
+    <div class="table-cell"><h3>Users</h3></div>
     <div class="table-cell"><div class="index-top-buttons"><div class="user-button"><%= link_to "all users", users_path %></div></div></div>
     <div class="table-cell"><div class="index-top-buttons"><div class="user-button"><%= link_to "most reputable", users_path %></div></div></div>
   </div>
@@ -30,7 +30,7 @@
                 </div>
                 
                 <div class="table-cell">
-                  <%= link_to user.username, user %>&nbsp;<b><%= number_to_human(user.reputation, :format => '%n%u', :precision => 2, :units => { :thousand => 'K' }) %></b>
+                  <%= link_to user.username, user %>&nbsp;<b><%= number_to_human(user.reputation, :format => '%n%u', :precision => 3, :units => { :thousand => 'K' }) %></b>
                 </div>
                 
                 <div class="table-cell">

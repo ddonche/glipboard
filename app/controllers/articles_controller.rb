@@ -99,7 +99,7 @@ class ArticlesController < ApplicationController
     if @article.user != current_user
       @article.upvote_by current_user
     
-      voltaire_up(1, :reputation, @article.user_id)
+      voltaire_plus(1, :reputation, @article.user_id)
       redirect_to :back
     end
   end
@@ -108,7 +108,7 @@ class ArticlesController < ApplicationController
     if @article.user != current_user
       @article.downvote_by current_user
   
-      voltaire_down(1, :reputation, @article.user_id)
+      voltaire_minus(1, :reputation, @article.user_id)
       redirect_to :back
     end
   end

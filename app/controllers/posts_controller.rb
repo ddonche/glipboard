@@ -59,7 +59,7 @@ class PostsController < ApplicationController
     if @post.user != current_user
       @post.upvote_by current_user
       
-      voltaire_up(1, :reputation, @post.user_id)
+      voltaire_plus(1, :reputation, @post.user_id)
       redirect_to :back
     end
   end
@@ -68,7 +68,7 @@ class PostsController < ApplicationController
     if @post.user != current_user
       @post.downvote_by current_user
       
-      voltaire_down(1, :reputation, @post.user_id)
+      voltaire_minus(1, :reputation, @post.user_id)
       redirect_to :back
     end
   end

@@ -19,7 +19,7 @@
     </div>
     
       <div class="details-show">
-          <%= link_to @conversation.with(current_user).username, user_path(@conversation.with(current_user)) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <h4 style="display:inline;"><%= link_to @conversation.with(current_user).username, user_path(@conversation.with(current_user)) %></h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <%= @conversation.with(current_user).reputation %><br />
           <%= (@conversation.with(current_user).bio.truncate(100)) if @conversation.with(current_user).bio %><br />
       </div>

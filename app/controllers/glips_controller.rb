@@ -77,6 +77,7 @@ class GlipsController < ApplicationController
     voltaire_up(5, :reputation, @glip.user_id)
     elsif  @glip.complete?
       @glip.incomplete!
+      voltaire_down(5, :reputation, @glip.user_id)
     end
     redirect_to glip_path(@glip), notice: 'Glip status has been updated.'
   end
@@ -85,7 +86,7 @@ class GlipsController < ApplicationController
     if @glip.user != current_user
       @glip.upvote_by current_user
       
-      voltaire_up(1, :reputation, @glip.user_id)
+      voltaire_plus(1, :reputation, @glip.user_id)
       redirect_to :back
     end
   end
@@ -94,7 +95,7 @@ class GlipsController < ApplicationController
     if @glip.user != current_user
       @glip.downvote_by current_user
       
-      voltaire_down(1, :reputation, @glip.user_id)
+      voltaire_minus(1, :reputation, @glip.user_id)
       redirect_to :back
     end
   end
