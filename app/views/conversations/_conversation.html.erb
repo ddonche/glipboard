@@ -16,7 +16,7 @@
       <% if conversation.messages.last.user == current_user %>
         by you
       <% else %>
-        by them
+        by <%= conversation.with(current_user).username %>
       <% end %>
     </div>
 </div>
