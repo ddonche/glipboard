@@ -187,41 +187,6 @@ h1, h2, h3, h4 {
   font-size: 12px;
 }
 
-.main-header{
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  margin: 0 auto;
-  height: 60px;
-  background: #222;
-  .buttons {
-    float:right;
-    padding: 5px 10px;
-    margin: 15px 15px 15px 0px;
-    border: 1px solid #d10000;
-    a {
-      color: #fff;
-      text-decoration: none;
-      padding: 1px;
-      font-weight: bold;
-      font-size: .9em;
-    }
-  }
-  .buttons-no-border {
-    float:left;
-    display:flex;
-    padding: 5px 0px;
-    margin: 15px 15px;
-    a {
-      color: #fff;
-      text-decoration: none;
-      padding: 1px;
-      font-size: .9em;
-    }
-  }
-}
-
 .logo {
   margin: 15px 10px;
   vertical-align: middle;

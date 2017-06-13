@@ -1,25 +1,38 @@
-<div class="main-header">
-      
+<div class="menu_container">
   <div class="logo">
     <%= link_to root_path do %>
       <%= image_tag 'logo.png', width: 180, alt: 'Glipboard logo'%>
     <% end %>
   </div>
-      
-  <div class="buttons-no-border"><%= link_to 'About' %></div>
-  <div class="buttons-no-border"><%= link_to 'Articles', featured_path %></div>
-  <div class="buttons-no-border"><%= link_to "Groups", groups_path %></div>
-  <div class="buttons-no-border"><%= link_to 'Tags', tags_path %></div>
-  <div class="buttons-no-border"><%= link_to 'Users', users_path %></div>
-
-  <div class="buttons"><%= link_to 'New Glip', new_glip_path %></div>
-  <div class="buttons"><%= link_to 'New Article', new_article_path %></div>
-
-  <% if current_user %>
-    <div class="buttons-black"><%= link_to 'Logout', destroy_user_session_path, method: 'delete' %></div>
-  <% else %>
-    <div class="buttons-black"><%= link_to 'Login', new_user_session_path %></div>
-    <div class="buttons-black"><%= link_to 'Register', new_user_registration_path %></div>
-  <% end %>
-        
+  
+	<ul class="menu-ul">
+		<li><%= link_to 'About' %></li>
+    <li><%= link_to 'Articles', featured_path %></li>
+    <li><%= link_to "Groups", groups_path %></li>
+    <li><%= link_to 'Tags', tags_path %></li>
+    <li><%= link_to 'Users', users_path %></li>
+		
+		<% if current_user %>
+		<li class="has-dropdown" style="font-style: italic; float: right; margin-right: 60px;">
+		  <%= link_to current_user do %>
+        <%= current_user.username %>&nbsp;<i class="fa fa-chevron-down"  aria-hidden="true"></i>
+		  <% end %>
+			<!-- Submenu dropdown -->
+			<div class="menu-dropdown submenu">
+				<ul class="submenu-list">
+				  <li><%= link_to "Private Messages", conversations_path(current_user) %></li>
+				  <li><%= link_to "Edit Profile", edit_user_registration_path(current_user) %></li>
+          <li><%= link_to 'New Glip', new_glip_path %></li>
+          <li><%= link_to 'New Article', new_article_path %></li>
+          <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
+				</ul>
+			</div>
+			<!-- /Submenu dropdown -->
+		</li>
+		<% else %>
+      <li><%= link_to 'Login', new_user_session_path %></li>
+      <li><%= link_to 'Register', new_user_registration_path %></div></li>
+    <% end %>
+	</ul>
 </div>
+<br />

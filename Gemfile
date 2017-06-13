@@ -18,23 +18,23 @@ gem 'jbuilder', '~> 2.5'
 # gems I've installed my damn self
 gem 'simple_form', '~> 3.4'
 gem 'devise', '~> 4.2', '>= 4.2.1'
+gem 'petergate', '~> 1.7', '>= 1.7.5'
 gem 'carrierwave', '~> 1.0'
+gem 'carrierwave-aws', '~> 1.1'
 gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 gem 'acts-as-taggable-on', '~> 4.0'
-gem 'font-awesome-sass', '~> 4.2.0'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'friendly_id', '~> 5.1.0'
 gem 'kaminari', '~> 1.0', '>= 1.0.1'
+gem 'font-awesome-sass', '~> 4.2.0'
 gem 'redcarpet', '~> 3.4'
 gem 'coderay', '~> 1.1', '>= 1.1.1'
-gem 'petergate', '~> 1.7', '>= 1.7.5'
-gem 'faker', '~> 1.7', '>= 1.7.3'
-gem 'carrierwave-aws', '~> 1.1'
 gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'
 gem 'voltaire', '~> 0.4.5'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'faker', '~> 1.7', '>= 1.7.3'
 end
 
 group :development do

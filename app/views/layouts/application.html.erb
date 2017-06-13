@@ -17,10 +17,6 @@
   <body>
     <%= render "shared/nav" %>
     
-    <% if current_user %>
-      <div class="user-welcome">Good to see you, <%= link_to current_user.username, current_user %>!</div>
-    <% end %>
-    
     <div class="wrapper">
       <% if flash[:notice] %>
         <div class="notice"><%= notice %></div>
