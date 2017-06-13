@@ -28,6 +28,10 @@ class GlipsController < ApplicationController
 
   def new
     @glip = current_user.glips.build
+    respond_to do |format| 
+      format.html
+      format.js
+    end
   end
 
   def edit
@@ -39,6 +43,10 @@ class GlipsController < ApplicationController
     @log.user = current_user
     @articles = @glip.articles.order("created_at DESC")
     @logs = @glip.logs.order("created_at DESC").page(params[:page]).per(10)
+    respond_to do |format| 
+      format.html
+      format.js
+    end
   end
 
   def create

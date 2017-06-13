@@ -17,11 +17,10 @@
     
     <%= f.text_area :content, placeholder: 'Content', rows: 15 %>
   
-    <div class="helper"><div class="small">#creates a heading&nbsp;&nbsp;&nbsp;&nbsp;<em>_creates italics_</em>&nbsp;&nbsp;&nbsp;&nbsp;<strong>**creates bold**</strong> 
-    &nbsp;&nbsp;&nbsp;&nbsp;```backtick to escape code```&nbsp;&nbsp;&nbsp;&nbsp;use a > to quote&nbsp;&nbsp;&nbsp;&nbsp;get formatting help</div></div><br />
+    <div class="small"><b><div id="markdown"><%= link_to "#" , :remote => true do %><i class="fa fa-chevron-down"  aria-hidden="true"></i>&nbsp;Formatting Help<% end %></b></div></div><br />
     
-    <%= f.text_field :tag_list, placeholder: 'Add up to 5 tags (separated by commas)', value: @article.tag_list.join(", ") %>
-    <div class="small"><em>Example: fitness, weight loss, marathon</em></div><br />
+    <%= f.text_field :tag_list, placeholder: 'tags', value: @article.tag_list.join(", ") %>
+    <div class="small"><em>Add up to 5 tags (separated by commas). Example: fitness, weight loss, marathon</em></div><br />
     
     <%= f.radio_button :status, 'published' %> 
     <%= label :status_published, 'Published' %>

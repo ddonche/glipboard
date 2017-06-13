@@ -2,6 +2,11 @@
   <div class="title-box">New article</div>
 
   <%= render 'form', article: @article %>
+  
+      <div class="log-form">
+        <div class="center">
+          <%= link_to 'Back', articles_path %>
+        </div>
+      </div>
 
-  <%= link_to 'Back', articles_path %>
 </div>

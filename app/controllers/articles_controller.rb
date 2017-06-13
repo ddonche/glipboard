@@ -30,6 +30,10 @@ class ArticlesController < ApplicationController
 
   def new
     @article = current_user.articles.build
+    respond_to do |format| 
+      format.html
+      format.js
+    end
   end
 
   def edit
@@ -39,6 +43,10 @@ class ArticlesController < ApplicationController
     @commentable = @article
     @comments = @commentable.comments
     @comment = Comment.new
+    respond_to do |format|   
+      format.html
+      format.js
+    end
   end
 
   def create
