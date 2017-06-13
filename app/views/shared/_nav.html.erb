@@ -6,7 +6,23 @@
   </div>
   
 	<ul class="menu-ul">
-		<li><%= link_to 'About' %></li>
+		<li class="has-dropdown"><%= link_to 'About', '#' %>
+      <div class="menu-dropdown w300">
+    		<div class="column-content">
+    			<p>
+    				Glipboard is about accomplishing goals, one small step at a time. Small victories --- overcoming little "glips" in the road --- 
+    				lead to monumental achievements. It all adds up. And that's what we're here for. To help you succeed. The goal of Glipboard
+    				is for you to accomplish more than ever before. Post Glips and overcome them. Log your progress. Write Articles to help others
+    				complete their own Glips. Join others in Groups. Earn reputation, help yourself, help others. What are you waiting for? Go Glip yourself!
+    			</p>
+    			<p class="links">
+    				<a href="#">Link #1</a><br/>
+    				<a href="#">Link #2</a><br/>
+    				<a href="#">Link #3</a><br/>
+    			</p>
+    		</div>
+    	</div>
+		</li>
     <li><%= link_to 'Articles', featured_path %></li>
     <li><%= link_to "Groups", groups_path %></li>
     <li><%= link_to 'Tags', tags_path %></li>
