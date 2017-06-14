@@ -54,6 +54,19 @@
       <li style="font-style: italic; float: right;"><%= link_to 'Register', new_user_registration_path %></li>
       <li style="font-style: italic; float: right;"><%= link_to 'Login', new_user_session_path %></li>
     <% end %>
+    <li class="has-dropdown" style="color: white; float: right;"><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+      <div class="menu-dropdown w300">
+      	<div class="column-content menu-form">
+      		<div class="field">
+      			<span class="field-label">What are you looking for?</span>
+      			<span class="field-input"><input class="input" type="text"/></span>
+      		</div>
+      		<div class="field">
+      			<input class="right field-submit" type="submit" value='Search'/>
+      		</div>
+      	</div>
+      </div>
+    </li>
 	</ul>
 </div>
 <br />

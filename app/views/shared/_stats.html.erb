@@ -17,7 +17,7 @@
   
   <div class="stat-box">
     <a href="#">
-      <b><%= number_to_human(@user.reputation, :format => '%n%u', :precision => 3, :units => { :thousand => 'K' }) %></b><br/>
+      <b><%= @user.reputation %></b><br/>
       reputation
     </a>
   </div>
@@ -25,12 +25,8 @@
   <div class="stat-box">
     <a href="#">
       <b><%= @user.glips.where({ status: "complete" }).count %></b><br/>
-      glips*
+      glips
     </a>
   </div>
   
-</div>
-  
-<div class="content-center">
-  <em>*completed</em>
 </div>

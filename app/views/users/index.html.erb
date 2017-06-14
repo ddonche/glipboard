@@ -35,7 +35,7 @@
                 
                 <div class="table-cell">
                   <div class="small">
-                    <% if user_signed_in? %>
+                    <% if user_signed_in? && current_user != user %>
                       <%= render 'index_follow_form', :user => user %>
                     <% end %>
                   </div>
