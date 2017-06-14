@@ -39,7 +39,12 @@
 				  <li><%= link_to "Private Messages", conversations_path(current_user) %></li>
 				  <li><%= link_to "Edit Profile", edit_user_registration_path(current_user) %></li>
           <li><%= link_to 'New Glip', new_glip_path %></li>
-          <li><%= link_to 'New Article', new_article_path %></li>
+          <li class="has-dropdown"><%= link_to 'Articles', '#' %>
+            <ul class="menu-dropdown right-align">
+              <li><%= link_to 'New Article', new_article_path %></li>
+              <li><%= link_to "My Drafts", drafts_path(current_user) %></li>
+            </ul>
+          </li>
           <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
 				</ul>
 			</div>
