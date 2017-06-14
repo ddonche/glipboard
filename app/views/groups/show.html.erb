@@ -30,7 +30,11 @@
       </div>
       
       <div id="posts-form">
-        <%= link_to "New Post", new_group_post_path(@group), :remote => true %>
+        <% if user_signed_in? %>
+          <%= link_to "New Post", new_group_post_path(@group), :remote => true %>
+        <% else %>
+          <%= link_to 'Login to Post', new_user_session_path %>
+        <% end %>
       </div><br />
 
       <div class="content">
