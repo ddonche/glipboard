@@ -67,7 +67,7 @@
             
             <%= link_to pager.title.truncate(40), pager %></div>
           
-          <div class="table-cell"><%= time_ago_in_words(pager.created_at) %> ago</div>
+          <div class="table-cell"><%= time_ago_in_words(pager.created_at) %> </div>
           
           <div class="table-cell">
             <% if pager.model_name.human != "Group" %>
