@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170607211002) do
+ActiveRecord::Schema.define(version: 20170614165847) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20170607211002) do
     t.integer  "status",              default: 0
     t.string   "slug"
     t.integer  "verified",            default: 0
+    t.datetime "deadline"
     t.index ["slug"], name: "index_glips_on_slug", unique: true
   end
 

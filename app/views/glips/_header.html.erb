@@ -32,13 +32,12 @@
     posted by <h4 style="display:inline;"><%= link_to @glip.user.username, user_path(@glip.user) %></h4>&nbsp;<%= time_ago_in_words(@glip.created_at) %> ago&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <% if current_user == @glip.user %>  
       <% if @glip.status == "incomplete" %>
-        <i class="fa fa-star-half-o"></i>&nbsp;<%= link_to @glip.status, toggle_status_glip_path(@glip) %><br/>
+        <i class="fa fa-star-half-o"></i>&nbsp;<%= link_to @glip.status, toggle_status_glip_path(@glip) %>
       <% else %>
-        <i class="fa fa-star"></i>&nbsp;<%= link_to @glip.status.upcase, toggle_status_glip_path(@glip) %><br/>
+        <i class="fa fa-star"></i>&nbsp;<%= link_to @glip.status.upcase, toggle_status_glip_path(@glip) %>
       <% end %>
     <% else %>
-      <br />
-    <% end %>
+    <% end %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;<b>Deadline:</b> <%= @glip.deadline.strftime("%m/%d/%Y") %><br />
     
     <% @glip.tag_list.map.each do |tag| %>
       <div class="tags"><%= link_to tag, tag_path(tag) %></div>

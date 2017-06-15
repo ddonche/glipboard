@@ -114,6 +114,6 @@ class GlipsController < ApplicationController
     end
 
     def glip_params
-      params.require(:glip).permit(:title, :content, :user_id, :tag_list, :completion_criteria)
+      params.require(:glip).permit(:title, :content, :user_id, :tag_list, :deadline, :completion_criteria)
     end
 end
