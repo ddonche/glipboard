@@ -26,8 +26,8 @@
     <div class="small">What is the completion criteria for this glip? How will you know you achieved your goal? Is it verifiable? What is your metric of success for this?</div>
     <%= f.text_area :completion_criteria, placeholder: 'Completion criteria' %>
     
-    <div class="small">What is your deadline? (Leave blank if you do not want one.)</div>
-    <%= f.text_field :deadline, id: "datepicker" %>
+    <div class="small">What is your deadline? (Leave blank if you do not want one.) <em><b>*If the calendar doesn't appear when you click in the field, refresh the page.</em></b></div>
+    <%= f.text_field :deadline, id: "datepicker", placeholder: 'Deadline' %>
     
     <%= f.text_field :tag_list, placeholder: 'Add up to 5 tags (separated by commas)', value: @glip.tag_list.join(", ") %>
     <div class="small"><em>Example: fitness, weight loss, marathon</em></div><br />

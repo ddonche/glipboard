@@ -37,7 +37,12 @@
         <i class="fa fa-star"></i>&nbsp;<%= link_to @glip.status.upcase, toggle_status_glip_path(@glip) %>
       <% end %>
     <% else %>
-    <% end %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;<b>Deadline:</b> <%= @glip.deadline.strftime("%m/%d/%Y") %><br />
+    <% end %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;<b>Deadline:</b> 
+    <% if @glip.deadline? %>
+      <%= @glip.deadline.strftime("%m/%d/%Y") %><br />
+    <% else %>
+      <em>none</em><br />
+    <% end %>
     
     <% @glip.tag_list.map.each do |tag| %>
       <div class="tags"><%= link_to tag, tag_path(tag) %></div>
