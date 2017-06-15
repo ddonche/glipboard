@@ -30,10 +30,10 @@
       </div>
       
       <div id="posts-form">
-        <% if user_signed_in? %>
+        <% if Membership.exists?(user_id: current_user.id, group_id: @group.id) %>
           <%= link_to "New Post", new_group_post_path(@group), :remote => true %>
         <% else %>
-          <%= link_to 'Login to Post', new_user_session_path %>
+          <div class="small"><em>You must be a member of <%= @group.title %> to make to make posts.</em></div> 
         <% end %>
       </div><br />
 

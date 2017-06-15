@@ -43,7 +43,11 @@
       <div class="content-show">
         <h4><em><i class="fa fa-comments"></i>&nbsp;&nbsp;<%= @post.responses.count %> Replies</em></h4>
         <div class="comments-wrap">
-          <%= render "responses/form" %><br/>
+          <% if Membership.exists?(user_id: current_user.id, group_id: @post.group.id) %>
+            <%= render "responses/form" %><br/>
+          <% else %>
+            <div class="small"><em>You must be a member of <%= @post.group.title %> to make to make replies.</em></div>
+          <% end %>
           <%= render "responses/responses" %>
         </div>
       </div>
