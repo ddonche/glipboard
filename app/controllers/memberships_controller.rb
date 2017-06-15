@@ -2,16 +2,16 @@ class MembershipsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    user = User.friendly.find(params[:user_id])
-    group = Group.friendly.find(params[:group_id])
-    current_user.join(group)
-    redirect_to group
+    @user = current_user
+    @group = Group.friendly.find(params[:group_id])
+    Membership.create!(user_id: @user.id, group_id: @group.id)
+    redirect_to @group
   end
 
   def destroy
-    group = Group.friendly.find(params[:id])
-    user = Membership.find(params[:id]).group
-    current_user.leave(group)
+    @group = Group.friendly.find(params[:group_id])
+    @membership = current_user.memberships.find_by(group_id: @group.id)
+    @membership.delete
     redirect_to groups_path
   end
 end

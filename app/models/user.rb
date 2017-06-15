@@ -59,15 +59,6 @@ class User < ApplicationRecord
   end
   
   ##########GROUP STUFF
-  # Joins a group.
-  def join(group)
-    memberships << group
-  end
-
-  # Leaves a group.
-  def leave(group)
-    memberships.delete(group)
-  end
 
   # Returns true if the current user is a member of the group.
   def memberships?(group)
