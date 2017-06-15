@@ -1,5 +1,7 @@
 <div id="follow_form">
-<% if current_user.groups.exists?(@group) %>
+<% if current_user.id == @group.creator_id %>
+    <b>You Are Group Creator</b>
+<% elsif current_user.groups.exists?(@group) %>
   <%= render 'memberships/leave' %>
 <% else %>
   <%= render 'memberships/join' %>

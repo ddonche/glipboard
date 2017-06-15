@@ -6,6 +6,7 @@
     </div>
 </div>
   <br />
+  
 <div class="side-box"> 
   <div class="content-center">
     <%= link_to group_path(@group) do %>
@@ -18,11 +19,18 @@
   </div>
 </div>
   <br />
+  
 <div class="side-box"> 
   <div class="side-content">
     <%= @group.description %><br />
       <div class="side-content">
         <i class="fa fa-user"></i>&nbsp;&nbsp;<%= @group.users.size %>&nbsp; <%= "members" %><br />
+      </div>
+      <div class="side-content">
+        <i class="fa fa-history"></i>&nbsp;&nbsp;Group created <%= time_ago_in_words(@group.created_at) %> ago<br />
+      </div>
+      <div class="side-content">
+        <i class="fa fa-rocket"></i>&nbsp;&nbsp;Creator: <%= link_to @creator.username, user_path(@creator) %><br />
       </div>
       <% @group.tag_list.map.each do |tag| %>
         <div class="tags"><%= link_to tag, tag_path(tag) %></div>

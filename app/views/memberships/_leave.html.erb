@@ -1,5 +1,4 @@
 <%= form_for(current_user.memberships.find_by(group_id: @group.id),
              html: { method: :delete }) do |f| %>
-  <%= f.hidden_field :group_id %>
   <%= submit_tag "Quit #{@group.title}" %>
 <% end %>

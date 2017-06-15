@@ -16,6 +16,7 @@ class GroupsController < ApplicationController
     @page_title = @group.title
     @posts = Post.where({ group_id: @group.id }).order('created_at DESC').page(params[:page]).per(20)
     @categories = @group.categories
+    @creator = User.friendly.find(@group.creator_id)
   end
   
   def members
@@ -56,7 +57,7 @@ class GroupsController < ApplicationController
     end
 
     def group_params
-      params.require(:group).permit(:title, :description, :user_id, :tag_list, :picture, :picture_cache, :remove_picture, 
+      params.require(:group).permit(:title, :description, :creator_id, :tag_list, :picture, :picture_cache, :remove_picture, 
                                     :icon, :banner)
     end
 end

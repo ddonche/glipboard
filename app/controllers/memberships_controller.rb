@@ -1,5 +1,6 @@
 class MembershipsController < ApplicationController
-  before_action :authenticate_user!, :set_group
+  before_action :authenticate_user!
+  before_action :set_group, only: [:create]
 
   def create
     @user = current_user
@@ -8,7 +9,10 @@ class MembershipsController < ApplicationController
   end
 
   def destroy
-    current_user.memberships.find_by(group_id: @group.id).destroy
+    user = current_user
+    @group = Group.find(params[:membership][:group_id])
+    membership = user.memberships.find_by(group_id: @group.id)
+    membership.destroy
     redirect_to groups_path
   end
   
