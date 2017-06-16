@@ -1,17 +1,22 @@
 <div class="side-box">
   <div class="side-content">
     <% if user_signed_in? %>
-      <%= render 'mentorships/form' %><br />
+      <%= render 'mentorships/form' %>
     <% end %>
+  </div>
+</div>
+<br />
+
+<div class="side-box">
+  <div class="side-content">
+    <div class="title-box" style="font-size: 16px; text-align: center;"><%= @article.glips.size %> Glips helped by this Article</div>
     
-    <b><%= @article.glips.size %> Glips helped by this article.</b>
-    
-    <% if @article.glips.size > 0 %>
-      <br /><br />
-    <% end %>
-    
-    <% @glips.each do |glip| %>
-      <li><%= link_to glip.title, glip %>, by <%= link_to glip.user.username, glip.user %></li>
+    <% if @article.glips.size == 0 %>
+      &nbsp;
+    <% else %>
+      <% @glips.each do |glip| %>
+        <li><%= link_to glip.title, glip %>, by <%= link_to glip.user.username, glip.user %></li>
+      <% end %>
     <% end %>
   </div>
 </div>

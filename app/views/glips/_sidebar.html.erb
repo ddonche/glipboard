@@ -6,19 +6,22 @@
 
 <div class="side-box">
   <div class="side-content">
-    <b><%= @glip.articles.size %> Articles that helped this Glip.</b>
-    <% if @glip.articles.size > 0 %>
-      <br /><br />
-    <% end %>
+    <div class="title-box" style="font-size: 16px; text-align: center;"><%= @glip.articles.size %> Articles that helped this Glip</div>
+    <% if @glip.articles.size == 0 %>
+      &nbsp;
+    <% else %>
       <% @articles.each do |article| %>
         <li><%= link_to article.title, article %>, by <%= link_to article.user.username, article.user %></li>
        <% end %>
+    <% end %>
   </div>
 </div>
+
 <br />
+
 <div class="side-box">
   <div class="side-content">
-    <b><%= @glip.logs.size %> progress logs on this Glip.</b>
+    <div class="title-box" style="font-size: 16px; text-align: center;"><%= @glip.logs.size %> progress logs so far</div>
         <% @logs.each do |log| %>
           <li><%= log.content.truncate(50) %></li>
         <% end %><br />
