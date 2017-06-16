@@ -14,6 +14,7 @@ class PostsController < ApplicationController
     @response = Response.new
     @group = Group.friendly.find(params[:group_id])
     @category = @post.category
+    @creator = User.friendly.find(@group.creator_id)
   end
 
   def new

@@ -1,6 +1,7 @@
 class ResponsesController < ApplicationController
   before_action :set_response, except: [:create]
-  before_action :set_post, only: [:new, :create, :edit, :update]
+  before_action :set_post, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_group, only: [:create, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -12,7 +13,6 @@ class ResponsesController < ApplicationController
   end
   
   def create
-    @group = Group.friendly.find(params[:group_id])
     @response = @post.responses.new(response_params) 
     @response.user_id = current_user.id if current_user
     if @response.save
@@ -22,15 +22,16 @@ class ResponsesController < ApplicationController
     end
   end
   
-  def edit
+  def edit   
+    @response = Response.find(params[:id])
   end
   
   def update
     respond_to do |format|
       if @response.update(response_params)
-        redirect_to group_post_path(@group, @post), notice: 'Response was successfully updated.'
+         format.html { redirect_to group_post_path(@group, @post), notice: 'Response was successfully updated.' }
       else
-        render :edit 
+         format.html { render :edit }
       end
     end
   end
@@ -68,6 +69,10 @@ class ResponsesController < ApplicationController
   
   def set_post
     @post = Post.friendly.find(params[:post_id])
+  end
+  
+  def set_group
+    @group = Group.friendly.find(params[:group_id])
   end
   
   def response_params

@@ -13,7 +13,7 @@
       end
     %>          
 
-    <div class="response-content"><%= response.content %></div>
+    <div class="response-content"><%= markdown response.content %></div>
     <div class="date">Posted <%= time_ago_in_words(response.created_at) %> ago by <%= link_to response.user.username, user_path(response.user) %>
     
       <% if (user_signed_in? && (current_user.id == response.user_id)) %>

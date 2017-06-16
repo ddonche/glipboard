@@ -6,4 +6,13 @@
   <div class="comments-wrap">
     <%= render "comments/comments" %>
   </div>
+  <% if @glip.comments.count != 0 %>
+  
+  <div id="posts-form">
+    <%= link_to new_glip_comment_path(@glip), :remote => true do %>
+      <a href="#comment">New Comment</a>
+    <% end %>
+  </div>
+  
+  <% end %>
 </div>

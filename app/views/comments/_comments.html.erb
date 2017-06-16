@@ -1,40 +1,62 @@
 <% @comments.each do |comment| %>
-  <div class="comments">
+  <div class="log-form"style="border: 1px solid #e5e5e5;">
     
-    <%= 
-      if comment.user.picture?
-        link_to user_path(comment.user) do
-          image_tag comment.user.picture, width: 45, alt: 'user avatar'
-        end
-      else
-        link_to user_path(comment.user) do
-          image_tag 'default_avatar.jpg', width: 45, alt: 'default user avatar'
-        end
-      end
-    %>          
-
-    <div class="comment-content"><%= comment.content.html_safe %></div>
-    <div class="date">Posted <%= time_ago_in_words(comment.created_at) %> ago by <%= link_to comment.user.username, user_path(comment.user) %>
-    
-    <% if (user_signed_in? && (current_user.id == comment.user_id)) %>
-      <% if @commentable = @glip %>
-        <div class="comments-alter"><%= link_to edit_glip_comment_path(@glip, comment) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
-        <%= link_to glip_comment_path(@glip, comment), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %></div>
-      <% else %>
-        <div class="comments-alter"><%= link_to edit_article_comment_path(@article, comment) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
-        <%= link_to article_comment_path(@article, comment), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %></div>&nbsp;&nbsp;&nbsp;
-      <% end %>
-    <% end %>
-    
-    <% if @commentable = @glip %>
-      <%= link_to like_glip_comment_path(@glip, comment), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= comment.get_upvotes.size %>&nbsp;&nbsp;
-      <%= link_to dislike_glip_comment_path(@glip, comment), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= comment.get_downvotes.size %>
-    <% else %>
-      <%= link_to like_article_comment_path(@article, comment), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= comment.get_upvotes.size %>&nbsp;&nbsp;
-      <%= link_to dislike_article_comment_path(@article, comment), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= comment.get_downvotes.size %>
-    <% end %>
-    
+      <div class="table"> 
+        <div class="table-row">
+          <div class="tiny-table-cell">
+            <% if @commentable = @glip %>
+              <%= link_to like_glip_comment_path(@glip, comment), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= comment.get_upvotes.size %>&nbsp;&nbsp;
+              <%= link_to dislike_glip_comment_path(@glip, comment), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= comment.get_downvotes.size %>
+            <% else %>
+              <%= link_to like_article_comment_path(@article, comment), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= comment.get_upvotes.size %>&nbsp;&nbsp;
+              <%= link_to dislike_article_comment_path(@article, comment), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= comment.get_downvotes.size %>
+            <% end %>
+          </div>
+          
+          <div class="tiny-table-cell">
+            Posted <%= time_ago_in_words(comment.created_at) %> ago
+          </div>
+          
+          <div class="tiny-table-cell">
+            <%= if comment.user.picture?
+                  link_to user_path(comment.user) do
+                    image_tag comment.user.picture, width: 25, alt: 'user avatar'
+                  end
+                else
+                  link_to user_path(comment.user) do
+                    image_tag 'default_avatar.jpg', width: 25, alt: 'default user avatar'
+                  end
+            end %>
+          </div>
+          
+          <div class="tiny-table-cell">
+             <%= link_to comment.user.username, user_path(comment.user) %>&nbsp;&nbsp;<%= comment.user.reputation %>
+          </div>
+          
+          <div class="tiny-table-cell">
+            <% if (user_signed_in? && (current_user.id == comment.user_id)) %>
+              <div class="comments-alter">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <% if @commentable = @glip %>
+                  <%= link_to edit_glip_comment_path(@glip, comment) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
+                  <%= link_to glip_comment_path(@glip, comment), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %>
+                <% else %>
+                  <%= link_to edit_article_comment_path(@article, comment) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
+                  <%= link_to article_comment_path(@article, comment), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %>&nbsp;&nbsp;&nbsp;
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <div class="table">
+      <div class="table-row">
+        <div class="tiny-table-cell">
+          <%= markdown comment.content %>
+        </div>
+      </div>
     </div>
 
-  </div>
+</div>
+  
 <% end %>
