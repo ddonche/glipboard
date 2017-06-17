@@ -1,6 +1,6 @@
 <div id="content-wrap">
   <div class="left-column">
-    <% if current_user.id == @group.user_id || current_user.has_roles?(:admin) %>
+    <% if current_user.id == @group.creator_id || current_user.has_roles?(:admin) %>
         
       <div class="title-box">
         Editing <%= @group.title %>
