@@ -10,6 +10,7 @@ Devise.setup do |config|
 
   #SHIT I ADDED
   #config.authentication_keys = [ :email ]
+  config.secret_key = ENV[ 'DEVISE_TOKEN_AUTH_SECRET_KEY' ]
   
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
