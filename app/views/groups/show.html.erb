@@ -8,7 +8,11 @@
           <% @categories.each do |category| %>
             <div class="category-items">
               <div class="tiny-table-cell">
-                <% if !category.icon.nil? %><%= image_tag category.icon, size: '25' %><% end %>
+                <% if category.icon? %>
+                  <%= image_tag category.icon, size: '25' %>
+                <% else %>
+                  <%= image_tag 'category.png', size: '25', alt: 'category icon' %>
+                <% end %>
               </div>
               
               <div class="tiny-table-cell">
