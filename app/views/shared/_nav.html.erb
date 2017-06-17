@@ -7,7 +7,14 @@
   
 	<ul class="menu-ul">
 		<li><%= link_to 'Glips', glips_path %></li>
-    <li><%= link_to 'Articles', featured_path %></li>
+    <li class="has-dropdown"><%= link_to 'Articles', articles_path %>
+      <div class="menu-dropdown submenu">
+				<ul class="submenu-list">
+				  <li><%= link_to 'Featured Articles', featured_path %></li>
+				  <li><%= link_to 'Help', '#' %></li>
+				</ul>
+			</div>
+    </li>
     <li><%= link_to "Groups", groups_path %></li>
     <li><%= link_to 'Tags', tags_path %></li>
     <li><%= link_to 'Users', users_path %></li>

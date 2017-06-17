@@ -7,11 +7,13 @@ class MentorshipsController < ApplicationController
     @mentorship = Mentorship.new(mentorship_params)
     respond_to do |format|
       if @mentorship.save
-        voltaire_up(10, :reputation, @mentorship.article.user_id)
         @article = @mentorship.article
-        if (@article.standard? && @article.mentorships.count > 15)
-          @article.featured!
-          voltaire_up(15, :reputation, @article.user_id)
+        unless @article.user_id == current_user.id
+          voltaire_up(10, :reputation, @mentorship.article.user_id)
+          if (@article.standard? && @article.mentorships.count > 15)
+            @article.featured!
+            voltaire_up(15, :reputation, @article.user_id)
+          end
         end
         format.html { redirect_to article_path(@mentorship.article_id), notice: 'You marked this article as helpful.' }
       else

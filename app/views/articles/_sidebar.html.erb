@@ -1,12 +1,11 @@
-<div class="side-box">
-  <div class="side-content">
-    <% if user_signed_in? %>
+<% if user_signed_in? && @article.status == "published" %>
+  <div class="side-box">
+    <div class="side-content">
       <%= render 'mentorships/form' %>
-    <% end %>
+    </div>
   </div>
-</div>
-<br />
-
+  <br />
+<% end %>
 <div class="side-box">
   <div class="side-content">
     <div class="title-box" style="font-size: 16px; text-align: center;"><%= @article.glips.size %> Glips helped by this Article</div>
