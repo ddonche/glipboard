@@ -1,18 +1,21 @@
 <div class="content-show">
   <div id="posts-form">
-    <%= link_to "New Comment", new_glip_comment_path(@glip), :remote => true %>
-    &nbsp;&nbsp;<h4><em><i class="fa fa-comments"></i>&nbsp;&nbsp;<%= @glip.comments.count %> Comments</em></h4>
+    <h4><em><i class="fa fa-comments"></i>&nbsp;&nbsp;<%= @glip.comments.count %> Comments<a id="comment"></a></em></h4>
   </div>
-  <div class="comments-wrap">
+  
+   <% if user_signed_in? %>
+      <%= render "comments/form" %><br/>
+    <% else %>
+      <div class="small"><em>You must be logged in to comment.</em></div>
+    <% end %>
+    
     <%= render "comments/comments" %>
-  </div>
+
   <% if @glip.comments.count != 0 %>
   
-  <div id="posts-form">
     <%= link_to new_glip_comment_path(@glip), :remote => true do %>
       <a href="#comment">New Comment</a>
     <% end %>
-  </div>
   
   <% end %>
 </div>

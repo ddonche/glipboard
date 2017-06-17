@@ -1,20 +1,35 @@
 <% @responses.each do |response| %>
-  <div class="response">
-    
-    <%= 
-      if response.user.picture?
-        link_to user_path(response.user) do
-          image_tag response.user.picture, width: 45, alt: 'user avatar'
+<div class="comments">
+  
+  <div class="comments-left-column">
+    <div class="comments-center">
+      <%= link_to like_group_post_response_path(@group, @post, response), method: :put do %><i class="fa fa-chevron-up"></i><% end %><br />
+      <%= response.get_upvotes.size %><br /><br />
+      <%= response.get_downvotes.size %><br />
+      <%= link_to dislike_group_post_response_path(@group, @post, response), method: :put do %><i class="fa fa-chevron-down"></i><% end %>
+    </div>
+  </div>
+  
+  <div class="comments-center-column">
+    <div class="comments-center">
+      <%= 
+        if response.user.picture?
+          link_to user_path(response.user) do
+            image_tag response.user.picture, width: 64, alt: 'user avatar'
+          end
+        else
+          link_to user_path(response.user) do
+            image_tag 'default_avatar.jpg', width: 64, alt: 'default user avatar'
+          end
         end
-      else
-        link_to user_path(response.user) do
-          image_tag 'default_avatar.jpg', width: 45, alt: 'default user avatar'
-        end
-      end
-    %>          
-
-    <div class="response-content"><%= markdown response.content %></div>
-    <div class="date">Posted <%= time_ago_in_words(response.created_at) %> ago by <%= link_to response.user.username, user_path(response.user) %>
+      %><h3 style="margin-top: 0;"><%= link_to response.user.username, user_path(response.user) %></h3> 
+      <%= response.user.reputation %>
+    </div>
+  </div>
+  <div class="comments-right-column">
+    <div class="comment-content" style="display: inline-block;">
+      <div class="comments-small">
+      <em>Posted <%= time_ago_in_words(response.created_at) %> ago</em>
     
       <% if (user_signed_in? && (current_user.id == response.user_id)) %>
         <div class="responses-alter">
@@ -23,10 +38,11 @@
         </div>
       <% end %>
     
-        <%= link_to like_group_post_response_path(@group, @post, response), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= response.get_upvotes.size %>&nbsp;&nbsp;
-        <%= link_to dislike_group_post_response_path(@group, @post, response), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= response.get_downvotes.size %>
+      </div>
     
+      <%= markdown response.content %>
     </div>
-
   </div>
+  
+</div>
 <% end %>

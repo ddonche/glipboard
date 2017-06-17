@@ -4,6 +4,22 @@
   
   <div class="comments-left-column">
     <div class="comments-center">
+      <% if @commentable = @glip %>
+        <%= link_to like_glip_comment_path(@glip, comment), method: :put do %><i class="fa fa-chevron-up"></i><% end %><br />
+        <%= comment.get_upvotes.size %><br /><br />
+        <%= comment.get_downvotes.size %><br />
+        <%= link_to dislike_glip_comment_path(@glip, comment), method: :put do %><i class="fa fa-chevron-down"></i><% end %>
+      <% else %>
+        <%= link_to like_article_comment_path(@article, comment), method: :put do %><i class="fa fa-chevron-up"></i><% end %><br />
+        <%= comment.get_upvotes.size %><br /><br />
+        <%= comment.get_downvotes.size %><br />
+        <%= link_to dislike_article_comment_path(@article, comment), method: :put do %><i class="fa fa-chevron-down"></i><% end %>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="comments-center-column">
+    <div class="comments-center">
       <%= 
         if comment.user.picture?
           link_to user_path(comment.user) do
@@ -14,15 +30,8 @@
             image_tag 'default_avatar.jpg', width: 64, alt: 'default user avatar'
           end
         end
-      %><h3 style="margin-top: 0;"><%= link_to comment.user.username, user_path(comment.user) %></h3>
-
-      <% if @commentable = @glip %>
-        <%= link_to like_glip_comment_path(@glip, comment), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= comment.get_upvotes.size %>&nbsp;&nbsp;
-        <%= link_to dislike_glip_comment_path(@glip, comment), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= comment.get_downvotes.size %>
-      <% else %>
-        <%= link_to like_article_comment_path(@article, comment), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= comment.get_upvotes.size %>&nbsp;&nbsp;
-        <%= link_to dislike_article_comment_path(@article, comment), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= comment.get_downvotes.size %>
-      <% end %>
+      %><h3 style="margin: 0 auto;"><%= link_to comment.user.username, user_path(comment.user) %></h3>
+      <%= comment.user.reputation %>
     </div>
   </div>
   
