@@ -11,7 +11,7 @@
       &nbsp;
     <% else %>
       <% @articles.each do |article| %>
-        <li><%= link_to article.title, article %>, by <%= link_to article.user.username, article.user %></li>
+        <li><%= link_to article.title, article %></li>
        <% end %>
     <% end %>
   </div>

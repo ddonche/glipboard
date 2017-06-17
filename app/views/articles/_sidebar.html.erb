@@ -6,6 +6,7 @@
   </div>
   <br />
 <% end %>
+
 <div class="side-box">
   <div class="side-content">
     <div class="title-box" style="font-size: 16px; text-align: center;"><%= @article.glips.size %> Glips helped by this Article</div>
@@ -14,7 +15,7 @@
       &nbsp;
     <% else %>
       <% @glips.each do |glip| %>
-        <li><%= link_to glip.title, glip %>, by <%= link_to glip.user.username, glip.user %></li>
+        <li><%= link_to glip.title, glip %></li>
       <% end %>
     <% end %>
   </div>

@@ -14,13 +14,10 @@
   
     <%= label_tag 'Mark This As Helpful' %><br />
     
-      <%= f.collection_select(:glip_id, current_user.glips, :id, :title, prompt: '--select glip--') %><br />
+    <%= f.collection_select(:glip_id, current_user.glips, :id, :title, prompt: '--select glip--') %><br />
     
-    <div><%= f.hidden_field :article_id, :value => @article.id %></div>
+    <%= f.hidden_field :article_id, :value => @article.id %>
     
-    <p><%= f.submit "Mark As Helpful" %></p>
+    <%= f.submit "Mark As Helpful" %>
   <% end %>
 </div>
-  
-
-
