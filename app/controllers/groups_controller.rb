@@ -23,6 +23,7 @@ class GroupsController < ApplicationController
   end
 
   def new
+    @creator_id = current_user.id
     @group = current_user.created_groups.build
   end
 
