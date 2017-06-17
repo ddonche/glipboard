@@ -1,0 +1,32 @@
+<%= render 'header' %>
+<div id="content-wrap">
+    
+  <div class="left-column">
+    <div class="title-box">
+      <%= @group.title %> Members
+    </div>
+        
+    <div class ="pagination-container">
+      <%= paginate @members %>
+    </div>
+  
+      <div class="user_avatars">
+        <% @members.each do |member| %>
+          <%= link_to member do %>
+            <%= 
+              if member.picture?
+                image_tag member.picture, width: 50, title: member.username
+              else
+                image_tag 'default_avatar.jpg', width: 50, title: member.username
+              end
+              %>
+          <% end %>
+        <% end %>
+      </div>
+  </div>
+  
+  <div class="right-column">
+    <%= render 'description' %>
+  </div>
+  
+</div>

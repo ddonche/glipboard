@@ -20,6 +20,10 @@ class GroupsController < ApplicationController
   end
   
   def members
+    @title = "Members"
+    @members = @group.users.order('created_at DESC').page(params[:page]).per(25)
+    @creator = User.friendly.find(@group.creator_id)
+    render 'show_members'
   end
 
   def new
