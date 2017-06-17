@@ -135,6 +135,7 @@ GEM
     orm_adapter (0.5.0)
     petergate (1.7.5)
       activerecord (> 4.0.0)
+    pg (0.21.0)
     puma (3.8.2)
     rack (2.0.2)
     rack-test (0.6.3)
@@ -156,6 +157,11 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (5.0.2)
       actionpack (= 5.0.2)
       activesupport (= 5.0.2)
@@ -238,8 +244,10 @@ DEPENDENCIES
   listen (~> 3.0.5)
   mini_magick (~> 4.5, >= 4.5.1)
   petergate (~> 1.7, >= 1.7.5)
+  pg
   puma (~> 3.0)
   rails (~> 5.0.2)
+  rails_12factor
   redcarpet (~> 3.4)
   sass-rails (~> 5.0)
   simple_form (~> 3.4)
