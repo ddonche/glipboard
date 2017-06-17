@@ -9,7 +9,7 @@
   <% if @glip.status == "incomplete" %>
     <i class="fa fa-star-half-o"></i>
   <% else %>
-    <i class="fa fa-star"></i>
+    <i class="fa fa-star" style="color: #dc0000;"></i>
   <% end %>
   <%= @glip.title %>
 </div>
@@ -25,7 +25,12 @@
         image_tag 'default_avatar.jpg', width: 84, alt: 'default user avatar'
       end
     end
-  %><div id="small-follow"><%= render 'users/follow_form' if user_signed_in? %></div>
+  %>
+    <% if current_user.id != @glip.user_id %>
+      <div id="small-follow"><%= render 'users/follow_form' if user_signed_in? %></div>
+    <% else %>
+      <div class="small">You can do it!</div>
+    <% end %>
 </div>
 
 <div class="details-show">
@@ -34,7 +39,7 @@
       <% if @glip.status == "incomplete" %>
         <i class="fa fa-star-half-o"></i>&nbsp;<%= link_to @glip.status, toggle_status_glip_path(@glip) %>
       <% else %>
-        <i class="fa fa-star"></i>&nbsp;<%= link_to @glip.status.upcase, toggle_status_glip_path(@glip) %>
+        <i class="fa fa-star" style="color: #dc0000;"></i>&nbsp;<%= link_to @glip.status.upcase, toggle_status_glip_path(@glip) %>
       <% end %>
     <% else %>
     <% end %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;<b>Deadline:</b> 

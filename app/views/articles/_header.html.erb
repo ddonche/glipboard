@@ -6,13 +6,13 @@
 <% end %>
 <div class="content-alter">
   <% if logged_in?(:admin) %>
-    <%= link_to toggle_feature_article_path(@article), method: :get do %><i class="fa fa-trophy"></i><% end %>&nbsp;&nbsp;
+    <%= link_to toggle_feature_article_path(@article), method: :get do %><i class="fa fa-trophy" style="color: #dc0000;"></i><% end %>&nbsp;&nbsp;
   <% end %>
 </div>
 
 <div class="title-box">
     <% if @article.feature == "featured" %>
-      <i class="fa fa-trophy"></i>&nbsp;
+      <i class="fa fa-trophy" style="color: #dc0000;"></i>&nbsp;
     <% end %>
   <%= @article.title %>
 </div>
@@ -34,7 +34,7 @@
 <div class="details-show">
     posted by <h4 style="display:inline;"><%= link_to @article.user.username, user_path(@article.user) %></h4>&nbsp;<%= time_ago_in_words(@article.created_at) %> ago&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <% if @article.feature == "featured" %>
-      <i class="fa fa-trophy"></i>&nbsp;<h4 style="display:inline;">Featured Article</h4>&nbsp;&nbsp;&nbsp;&nbsp;
+      <i class="fa fa-trophy" style="color: #dc0000;"></i>&nbsp;<h4 style="display:inline;">Featured Article</h4>&nbsp;&nbsp;&nbsp;&nbsp;
     <% end %>
     <% if current_user == @article.user %>
       <% if @article.status == "draft" %>
