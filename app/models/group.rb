@@ -11,7 +11,7 @@ class Group < ApplicationRecord
   mount_uploader :icon, IconUploader
   mount_uploader :banner, BannerUploader
   
-  validates_presence_of :title, :description, :user_id
+  validates_presence_of :title, :description, :creator_id
   validates_uniqueness_of :title
   validate :maximum_amount_of_tags
   
@@ -32,7 +32,7 @@ class Group < ApplicationRecord
   
   private
   def set_membership
-    Membership.create!(user_id: user_id, group_id: id)
+    Membership.create!(user_id: creator_id, group_id: id)
   end
   
   def picture_size_validation

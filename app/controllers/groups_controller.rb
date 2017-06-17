@@ -23,6 +23,7 @@ class GroupsController < ApplicationController
   end
 
   def new
+    @creator_id = current_user.id
     @group = Group.new
   end
 
@@ -30,7 +31,8 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.build(group_params)
+    @creator_id = current_user.id
+    @group = Group.create(group_params)
 
     respond_to do |format|
       if @group.save
