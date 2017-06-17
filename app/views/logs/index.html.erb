@@ -1,28 +1,86 @@
-<p id="notice"><%= notice %></p>
+<div class="left-column">
+  <div class="log-form">
+    <div class="title-box">Logs for <%= link_to @glip.title, @glip %></div>
+  </div>
+  <% if @logs.count > 21 %>
+    <div class ="pagination-container">
+      <%= paginate @logs %>
+    </div>
+  <% end %>
 
-<div class="index-title"><%= link_to @glip.title, @glip %></div>
-    
-<div class="logs">
-<table>
-  <thead>
-    <tr>
-      <th>Logs</th>
-      <th>Submitted</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <div class="log-form">
     <% @logs.each do |log| %>
-      <tr>
-        <td><%= log.content %></td>
-        <td><%= time_ago_in_words(log.created_at) %> ago on <%= log.created_at.strftime("%d-%m-%Y") %></td>
-      </tr>
+    <div class="small">
+      <div class="table">
+      <div class="table-row">
+        <div class="tiny-table-cell" style="width: 70%; word-break: break-all;"><%= log.content %></div>
+        <div class="tiny-table-cell" style="width: 30%; float: right;"><%= log.created_at.strftime("%m-%d-%Y") %></div>
+      </div>
+      </div>
+    </div>
     <% end %>
-  </tbody>
-</table>
+    
+  </div>
+  
+  <div class ="pagination-container">
+    <%= paginate @logs %>
+  </div>
 </div>
-<br>
-    <% if (user_signed_in? && (current_user.id == @glip.user_id)) %>
-      <%= link_to "Submit New Log Entry", glip_path(@glip) %>
-    <% end %>
+
+<div class="right-column">
+  
+  <div class="side-box">
+    <div class="side-content">
+    <div class="content-center">
+      <%= 
+      if @user.picture?
+        image_tag @user.picture, width: 80, alt: 'user avatar'
+      else
+        image_tag 'default_avatar.jpg', width: 80, alt: 'default user avatar'
+      end
+      %>
+      
+      <div class="title-box" style="font-size: 16px; text-align: center;">
+        <%= @user.username %>
+      </div>
+      
+      <div class="post-content">
+        <% if user_signed_in? %>
+          <% if current_user.id == @user.id %>
+            <%= link_to "Edit Profile", edit_user_registration_path(@user) %>
+          <% else %>
+            <%= link_to 'message', new_message_path(receiver_id: @user.id) %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    </div>  
+      <%= render 'shared/stats' %>
+      <div class="small">
+        <div class="center">
+          <%= render 'users/follow_form' if user_signed_in? %>
+        </div>
+      </div>
+  </div>
+  <br />
+  <div class="side-box">
+    <div class="side-content">
+      <div class="title-box" style="font-size: 16px; text-align: center;">Log Activity for <%= link_to @user.username, user_path(@user) %></div>
+
+      <% @glips.each do |glip| %>
+        <div class="small">
+          <div class="table">
+          <div class="table-row">
+            <div class="tiny-table-cell" style="width: 70%;"><%= link_to glip.title, glip_path(glip) %></div>
+            <div class="tiny-table-cell" style="width: 30%; float: right;"><%= glip.logs.count %></div>
+          </div>
+          </div>
+        </div>
+      <% end %><br />
+    <%= link_to_previous_page @glips, '<< Previous' %>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to_next_page @glips, 'Next >>' %>
+      
+    </div>
+  </div>
+
+  <br />
+</div>

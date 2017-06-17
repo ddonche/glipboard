@@ -25,6 +25,6 @@
         <% @logs.each do |log| %>
           <li><%= log.content.truncate(50) %></li>
         <% end %><br />
-    <%= link_to_previous_page @logs, 'Previous' %><%= link_to_next_page @logs, 'Next' %>
+    <%= link_to_previous_page @logs, '<< Previous' %>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to_next_page @logs, 'Next >>' %>
   </div>
 </div>

@@ -5,7 +5,9 @@ class LogsController < ApplicationController
   def index
     @page_title = "Log Entries"
     @glip = Glip.friendly.find(params[:glip_id])
-    @logs = @glip.logs
+    @logs = @glip.logs.order('created_at DESC').page(params[:page]).per(20)
+    @user = @glip.user
+    @glips = @user.glips.order("created_at DESC").page(params[:page]).per(10)
   end
   
   def new
