@@ -27,7 +27,7 @@
         <%= f.text_area :description, placeholder: 'Description', rows: 3, :maxlength => 300 %><br />
         <div class="helper"><div class="small">A basic description of your group. 300 characters max.</div></div><br />
         
-        <%= f.hidden_field :user_id %> 
+        <%= f.hidden_field :creator_id %> 
         
         <%= f.text_field :tag_list, placeholder: 'Add up to 5 tags (separated by commas)', value: @group.tag_list.join(", ") %>
         <div class="small"><em>Example: fitness, weight loss, marathon</em></div><br />
