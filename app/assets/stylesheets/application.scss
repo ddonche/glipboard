@@ -1,7 +1,7 @@
 /*
  *= require jquery-ui/datepicker
  *= require_tree .
- *= require_self
+ *= require_self 
  */
 html, body {
   font-family: Open Sans, Roboto, sans-serif;  
@@ -13,6 +13,10 @@ html, body {
 
 h1, h2, h3, h4 {
   font-family: 'Fjalla One', sans-serif;
+}
+
+ul {
+  list-style-type: square;
 }
 
 .center {
