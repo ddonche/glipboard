@@ -1,6 +1,12 @@
 <div id ="index-nav-container">
   <div class = "table-row">
     <div class="table-cell"><h3>Groups</h3></div>
+    <div class="table-cell"><div class="index-top-buttons"><div class="current-button"><%= link_to "latest", groups_path %></div></div></div>
+    <div class="table-cell"><div class="index-top-buttons"><div class="group-button"><%= link_to "popular", groups_path %></div></div></div>
+    <div class="table-cell"><div class="index-top-buttons">
+      <%= link_to 'http://www.glipboard.com/groups/glipboard-support' do %>
+        <%= image_tag 'support-banner.jpg', width: 480, alt: 'support banner'%>
+      <% end %></div></div>
   </div>
 </div>
 
