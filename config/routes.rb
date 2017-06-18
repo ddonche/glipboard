@@ -60,6 +60,7 @@ Rails.application.routes.draw do
   match '/users/:id', to: 'users#show', via: 'get'
   match '/featured', to: 'articles#featured', via: 'get'
   match '/drafts', to: 'articles#drafts', via: 'get'
+  match '/help', to: 'pages#help', via: 'get'
 
   #devise_for :users, :path_prefix => 'd'
   resources :users do
