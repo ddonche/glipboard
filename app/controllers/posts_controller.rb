@@ -18,13 +18,16 @@ class PostsController < ApplicationController
   end
 
   def new
+    @creator = User.friendly.find(@group.creator_id)
     @post = @group.posts.new
-    respond_to do |format|               
+    respond_to do |format|  
+      format.html
       format.js
     end
   end
 
   def edit
+    @creator = User.friendly.find(@group.creator_id)
   end
 
   def create

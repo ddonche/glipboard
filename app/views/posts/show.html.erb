@@ -57,6 +57,14 @@
     
   <div class="right-column">
     <div class="log-box">
+      <div class="center">
+        <div class="fake-submit">
+          <%= link_to 'Create a Group Post', new_group_post_path(@group) %>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="log-box">
       <%= render 'groups/description' %>
     </div>
   </div>

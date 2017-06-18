@@ -119,3 +119,24 @@ input[type="submit"], input[type="button"]{
     color: #fff;
     font-family: 'Fjalla One', sans-serif;
 }
+
+.fake-submit {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    min-width: 80px;
+    padding: 8px 16px;
+    background: #d20001;
+    border-bottom: 2px solid #810101;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;    
+    color: #fff;
+    font-family: 'Fjalla One', sans-serif;
+    a {
+        color: white;
+    }
+    a:hover {
+        color: black;
+    }
+}
