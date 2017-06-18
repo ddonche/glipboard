@@ -26,7 +26,7 @@
       end
     end
   %>
-    <% if current_user.id != @glip.user_id %>
+    <% if user_signed_in? && current_user.id != @glip.user_id %>
       <div id="small-follow"><%= render 'users/follow_form' if user_signed_in? %></div>
     <% else %>
       <div class="small">You can do it!</div>
