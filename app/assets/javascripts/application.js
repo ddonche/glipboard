@@ -14,5 +14,5 @@
 //= require jquery_ujs
 //= require jquery-ui/widgets/datepicker
 //= require turbolinks
-//= require_tree .
 //= require conversations
+//= require_tree .
