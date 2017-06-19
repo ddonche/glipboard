@@ -10,8 +10,6 @@
     
       <fieldset>
         <legend>Basic Info</legend>
-        <%= f.label 'Username' %><br />
-        <%= f.text_field :username, placeholder: 'Username cannot be blank' %><br />
         <%= f.text_field :email, placeholder: 'Email cannot be blank' %>
     
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -38,9 +36,9 @@
       </fieldset>
     
       <fieldset>
-        <legend>Password</legend>
-        <%= f.password_field :password, placeholder: 'password', autocomplete: "off", required: false %>
-        <div class="small"><em>leave blank if you don't want to change your password</em></div><br />
+        <legend>Change Your Password</legend>
+        <b style="color: #dc0000;"><em>Just leave these blank if you don't want to change your password</em></b><br /><br />
+        <%= f.password_field :password, placeholder: 'password', autocomplete: "off", required: false %><br />
         <%= f.password_field :password_confirmation, placeholder: 'password confirmation', required: false %><br />
       </fieldset>
       

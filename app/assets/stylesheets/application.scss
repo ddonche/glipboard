@@ -486,8 +486,10 @@ input[type=button], input[type=submit], input[type=reset] {
 /*CODE STYLING*/
 pre {
   border: dashed 1px #749a6d;
+  font-family: "Courier 10 Pitch", Courier, monospace;
   padding: 1em 1.5em 1em 1em;
-  font-size: 1em;
+  font-size: 95%;
+  line-height: 140%;
   min-height: 60px;
   background-color: #e3f7e0;
 }

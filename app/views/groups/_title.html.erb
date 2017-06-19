@@ -1,6 +1,8 @@
 <% if (user_signed_in? && (current_user.id == @group.creator_id)) %>
   <div class="content-alter">
-    <%= link_to edit_group_path(@group) do %><i class="fa fa-pencil"></i><% end %>
+    <div class="small-bold">
+      <%= link_to edit_group_path(@group) do %><i class="fa fa-pencil"></i>&nbsp;Edit Group<% end %>
+    </div>
   </div>
 <% end %>
 

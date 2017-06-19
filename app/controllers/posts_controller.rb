@@ -28,6 +28,10 @@ class PostsController < ApplicationController
 
   def edit
     @creator = User.friendly.find(@group.creator_id)
+    respond_to do |format| 
+      format.html
+      format.js
+    end
   end
 
   def create

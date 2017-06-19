@@ -4,7 +4,7 @@
     <%= render 'groups/title' %>
       <% if (user_signed_in? && (current_user.id == @post.user_id)) %>
         <div class="content-alter">
-          <%= link_to edit_group_post_path(@group, @post) do %><i class="fa fa-pencil"></i><% end %>&nbsp;
+          <div class="small-bold"><%= link_to edit_group_post_path(@group, @post) do %><i class="fa fa-pencil"></i>&nbsp;Edit Post<% end %></div>&nbsp;
         </div>
       <% end %>
 

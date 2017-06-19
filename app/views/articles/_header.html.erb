@@ -1,7 +1,7 @@
 <% if (user_signed_in? && (current_user.id == @article.user_id)) %>
   <div class="content-alter">
-    <%= link_to edit_article_path(@article) do %><i class="fa fa-pencil"></i><% end %>&nbsp;
-    <%= link_to article_path(@article), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %>
+    <div class="small-bold" style="display: inline-block;"><%= link_to edit_article_path(@article) do %><i class="fa fa-pencil"></i>&nbsp;Edit<% end %></div>
+    <div class="small-bold" style="display: inline-block;"><%= link_to article_path(@article), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i>&nbsp;Delete<% end %></div>
   </div>
 <% end %>
 <div class="content-alter">

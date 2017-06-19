@@ -20,8 +20,7 @@
     <%= f.collection_select(:category_id, @group.categories, :id, :title, prompt: '--select category--') %><br />
     
     <%= f.text_area :content, placeholder: 'Content', rows: 6 %>
-    <div class="helper"><div class="small">#creates a heading&nbsp;&nbsp;&nbsp;&nbsp;<em>_creates italics_</em>&nbsp;&nbsp;&nbsp;&nbsp;<strong>**creates bold**</strong> 
-    &nbsp;&nbsp;&nbsp;&nbsp;```backtick to escape code```&nbsp;&nbsp;&nbsp;&nbsp;use a > to quote&nbsp;&nbsp;&nbsp;&nbsp;get formatting help</div></div><br />
+    <div class="small"><b><div id="markdown"><%= link_to "#", :remote => true do %><i class="fa fa-chevron-down"  aria-hidden="true"></i>&nbsp;Formatting Help<% end %></b></div></div><br />
     
     <p><%= f.submit 'Submit Post' %></p>
   <% end %>

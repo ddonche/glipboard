@@ -1,6 +1,12 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.secret_key_base = ENV["SECRET_KEY_BASE"]
+  
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+  		api_key: 'pubkey-d32b15c03870a18c235c92e02d82d6fd',
+  		domain: 'glipboard.com'
+  }
 
   # Code is not reloaded between requests.
   config.cache_classes = true
