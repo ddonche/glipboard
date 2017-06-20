@@ -13,8 +13,15 @@
       
         <fieldset>
           <legend>Basic Info</legend>
-          <%= f.text_field :username, placeholder: 'Username cannot be blank' %><br />
-          <%= f.text_field :email, autofocus: true, placeholder: 'Email cannot be blank' %>
+          <div class="small"><em>Choose wisely. You won't be able to change your username later.</em></div>
+          <%= f.text_field :username, autofocus: true, placeholder: 'Username cannot be blank' %><br />
+          <%= f.text_field :email, placeholder: 'Email cannot be blank' %><br />
+        </fieldset>
+        
+        <fieldset>
+          <legend>Birthdate</legend>
+          <div class="small"><em>Required for certain age-appropriate features. This information is not displayed anywhere. You won't be able to change this later.</em></div>
+          <%= f.date_select :birthdate, { :include_blank => true, :start_year => 1917 } %>
         </fieldset>
         
         <fieldset>
@@ -23,7 +30,7 @@
           <%= f.password_field :password_confirmation, placeholder: 'retype your password' %>
         </fieldset>
       
-        <%= f.button :submit, "Register" %>
+        <%= f.button :submit, "Register", data: { confirm: "Last chance to change username or birthdate" } %>
         
       <% end %>
       

@@ -20,7 +20,7 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :username, use: :slugged
          
-  validates_presence_of :username
+  validates_presence_of :username, :birthdate
   validates_uniqueness_of :username
   
   has_many :active_relationships, class_name:  "Relationship",
