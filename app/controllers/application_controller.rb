@@ -3,7 +3,9 @@ class ApplicationController < ActionController::Base
   include DeviseWhitelist
   include DefaultPageContent
   
-  def old_enough
-    @old_enough = (current_user.birthdate.to_date + 16.years) < Date.today
+  helper_method :old_enough
+  
+  def old_enough(user)
+    (user.birthdate.to_date + 16.years) < Date.today
   end
 end

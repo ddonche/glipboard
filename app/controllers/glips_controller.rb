@@ -15,7 +15,7 @@ class GlipsController < ApplicationController
     @page_title = @glip.title
     @user = @glip.user
     @commentable = @glip
-    @comments = @commentable.comments
+    @comments = @commentable.comments.order("created_at DESC")
     @comment = Comment.new
     @log = Log.new
     @log.user = current_user

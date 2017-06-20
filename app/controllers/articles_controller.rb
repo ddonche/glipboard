@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
     @page_title = @article.title
     @user = @article.user
     @commentable = @article
-    @comments = @commentable.comments
+    @comments = @commentable.comments.order("created_at DESC")
     @comment = Comment.new
     @glips = @article.glips.order("created_at DESC")
     @mentorship = Mentorship.new

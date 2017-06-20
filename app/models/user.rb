@@ -20,8 +20,10 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :username, use: :slugged
          
-  validates_presence_of :username, :birthdate
+  validates :username, presence: true, length: { minimum: 4, maximum: 16 } 
   validates_uniqueness_of :username
+  validates_presence_of :birthdate
+  
   
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
