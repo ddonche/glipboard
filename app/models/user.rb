@@ -40,6 +40,7 @@ class User < ApplicationRecord
   has_many :articles
   has_many :posts
   has_many :comments
+  has_many :notations
   has_many :created_groups, class_name: "Group"
   has_many :memberships
   has_many :groups, through: :memberships

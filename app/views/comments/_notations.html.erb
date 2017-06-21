@@ -1,0 +1,21 @@
+<div class="content-show">
+  <div id="posts-form">
+    <h4><em><i class="fa fa-comments"></i>&nbsp;&nbsp;<%= @comment.notations.count %> Replies to this comment<a id="notation"></a></em></h4>
+  </div>
+  
+   <% if user_signed_in? %>
+      <%= render "notations/form" %><br/>
+    <% else %>
+      <div class="small"><em>You must be logged in to reply.</em></div>
+    <% end %>
+    
+    <%= render "notations/notations" %>
+
+  <% if @comment.notations.count != 0 %>
+  
+    <%= link_to new_comment_notation_path(@commentable, @comment), :remote => true do %>
+      <a href="#comment">New Comment</a>
+    <% end %>
+  
+  <% end %>
+</div>

@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
 
   def show
     @page_title = @group.title
-    @posts = Post.where({ group_id: @group.id }).order('created_at DESC').page(params[:page]).per(20)
+    @posts = Post.where({ group_id: @group.id }).order('updated_at DESC').page(params[:page]).per(20)
     @categories = @group.categories
     @creator = User.friendly.find(@group.creator_id)
   end
