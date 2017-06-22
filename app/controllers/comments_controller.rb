@@ -52,7 +52,10 @@ class CommentsController < ApplicationController
       @comment.upvote_by current_user
       
       voltaire_plus(1, :reputation, @comment.user_id)
-      redirect_to @commentable
+      respond_to do |format|
+        format.html { redirect_to @commentable }
+        format.js
+      end
     end
   end
   
@@ -62,7 +65,10 @@ class CommentsController < ApplicationController
       @comment.downvote_by current_user
       
       voltaire_minus(1, :reputation, @comment.user_id)
-      redirect_to @commentable
+      respond_to do |format|
+        format.html { redirect_to @commentable }
+        format.js
+      end
     end
   end
 

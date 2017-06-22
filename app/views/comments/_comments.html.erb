@@ -5,15 +5,15 @@
   <div class="comments-left-column">
     <div class="comments-center">
       <% if @commentable = @glip %>
-        <%= link_to like_glip_comment_path(@glip, comment), method: :put do %><i class="fa fa-chevron-up"></i><% end %><br />
-        <div id="comments-upvote" style="display: inline;"><%= comment.get_upvotes.size %></div><br /><br />
-        <div id="comments-downvote" style="display: inline;"><%= comment.get_downvotes.size %></div><br />
-        <%= link_to dislike_glip_comment_path(@glip, comment), method: :put do %><i class="fa fa-chevron-down"></i><% end %>
+        <%= link_to like_glip_comment_path(@glip, comment), method: :put, remote: true do %><i class="fa fa-chevron-up"></i><% end %><br />
+        <div id="upvote-<%= comment.id %>" style="display: inline;"><%= comment.get_upvotes.size %></div><br /><br />
+        <div id="downvote-<%= comment.id %>" style="display: inline;"><%= comment.get_downvotes.size %></div><br />
+        <%= link_to dislike_glip_comment_path(@glip, comment), method: :put, remote: true do %><i class="fa fa-chevron-down"></i><% end %>
       <% else %>
-        <%= link_to like_article_comment_path(@article, comment), method: :put do %><i class="fa fa-chevron-up"></i><% end %><br />
-        <div id="comments-upvote" style="display: inline;"><%= comment.get_upvotes.size %></div><br /><br />
-        <div id="comments-downvote" style="display: inline;"><%= comment.get_downvotes.size %></div><br />
-        <%= link_to dislike_article_comment_path(@article, comment), method: :put do %><i class="fa fa-chevron-down"></i><% end %>
+        <%= link_to like_article_comment_path(@article, comment), method: :put, remote: true do %><i class="fa fa-chevron-up"></i><% end %><br />
+        <div id="upvote-<%= comment.id %>" style="display: inline;"><%= comment.get_upvotes.size %></div><br /><br />
+        <div id="downvote-<%= comment.id %>" style="display: inline;"><%= comment.get_downvotes.size %></div><br />
+        <%= link_to dislike_article_comment_path(@article, comment), method: :put, remote: true do %><i class="fa fa-chevron-down"></i><% end %>
       <% end %>
     </div>
   </div>

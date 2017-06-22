@@ -317,6 +317,12 @@ input[type=button], input[type=submit], input[type=reset] {
   text-align: center;
   color: #9b949b;
   border: 1px solid #9b949b;
+  a {
+    color: #9b949b;
+  }
+  a:hover {
+    color: #76aeac;
+  }
 }
 
 .current-button {
