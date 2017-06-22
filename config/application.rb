@@ -16,5 +16,7 @@ module Glipboard
     
     config.time_zone = 'Mountain Time (US & Canada)'
     config.active_record.default_timezone = :local # Or :utc
+    
+    ActsAsTaggableOn.force_lowercase = true
   end
 end
