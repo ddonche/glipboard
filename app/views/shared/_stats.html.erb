@@ -10,7 +10,7 @@
   
   <div class="stat-box">
     <a href="<%= followers_user_path(@user) %>">
-      <b><%= @user.followers.count %></b><br/>
+      <b><div id="followers" style="display: inline;"><%= @user.followers.count %></div></b><br/>
       followers
     </a>
   </div>

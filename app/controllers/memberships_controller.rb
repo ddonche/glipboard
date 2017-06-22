@@ -5,7 +5,11 @@ class MembershipsController < ApplicationController
   def create
     @user = current_user
     Membership.create!(user_id: @user.id, group_id: @group.id)
-    redirect_to @group
+    voltaire_up(1, :reputation, @group.creator)
+    respond_to do |format|
+      format.html { redirect_to @group }
+      format.js
+    end
   end
 
   def destroy
@@ -13,7 +17,11 @@ class MembershipsController < ApplicationController
     @group = Group.find(params[:membership][:group_id])
     membership = user.memberships.find_by(group_id: @group.id)
     membership.destroy
-    redirect_to groups_path
+    voltaire_down(1, :reputation, @group.creator)
+    respond_to do |format|
+      format.html { redirect_to groups_path }
+      format.js
+    end
   end
   
   private

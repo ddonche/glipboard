@@ -1,7 +1,7 @@
 <div class="side-box"> 
     <div class="small">
       <div class="center">
-        <%= render 'memberships/join_form' if user_signed_in? %>
+        <div id="join_form" style="display: inline;"><%= render 'memberships/join_form' if user_signed_in? %></div>
       </div>
     </div>
 </div>
@@ -24,7 +24,7 @@
   <div class="side-content">
     <%= @group.description %><br />
       <div class="side-content">
-        <i class="fa fa-user"></i>&nbsp;&nbsp;<%= @group.users.size %>&nbsp; <%= link_to "members", members_group_path(@group) %><br />
+        <i class="fa fa-user"></i>&nbsp;&nbsp;<div id="members" style="display: inline;"><%= @group.users.size %></div>&nbsp; <%= link_to "members", members_group_path(@group) %><br />
       </div>
       
       <div class="side-content">
