@@ -25,7 +25,7 @@
               <div class="log-button">log</div>
             </div>
             <div class="table-cell">
-              <%= everything.content.truncate(80) %>
+              <%= link_to glip_logs_path(everything.glip) do %><i class="fa fa-arrow-right"></i><% end %>&nbsp;&nbsp;<%= everything.content.truncate(80) %>
             </div>
             <div class="table-cell">
               <%= time_ago_in_words(everything.created_at) %> ago

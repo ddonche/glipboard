@@ -1,0 +1,3 @@
+$("#join_form").html("<%= escape_javascript(render('memberships/join_form')) %>");
+$("#members").html('<%= @group.users.size %>');
+$('#posts-form').html("<%= escape_javascript(render :partial => 'posts/member') %>");
