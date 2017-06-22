@@ -3,10 +3,10 @@
   
   <div class="comments-left-column">
     <div class="comments-center">
-      <%= link_to like_group_post_response_path(@group, @post, response), method: :put, remote: true do %><i class="fa fa-chevron-up"></i><% end %><br />
+      <%= link_to like_group_post_response_path(@group, @post, response), method: :put do %><i class="fa fa-chevron-up"></i><% end %><br />
       <div id="upvote-<%= response.id %>" style="display: inline;"><%= response.get_upvotes.size %></div><br /><br />
       <div id="downvote-<%= response.id %>" style="display: inline;"><%= response.get_downvotes.size %></div><br />
-      <%= link_to dislike_group_post_response_path(@group, @post, response), method: :put, remote: true do %><i class="fa fa-chevron-down"></i><% end %>
+      <%= link_to dislike_group_post_response_path(@group, @post, response), method: :put do %><i class="fa fa-chevron-down"></i><% end %>
     </div>
   </div>
   
