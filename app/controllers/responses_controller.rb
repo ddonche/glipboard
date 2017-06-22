@@ -48,7 +48,10 @@ class ResponsesController < ApplicationController
       @response.upvote_by current_user
       
       voltaire_up(1, :reputation, @response.user_id)
-      redirect_to(:back)
+      respond_to do |format|
+        format.html { redirect_to group_post_path(@group, @post) }
+        format.js
+      end
     end
   end
   
@@ -57,7 +60,10 @@ class ResponsesController < ApplicationController
       @response.downvote_by current_user
       
       voltaire_down(1, :reputation, @response.user_id)
-      redirect_to(:back)
+      respond_to do |format|
+        format.html { redirect_to group_post_path(@group, @post) }
+        format.js
+      end
     end
   end
 

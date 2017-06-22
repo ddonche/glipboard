@@ -45,8 +45,8 @@
         <% @posts.each do |post| %>
           <div class="table-row">
             <div class="table-cell">
-              <%= link_to like_group_post_path(@group, post), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= post.get_upvotes.size %>&nbsp;&nbsp;
-              <%= link_to dislike_group_post_path(@group, post), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= post.get_downvotes.size %>
+              <i class="fa fa-chevron-up"></i>&nbsp;<%= post.get_upvotes.size %>&nbsp;&nbsp;
+              <i class="fa fa-chevron-down"></i>&nbsp;<%= post.get_downvotes.size %>
             </div>
           
             <div class="table-cell">

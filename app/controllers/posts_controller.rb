@@ -68,7 +68,10 @@ class PostsController < ApplicationController
       @post.upvote_by current_user
       
       voltaire_plus(1, :reputation, @post.user_id)
-      redirect_to :back
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+      end
     end
   end
   
@@ -77,7 +80,10 @@ class PostsController < ApplicationController
       @post.downvote_by current_user
       
       voltaire_minus(1, :reputation, @post.user_id)
-      redirect_to :back
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+      end
     end
   end
 
