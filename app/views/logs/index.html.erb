@@ -2,6 +2,7 @@
   <div class="log-form">
     <div class="title-box">Logs for <%= link_to @glip.title, @glip %></div>
   </div>
+  
   <% if @logs.count > 21 %>
     <div class ="pagination-container">
       <%= paginate @logs %>
@@ -30,8 +31,16 @@
 
 <div class="right-column">
   
+  <% if (user_signed_in? && (current_user.id == @glip.user_id)) %>
+    <div class="side-box">
+      <div class="log-box">
+        <%= render "logs/form" %><br/>
+      </div>
+    </div><br />
+  <% end %>
+
   <div class="side-box">
-    <div class="side-content">
+  <div class="side-content">
     <div class="content-center">
       <%= 
       if @user.picture?

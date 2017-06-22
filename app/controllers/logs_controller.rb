@@ -8,6 +8,7 @@ class LogsController < ApplicationController
     @logs = @glip.logs.order('created_at DESC').page(params[:page]).per(20)
     @user = @glip.user
     @glips = @user.glips.order("created_at DESC").page(params[:page]).per(10)
+    @log = Log.new
   end
   
   def new
@@ -21,9 +22,9 @@ class LogsController < ApplicationController
 
     respond_to do |format|
       if @log.save
-        format.html { redirect_to @glip, notice: 'Log was successfully created.' }
+        format.html { redirect_to :back, notice: 'Log was successfully created.' }
       else
-        format.html { redirect_to @glip, alert: "There was a problem with your log entry. Maybe it's too long? Logs cannot exceed 200 characters." }
+        format.html { redirect_to :back, alert: "There was a problem with your log entry. Maybe it's too long? Logs cannot exceed 200 characters." }
       end
     end
   end
