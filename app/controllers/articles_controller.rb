@@ -114,7 +114,10 @@ class ArticlesController < ApplicationController
       @article.upvote_by current_user
     
       voltaire_plus(1, :reputation, @article.user_id)
-      redirect_to :back
+      respond_to do |format|
+        format.html { redirect_to @article }
+        format.js
+      end
     end
   end
   
@@ -123,7 +126,10 @@ class ArticlesController < ApplicationController
       @article.downvote_by current_user
   
       voltaire_minus(1, :reputation, @article.user_id)
-      redirect_to :back
+      respond_to do |format|
+        format.html { redirect_to @article }
+        format.js
+      end
     end
   end
 

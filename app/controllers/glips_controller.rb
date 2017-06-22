@@ -95,7 +95,10 @@ class GlipsController < ApplicationController
       @glip.upvote_by current_user
       
       voltaire_plus(1, :reputation, @glip.user_id)
-      redirect_to :back
+      respond_to do |format|
+        format.html { redirect_to @glip }
+        format.js
+      end
     end
   end
   
@@ -104,7 +107,10 @@ class GlipsController < ApplicationController
       @glip.downvote_by current_user
       
       voltaire_minus(1, :reputation, @glip.user_id)
-      redirect_to :back
+      respond_to do |format|
+        format.html { redirect_to @glip }
+        format.js
+      end
     end
   end
 
