@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @page_title = "Glipboarders"
-    @users = User.order('created_at DESC').page(params[:page]).per(20)
+    @users = User.confirmed.order('created_at DESC').page(params[:page]).per(20)
   end
   
   def show

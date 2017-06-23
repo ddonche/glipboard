@@ -13,6 +13,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
          
+  scope :confirmed, -> {
+    where("confirmed_at IS NOT NULL")
+  }
+         
   mount_uploader :picture, PictureUploader
   mount_uploader :thumbnail, PictureUploader
 
