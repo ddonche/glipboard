@@ -33,7 +33,11 @@ Rails.application.routes.draw do
         put 'dislike', to: 'comments#downvote'
       end
     end
-    resources :milestones
+    resources :milestones do
+      member do
+        patch :complete
+      end
+    end
     resources :logs
   end
   

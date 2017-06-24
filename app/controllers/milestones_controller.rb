@@ -1,6 +1,6 @@
 class MilestonesController < ApplicationController
   before_action :set_glip
-  before_action :set_milestone, only: [:show, :edit, :update, :destroy]
+  before_action :set_milestone, except: [:create]
   before_action :authenticate_user!, except: [:index, :show]
   
   def index
@@ -30,6 +30,11 @@ class MilestonesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to glip_path(@glip), notice: 'Milestone was successfully deleted.' }
     end
+  end
+  
+  def complete
+    @milestone.update_attribute(:completed_at, Time.now)
+    redirect_to glip_path(@glip)
   end
   
   private
