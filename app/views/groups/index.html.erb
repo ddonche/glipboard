@@ -64,7 +64,28 @@
 <div class="right-column">
   <div class="side-box">
     <div class="side-content">
-      <div class="title-box" style="font-size: 16px; text-align: center;">Latest Discussions</div>
+      <div class="title-box" style="font-size: 16px; text-align: center;">
+        Latest Discussions
+      </div>
+      
+      <% @latest_posts.each do |post| %>
+        <div class="table-row">
+          <div class="tiny-table-cell">
+            <%= if post.group.icon?
+              link_to group_path(post.group) do
+                image_tag post.group.icon, width: 16, alt: 'group image', title: post.group.title
+              end
+            else
+              link_to group_path(post.group) do
+                image_tag 'default_avatar.jpg', width: 16, alt: 'group image', title: post.group.title
+              end
+            end %>
+          </div>
+          <div class="tiny-table-cell" style="display:inline-block;">
+            <%= link_to post.title, group_post_path(post.group, post) %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

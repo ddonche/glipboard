@@ -40,13 +40,13 @@ class User < ApplicationRecord
   has_many :sent_conversations, class_name: 'Conversation', foreign_key: 'sender_id'
   has_many :received_conversations, class_name: 'Conversation', foreign_key: 'received_id'
   has_many :messages, dependent: :destroy
-  has_many :glips
-  has_many :articles
-  has_many :posts
-  has_many :comments
-  has_many :notations
+  has_many :glips, dependent:   :destroy
+  has_many :articles, dependent:   :destroy
+  has_many :posts, dependent:   :destroy
+  has_many :comments, dependent:   :destroy
+  has_many :notations, dependent:   :destroy
   has_many :created_groups, class_name: "Group"
-  has_many :memberships
+  has_many :memberships, dependent:   :destroy
   has_many :groups, through: :memberships
   has_many :logs, dependent: :destroy
 

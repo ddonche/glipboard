@@ -2,10 +2,10 @@ class Group < ApplicationRecord
   after_create :set_membership
 
   belongs_to :creator, class_name: "User"
-  has_many :memberships
+  has_many :memberships, dependent:   :destroy
   has_many :users, through: :memberships
-  has_many :posts
-  has_many :categories
+  has_many :posts, dependent:   :destroy
+  has_many :categories, dependent:   :destroy
 
   mount_uploader :picture, PictureUploader
   mount_uploader :icon, IconUploader
@@ -14,6 +14,10 @@ class Group < ApplicationRecord
   validates_presence_of :title, :description, :creator_id
   validates_uniqueness_of :title
   validate :maximum_amount_of_tags
+  
+  scope :imaged, -> {
+    where("icon IS NOT NULL")
+  }
   
   extend FriendlyId
   friendly_id :title, use: :slugged
