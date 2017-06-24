@@ -1,21 +1,34 @@
 <h1>Milestones</h1>
   
-    <% @milestones.each do |milestone| %>
+  <% @milestones.each do |milestone| %>
     <div class="log-form" style="border: 1px solid #a9a9a9; padding: 10px;">
       <div class="table row">
-      <% if milestone.completed? %>
-        <div class="tiny-table-cell" style="width: 15%; opacity: 0.4;"><%= milestone.completed_at.strftime("%b %d, %Y") %></div>
-        <div class="tiny-table-cell" style="opacity: 0.4; width: 80%;"><strike><%= milestone.content %></strike></div>
-      <% else %>
-      <div class="tiny-table-cell" style="width: 15%;">
-        <%= link_to complete_glip_milestone_path(@glip, milestone), method: :patch do %>
-          <i class="fa fa-check"></i>
+        <% if milestone.completed? %>
+          <div class="tiny-table-cell" style="width: 15%; opacity: 0.4;">
+            <%= milestone.completed_at.strftime("%b %d, %Y") %>
+          </div>
+          <div class="tiny-table-cell" style="opacity: 0.4; width: 80%;">
+            <strike><%= milestone.content %></strike>
+          </div>
+        <% else %>
+        
+          <div class="tiny-table-cell" style="width: 15%;">
+            <% if current_user == @glip.user %>
+              <%= link_to complete_glip_milestone_path(@glip, milestone), method: :patch do %>
+                <i class="fa fa-check"></i>
+              <% end %>
+            <% end %>
+          </div>
+          
+          <div class="tiny-table-cell" style="color: grey; width: 80%;">
+            <%= milestone.content %>
+          </div>
+        <% end %>
+        
+        <% if current_user == @glip.user %>
+          <div class="tiny-table-cell" style="width: 5%;"><%= link_to glip_milestone_path(@glip, milestone), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %></div>
         <% end %>
       </div>
-      <div class="tiny-table-cell" style="color: grey; width: 80%;"><%= milestone.content %></div>
-      <% end %>
-      <div class="tiny-table-cell" style="width: 5%;"><%= link_to glip_milestone_path(@glip, milestone), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %></div>
-      </div>
     </div>
-    <% end %>
+  <% end %>
   
