@@ -34,6 +34,8 @@ class MilestonesController < ApplicationController
   
   def complete
     @milestone.update_attribute(:completed_at, Time.now)
+    @log_content = "Completed a milestone: #{@milestone.content}"
+    Log.create!(glip_id: @glip.id, content: @log_content)
     redirect_to glip_path(@glip)
   end
   
