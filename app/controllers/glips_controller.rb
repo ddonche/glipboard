@@ -18,6 +18,8 @@ class GlipsController < ApplicationController
     @comments = @commentable.comments.order("created_at DESC")
     @comment = Comment.new
     @log = Log.new
+    @milestone = Milestone.new
+    @milestones = @glip.milestones.order('created_at DESC')
     @log.user = current_user
     @articles = @glip.articles.order("created_at DESC")
     @logs = @glip.logs.order("created_at DESC").page(params[:page]).per(10)

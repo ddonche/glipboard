@@ -1,0 +1,11 @@
+<h1>Milestones</h1>
+  
+    <% @milestones.each do |milestone| %>
+    <div class="log-form" style="border: 1px solid #a9a9a9; padding: 10px;">
+      <div class="table row">
+      <div class="tiny-table-cell" style="word-break: break-all; color: grey; width: 95%;"><%= milestone.content %></div>
+      <div class="tiny-table-cell" style="width: 5%;"><%= link_to glip_milestone_path(@glip, milestone), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %></div>
+      </div>
+    </div>
+    <% end %>
+  

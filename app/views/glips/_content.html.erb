@@ -1,6 +1,10 @@
 <div class="content-show">
     <%= markdown @glip.content %>
   <div class="completion-criteria">
-    <em><b>Completion Criteria</em></b><br /><%= @glip.completion_criteria %>
+    <em><b>Completion Criteria</em></b><br /><%= @glip.completion_criteria %><br />
   </div>
+    <%= render 'milestones/milestones' %><br />
+  <% if current_user == @glip.user %>
+    <%= render 'milestones/form' %>
+  <% end %>
 </div>

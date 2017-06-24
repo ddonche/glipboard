@@ -7,6 +7,7 @@ class Glip < ApplicationRecord
   has_many :articles, through: :mentorships
   has_many :logs
   has_many :mentorships
+  has_many :milestones
 
   validates_presence_of :title, :content, :completion_criteria
   validate :maximum_amount_of_tags

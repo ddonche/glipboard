@@ -1,0 +1,19 @@
+  <%= form_for [@glip, @milestone] do |f| %>
+    <% if @milestone.errors.any? %>
+      <div class="error_messages">
+        <h3>Please correct the following errors.</h3>
+        <ul>
+        <% @milestone.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+          <div class="log-form" style="background: #fdfea5;">
+          <div class="table-cell" style="width: 80%;"><%= text_field_tag :content, "", :maxlength => 100 %></div>
+          <div class="table-cell" style="width: 20%;"><%= f.submit "Create Milestone" %></div>
+          <div class="smaller"><em>100 character limit</em></div>
+        </div>
+
+  <% end %>
