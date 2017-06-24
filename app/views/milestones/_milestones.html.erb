@@ -13,7 +13,7 @@
         <% else %>
         
           <div class="tiny-table-cell" style="width: 15%;">
-            <% if current_user == @glip.user %>
+            <% if user_signed_in? && current_user == @glip.user %>
               <%= link_to complete_glip_milestone_path(@glip, milestone), method: :patch do %>
                 <i class="fa fa-check"></i>
               <% end %>
@@ -25,7 +25,7 @@
           </div>
         <% end %>
         
-        <% if current_user == @glip.user %>
+        <% if user_signed_in? && current_user == @glip.user %>
           <div class="tiny-table-cell" style="width: 5%;"><%= link_to glip_milestone_path(@glip, milestone), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %></div>
         <% end %>
       </div>
