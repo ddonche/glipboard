@@ -4,7 +4,7 @@
     <em><b>Completion Criteria</em></b><br /><%= @glip.completion_criteria %><br />
   </div>
     <%= render 'milestones/milestones' %><br />
-  <% if current_user == @glip.user %>
+  <% if user_signed_in? && current_user == @glip.user %>
     <%= render 'milestones/form' %>
   <% end %>
 </div>

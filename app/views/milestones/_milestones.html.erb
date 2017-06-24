@@ -7,7 +7,11 @@
         <div class="tiny-table-cell" style="width: 15%; opacity: 0.4;"><%= milestone.completed_at.strftime("%b %d, %Y") %></div>
         <div class="tiny-table-cell" style="opacity: 0.4; width: 80%;"><strike><%= milestone.content %></strike></div>
       <% else %>
-      <div class="tiny-table-cell" style="width: 15%;"><%= link_to "Complete", complete_glip_milestone_path(@glip, milestone), method: :patch %></div>
+      <div class="tiny-table-cell" style="width: 15%;">
+        <%= link_to complete_glip_milestone_path(@glip, milestone), method: :patch do %>
+          <i class="fa fa-check"></i>
+        <% end %>
+      </div>
       <div class="tiny-table-cell" style="color: grey; width: 80%;"><%= milestone.content %></div>
       <% end %>
       <div class="tiny-table-cell" style="width: 5%;"><%= link_to glip_milestone_path(@glip, milestone), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %></div>
