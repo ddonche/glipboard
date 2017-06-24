@@ -10,51 +10,61 @@
   </div>
 </div>
 
-<div class ="pagination-container">
-  <%= paginate @groups %>
-</div>
-
-<div id ="index-container">
-  <div class= "logs">
-    <div class= "table">
-        <% @groups.each do |group| %>
+<div class="left-column">
+  <div class ="pagination-container">
+    <%= paginate @groups %>
+  </div>
+  
+  <div id ="index-container">
+    <div class= "logs">
+      <div class= "table">
+          <% @groups.each do |group| %>
+                
+            <div class="table-row">
+              <div class="table-cell">
+                <%= if group.icon?
+                  image_tag group.icon, width: 30, alt: 'group image' 
+                else
+                  image_tag 'default_avatar.jpg', width: 30, alt: 'group image'
+                end %>
+              </div>
+            
+              <div class="table-cell">
+                <%= link_to group.title, group %>
+              </div>
+            
+              <div class="table-cell">
+                <%= group.description.truncate(70) %>
+              </div>
               
-          <div class="table-row">
-            <div class="table-cell">
-              <%= if group.icon?
-                image_tag group.icon, width: 30, alt: 'group image' 
-              else
-                image_tag 'default_avatar.jpg', width: 30, alt: 'group image'
-              end %>
+              <div class="table-cell">
+                <i class="fa fa-user" style="display: inline;"></i>&nbsp;<div style="display: inline;"><%= group.users.size %></div>
+              </div>
+              
+              <div class="table-cell">
+                <% group.tag_list.map.each do |tag| %>
+                  <div class="tags">
+                    <%= link_to tag, tag_path(tag) %>
+                  </div>
+                <% end %>
+              </div>
             </div>
           
-            <div class="table-cell">
-              <%= link_to group.title, group %>
-            </div>
-          
-            <div class="table-cell">
-              <%= group.description.truncate(70) %>
-            </div>
-            
-            <div class="table-cell">
-              <%= group.users.size %> members
-            </div>
-            
-            <div class="table-cell">
-              <% group.tag_list.map.each do |tag| %>
-                <div class="tags">
-                  <%= link_to tag, tag_path(tag) %>
-                </div>
-              <% end %>
-            </div>
-          </div>
+        <% end %>
         
-      <% end %>
-      
+      </div>
     </div>
+  </div>
+  
+  <div class ="pagination-container">
+    <%= paginate @groups %>
   </div>
 </div>
 
-<div class ="pagination-container">
-  <%= paginate @groups %>
+<div class="right-column">
+  <div class="side-box">
+    <div class="side-content">
+      <div class="title-box" style="font-size: 16px; text-align: center;">Latest Discussions</div>
+    </div>
+  </div>
 </div>

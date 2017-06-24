@@ -5,6 +5,7 @@ class GroupsController < ApplicationController
 
   def index
     @page_title = "Groups"
+    @latest_posts = Post.all.order('created_at DESC').limit(20)
     if params[:tag]
       @groups = Group.tagged_with(params[:tag])
     else

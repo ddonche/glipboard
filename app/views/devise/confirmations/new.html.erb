@@ -1,16 +1,26 @@
-<h2>Resend confirmation instructions</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
-  <%= f.full_error :confirmation_token %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+<div id="content-wrap">
+  <div class="left-column">
+    <div class="title-box">
+      Resend confirmation instructions
+    </div>
+  
+    <div class="log-form">
+      <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+        <%= f.error_notification %>
+        <%= f.full_error :confirmation_token %>
+      
+        <%= f.input :email, autofocus: true %>
+      
+        <%= f.button :submit, "Resend confirmation instructions" %>
+      <% end %>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Resend confirmation instructions" %>
+  
+  <div class="right-column">
+    <div class="side-box"> 
+      <div class="side-content">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
