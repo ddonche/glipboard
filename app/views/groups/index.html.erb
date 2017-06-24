@@ -1,3 +1,4 @@
+<div id="content-wrap" style="width: 1080px;">
 <div id ="index-nav-container">
   <div class = "table-row">
     <div class="table-cell"><h3>Groups</h3></div>
@@ -10,12 +11,11 @@
   </div>
 </div>
 
-<div class="left-column">
+<div class="left-column" style="width: 70%;">
   <div class ="pagination-container">
     <%= paginate @groups %>
   </div>
   
-  <div id ="index-container">
     <div class= "logs">
       <div class= "table">
           <% @groups.each do |group| %>
@@ -54,14 +54,13 @@
         
       </div>
     </div>
-  </div>
   
   <div class ="pagination-container">
     <%= paginate @groups %>
   </div>
 </div>
 
-<div class="right-column">
+<div class="right-column" style="width: 30%;">
   <div class="side-box">
     <div class="side-content">
       <div class="title-box" style="font-size: 16px; text-align: center;">
@@ -88,4 +87,5 @@
       <% end %>
     </div>
   </div>
+</div>
 </div>
