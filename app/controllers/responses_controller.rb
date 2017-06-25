@@ -24,6 +24,7 @@ class ResponsesController < ApplicationController
   
   def edit   
     @response = Response.find(params[:id])
+    @creator = User.friendly.find(@group.creator_id)
   end
   
   def update

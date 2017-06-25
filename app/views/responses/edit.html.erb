@@ -1,6 +1,13 @@
-<h1>Editing Response</h1>
+<%= render 'groups/header' %>
+<div id="content-wrap">
+  <div class="left-column">
+    <%= render 'groups/title' %>
+    <%= render 'responses/form', response: @response %>
+    </div>
+    
+  <div class="right-column">
+    <div class="log-box">
+      <%= render 'groups/description' %>
+  </div>
 
-<%= render 'responses/form', response: @response %>
-
-<%= link_to 'Cancel', group_post_path(@group, @post) %> |
-<%= link_to 'Back', group_post_path(@group, @post) %>
+</div>

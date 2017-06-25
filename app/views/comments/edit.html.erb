@@ -1,5 +1,19 @@
-<h1>Editing Comment</h1>
-
-<%= render 'form', comment: @comment %>
-
-<%= link_to 'Cancel', @commentable %>
+<div id="content-wrap">
+  <div class="left-column">
+    <div class="title-box">
+      Editing 
+    </div>
+  
+    <div class="log-form">
+      <%= render 'form', comment: @comment %>
+    </div>
+  </div>
+  
+  <div class="right-column">
+    <div class="side-box"> 
+      <div class="side-content">
+        <%= link_to 'Cancel', @commentable %>
+      </div>
+    </div>
+  </div>
+</div>
