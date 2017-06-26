@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
       @groups = Group.tagged_with(params[:tag])
     else
       @groups = Group.imaged.order('created_at DESC').page(params[:page]).per(25)
+      @new_groups = Group.unimaged.order('created_at DESC').page(params[:page]).per(25)
     end
   end
 

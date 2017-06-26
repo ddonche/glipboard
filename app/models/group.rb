@@ -19,6 +19,10 @@ class Group < ApplicationRecord
     where("icon IS NOT NULL")
   }
   
+  scope :unimaged, -> {
+    where("icon IS NULL")
+  }
+  
   extend FriendlyId
   friendly_id :title, use: :slugged
   

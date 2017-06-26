@@ -22,11 +22,7 @@
                 
             <div class="table-row">
               <div class="table-cell">
-                <%= if group.icon?
-                  image_tag group.icon, width: 30, alt: 'group image' 
-                else
-                  image_tag 'default_avatar.jpg', width: 30, alt: 'group image'
-                end %>
+                <%= image_tag group.icon, width: 30, alt: 'group image' %>
               </div>
             
               <div class="table-cell">
@@ -43,6 +39,35 @@
               
               <div class="table-cell">
                 <% group.tag_list.map.each do |tag| %>
+                  <div class="tags">
+                    <%= link_to tag, tag_path(tag) %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          
+        <% end %>
+          <% @new_groups.each do |new| %>
+                
+            <div class="table-row">
+              <div class="table-cell">
+                <%= image_tag 'default_avatar.jpg', width: 30, alt: 'group image' %>
+              </div>
+            
+              <div class="table-cell">
+                <%= link_to new.title, new %>
+              </div>
+            
+              <div class="table-cell">
+                <%= new.description.truncate(70) %>
+              </div>
+              
+              <div class="table-cell">
+                <i class="fa fa-user" style="display: inline;"></i>&nbsp;<div style="display: inline;"><%= new.users.size %></div>
+              </div>
+              
+              <div class="table-cell">
+                <% new.tag_list.map.each do |tag| %>
                   <div class="tags">
                     <%= link_to tag, tag_path(tag) %>
                   </div>
