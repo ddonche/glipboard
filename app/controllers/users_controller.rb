@@ -12,9 +12,10 @@ class UsersController < ApplicationController
     @articles = @user.articles.where({ status: "published" })
     @glips = @user.glips
     @logs = @user.logs
+    @groups = @user.groups
     @almost_everything = (@articles + @glips).sort{|b,a| a.updated_at <=> b.updated_at }
     @everything_prepage = (@almost_everything + @logs).sort{|b,a| a.updated_at <=> b.updated_at }
-    @everything = Kaminari.paginate_array(@everything_prepage).page(params[:page]).per(9)
+    @everything = Kaminari.paginate_array(@everything_prepage).page(params[:page]).per(20)
   end
   
   def following

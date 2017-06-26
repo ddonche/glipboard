@@ -91,3 +91,43 @@
   </div>
 </div>
 <br />
+<div class="side-box">
+  <div class="side-content">
+    
+    <div class="title-box" style="font-size: 18px;">
+      <%= @user.username %>'s Groups
+    </div>
+  
+    <div class= "logs">
+      <div class= "table">
+          <% @groups.each do |group| %>
+                
+            <div class="table-row">
+              <div class="tiny-table-cell">
+                <%= 
+                  if group.icon?
+                    image_tag group.icon, width: 20
+                  else
+                    image_tag 'default_avatar.jpg', width: 20
+                  end
+                  %>
+              </div>
+            
+              <div class="tiny-table-cell">
+                <%= link_to group.title, group %>
+              </div>
+              
+              <div class="tiny-table-cell">
+                <% if @user == group.creator %>
+                  <i class="fa fa-rocket"></i>&nbsp;&nbsp;<div class="smaller" style="display:inline;">creator</div>
+                <% end %>
+              </div>
+              
+            </div>
+          
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<br />

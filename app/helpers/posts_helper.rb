@@ -1,4 +1,4 @@
-module PagesHelper
+module PostsHelper
   
   # Start here and take code to partial
   class CodeRayify < Redcarpet::Render::HTML
