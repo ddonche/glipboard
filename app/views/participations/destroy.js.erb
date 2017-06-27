@@ -1,0 +1,3 @@
+$("#participate_form").html("<%= escape_javascript(render('participations/participate_form')) %>");
+$("#members").html('<%= @glip.users.size %>');
+$("#participants").html("<%= escape_javascript(render('participations/show_participants')) %>");

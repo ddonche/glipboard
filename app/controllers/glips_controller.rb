@@ -20,6 +20,7 @@ class GlipsController < ApplicationController
     @log = Log.new
     @milestone = Milestone.new
     @milestones = @glip.milestones.order('created_at DESC')
+    #@participants = @glip.users.order('created_at DESC')
     @log.user = current_user
     @articles = @glip.articles.order("created_at DESC")
     @logs = @glip.logs.order("created_at DESC").page(params[:page]).per(10)
@@ -53,7 +54,6 @@ class GlipsController < ApplicationController
 
   def create
     @glip = current_user.glips.build(glip_params)
-
     respond_to do |format|
       if @glip.save
         format.html { redirect_to @glip, notice: 'You have a new Glip!' }
@@ -122,6 +122,6 @@ class GlipsController < ApplicationController
     end
 
     def glip_params
-      params.require(:glip).permit(:title, :content, :user_id, :tag_list, :deadline, :completion_criteria)
+      params.require(:glip).permit(:title, :content, :user_id, :tag_list, :deadline, :completion_criteria, :parent_id)
     end
 end

@@ -136,6 +136,10 @@ GEM
     petergate (1.7.5)
       activerecord (> 4.0.0)
     pg (0.21.0)
+    pry (0.10.4)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     puma (3.8.2)
     rack (2.0.2)
     rack-test (0.6.3)
@@ -186,6 +190,7 @@ GEM
     simple_form (3.4.0)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
+    slop (3.6.0)
     spring (2.0.1)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -245,6 +250,7 @@ DEPENDENCIES
   mini_magick (~> 4.5, >= 4.5.1)
   petergate (~> 1.7, >= 1.7.5)
   pg
+  pry (~> 0.10.3)
   puma (~> 3.0)
   rails (~> 5.0.2)
   rails_12factor

@@ -1,0 +1,4 @@
+<%= form_for(current_user.participations.build, remote: true) do |f| %>
+  <div><%= hidden_field_tag :glip_id, @glip.id %></div>
+  <%= submit_tag "Participate" %>
+<% end %>

@@ -36,6 +36,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'byebug', platform: :mri
   gem 'faker', '~> 1.7', '>= 1.7.3'
+  gem 'pry', '~> 0.10.3'
 end
 
 group :development do

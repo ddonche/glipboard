@@ -1,0 +1,6 @@
+<%= form_for(current_user.participations.find_by(glip_id: @glip.id),
+             html: { method: :delete },
+             remote: true) do |f| %>
+             <%= f.hidden_field :glip_id %>
+  <%= submit_tag "Quit Participating" %>
+<% end %>

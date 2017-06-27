@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170624044931) do
+ActiveRecord::Schema.define(version: 20170627011321) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20170624044931) do
     t.string   "slug"
     t.integer  "verified",            default: 0
     t.datetime "deadline"
+    t.integer  "parent_id"
     t.index ["slug"], name: "index_glips_on_slug", unique: true
   end
 
@@ -143,6 +144,16 @@ ActiveRecord::Schema.define(version: 20170624044931) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "participations", force: :cascade do |t|
+    t.integer  "glip_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["glip_id", "user_id"], name: "index_participations_on_glip_id_and_user_id", unique: true
+    t.index ["glip_id"], name: "index_participations_on_glip_id"
+    t.index ["user_id"], name: "index_participations_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
