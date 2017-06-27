@@ -59,7 +59,11 @@
     
   </div>
   <div class="comment-content" style="display: inline-block;">
-    <div class="comments-small"><%= link_to "reply", new_glip_comment_notation_path(@glip, comment) %></div>
+    <% if @commentable = @glip %>
+      <div class="comments-small"><%= link_to "reply", new_glip_comment_notation_path(@glip, comment) %></div>
+    <% else %>
+      <div class="comments-small"><%= link_to "reply", new_article_comment_notation_path(@article, comment) %></div>
+    <% end %>
     <% if comment.notations.any? %>
       <%= render 'notations/notations', comment: comment %>
     <% end %>
