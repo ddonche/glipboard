@@ -56,7 +56,13 @@
       </div>
       <%= markdown comment.content %><br />
     </div>
+    
   </div>
-  
+  <div class="comment-content" style="display: inline-block;">
+    <div class="comments-small"><%= link_to "reply", new_glip_comment_notation_path(@glip, comment) %></div>
+    <% if comment.notations.any? %>
+      <%= render 'notations/notations', comment: comment %>
+    <% end %>
+  </div>
 </div>
 <% end %>

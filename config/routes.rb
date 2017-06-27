@@ -17,6 +17,7 @@ Rails.application.routes.draw do
         put 'like', to: 'comments#upvote'
         put 'dislike', to: 'comments#downvote'
       end
+      resources :notations
     end
   end
   
@@ -32,6 +33,7 @@ Rails.application.routes.draw do
         put 'like', to: 'comments#upvote'
         put 'dislike', to: 'comments#downvote'
       end
+      resources :notations
     end
     resources :milestones do
       member do
@@ -55,6 +57,7 @@ Rails.application.routes.draw do
           put 'like', to: 'responses#upvote'
           put 'dislike', to: 'responses#downvote'
         end
+      resources :notations
       end
     end
     resources :categories

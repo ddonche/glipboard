@@ -9,7 +9,7 @@ class Glip < ApplicationRecord
   has_many :mentorships
   has_many :milestones
   #has_many :participations, dependent: :destroy
-  #has_many :users, through: :participations
+  #has_many :users, through: :participations, class_name: 'User'
 
   validates_presence_of :title, :content, :completion_criteria
   validate :maximum_amount_of_tags
@@ -20,7 +20,7 @@ class Glip < ApplicationRecord
   
   def slug_candidates
     [
-      [:user_username, :title]
+      [user.username, :title]
     ]
   end
   

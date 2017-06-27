@@ -1,11 +1,10 @@
 class NotationsController < ApplicationController
-  before_action :set_notation, except: [:create]
-  before_action :set_comment, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_commentable, only: [:create, :edit, :update, :destroy]
+  before_action :set_comment
+  before_action :set_commentable
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @notations = @comment.notations.order('created_at DESC')
+    @notations = @comment.notations
   end
 
   def new
@@ -16,7 +15,7 @@ class NotationsController < ApplicationController
     @notation = @comment.notations.new(notation_params) 
     @notation.user_id = current_user.id if current_user
     if @notation.save
-      redirect_to @notation
+      redirect_to @commentable
     else
       render :new
     end
@@ -29,7 +28,7 @@ class NotationsController < ApplicationController
   def update
     respond_to do |format|
       if @notation.update(notation_params)
-         format.html { redirect_to @notation }
+         format.html { redirect_to :back }
       else
          format.html { render :edit }
       end
@@ -37,9 +36,10 @@ class NotationsController < ApplicationController
   end
 
   def destroy
+    @notation = Notation.find(params[:id])
     @notation.destroy
     respond_to do |format|
-      redirect_to @commentable, notice: 'response was eradicated.'
+      format.html { redirect_to @commentable, notice: 'Reply was eradicated.' }
     end
   end
   
@@ -62,13 +62,9 @@ class NotationsController < ApplicationController
   end
 
   private
-
-  def set_notation
-    @notation = Notation.find(params[:id])
-  end
   
   def set_comment
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:comment_id])
   end
   
   def set_commentable

@@ -1,0 +1,10 @@
+<div id="glips-wrapper">
+    <h3>Replies</h3>
+    <p><%= link_to "reply", [:new, @commentable, @comment, :notation] %></p>
+    <% @notations.each do |notation| %>
+      <div class="glips">
+        <div class="post-title"><%= notation.content %></div>
+        <div class="date">Posted <%= time_ago_in_words(notation.created_at) %> ago by <%= link_to notation.user.username, user_path(notation.user) %></div>
+      </div>
+    <% end %>
+</div>

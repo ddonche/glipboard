@@ -50,7 +50,7 @@ class User < ApplicationRecord
   has_many :groups, through: :memberships
   has_many :logs, dependent: :destroy
   #has_many :participations, dependent: :destroy
-  #has_many :glips, through: :participations
+  #has_many :glips, through: :participations, class_name: 'Glip'
 
   # Follows a user.
   def follow(other_user)
