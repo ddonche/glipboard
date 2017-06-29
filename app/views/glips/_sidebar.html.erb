@@ -16,6 +16,11 @@
 <div class="side-box">
   <div class="side-content" style="margin-top: 0;">
     <div class="small">
+    <% if @glip.parent_id? %>
+        <div class="center" style="margin: auto;">
+          <%= link_to "Visit this Glip's Ancestor", glip_path(@glip.parent_id) %>
+        </div>
+    <% end %>
     <div class="table-row">
       <div class="tiny-table-cell">
         <div id="participate_form"><%= render 'participations/participate_form' %></div>
