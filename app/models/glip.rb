@@ -14,6 +14,8 @@ class Glip < ApplicationRecord
   validates_presence_of :title, :content, :completion_criteria
   validate :maximum_amount_of_tags
   
+  acts_as_taggable
+  acts_as_votable
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
   delegate :username, to: :user, prefix: true
@@ -27,9 +29,6 @@ class Glip < ApplicationRecord
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
   end
-  
-  acts_as_taggable
-  acts_as_votable
   
   def maximum_amount_of_tags
     number_of_tags = tag_list_cache_on("tags").uniq.length
