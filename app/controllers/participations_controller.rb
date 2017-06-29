@@ -9,8 +9,9 @@ class ParticipationsController < ApplicationController
     Glip.create!(parent_id: @glip.id, title: @glip.title, content: @glip.content, 
                   completion_criteria: @glip.completion_criteria, user_id: @user.id)
     respond_to do |format|
-      format.html { redirect_to @glip }
-      format.js
+      @last = current_user.glips.last
+      format.html { redirect_to glip_path(@last.id), notice: "You joined! Don't forget to customize it with your own content, milestones, tags, etc." }
+      format.js { redirect_to glip_path(@last.id), notice: "You joined! Don't forget to customize it with your own content, milestones, tags, etc." }
     end
   end
 

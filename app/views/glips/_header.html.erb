@@ -40,7 +40,11 @@
 </div>
 
 <div class="details-show">
-    posted by <h4 style="display:inline;"><%= link_to @glip.user.username, user_path(@glip.user) %></h4>&nbsp;<%= time_ago_in_words(@glip.created_at) %> ago&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <% if @glip.parent_id? %>
+    shared by
+  <% else %>
+    originated by
+  <% end %><h4 style="display:inline;"><%= link_to @glip.user.username, user_path(@glip.user) %></h4>&nbsp;<%= time_ago_in_words(@glip.created_at) %> ago&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <% if current_user == @glip.user %>  
       <% if @glip.status == "incomplete" %>
         <i class="fa fa-star-half-o"></i>&nbsp;<%= link_to @glip.status, toggle_status_glip_path(@glip) %>
