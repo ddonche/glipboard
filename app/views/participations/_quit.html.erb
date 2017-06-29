@@ -1,6 +1,15 @@
-<%= form_for(current_user.participations.find_by(glip_id: @glip.id),
+<% if @glip.parent_id? %>
+  <%= form_for(current_user.participations.find_by(glip_id: @glip.parent_id),
+             html: { method: :delete },
+             remote: true) do |f| %>
+             <%= f.hidden_field :glip_id, value: @glip.parent_id %>
+  <%= submit_tag "Quit This" %>
+  <% end %>
+<% else %>
+  <%= form_for(current_user.participations.find_by(glip_id: @glip.id),
              html: { method: :delete },
              remote: true) do |f| %>
              <%= f.hidden_field :glip_id %>
   <%= submit_tag "Quit This" %>
+  <% end %>
 <% end %>

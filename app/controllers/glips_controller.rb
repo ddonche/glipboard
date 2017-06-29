@@ -20,7 +20,12 @@ class GlipsController < ApplicationController
     @log = Log.new
     @milestone = Milestone.new
     @milestones = @glip.milestones.order('created_at DESC')
-    @participants = @glip.participants.order('created_at DESC').order("created_at DESC").limit(18)
+    if @glip.parent_id?
+      @parent_glip = Glip.friendly.find(@glip.parent_id)
+      @participants = @parent_glip.participants
+    else
+      @participants = @glip.participants.order('created_at DESC').order("created_at DESC").limit(18)
+    end
     @log.user = current_user
     @articles = @glip.articles.order("created_at DESC")
     @logs = @glip.logs.order("created_at DESC").page(params[:page]).per(10)

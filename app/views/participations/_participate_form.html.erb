@@ -1,9 +1,21 @@
 <% if user_signed_in? %>
-  <% unless current_user.id == @glip.user_id %>
-    <% if current_user.participant_glips.exists?(@glip) %>
+  
+  <% if @glip.parent_id? %>
+  
+    <% if current_user.participant_glips.exists?(@glip.parent_id) %>
       <%= render 'participations/quit' %>
     <% else %>
       <%= render 'participations/join' %>
     <% end %>
+    
+  <% else %>
+    <% if current_user.id != @glip.user_id %>
+      <% if current_user.participant_glips.exists?(@glip.id) %>
+        <%= render 'participations/quit' %>
+      <% else %>
+        <%= render 'participations/join' %>
+      <% end %>
+    <% end %>
   <% end %>
+  
 <% end %>

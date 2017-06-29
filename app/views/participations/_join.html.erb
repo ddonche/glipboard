@@ -1,4 +1,9 @@
 <%= form_for(current_user.participations.build, remote: true) do |f| %>
-  <div><%= hidden_field_tag :glip_id, @glip.id %></div>
+  <% if @glip.parent_id? %>
+    <%= hidden_field_tag :glip_id, @glip.parent_id %>
+  <% else %>
+    <%= hidden_field_tag :glip_id, @glip.id %>
+  <% end %>
+  
   <%= submit_tag "Join This" %>
 <% end %>

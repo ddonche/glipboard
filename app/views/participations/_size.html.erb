@@ -1,5 +1,13 @@
-<% if @glip.participants.size < 1 %>
-  There are no participants yet.
+<% if @glip.parent_id? %>
+  <% if @parent_glip.participants.size < 1 %>
+    There are no participants yet.
+  <% else %>
+    <%= @parent_glip.participants.size %> Participants
+  <% end %>
 <% else %>
-  <%= @glip.participants.size %> Participants
+  <% if @glip.participants.size < 1 %>
+    There are no participants yet.
+  <% else %>
+    <%= @glip.participants.size %> Participants
+  <% end %>
 <% end %>

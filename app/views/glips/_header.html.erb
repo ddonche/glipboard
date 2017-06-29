@@ -3,9 +3,11 @@
     <div class="small-bold" style="display: inline-block;">
       <%= link_to edit_glip_path(@glip) do %><i class="fa fa-pencil"></i>&nbsp;Edit<% end %>
     </div>&nbsp;
-    <div class="small-bold" style="display: inline-block;">
-      <%= link_to glip_path(@glip), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i>&nbsp;Delete<% end %>
-    </div>
+    <% unless @glip.parent_id? %>
+      <div class="small-bold" style="display: inline-block;">
+        <%= link_to glip_path(@glip), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i>&nbsp;Delete<% end %>
+      </div>
+    <% end %>
   </div>
 <% end %>
 
