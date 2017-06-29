@@ -8,8 +8,8 @@ class Glip < ApplicationRecord
   has_many :logs
   has_many :mentorships
   has_many :milestones
-  #has_many :participations, dependent: :destroy
-  #has_many :users, through: :participations, class_name: 'User'
+  has_many :participations, dependent: :destroy
+  has_many :participants, :through => :participations, :source => :user
 
   validates_presence_of :title, :content, :completion_criteria
   validate :maximum_amount_of_tags

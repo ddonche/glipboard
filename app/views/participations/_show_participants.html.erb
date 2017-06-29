@@ -1,13 +1,11 @@
-<div class="user_avatars">
-  <% @participants.each do |participant| %>
-    <%= link_to participant do %>
-      <%= 
-        if participant.picture?
-          image_tag participant.picture, width: 30, title: participant.username
-        else
-          image_tag 'default_avatar.jpg', width: 30, title: participant.username
-        end
-        %>
-    <% end %>
+<% @participants.each do |participant| %>
+  <%= link_to participant do %>
+    <%= 
+      if participant.picture?
+        image_tag participant.picture, width: 30, title: participant.username
+      else
+        image_tag 'default_avatar.jpg', width: 30, title: participant.username
+      end
+      %>
   <% end %>
-</div>
+<% end %>

@@ -59,5 +59,6 @@
     <%= link_to like_glip_path(@glip), method: :put, remote: true do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<div id="upvote" style="display: inline;"><%= @glip.get_upvotes.size %></div>&nbsp;&nbsp;
     <%= link_to dislike_glip_path(@glip), method: :put, remote: true do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<div id="downvote" style="display: inline;"><%= @glip.get_downvotes.size %></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <i class="fa fa-comments"></i>&nbsp;&nbsp;<%= @glip.comments.count %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <i class="fa fa-book"></i>&nbsp;&nbsp;<%= @glip.logs.count %>&nbsp;<%= link_to "logs", glip_logs_path(@glip) %>
+    <i class="fa fa-book"></i>&nbsp;&nbsp;<%= @glip.logs.count %>&nbsp;<%= link_to "logs", glip_logs_path(@glip) %><br />
+    
 </div>

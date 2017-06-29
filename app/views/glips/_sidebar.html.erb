@@ -14,8 +14,22 @@
 <% end %> 
 
 <div class="side-box">
-  <div class="log-box"> 
-    
+  <div class="side-content" style="margin-top: 0;">
+    <div class="small">
+    <div class="table-row">
+      <div class="tiny-table-cell">
+        <div id="participate_form"><%= render 'participations/participate_form' %></div>
+      </div>
+      <div class="tiny-table-cell">
+        <div id="participants_size">
+          <%= render 'participations/size' %>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="table-row">
+      <div id="participants"><%= render 'participations/show_participants' %></div>
+    </div>
   </div>
 </div>
 <br />

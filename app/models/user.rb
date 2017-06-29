@@ -49,8 +49,8 @@ class User < ApplicationRecord
   has_many :memberships, dependent:   :destroy
   has_many :groups, through: :memberships
   has_many :logs, dependent: :destroy
-  #has_many :participations, dependent: :destroy
-  #has_many :glips, through: :participations, class_name: 'Glip'
+  has_many :participations, dependent: :destroy
+  has_many :participant_glips, through: :participations, :source => :glip
 
   # Follows a user.
   def follow(other_user)
