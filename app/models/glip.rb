@@ -10,6 +10,10 @@ class Glip < ApplicationRecord
   has_many :milestones
   has_many :participations, dependent: :destroy
   has_many :participants, :through => :participations, :source => :user
+  
+  scope :original, -> {
+    where("parent_id IS NULL")
+  }
 
   validates_presence_of :title, :content, :completion_criteria
   validate :maximum_amount_of_tags

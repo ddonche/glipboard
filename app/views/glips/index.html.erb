@@ -22,6 +22,10 @@
             <div class="table-cell">
               <i class="fa fa-comments"></i>&nbsp;&nbsp;<%= glip.comments.count %>
             </div>
+            
+            <div class="table-cell">
+              <i class="fa fa-user"></i>&nbsp;&nbsp;<%= glip.participants.size %>
+            </div>
           
             <div class="table-cell">
               <% if glip.status == "incomplete" %>

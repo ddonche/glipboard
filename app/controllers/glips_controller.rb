@@ -7,7 +7,7 @@ class GlipsController < ApplicationController
     if params[:tag]
       @glips = Glip.tagged_with(params[:tag])
     else
-      @glips = Glip.order('created_at DESC').page(params[:page]).per(20)
+      @glips = Glip.original.order('created_at DESC').page(params[:page]).per(20)
     end
   end
 
@@ -49,6 +49,12 @@ class GlipsController < ApplicationController
     @comment = Comment.new
     @log = Log.new
     @log.user = current_user
+    if @glip.parent_id?
+      @parent_glip = Glip.friendly.find(@glip.parent_id)
+      @participants = @parent_glip.participants
+    else
+      @participants = @glip.participants.order('created_at DESC').order("created_at DESC").limit(18)
+    end
     @articles = @glip.articles.order("created_at DESC")
     @logs = @glip.logs.order("created_at DESC").page(params[:page]).per(10)
     respond_to do |format| 
