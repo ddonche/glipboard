@@ -7,10 +7,26 @@
 </div>
 <br />
 
-<% if user_signed_in? && @article.status == "published" %>
+<% if user_signed_in? %>
+  <% if current_user.glips.any? && @article.status == "published" %>
+    <div class="side-box">
+      <div class="side-content">
+        <%= render 'mentorships/form' %>
+      </div>
+    </div>
+    <br />
+  <% else %>
+    <div class="side-box">
+      <div class="side-content">
+        <div class="small"><em>You currently have no glips. Make a <%= link_to 'new glip', new_glip_path %> if you'd like to mark this article as helpful.</em></div>
+      </div>
+    </div>
+    <br />
+  <% end %>
+<% else %>
   <div class="side-box">
     <div class="side-content">
-      <%= render 'mentorships/form' %>
+      <div class="small"><em>You are not currently signed in. <%= link_to 'Login', new_user_session_path %> if you'd like to mark this article as helpful.</em></div>
     </div>
   </div>
   <br />
