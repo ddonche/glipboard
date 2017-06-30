@@ -8,7 +8,7 @@
       <% if (user_signed_in? && (current_user.id == notation.user_id)) %>
         <% @link = "_comment_notation_path(@commentable, comment, notation)" %>
         <%= link_to "#{@commentable}#{@link}", method: :delete, data: { confirm: "Are you sure?" } do %>
-        <i class="fa fa-trash"></i><% end %>
+        <i class="fa fa-trash" title="delete"></i><% end %>
       <% end %>
     </div>
   </div>

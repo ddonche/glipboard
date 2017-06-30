@@ -15,23 +15,23 @@
               
           <div class="table-row">
             <div class="table-cell">
-              <i class="fa fa-chevron-up"></i>&nbsp;<%= glip.get_upvotes.size %>&nbsp;&nbsp;
-              <i class="fa fa-chevron-down"></i>&nbsp;<%= glip.get_downvotes.size %>
+              <i class="fa fa-chevron-up" title="upvotes"></i>&nbsp;<%= glip.get_upvotes.size %>&nbsp;&nbsp;
+              <i class="fa fa-chevron-down" title="downvotes"></i>&nbsp;<%= glip.get_downvotes.size %>
             </div>
           
             <div class="table-cell">
-              <i class="fa fa-comments"></i>&nbsp;&nbsp;<%= glip.comments.count %>
+              <i class="fa fa-comments" title="comments"></i>&nbsp;&nbsp;<%= glip.comments.count %>
             </div>
             
             <div class="table-cell">
-              <i class="fa fa-user"></i>&nbsp;&nbsp;<%= glip.participants.size %>
+              <i class="fa fa-user" title="participants"></i>&nbsp;&nbsp;<%= glip.participants.size %>
             </div>
           
             <div class="table-cell">
               <% if glip.status == "incomplete" %>
-                <i class="fa fa-star-half-o"></i>
+                <i class="fa fa-star-half-o" title="incomplete"></i>
               <% else %>
-                <i class="fa fa-star" style="color: #dc0000;"></i>
+                <i class="fa fa-star" style="color: #dc0000;" title="complete"></i>
               <% end %>
               <%= link_to glip.title.truncate(40), glip %>
             </div>

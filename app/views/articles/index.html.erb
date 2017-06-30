@@ -17,17 +17,21 @@
               
           <div class="table-row">
             <div class="table-cell">
-              <i class="fa fa-chevron-up"></i>&nbsp;<%= article.get_upvotes.size %>&nbsp;&nbsp;
-              <i class="fa fa-chevron-down"></i>&nbsp;<%= article.get_downvotes.size %>
+              <i class="fa fa-chevron-up" title="upvotes"></i>&nbsp;<%= article.get_upvotes.size %>&nbsp;&nbsp;
+              <i class="fa fa-chevron-down" title="downvotes"></i>&nbsp;<%= article.get_downvotes.size %>
             </div>
           
             <div class="table-cell">
-              <i class="fa fa-comments"></i>&nbsp;&nbsp;<%= article.comments.count %>
+              <i class="fa fa-comments" title="comments"></i>&nbsp;&nbsp;<%= article.comments.count %>
+            </div>
+            
+            <div class="table-cell">
+              <i class="fa fa-thumbs-up" title="glips helped"></i>&nbsp;&nbsp;<%= article.glips.size %>
             </div>
           
             <div class="table-cell">
               <% if article.feature == "featured" %>
-                <i class="fa fa-trophy" style="color: #dc0000;"></i>&nbsp;
+                <i class="fa fa-trophy" style="color: #dc0000;" title="featured article"></i>&nbsp;
               <% end %>
               <%= link_to article.title.truncate(40), article %>
             </div>

@@ -1,18 +1,18 @@
 <% if (user_signed_in? && (current_user.id == @article.user_id)) %>
   <div class="content-alter">
-    <div class="small-bold" style="display: inline-block;"><%= link_to edit_article_path(@article) do %><i class="fa fa-pencil"></i>&nbsp;Edit<% end %></div>
-    <div class="small-bold" style="display: inline-block;"><%= link_to article_path(@article), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i>&nbsp;Delete<% end %></div>
+    <div class="small-bold" style="display: inline-block;"><%= link_to edit_article_path(@article) do %><i class="fa fa-pencil" title="edit"></i>&nbsp;Edit<% end %></div>
+    <div class="small-bold" style="display: inline-block;"><%= link_to article_path(@article), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash" title="delete"></i>&nbsp;Delete<% end %></div>
   </div>
 <% end %>
 <div class="content-alter">
   <% if logged_in?(:admin) %>
-    <%= link_to toggle_feature_article_path(@article), method: :get do %><i class="fa fa-trophy" style="color: #dc0000;"></i><% end %>&nbsp;&nbsp;
+    <%= link_to toggle_feature_article_path(@article), method: :get do %><i class="fa fa-trophy" style="color: #dc0000;" title="featured article toggle"></i><% end %>&nbsp;&nbsp;
   <% end %>
 </div>
 
 <div class="title-box">
     <% if @article.feature == "featured" %>
-      <i class="fa fa-trophy" style="color: #dc0000;"></i>&nbsp;
+      <i class="fa fa-trophy" style="color: #dc0000;" title="featured article"></i>&nbsp;
     <% end %>
   <%= @article.title %>
 </div>
@@ -34,21 +34,21 @@
 <div class="details-show">
     posted by <h4 style="display:inline;"><%= link_to @article.user.username, user_path(@article.user) %></h4>&nbsp;<%= time_ago_in_words(@article.created_at) %> ago&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <% if @article.feature == "featured" %>
-      <i class="fa fa-trophy" style="color: #dc0000;"></i>&nbsp;<h4 style="display:inline;">Featured Article</h4>&nbsp;&nbsp;&nbsp;&nbsp;
+      <i class="fa fa-trophy" style="color: #dc0000;"></i>&nbsp;<h4 style="display:inline;" title="featured article">Featured Article</h4>&nbsp;&nbsp;&nbsp;&nbsp;
     <% end %>
     <% if current_user == @article.user %>
       <% if @article.status == "draft" %>
-        <i class="fa fa-lock"></i>&nbsp;<%= link_to @article.status, toggle_status_article_path(@article) %>
+        <i class="fa fa-lock" title="draft"></i>&nbsp;<%= link_to @article.status, toggle_status_article_path(@article) %>
       <% else %>
-      <i class="fa fa-unlock"></i>&nbsp;<%= link_to @article.status, toggle_status_article_path(@article) %>
+      <i class="fa fa-unlock" title="published"></i>&nbsp;<%= link_to @article.status, toggle_status_article_path(@article) %>
       <% end %>
     <% end %>
     <br />
     <% @article.tag_list.map.each do |tag| %>
       <div class="tags"><%= link_to tag, tag_path(tag) %></div>
     <% end %><br />
-    <%= link_to like_article_path(@article), method: :put, remote: true do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<div id="upvote" style="display: inline;"><%= @article.get_upvotes.size %></div>&nbsp;&nbsp;
-    <%= link_to dislike_article_path(@article), method: :put, remote: true do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<div id="downvote" style="display: inline;"><%= @article.get_downvotes.size %></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <i class="fa fa-comments"></i>&nbsp;&nbsp;<%= @article.comments.count %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <i class="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;&nbsp;Helpful to <%= @article.glips.size %> Glips
+    <%= link_to like_article_path(@article), method: :put, remote: true do %><i class="fa fa-chevron-up" title="upvotes"></i><% end %>&nbsp;<div id="upvote" style="display: inline;"><%= @article.get_upvotes.size %></div>&nbsp;&nbsp;
+    <%= link_to dislike_article_path(@article), method: :put, remote: true do %><i class="fa fa-chevron-down" title="downvotes"></i><% end %>&nbsp;<div id="downvote" style="display: inline;"><%= @article.get_downvotes.size %></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <i class="fa fa-comments" title="comments"></i>&nbsp;&nbsp;<%= @article.comments.count %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <i class="fa fa-thumbs-up" aria-hidden="true" title="glips helped"></i>&nbsp;&nbsp;Helpful to <%= @article.glips.size %> Glips
 </div>
