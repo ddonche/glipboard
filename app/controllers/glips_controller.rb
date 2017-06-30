@@ -50,8 +50,7 @@ class GlipsController < ApplicationController
     @log = Log.new
     @log.user = current_user
     if @glip.parent_id?
-      @parent_glip = Glip.friendly.find(@glip.parent_id)
-      @participants = @parent_glip.participants
+      @participants = User.joins(:participations).where('participations.glip_id = ?', @glip.parent_id)
     else
       @participants = @glip.participants.order('created_at DESC').order("created_at DESC").limit(18)
     end

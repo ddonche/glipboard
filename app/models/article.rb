@@ -10,6 +10,8 @@ class Article < ApplicationRecord
   validates_presence_of :title, :content
   validate :maximum_amount_of_tags
   
+  mount_uploader :image, ImageUploader
+  
   acts_as_taggable
   acts_as_votable
   extend FriendlyId

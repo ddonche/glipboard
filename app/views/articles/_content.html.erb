@@ -1,3 +1,10 @@
 <div class="content-show">
+  <div class="image">
+  <%= 
+    if @article.image?
+      image_tag @article.image, width: 620, height: 300
+    end
+  %>
+  </div>
     <%= markdown @article.content %>
 </div>

@@ -1,5 +1,5 @@
 <div class="log-form">
-  <%= simple_form_for @article do |f| %>
+  <%= simple_form_for(@article, html: { method: :put, multipart: true }) do |f| %>
   
     <% if @article.errors.any? %>
       <div class="alert">
@@ -27,6 +27,14 @@
     <%= f.radio_button :status, 'draft' %>
     <%= label :status_draft, 'Draft' %>
     <div class="small"><em>You can toggle article status directly from the article as well.</em></div><br />
+    
+          <fieldset>
+            <legend>Image</legend>
+              <br />
+              <label class="upload-button">Upload Image<%= f.file_field :image, style: 'display:none;' %>
+              </label>
+              <div class="small"><br/><em>Image should be 620 pixels in width x 300 pixels in height.</em></div>
+          </fieldset>
     
     <%= f.submit %>
   <% end %>

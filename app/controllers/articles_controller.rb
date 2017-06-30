@@ -68,6 +68,12 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    @mentorship = Mentorship.new
+    @glips = @article.glips.order("created_at DESC")
+    @user = @article.user
+    @commentable = @article
+    @comments = @commentable.comments
+    @comment = Comment.new
     if current_user == @article.user
       respond_to do |format|
         if @article.update(article_params)
@@ -139,6 +145,6 @@ class ArticlesController < ApplicationController
     end
 
     def article_params
-      params.require(:article).permit(:title, :content, :user_id, :tag_list, :status)
+      params.require(:article).permit(:title, :content, :user_id, :tag_list, :status, :image)
     end
 end
