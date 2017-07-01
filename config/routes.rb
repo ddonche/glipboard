@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   resources :groups do
     member do
       get :members
+      get :toggle_role
     end
     resources :posts do
       member do

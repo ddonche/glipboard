@@ -1,6 +1,6 @@
 class MembershipsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_group, only: [:create]
+  before_action :set_group, only: [:create, :toggle_role]
 
   def create
     @user = current_user
@@ -22,6 +22,15 @@ class MembershipsController < ApplicationController
       format.html { redirect_to groups_path }
       format.js
     end
+  end
+  
+  def toggle_role
+    if @membership.member?
+      @membership.admin! 
+    elsif @membership.admin?
+      @membership.member!
+    end
+    redirect_to group_path(@group), notice: 'That user is now an admin.'
   end
   
   private

@@ -9,7 +9,18 @@
     <div class ="pagination-container">
       <%= paginate @members %>
     </div>
-  
+    <h4>Admin</h4>
+      <div class="user_avatars">
+        <%= link_to user_path(@creator.id) do %>
+          <%= 
+            if @creator.picture?
+              image_tag @creator.picture, width: 50, title: @creator.username
+            else
+              image_tag 'default_avatar.jpg', width: 50, title: @creator.username
+            end %>
+        <% end %>
+      </div>
+    <h4>Members</h4>
       <div class="user_avatars">
         <% @members.each do |member| %>
           <%= link_to member do %>
@@ -19,7 +30,7 @@
               else
                 image_tag 'default_avatar.jpg', width: 50, title: member.username
               end
-              %>
+            %>
           <% end %>
         <% end %>
       </div>
