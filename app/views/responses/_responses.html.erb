@@ -22,7 +22,13 @@
             image_tag 'default_avatar.jpg', width: 64, alt: 'default user avatar'
           end
         end
-      %><h3 style="margin-top: 0;"><%= link_to response.user.username, user_path(response.user) %></h3> 
+      %>
+      <h3 style="margin: 0 auto;">
+        <%= link_to response.user.username, user_path(response.user) %>
+      </h3> 
+        <% if response.user_id == @group.creator_id %>
+          <div class="small-bold" style="color: black; margin-bottom: 0;"><i class="fa fa-rocket" title="Group Creator"></i> Creator</div>
+        <% end %>
       <%= response.user.reputation %>
     </div>
   </div>
