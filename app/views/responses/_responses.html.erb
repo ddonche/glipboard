@@ -28,12 +28,15 @@
   </div>
   <div class="comments-right-column">
     <div class="comment-content" style="display: inline-block;">
-      <div class="comments-small">
+      <% if response.subtitle? %>
+        <h4 style="display: inline-block; margin: 0 4px 0 0;"><%= response.subtitle %></h4>
+      <% end %>
+      <div class="comments-small" style="display: inline-block;">
       <em>Posted <%= time_ago_in_words(response.created_at) %> ago</em>
     
       <% if (user_signed_in? && (current_user.id == response.user_id)) %>
-        <div class="responses-alter">
-          <%= link_to edit_group_post_response_path(@group, @post, response) do %><i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
+        <div class="responses-alter" style="display: inline-block;">
+          <%= link_to edit_group_post_response_path(@group, @post, response) do %>&nbsp;&nbsp;<i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
           <%= link_to group_post_response_path(@group, @post, response), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %>
         </div>
       <% end %>

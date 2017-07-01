@@ -1,3 +1,4 @@
+<div class="log-form">
 <%= form_for [@group, @post, @response] do |f| %>
   <% if @response.errors.any? %>
       <div class="error_messages">
@@ -10,7 +11,13 @@
       </div>
     <% end %>
     
+      <div class="small"><em>
+        You can enter an optional subtitle. 
+        Some groups use this as a place to track a reply's status (complete, fixed, pending, etc.)
+      </em></div>
+      <%= f.text_field :subtitle %><br />
       <%= f.text_area :content, rows: 3 %><br />
 
       <%= f.submit 'Reply' %>
 <% end %>
+</div>
