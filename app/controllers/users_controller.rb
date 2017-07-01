@@ -20,12 +20,14 @@ class UsersController < ApplicationController
   
   def following
     @title = "Following"
+    @groups = @user.groups
     @users = @user.following.page(params[:page]).per(25)
     render 'show_follow'
   end
 
   def followers
     @title = "Followers"
+    @groups = @user.groups
     @users = @user.followers.page(params[:page]).per(25)
     render 'show_follow'
   end
