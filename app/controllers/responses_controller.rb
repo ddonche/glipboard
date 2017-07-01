@@ -1,7 +1,7 @@
 class ResponsesController < ApplicationController
   before_action :set_response, except: [:create]
-  before_action :set_post, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_group, only: [:create, :edit, :update, :destroy]
+  before_action :set_post, only: [:new, :create, :edit, :update, :destroy, :upvote, :downvote]
+  before_action :set_group, only: [:create, :edit, :update, :destroy, :upvote, :downvote]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
