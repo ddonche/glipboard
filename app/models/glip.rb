@@ -3,11 +3,11 @@ class Glip < ApplicationRecord
   enum verified: { unverified: 0, verified: 1 }
   
   belongs_to :user, optional: true
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
   has_many :articles, through: :mentorships
-  has_many :logs
+  has_many :logs, dependent: :destroy
   has_many :mentorships
-  has_many :milestones
+  has_many :milestones, dependent: :destroy
   has_many :participations, dependent: :destroy
   has_many :participants, :through => :participations, :source => :user
   

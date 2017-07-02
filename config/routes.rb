@@ -58,7 +58,7 @@ Rails.application.routes.draw do
           put 'like', to: 'responses#upvote'
           put 'dislike', to: 'responses#downvote'
         end
-      resources :notations
+      resources :remarks
       end
     end
     resources :categories

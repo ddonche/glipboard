@@ -45,6 +45,7 @@ class User < ApplicationRecord
   has_many :posts, dependent:   :destroy
   has_many :comments, dependent:   :destroy
   has_many :notations, dependent:   :destroy
+  has_many :remarks, dependent:   :destroy
   has_many :created_groups, class_name: "Group"
   has_many :memberships, dependent:   :destroy
   has_many :groups, through: :memberships

@@ -49,8 +49,18 @@
     
       </div>
     
-      <%= markdown response.content %>
+      <%= markdown response.content %><br />
     </div>
+  <div class="comment-content">
+    <% if response.remarks.any? %>
+      <%= render 'remarks/remarks', response: response %>
+    <% end %>
+    <div class="content-alter" style="margin-top: 0;">
+      <div class="notation-reply">
+        <%= link_to "reply", new_group_post_response_remark_path(@group, @post, response) %>
+      </div>
+    </div>
+  </div>
   </div>
   
 </div>

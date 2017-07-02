@@ -1,0 +1,10 @@
+<div id="glips-wrapper">
+    <h3>Replies</h3>
+    <p><%= link_to "reply", [:new, @post, @response, :remark] %></p>
+    <% @remarks.each do |remark| %>
+      <div class="glips">
+        <div class="post-title"><%= remark.content %></div>
+        <div class="date">Posted <%= time_ago_in_words(remark.created_at) %> ago by <%= link_to remark.user.username, user_path(remark.user) %></div>
+      </div>
+    <% end %>
+</div>

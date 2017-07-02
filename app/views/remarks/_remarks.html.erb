@@ -1,0 +1,15 @@
+<% remarks = response.remarks %>
+<% remarks.each do |remark| %>
+  <div class="notation-wrapper">
+    <%= remark.content %> - 
+    <div class="smaller" style="display: inline;">
+      <%= link_to remark.user.username, user_path(remark.user) %> 
+      <%= time_ago_in_words(remark.created_at) %> ago&nbsp;&nbsp;
+      <% if (user_signed_in? && (current_user.id == remark.user_id)) %>
+        <%= link_to group_post_response_remark_path(@group, @post, response, remark), method: :delete, data: { confirm: "Are you sure?" } do %>
+          <i class="fa fa-trash" title="delete"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

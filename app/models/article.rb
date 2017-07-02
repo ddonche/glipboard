@@ -3,8 +3,8 @@ class Article < ApplicationRecord
   enum feature: { standard: 0, featured: 1 }
   
   belongs_to :user, required: true
-  has_many :comments, as: :commentable
-  has_many :mentorships
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :mentorships, dependent: :destroy
   has_many :glips, through: :mentorships
   
   validates_presence_of :title, :content

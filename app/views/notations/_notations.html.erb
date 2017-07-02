@@ -5,11 +5,17 @@
     <div class="smaller" style="display: inline;">
       <%= link_to notation.user.username, user_path(notation.user) %> 
       <%= time_ago_in_words(notation.created_at) %> ago&nbsp;&nbsp;
+      
       <% if (user_signed_in? && (current_user.id == notation.user_id)) %>
-        <% @link = "_comment_notation_path(@commentable, comment, notation)" %>
-        <%= link_to "#{@commentable}#{@link}", method: :delete, data: { confirm: "Are you sure?" } do %>
+        <% if @commentable = @glip %>
+          <%= link_to glip_comment_notation_path(@glip, comment, notation), method: :delete, data: { confirm: "Are you sure?" } do %>
+          <i class="fa fa-trash" title="delete"></i><% end %>
+        <% else %>
+          <%= link_to article_comment_notation_path(@article, comment, notation), method: :delete, data: { confirm: "Are you sure?" } do %>
         <i class="fa fa-trash" title="delete"></i><% end %>
+        <% end %>
       <% end %>
+    
     </div>
   </div>
 <% end %>

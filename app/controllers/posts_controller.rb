@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   def show
     @page_title = @post.title
     @user = @post.user
-    @responses = @post.responses
+    @responses = @post.responses.order("created_at DESC").includes(:remarks)
     @response = Response.new
     @group = Group.friendly.find(params[:group_id])
     @category = @post.category
