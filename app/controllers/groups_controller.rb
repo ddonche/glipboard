@@ -23,7 +23,7 @@ class GroupsController < ApplicationController
   
   def members
     @title = "Members"
-    @members = @group.users.order('created_at DESC').page(params[:page]).per(25)
+    @members = @group.users.order('memberships.created_at DESC').page(params[:page]).per(25)
     #@admins = User.joins(:memberships).where("memberships.group_id = ? and memberships.role = ?", @group.id, "admin")
     @creator = User.friendly.find(@group.creator_id)
     render 'show_members'
