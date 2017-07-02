@@ -16,7 +16,7 @@ class RemarksController < ApplicationController
     @remark = @response.remarks.new(remark_params) 
     @remark.user_id = current_user.id if current_user
     if @remark.save
-      redirect_to :back
+      redirect_to group_post_path(@group, @post)
     else
       render :new
     end
