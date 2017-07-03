@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170702075126) do
+ActiveRecord::Schema.define(version: 20170703155604) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -164,10 +164,12 @@ ActiveRecord::Schema.define(version: 20170702075126) do
     t.text     "content"
     t.integer  "group_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "slug"
     t.integer  "category_id"
+    t.integer  "sticky",            default: 0
+    t.integer  "comments_disabled", default: 0
     t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["group_id"], name: "index_posts_on_group_id"
     t.index ["slug"], name: "index_posts_on_slug", unique: true

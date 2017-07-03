@@ -16,7 +16,8 @@ class GroupsController < ApplicationController
 
   def show
     @page_title = @group.title
-    @posts = Post.where({ group_id: @group.id }).order('updated_at DESC').page(params[:page]).per(20)
+    @posts = Post.where({ group_id: @group.id, sticky: "normal" }).order('updated_at DESC').page(params[:page]).per(20)
+    @sticky_posts = @group.posts.where({ sticky: "sticky" })
     @categories = @group.categories
     @creator = User.friendly.find(@group.creator_id)
   end

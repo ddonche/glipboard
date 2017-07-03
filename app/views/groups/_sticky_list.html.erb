@@ -1,0 +1,29 @@
+<div class="content" style="border-top: none;">
+  <div class="log-form">
+  <% @sticky_posts.each do |sticky| %>
+    <div class="table-row">
+      <div class="table-cell" style="width: 18%;">
+        <i class="fa fa-chevron-up" title="upvotes"></i>&nbsp;<%= sticky.get_upvotes.size %>&nbsp;&nbsp;
+        <i class="fa fa-chevron-down" title="downvotes"></i>&nbsp;<%= sticky.get_downvotes.size %>
+      </div>
+    
+      <div class="table-cell">
+        <i class="fa fa-comments" style="display:inline;" title="comments"></i>&nbsp;&nbsp;<%= sticky.responses.count %>
+      </div>
+    
+      <div class="table-cell">
+        <i class="fa fa-thumb-tack" aria-hidden="true"></i>&nbsp;&nbsp;<%= link_to sticky.title, group_post_path(@group, sticky) %>
+      </div>
+    
+      <div class="table-cell">
+        <%= time_ago_in_words(sticky.created_at) %> ago 
+      </div>
+      
+      <div class="table-cell">
+        <%= link_to sticky.user.username, user_path(sticky.user) %>
+          &nbsp;<b><%= number_to_human(sticky.user.reputation, :format => '%n%u', :precision => 2, :units => { :thousand => 'K' }) %></b>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>

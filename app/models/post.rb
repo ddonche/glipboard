@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+  enum sticky: { normal: 0, sticky: 1 }
+  enum comments_disabled: { comments_enabled: 0, comments_disabled: 1 }
+  
   belongs_to :group
   belongs_to :user
   has_many :responses

@@ -23,7 +23,11 @@
       </div>
 
       <div class="details-show">
+        <% if @post.sticky == "sticky" %>
+          <h2><i class="fa fa-thumb-tack" aria-hidden="true"></i>&nbsp;&nbsp;<%= @post.title %></h2>
+        <% else %>
         <h2><%= @post.title %></h2>
+        <% end %>
           posted by <h4 style="display:inline;"><%= link_to @post.user.username, user_path(@post.user) %></h4>&nbsp;
           <%= time_ago_in_words(@post.created_at) %> ago 
           <% if @post.category_id? %>
@@ -43,15 +47,22 @@
       <div class="content-show">
         <h4><em><i class="fa fa-comments"></i>&nbsp;&nbsp;<%= @post.responses.count %> Replies<a id="comment"></a></em></h4>
 
+        <% if @post.comments_disabled == "comments_enabled" %>
           <% if user_signed_in? && Membership.exists?(user_id: current_user.id, group_id: @post.group.id) %>
             <div class="small"><em>Submit a quick reply. Edit the reply to change things like subtitle.</em></div>
             <%= render "responses/form" %><br/>
           <% else %>
             <div class="small"><em>You must be a member of <%= @post.group.title %> to make to make replies.</em></div>
           <% end %>
-          <%= render "responses/responses" %>
+        <% else %>
+          <em>New comments have been disabled for this post.</em>
+        <% end %>
+        
+        <%= render "responses/responses" %>
           
-      <a href="#comment">Post New Reply</a>
+        <% if @post.comments_disabled == "comments_enabled" %>    
+          <a href="#comment">Post New Reply</a>
+        <% end %>
       </div>
 
     </div>
