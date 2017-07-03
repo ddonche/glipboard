@@ -30,7 +30,7 @@
 		<% if current_user %>
 		<li class="has-dropdown" style="font-style: italic; float: right; margin-right: 60px;">
 		  <%= link_to current_user do %>
-        Hi, <%= current_user.username %>&nbsp;<i class="fa fa-chevron-down"  aria-hidden="true"></i>
+        <%= current_user.username %>&nbsp;<%= current_user.reputation %>&nbsp;<i class="fa fa-chevron-down"  aria-hidden="true"></i>
 		  <% end %>
 			<!-- Submenu dropdown -->
 			<div class="menu-dropdown submenu">
