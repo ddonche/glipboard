@@ -93,13 +93,16 @@ class GlipsController < ApplicationController
   def toggle_status
     if @glip.incomplete?
       @glip.complete! 
+      respond_to do |format|
+        format.html { redirect_to congrats_path, notice: 'Congratulations on completing your glip!' }
+      end
       
     voltaire_up(5, :reputation, @glip.user_id)
     elsif  @glip.complete?
       @glip.incomplete!
       voltaire_down(5, :reputation, @glip.user_id)
+      redirect_to glip_path(@glip), notice: 'Glip status has been updated.'
     end
-    redirect_to glip_path(@glip), notice: 'Glip status has been updated.'
   end
   
   def upvote
