@@ -30,12 +30,14 @@
 		<% if current_user %>
 		<li class="has-dropdown" style="font-style: italic; float: right; margin-right: 60px;">
 		  <%= link_to current_user do %>
-        <%= current_user.username %>&nbsp;<%= current_user.reputation %>&nbsp;<i class="fa fa-chevron-down"  aria-hidden="true"></i>
+        <%= current_user.username %>&nbsp;
+        <%= current_user.reputation %>&nbsp;
+        <i class="fa fa-chevron-down"  aria-hidden="true"></i>
 		  <% end %>
 			<!-- Submenu dropdown -->
 			<div class="menu-dropdown submenu">
 				<ul class="submenu-list">
-				  <li><%= link_to "Private Messages", conversations_path(current_user) %></li>
+				  <li></li>
 				  <li><%= link_to "Edit Profile", edit_user_registration_path(current_user) %></li>
           <li><%= link_to 'New Glip', new_glip_path %></li>
           <li class="has-dropdown"><%= link_to 'Articles', '#' %>
