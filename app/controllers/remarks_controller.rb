@@ -16,6 +16,12 @@ class RemarksController < ApplicationController
     @remark = @response.remarks.new(remark_params) 
     @remark.user_id = current_user.id if current_user
     if @remark.save
+      unless @response.user_id == @remark.user_id
+        Notification.create!(group_id: @group.id, post_id: @post.id, response_id: @response.id, 
+                              recipient_id: @response.user_id, 
+                              remark_id: @remark.id, notified_by_id: current_user.id, 
+                              notification_type: "remark")
+      end
       redirect_to group_post_path(@group, @post)
     else
       render :new

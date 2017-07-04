@@ -17,6 +17,17 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new(allowed_params) 
     @comment.user_id = current_user.id if current_user
     if @comment.save
+      unless @commentable.user_id == @comment.user_id
+        if @commentable.model_name.human == "Glip"
+          Notification.create!(glip_id: @commentable.id, comment_id: @comment.id, 
+                                recipient_id: @commentable.user_id, notified_by_id: current_user.id, 
+                                notification_type: "comment")
+        else
+          Notification.create!(article_id: @commentable.id, comment_id: @comment.id, 
+                                recipient_id: @commentable.user_id, notified_by_id: current_user.id,
+                                notification_type: "comment")
+        end
+      end
       redirect_to @commentable, notice: "Comment created."
     else
       render :new

@@ -1,0 +1,103 @@
+<div id ="index-container">
+  <% @notifications.each do |notification| %>
+      <div class="table">
+        <div class="table-row">
+          
+          <% if notification.notification_type == "comment" %>
+            <div class="tiny-table-cell">
+              <i class="fa fa-comments"></i>&nbsp;
+              <%= link_to User.find(notification.notified_by).username, user_path(notification.notified_by) %> 
+              commented on 
+              <% if notification.glip_id? %>
+                your glip <%= link_to Glip.find(notification.glip_id).title, glip_path(notification.glip_id) %>
+              <% else %>
+                your article <%= link_to Article.find(notification.article_id).title, article_path(notification.article_id) %>
+              <% end %>
+              <%= time_ago_in_words(notification.created_at) %> ago
+            </div>
+          <% end %>
+          
+          <% if notification.notification_type == "notation" %>
+            <div class="tiny-table-cell">
+              <i class="fa fa-comments"></i>&nbsp;
+              <%= link_to User.find(notification.notified_by).username, user_path(notification.notified_by) %> 
+              replied to your comment on 
+              <% if notification.glip_id? %>
+                the glip <%= link_to Glip.find(notification.glip_id).title, glip_path(notification.glip_id) %>
+              <% else %>
+                the article <%= link_to Article.find(notification.article_id).title, article_path(notification.article_id) %>
+              <% end %>
+              <%= time_ago_in_words(notification.created_at) %> ago
+            </div>
+          <% end %>
+          
+          <% if notification.notification_type == "marked_helpful" %>
+            <div class="tiny-table-cell">
+              <i class="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;
+              <%= link_to User.find(notification.notified_by).username, user_path(notification.notified_by) %> 
+              marked your article  
+              <%= link_to Article.find(notification.article_id).title, article_path(notification.article_id) %> 
+              as helpful to 
+              <%= link_to Glip.find(notification.glip_id).title, glip_path(notification.glip_id) %> 
+              <%= time_ago_in_words(notification.created_at) %> ago
+            </div>
+          <% end %>
+          
+          <% if notification.notification_type == "participation" %>
+            <div class="tiny-table-cell">
+              <i class="fa fa-user" aria-hidden="true"></i>&nbsp;
+              <%= link_to User.find(notification.notified_by).username, user_path(notification.notified_by) %> 
+              joined your glip  
+              <%= link_to Glip.find(notification.glip_id).title, glip_path(notification.glip_id) %> 
+              <%= time_ago_in_words(notification.created_at) %> ago
+            </div>
+          <% end %>
+          
+          <% if notification.notification_type == "response" %>
+            <div class="tiny-table-cell">
+              <i class="fa fa-comments" aria-hidden="true"></i>&nbsp;
+              <%= link_to User.find(notification.notified_by).username, user_path(notification.notified_by) %> 
+              replied to your post  
+              <%= link_to Post.find(notification.post_id).title, group_post_path(notification.group_id, notification.post_id) %>
+              in the group 
+              <%= link_to Group.find(notification.group_id).title, group_path(notification.group_id) %>
+              <%= time_ago_in_words(notification.created_at) %> ago
+            </div>
+          <% end %>
+          
+          <% if notification.notification_type == "remark" %>
+            <div class="tiny-table-cell">
+              <i class="fa fa-comments" aria-hidden="true"></i>&nbsp;
+              <%= link_to User.find(notification.notified_by).username, user_path(notification.notified_by) %> 
+              replied to your comment on the post  
+              <%= link_to Post.find(notification.post_id).title, group_post_path(notification.group_id, notification.post_id) %>
+              in the group 
+              <%= link_to Group.find(notification.group_id).title, group_path(notification.group_id) %>
+              <%= time_ago_in_words(notification.created_at) %> ago
+            </div>
+          <% end %>
+          
+          <% if notification.notification_type == "feature" %>
+            <div class="tiny-table-cell">
+              <i class="fa fa-trophy" aria-hidden="true"></i>&nbsp;
+              Your article  
+              <%= link_to Article.find(notification.article_id).title, article_path(notification.article_id) %> 
+              was featured 
+              <%= time_ago_in_words(notification.created_at) %> ago
+            </div>
+          <% end %>
+          
+          <% if notification.notification_type == "message" %>
+            <div class="tiny-table-cell">
+              <i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;
+              <%= link_to User.find(notification.notified_by).username, user_path(notification.notified_by) %> 
+              sent you a private 
+              <%= link_to 'message', conversation_path(notification.conversation_id) %> 
+              <%= time_ago_in_words(notification.created_at) %> ago
+            </div>
+          <% end %>
+          
+        </div>
+      </div>
+  <% end %>
+</div>

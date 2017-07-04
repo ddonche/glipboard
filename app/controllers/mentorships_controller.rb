@@ -9,6 +9,11 @@ class MentorshipsController < ApplicationController
       if @mentorship.save
         @article = @mentorship.article
         unless @article.user_id == current_user.id
+          Notification.create!(article_id: @mentorship.article.id,
+                        glip_id: @mentorship.glip.id,
+                        recipient_id: @mentorship.article.user_id, 
+                        notified_by_id: current_user.id, 
+                        notification_type: "marked_helpful")
           voltaire_up(10, :reputation, @mentorship.article.user_id)
           if (@article.standard? && @article.mentorships.count > 15)
             @article.featured!

@@ -96,6 +96,8 @@ class ArticlesController < ApplicationController
   def toggle_feature
     if @article.standard?
       @article.featured!
+      Notification.create!(article_id: @article.id, recipient_id: @article.user_id, 
+                            notified_by_id: "5", notification_type: "feature")
       
       voltaire_up(15, :reputation, @article.user_id)
     elsif @article.featured?

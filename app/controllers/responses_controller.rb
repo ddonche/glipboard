@@ -16,6 +16,11 @@ class ResponsesController < ApplicationController
     @response = @post.responses.new(response_params) 
     @response.user_id = current_user.id if current_user
     if @response.save
+      unless @post.user_id == @response.user_id
+        Notification.create!(group_id: @group.id, post_id: @post.id, recipient_id: @post.user_id, 
+                        response_id: @response.id, notified_by_id: current_user.id, 
+                        notification_type: "response")
+      end
       redirect_to group_post_path(@group, @post), notice: "Response created."
     else
       render :new

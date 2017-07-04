@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170704023257) do
+ActiveRecord::Schema.define(version: 20170704040923) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -147,6 +147,37 @@ ActiveRecord::Schema.define(version: 20170704023257) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "recipient_id"
+    t.integer  "notified_by_id"
+    t.integer  "glip_id"
+    t.integer  "article_id"
+    t.integer  "group_id"
+    t.integer  "post_id"
+    t.integer  "comment_id"
+    t.integer  "notation_id"
+    t.integer  "response_id"
+    t.integer  "remark_id"
+    t.integer  "conversation_id"
+    t.integer  "message_id"
+    t.boolean  "read",              default: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "notification_type"
+    t.index ["article_id"], name: "index_notifications_on_article_id"
+    t.index ["comment_id"], name: "index_notifications_on_comment_id"
+    t.index ["conversation_id"], name: "index_notifications_on_conversation_id"
+    t.index ["glip_id"], name: "index_notifications_on_glip_id"
+    t.index ["group_id"], name: "index_notifications_on_group_id"
+    t.index ["message_id"], name: "index_notifications_on_message_id"
+    t.index ["notation_id"], name: "index_notifications_on_notation_id"
+    t.index ["notified_by_id"], name: "index_notifications_on_notified_by_id"
+    t.index ["post_id"], name: "index_notifications_on_post_id"
+    t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
+    t.index ["remark_id"], name: "index_notifications_on_remark_id"
+    t.index ["response_id"], name: "index_notifications_on_response_id"
   end
 
   create_table "participations", force: :cascade do |t|

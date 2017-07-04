@@ -5,6 +5,8 @@ class ParticipationsController < ApplicationController
   def create
     @user = current_user
     Participation.create!(user_id: @user.id, glip_id: @glip.id)
+    Notification.create!(glip_id: @glip.id, recipient_id: @glip.user_id, 
+                      notified_by_id: current_user.id, notification_type: "participation")
     voltaire_up(2, :reputation, @glip.user_id)
     Glip.create!(parent_id: @glip.id, title: @glip.title, content: @glip.content, 
                   completion_criteria: @glip.completion_criteria, user_id: @user.id)
