@@ -37,7 +37,7 @@
 			<!-- Submenu dropdown -->
 			<div class="menu-dropdown submenu">
 				<ul class="submenu-list">
-				  <li></li>
+				  <li><%= link_to "Private Messages", conversations_path(current_user) %></li>
 				  <li><%= link_to "Edit Profile", edit_user_registration_path(current_user) %></li>
           <li><%= link_to 'New Glip', new_glip_path %></li>
           <li class="has-dropdown"><%= link_to 'Articles', '#' %>
@@ -51,6 +51,12 @@
 			</div>
 			<!-- /Submenu dropdown -->
 		</li>
+		<li style="float: right;"><%= link_to notifications_path do %>
+		  <% if @notifications.any? %>
+		    <i class="fa fa-bell" aria-hidden="true" style="color: #dc0000;"></i>
+		  <% else %>
+		    <i class="fa fa-bell" aria-hidden="true"></i>
+		  <% end %>&nbsp;<%= @notifications.count %><% end %></li>
 		<% else %>
       <li style="font-style: italic; float: right;"><%= link_to 'Register', new_user_registration_path %></li>
       <li style="font-style: italic; float: right;"><%= link_to 'Login', new_user_session_path %></li>

@@ -64,6 +64,12 @@ Rails.application.routes.draw do
     resources :categories
   end
   
+  resources :notifications do
+    member do
+      get :toggle_read
+    end
+  end
+  
   get 'tags/:tag', to: 'tags#show', as: :tag
   get 'tags', to: 'tags#index'
   match '/users', to: 'users#index', via: 'get'
@@ -72,7 +78,6 @@ Rails.application.routes.draw do
   match '/drafts', to: 'articles#drafts', via: 'get'
   match '/help', to: 'pages#help', via: 'get'
   match '/congrats', to: 'pages#congrats', via: 'get'
-  match '/notifications', to: 'notifications#index', via: 'get'
 
   #devise_for :users, :path_prefix => 'd'
   resources :users do
