@@ -143,6 +143,30 @@
                   </div>
                 <% end %>
                 
+                <% if notification.notification_type == "follow" %>
+                  <div class="table-cell" style="width: 78%;">
+                    <i class="fa fa-heart" aria-hidden="true"></i>&nbsp;
+                    <%= link_to User.find(notification.notified_by).username, user_path(notification.notified_by) %> 
+                    started following you 
+                    <br />
+                    <div class="small">
+                      <%= time_ago_in_words(notification.created_at) %> ago
+                    </div>
+                  </div>
+                <% end %>
+                
+                <% if notification.notification_type == "unfollow" %>
+                  <div class="table-cell" style="width: 78%;">
+                    <i class="fa fa-heart-o" aria-hidden="true"></i>&nbsp;
+                    <%= link_to User.find(notification.notified_by).username, user_path(notification.notified_by) %> 
+                    quit following you 
+                    <br />
+                    <div class="small">
+                      <%= time_ago_in_words(notification.created_at) %> ago
+                    </div>
+                  </div>
+                <% end %>
+                
                 <div class="table-cell" style="width: 12%;">
                   <div class="small">
                     <%= link_to 'mark as read', toggle_read_notification_path(notification) %>
