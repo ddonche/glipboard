@@ -1,5 +1,5 @@
 <div class="log-form">
-  <%= simple_form_for(@article, html: { method: :put, multipart: true }) do |f| %>
+  <%= simple_form_for @article do |f| %>
   
     <% if @article.errors.any? %>
       <div class="alert">

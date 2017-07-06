@@ -60,7 +60,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was a success!' }
+        format.html { redirect_to article_path(@article), notice: 'Article was a success!' }
       else
         format.html { render :new }
       end
