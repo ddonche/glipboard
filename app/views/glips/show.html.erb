@@ -1,3 +1,13 @@
+<%= content_for(:meta_og) do %>
+    <meta property="og:title" content="<%= @glip.title %>" />
+    <meta property="og:type" content="article" />
+    <meta property="og:published_time" content="<%= @glip.created_at.strftime('%Y-%m-%d %H:%M') %>" />
+    <meta property="og:author" content="<%= @glip.user.username %>" />
+    <meta property="og:description" content="<%= @glip.content.truncate(250) %>" />
+    <% if @article.image %>
+      <meta property="og:image" content="<%= @glip.image.url %>" />
+    <% end %>
+<% end %>
 <div id="content-wrap">
   
     <div class="left-column">
