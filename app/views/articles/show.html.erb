@@ -3,7 +3,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:published_time" content="<%= @article.created_at.strftime('%Y-%m-%d %H:%M') %>" />
     <meta property="og:author" content="<%= @article.user.username %>" />
-    <meta property="og:description" content="<%= @article.content.truncate(50) %>" />
+    <meta property="og:description" content="<%= @article.content.truncate(250) %>" />
     <% if @article.image %>
       <meta property="og:image" content="<%= @article.image.url %>" />
     <% end %>

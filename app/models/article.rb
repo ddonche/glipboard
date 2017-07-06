@@ -37,4 +37,9 @@ class Article < ApplicationRecord
     number_of_tags = tag_list_cache_on("tags").uniq.length
     errors.add(:base, "Only 5 tags allowed") if number_of_tags > 5
   end
+  
+  private
+    def image_size_validation
+      errors[:image] << "should be less than 500KB" if image.size > 0.5.megabytes
+    end
 end
