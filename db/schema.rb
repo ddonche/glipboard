@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170704040923) do
+ActiveRecord::Schema.define(version: 20170706113148) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -36,6 +36,18 @@ ActiveRecord::Schema.define(version: 20170704040923) do
     t.text     "description"
     t.index ["group_id"], name: "index_categories_on_group_id"
     t.index ["slug"], name: "index_categories_on_slug", unique: true
+  end
+
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string   "data_file_name",               null: false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.string   "type",              limit: 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -287,10 +299,14 @@ ActiveRecord::Schema.define(version: 20170704040923) do
     t.string   "city"
     t.string   "thumbnail"
     t.string   "birthdate"
+    t.string   "provider"
+    t.string   "uid"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["provider"], name: "index_users_on_provider"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
+    t.index ["uid"], name: "index_users_on_uid"
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 

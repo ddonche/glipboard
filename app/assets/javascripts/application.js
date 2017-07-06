@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require jquery-ui/widgets/datepicker
 //= require turbolinks
+//= require ckeditor/init
 //= require conversations
 //= require_tree .

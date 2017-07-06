@@ -31,6 +31,7 @@ gem 'coderay', '~> 1.1', '>= 1.1.1'
 gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'
 gem 'voltaire', '~> 0.4.5'
 gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
+gem 'ckeditor', '~> 4.2', '>= 4.2.4'
 
 group :development, :test do
   gem 'sqlite3'
