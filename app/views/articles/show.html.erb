@@ -5,7 +5,7 @@
     <meta property="og:author" content="<%= @article.user.username %>" />
     <meta property="og:description" content="<%= @article.content.truncate(50) %>" />
     <% if @article.image %>
-        <%= tag :meta, property: 'og:image', content: "http://#{@article.image.url}" %>
+        <%= tag :meta, property: 'og:image', content: <%= @article.image.url %> %>
     <% end %>
 <% end %>
 <div id="content-wrap">
