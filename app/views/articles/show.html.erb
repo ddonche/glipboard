@@ -1,3 +1,14 @@
+<%= content_for(:meta_og) do %>
+    <meta property="og:title" content="<%= @article.title %>" />
+    <meta property="og:type" content="article" />
+    <meta property="og:published_time" content="<%= @article.created_at.strftime('%Y-%m-%d %H:%M') %>" />
+    <meta property="og:author" content="<%= @article.user.username %>" />
+    <meta property="og:description" content="<%= @article.content.truncate(50) %>" />
+    <% if @article.image %>
+        <%= tag :meta, property: 'og:image', content: "http://#{request.host}#{@article.image.url}" %>
+    <% end %>
+<% end %>
+
 <div id="content-wrap">
   
   <div class="left-column">
