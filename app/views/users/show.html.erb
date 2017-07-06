@@ -1,12 +1,3 @@
-<%= content_for(:meta_og) do %>
-    <meta property="og:title" content="<%= @user.username %>" />
-    <meta property="og:type" content="profile" />
-    <meta property="og:description" content="<%= @user.bio.truncate(250) %>" />
-    <% if @user.picture %>
-      <meta property="og:image" content="<%= @user.picture.url %>" />
-    <% end %>
-<% end %>
-
 <div class="user-left-column">
   <%= render 'bio' %>
 </div>
