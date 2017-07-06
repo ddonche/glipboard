@@ -1,3 +1,4 @@
+<head>
 <%= content_for(:meta_og) do %>
     <meta property="og:title" content="<%= @article.title %>" />
     <meta property="og:type" content="article" />
@@ -8,7 +9,7 @@
         <%= tag :meta, property: 'og:image', content: "http://#{request.host}#{@article.image.url}" %>
     <% end %>
 <% end %>
-
+</head>
 <div id="content-wrap">
   
   <div class="left-column">
