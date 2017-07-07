@@ -6,5 +6,5 @@
     end
   %>
   </div>
-    <%= markdown @article.content %>
+    <%= @article.content.html_safe %>
 </div>
