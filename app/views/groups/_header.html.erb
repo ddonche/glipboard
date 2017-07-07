@@ -1,16 +1,9 @@
 <div class="group-banner">
   <%= if @group.banner?
-    image_tag @group.banner, width: 950, alt: 'group icon' 
+    link_to @group.banner_link do
+      image_tag @group.banner, width: 703, alt: 'banner'
+    end
   else 
-    image_tag 'default_banner.jpg', width: 950, alt: 'group icon'
+    image_tag 'default_banner.jpg', width: 703, alt: 'banner'
   end %>
-</div>
-<div class="group-icon">
-  <%= link_to group_path(@group) do %>
-    <%= if @group.icon?
-      image_tag @group.icon, width: 80, alt: 'group icon' 
-    else
-      image_tag 'default_avatar.jpg', width: 80, alt: 'group icon'
-    end %>
-  <% end %>
 </div>

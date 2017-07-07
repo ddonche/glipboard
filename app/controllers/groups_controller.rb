@@ -68,6 +68,6 @@ class GroupsController < ApplicationController
 
     def group_params
       params.require(:group).permit(:title, :description, :creator_id, :tag_list, :picture, :picture_cache, :remove_picture, 
-                                    :icon, :banner)
+                                    :icon, :banner, :banner_link, :side_ad, :side_ad_link)
     end
 end

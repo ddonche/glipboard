@@ -35,20 +35,28 @@
         <fieldset>
           <legend>Imagery</legend>
             <em>Note: You can skip this step if you'd like to upload any of the images later.</em><br /><br />
-            <label class="upload-button">Upload Group Image<%= f.file_field :picture, style: 'display:none;' %>
+            <label class="upload-button">Upload Group Image<%= f.file_field :picture %>
             </label>
             <div class="small"><br/><em>For best results, upload an image of the same height and width.</em></div>
   
           <br />
-          <label class="upload-button">Upload Icon Image<%= f.file_field :icon, style: 'display:none;' %>
+          <label class="upload-button">Upload Icon Image<%= f.file_field :icon %>
           </label>
           <div class="small"><br/><em>For best results, upload an image of the same height and width.</em></div>
           
           <br />
-          <label class="upload-button">Upload Banner Image<%= f.file_field :banner, style: 'display:none;' %>
+          <label class="upload-button">Upload Banner Image<%= f.file_field :banner %>
           </label>
-          <div class="small"><br/><em>This image must be 950px wide by 80px tall!</em></div>
+          <div class="small"><br/><em>This image must be 703px wide by 90px tall!</em></div>
+          
+          <br />
+          <label class="upload-button">Upload Side Advert Image<%= f.file_field :side_ad %>
+          </label>
+          <div class="small"><br/><em>Insert image specs!</em></div>
         </fieldset>
+        
+        <%= f.text_field :banner_link, placeholder: 'enter banner url' %><br />
+        <%= f.text_field :side_ad_link, placeholder: 'enter side advert url' %>
             
         <%= f.submit %>
             

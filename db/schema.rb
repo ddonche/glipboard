@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170706113148) do
+ActiveRecord::Schema.define(version: 20170707002602) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -91,12 +91,15 @@ ActiveRecord::Schema.define(version: 20170706113148) do
     t.string   "title"
     t.text     "description"
     t.integer  "creator_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "slug"
     t.string   "picture"
     t.string   "icon"
     t.string   "banner"
+    t.string   "banner_link"
+    t.string   "side_ad"
+    t.string   "side_ad_link"
     t.index ["creator_id"], name: "index_groups_on_creator_id"
     t.index ["slug"], name: "index_groups_on_slug", unique: true
     t.index ["title"], name: "index_groups_on_title", unique: true

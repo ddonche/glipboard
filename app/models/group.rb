@@ -10,6 +10,7 @@ class Group < ApplicationRecord
   mount_uploader :picture, PictureUploader
   mount_uploader :icon, IconUploader
   mount_uploader :banner, BannerUploader
+  mount_uploader :side_ad, SideAdUploader
   
   validates_presence_of :title, :description, :creator_id
   validates_uniqueness_of :title
