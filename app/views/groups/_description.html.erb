@@ -43,9 +43,9 @@
 <br /> 
 
   <% if @group.side_ad? %>
-    <div class="side-box">
+    <div class="center">
       <%= link_to @group.side_ad_link do
-        image_tag @group.side_ad, width: 274, alt: 'side advert'
+        image_tag @group.side_ad, width: 220, alt: 'side advert'
       end %>
     </div>
   <% end %>
