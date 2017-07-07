@@ -10,10 +10,9 @@
       </div>
     <% end %>
     
-    <div class="field">
       <%= f.text_area :content, rows: 3 %>
-    </div>
-    
+      <%= f.text_field :youtube %>&nbsp;&nbsp;<i class="fa fa-youtube" aria-hidden="true"></i><div class="small" style="display: inline-block;"><em>
+      &nbsp;<b>Optional: </b>You can embed a Youtube video by inputting its ID; example: pMxwDZJFI_U</em></div>
     <div class="actions">
       <%= f.submit %>
     </div>

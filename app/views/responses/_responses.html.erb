@@ -41,15 +41,19 @@
       <em>Posted <%= time_ago_in_words(response.created_at) %> ago</em>
     
       <% if (user_signed_in? && (current_user.id == response.user_id)) %>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <div class="responses-alter" style="display: inline-block;">
           <%= link_to edit_group_post_response_path(@group, @post, response) do %>&nbsp;&nbsp;<i class="fa fa-pencil"></i><% end %> &nbsp;&nbsp;
-          <%= link_to group_post_response_path(@group, @post, response), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %>
+          <%= link_to group_post_response_path(@group, @post, response), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash"></i><% end %><br />
         </div>
       <% end %>
     
       </div>
-    
-      <%= markdown response.content %><br />
+      <br />
+      <%= response.content.html_safe %><br />
+      <% if response.youtube? %>
+        <iframe width="420" height="236" src='https://www.youtube.com/embed/<%= response.youtube %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen></iframe>
+      <% end %>
     </div>
   <div class="comment-content">
     <% if response.remarks.any? %>

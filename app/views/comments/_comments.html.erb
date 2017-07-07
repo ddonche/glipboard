@@ -45,16 +45,20 @@
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <% if @commentable = @glip %>
             <%= link_to edit_glip_comment_path(@glip, comment) do %><i class="fa fa-pencil" title="edit"></i><% end %> &nbsp;&nbsp;
-            <%= link_to glip_comment_path(@glip, comment), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash" title="delete"></i><% end %>
+            <%= link_to glip_comment_path(@glip, comment), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash" title="delete"></i><% end %><br />
           <% else %>
             <%= link_to edit_article_comment_path(@article, comment) do %><i class="fa fa-pencil" title="edit"></i><% end %> &nbsp;&nbsp;
-            <%= link_to article_comment_path(@article, comment), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash" title="delete"></i><% end %>&nbsp;&nbsp;&nbsp;
+            <%= link_to article_comment_path(@article, comment), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash" title="delete"></i><% end %><br />
           <% end %>
         </div>
       <% end %>
       
       </div>
-      <%= markdown comment.content %><br />
+      <%= comment.content.html_safe %><br />
+      <% if comment.youtube? %>
+        <iframe width="420" height="236" src='https://www.youtube.com/embed/<%= comment.youtube %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen></iframe>
+      <% end %>
+      <br />
     </div>
   <div class="comment-content">
     <% if comment.notations.any? %>

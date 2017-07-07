@@ -91,6 +91,6 @@ class CommentsController < ApplicationController
   end
   
   def allowed_params
-    params.require(:comment).permit(:content, :user_id)
+    params.require(:comment).permit(:content, :user_id, :youtube)
   end
 end

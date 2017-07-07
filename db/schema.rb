@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170707002602) do
+ActiveRecord::Schema.define(version: 20170707033826) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20170707002602) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "user_id"
+    t.string   "youtube"
     t.index ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -247,6 +248,7 @@ ActiveRecord::Schema.define(version: 20170707002602) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.string   "subtitle"
+    t.string   "youtube"
   end
 
   create_table "taggings", force: :cascade do |t|

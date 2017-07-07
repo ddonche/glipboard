@@ -10,6 +10,10 @@ class ResponsesController < ApplicationController
 
   def new
     @response = @post.responses.new
+    respond_to do |format|  
+      format.html
+      format.js
+    end
   end
   
   def create
@@ -45,7 +49,7 @@ class ResponsesController < ApplicationController
   def destroy
     @response.destroy
     respond_to do |format|
-      redirect_to group_post_path(@group, @post), notice: 'response was eradicated.'
+      format.html redirect_to group_post_path(@group, @post), notice: 'response was eradicated.'
     end
   end
   
@@ -88,6 +92,6 @@ class ResponsesController < ApplicationController
   end
   
   def response_params
-    params.require(:response).permit(:subtitle, :content, :user_id, :post_id)
+    params.require(:response).permit(:subtitle, :content, :user_id, :post_id, :youtube)
   end
 end
