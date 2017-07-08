@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170707033826) do
+ActiveRecord::Schema.define(version: 20170708141726) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -70,6 +70,15 @@ ActiveRecord::Schema.define(version: 20170707033826) do
     t.index ["receiver_id"], name: "index_conversations_on_receiver_id"
     t.index ["sender_id", "receiver_id"], name: "index_conversations_on_sender_id_and_receiver_id", unique: true
     t.index ["sender_id"], name: "index_conversations_on_sender_id"
+  end
+
+  create_table "episodes", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "podcast_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "glips", force: :cascade do |t|
@@ -204,6 +213,17 @@ ActiveRecord::Schema.define(version: 20170707033826) do
     t.index ["glip_id", "user_id"], name: "index_participations_on_glip_id_and_user_id", unique: true
     t.index ["glip_id"], name: "index_participations_on_glip_id"
     t.index ["user_id"], name: "index_participations_on_user_id"
+  end
+
+  create_table "podcasts", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.text     "group_id"
+    t.text     "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_podcasts_on_group_id"
+    t.index ["user_id"], name: "index_podcasts_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
