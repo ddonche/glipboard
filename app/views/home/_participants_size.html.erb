@@ -1,0 +1,13 @@
+<% if everything.parent_id? %>
+  <% if everything.participants.size < 1 %>
+    There are no participants yet.
+  <% else %>
+    <%= everything.participants.size %> Participants
+  <% end %>
+<% else %>
+  <% if everything.participants.size < 1 %>
+    There are no participants yet.
+  <% else %>
+    <%= everything.participants.size %> Participants
+  <% end %>
+<% end %>

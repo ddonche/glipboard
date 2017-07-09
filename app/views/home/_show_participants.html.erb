@@ -1,0 +1,19 @@
+<%  if everything.parent_id?
+    @parent_glip = Glip.friendly.find(everything.parent_id)
+    @participants = @parent_glip.participants.order("participations.created_at DESC").limit(12)
+  else
+    @participants = everything.participants.order("participations.created_at DESC").limit(12)
+  end
+%>
+
+<% @participants.each do |participant| %>
+  <%= link_to participant do %>
+    <%= 
+      if participant.picture?
+        image_tag participant.picture, width: 20, title: participant.username
+      else
+        image_tag 'default_avatar.jpg', width: 20, title: participant.username
+      end
+      %>
+  <% end %>
+<% end %>
