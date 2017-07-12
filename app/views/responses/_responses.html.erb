@@ -50,7 +50,7 @@
     
       </div>
       <br />
-      <%= response.content.html_safe %><br />
+      <%= response.content %><br />
       <% if response.youtube? %>
         <iframe width="420" height="236" src='https://www.youtube.com/embed/<%= response.youtube %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen></iframe>
       <% end %>
