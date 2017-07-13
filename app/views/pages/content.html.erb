@@ -1,0 +1,159 @@
+<div id ="index-nav-container">
+      <div class = "table-row">
+        <div class="table-cell"><h3>Top Content</h3></div>
+        <div class="table-cell"><div class="index-top-buttons"><div class="current-button"><%= link_to "latest", content_path %></div></div></div>
+        <div class="table-cell"><div class="index-top-buttons"><div class="glip-button"><%= link_to "glips", glips_path %></div></div></div>
+        <div class="table-cell"><div class="index-top-buttons"><div class="article-button"><%= link_to "articles", articles_path %></div></div></div>
+        <div class="table-cell"><div class="index-top-buttons"><div class="group-button"><%= link_to "groups", groups_path %></div></div></div>
+        <div class="table-cell"><div class="index-top-buttons"><div class="user-button"><%= link_to "users", users_path %></div></div></div>
+        <div class="table-cell"><div class="index-top-buttons"><div class="all-button"><%= link_to "tags", tags_path %></div></div></div>
+      </div>
+</div>
+
+<div class="left-column">
+
+  <div class ="pagination-container">
+    <%= paginate @everything %>
+  </div>
+  
+  <div id ="index-container">
+      <div class= "table">
+
+        <% @everything.each do |everything| %>
+          <div class="table-row" style="border-bottom: 1px solid #d5d3c3;">
+
+            <% if everything.model_name.human == "Glip" %>
+            <div class="table-cell" style="width: 14%; background: #eae8d6;">
+              <div class="center" style="margin-bottom: 0;">
+              <%= 
+                if everything.user.picture?
+                  link_to user_path(everything.user) do
+                    image_tag everything.user.picture, width: 70, alt: 'user avatar', title: everything.user.username
+                  end
+                else
+                  link_to user_path(everything.user) do
+                    image_tag 'default_avatar.jpg', width: 70, alt: 'default user avatar', title: everything.user.username
+                  end
+                end
+              %></div>
+              <br />
+              <div class="center" style="font-size: 12px;">
+                <%= link_to everything.user_username, user_path(everything.user) %><br />
+                <%= everything.user.reputation %>
+              </div>
+            </div>
+            
+              <div class="table-cell" style="width: 65%; background: #eae8d6;">
+                  
+                  <% if everything.status == "incomplete" %>
+                    <i class="fa fa-star-half-o"></i>
+                  <% else %>
+                    <i class="fa fa-star"></i>
+                  <% end %>&nbsp;
+                  <span style="font-size: 16px;"><%= link_to everything.title.truncate(60), everything, :title => everything.title %></span>
+                  <div class="small" style="display: inline-block;">
+                    <%= time_ago_in_words(everything.created_at) %> ago
+                  </div>
+                <br />
+                <span style="font-size: 13px;"><%= everything.content.truncate(250) %></span>
+                <br />
+                <br />
+                <% everything.tag_list.map.each do |tag| %>
+                  <div class="tags"><%= link_to tag, tag_path(tag) %></div>
+                <% end %>
+                <span style="font-size: 13px;">
+                <%= link_to like_glip_path(everything), method: :put do %><i class="fa fa-chevron-up"></i><% end %>
+                &nbsp;<%= number_to_human(everything.get_upvotes.size) %>&nbsp;&nbsp;
+                <%= link_to dislike_glip_path(everything), method: :put do %><i class="fa fa-chevron-down"></i><% end %>
+                &nbsp;<%= number_to_human(everything.get_downvotes.size) %>&nbsp;&nbsp;
+                <i class="fa fa-comments" style="margin-left: 20px;"></i>&nbsp;&nbsp;<%= number_to_human(everything.comments.count) %>
+                <i class="fa fa-book" style="margin-left: 20px;"></i>&nbsp;&nbsp;<%= number_to_human(everything.logs.count) %>
+                </span><br />
+              </div>
+              
+            <div class="table-cell" style="width: 21%; background: #eae8d6;">
+              <div class="glip-button" style="margin-top: 0;">glip</div><br />
+                  <div class="small" style="margin: 0 auto; font-size: 12px; display: inline-block;">
+                    <% if everything.parent_id? %>
+                      <% if everything.participants.size < 1 %>
+                        No participants yet.
+                      <% else %>
+                        <%= everything.participants.size %> Participants
+                      <% end %>
+                    <% else %>
+                      <% if everything.participants.size < 1 %>
+                        No participants yet.
+                      <% else %>
+                        <%= everything.participants.size %> Participants
+                      <% end %>
+                    <% end %>
+                  </div><br />
+              <%= render 'home/show_participants', everything: everything %>
+            </div>
+            <% end %>
+            <% if everything.model_name.human == "Article" %>
+            <div class="table-cell" style="width: 14%; background: #eeeaca;">
+              <div class="center">
+              <%= 
+                if everything.user.picture?
+                  link_to user_path(everything.user) do
+                    image_tag everything.user.picture, width: 70, alt: 'user avatar', title: everything.user.username
+                  end
+                else
+                  link_to user_path(everything.user) do
+                    image_tag 'default_avatar.jpg', width: 70, alt: 'default user avatar', title: everything.user.username
+                  end
+                end
+              %></div>
+              <br />
+              <div class="center" style="font-size: 12px;">
+                <%= link_to everything.user_username, user_path(everything.user) %><br />
+                <%= everything.user.reputation %>
+              </div>
+            </div>
+            
+              <div class="table-cell" style="width: 65%; background: #eeeaca;">
+                  
+                  <% if everything.feature == "featured" %>
+                  <i class="fa fa-trophy"></i>&nbsp;
+                  <% end %>
+                  <span style="font-size: 16px;"><%= link_to everything.title.truncate(60), everything, :title => everything.title %></span>
+                  <div class="small" style="display: inline-block;">
+                    <%= time_ago_in_words(everything.created_at) %> ago
+                  </div>
+                <br />
+                <span style="font-size: 13px;"><%= strip_tags(everything.content.truncate(250)) %></span>
+                <br />
+                <br />
+                <% everything.tag_list.map.each do |tag| %>
+                  <div class="tags"><%= link_to tag, tag_path(tag) %></div>
+                <% end %>
+                <span style="font-size: 13px;">
+                <%= link_to like_article_path(everything), method: :put do %><i class="fa fa-chevron-up"></i><% end %>
+                &nbsp;<%= number_to_human(everything.get_upvotes.size) %>&nbsp;&nbsp;
+                <%= link_to dislike_article_path(everything), method: :put do %><i class="fa fa-chevron-down"></i><% end %>
+                &nbsp;<%= number_to_human(everything.get_downvotes.size) %>&nbsp;&nbsp;
+                <i class="fa fa-comments" style="margin-left: 20px;"></i>&nbsp;&nbsp;<%= number_to_human(everything.comments.count) %>
+                <i class="fa fa-thumbs-up" style="margin-left: 20px;"></i>&nbsp;&nbsp;<%= number_to_human(everything.glips.size) %>
+                </span><br />
+              </div>
+              
+            <div class="table-cell" style="width: 21%; background: #eeeaca;">
+              <div class="article-button" style="margin-top: 0;">article</div><br />
+                  <div class="small" style="margin: 0 auto; font-size: 12px; display: inline-block;">
+                    &nbsp;
+                  </div><br />
+                  &nbsp;
+            </div>
+            <% end %>
+            
+            </div>
+          <% end %>
+        </div>
+    </div>
+            
+  
+  <div class ="pagination-container">
+    <%= paginate @everything %>
+  </div>
+</div>

@@ -1,7 +1,13 @@
 <div class="menu_container">
   <div class="logo">
-    <%= link_to root_path do %>
-      <%= image_tag 'logo.png', width: 180, alt: 'Glipboard logo'%>
+  	<% if user_signed_in? %>
+	  	<%= link_to content_path do %>
+	  		<%= image_tag 'logo.png', width: 180, alt: 'Glipboard logo'%>
+	  	<% end %>
+	  <% else %>
+	    <%= link_to root_path do %>
+	      <%= image_tag 'logo.png', width: 180, alt: 'Glipboard logo'%>
+	    <% end %>
     <% end %>
   </div>
   
