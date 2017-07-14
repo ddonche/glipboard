@@ -21,12 +21,12 @@
         <fieldset>
           <legend>Birthdate</legend>
           <div class="small"><em>Required for certain age-appropriate features. This information is not displayed anywhere. You won't be able to change this later.</em></div>
-          <%= f.date_select :birthdate, { :include_blank => true, :start_year => 1917 } %>
+          <%= f.date_select :birthdate, { :start_year => 1917 } %>
         </fieldset>
         
         <fieldset>
           <legend>Password</legend>
-          <%= f.password_field :password, placeholder: 'password', autocomplete: "off" %><br /><br />
+          <%= f.password_field :password, placeholder: 'password', autocomplete: "off" %><br />
           <%= f.password_field :password_confirmation, placeholder: 'retype your password' %>
         </fieldset>
       

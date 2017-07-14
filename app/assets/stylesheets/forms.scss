@@ -38,7 +38,7 @@
 .log-form input[type="datetime"],
 .log-form input[type="email"],
 .log-form input[type="number"],
-.log-form input[type="password"]
+.log-form input[type="password"],
 .log-form input[type="search"],
 .log-form input[type="time"],
 .log-form input[type="url"],
@@ -102,7 +102,7 @@ fieldset {
   padding: 3em;
   margin: 0 0 30px 0;
   font-size: .9em;
-  border:1px solid #dc0000;
+  border:1px solid #e5e5e5;
 }
 
 input[type="submit"], input[type="button"]{
