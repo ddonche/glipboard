@@ -6,6 +6,9 @@
         Get stuff done. Accomplish your goals <br />
         or help others accomplish theirs.
       </h1>
+      <div class="home-button" style="background: none; padding: 0;">
+        <%= link_to 'Find out more', about_path %>
+      </div>
     </div>
     
     <div id="home-buttons-wrapper">
@@ -17,10 +20,12 @@
       </div>
     </div>
     
-    <div class="home-glips-count">
-      Glipboard is a goal-setting social network with <br />
-      <%= @glip_count %> Glips and counting!
+    <div class="home-glips-count" style="margin-bottom: 0; color: #a1a1a1;">
+      Glipboard is a goal-setting social network with
     </div>
+    <h3 style="margin: .5em 0 3em 0; color: #a1a1a1;">
+      <%= @glip_count %> Glips and counting!
+    </h3>
     <span style="margin-top: 40em; color: white; font-size: .8em;">
       Photo by <a href="https://unsplash.com/photos/b_8eErngWm4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Karsten Würth on Unsplash</a>
     </span>
