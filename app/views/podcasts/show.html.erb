@@ -1,0 +1,23 @@
+<%= content_for(:meta_og) do %>
+    <meta property="og:title" content="<%= @podcast.title %>" />
+    <meta property="og:type" content="article" />
+    <meta property="og:published_time" content="<%= @podcast.created_at.strftime('%Y-%m-%d %H:%M') %>" />
+    <meta property="og:description" content="<%= @podcast.content.html_safe.truncate(300) %>" />
+    <% if @podcast.image %>
+      <meta property="og:image" content="<%= @podcast.image.url %>" />
+    <% end %>
+<% end %>
+<div id="content-wrap">
+  
+    <div class="left-column">
+      <%= render 'header' %>
+      <div class="content-show">
+        <%= @podcast.content %>
+      </div>      
+    </div>
+    
+  <div class="right-column">
+    <%= render 'sidebar' %>
+  </div>
+
+</div>

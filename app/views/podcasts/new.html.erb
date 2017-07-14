@@ -1,0 +1,45 @@
+<div id="content-wrap">
+  <div class="left-column">
+    <div class="title-box">
+      Create New Podcast
+    </div>
+  
+    <div class="log-form">
+            
+      <%= simple_form_for @podcast do |f| %>
+          
+        <% if @podcast.errors.any? %>
+          <div class="alert">
+            <h2><%= pluralize(@podcast.errors.count, "error") %> prohibited this podcast from being saved:</h2>
+         
+            <ul>
+            <% @podcast.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+            
+        <%= f.text_field :title, placeholder: 'Podcast Title' %><br />
+        
+        <%= f.text_area :content, placeholder: 'Description', rows: 3, :maxlength => 300 %><br />
+        <div class="helper"><div class="small">A basic description of your podcast. 300 characters max.</div></div><br />
+        
+        <%= f.text_field :tag_list, placeholder: 'Add up to 5 tags (separated by commas)', value: @podcast.tag_list.join(", ") %>
+        <div class="small"><em>Example: business, entrepreneurship, marketing, SEO</em></div><br />
+            
+
+        <label class="upload-button">Upload Podcast Image <%= f.file_field :image %></label>
+        <div class="small"><br/><em>Image must be 500px x 500px and no greater than 2MB.</em></div>
+            
+        <%= f.submit %>
+            
+      <% end %>
+      
+    </div>
+  </div>
+  
+  <div class="right-column">
+    
+  </div>
+</div>

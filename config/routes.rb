@@ -65,6 +65,16 @@ Rails.application.routes.draw do
     resources :categories
   end
   
+  resources :podcasts do
+    resources :episodes do
+      member do
+        put 'like', to: 'episodes#upvote'
+        put 'dislike', to: 'episodes#downvote'
+      end
+      resources :comments
+    end
+  end
+  
   resources :notifications do
     member do
       get :toggle_read

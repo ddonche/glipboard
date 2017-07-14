@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170708141726) do
+ActiveRecord::Schema.define(version: 20170714052946) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -79,6 +79,9 @@ ActiveRecord::Schema.define(version: 20170708141726) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "image"
+    t.string   "slug"
+    t.index ["slug"], name: "index_episodes_on_slug", unique: true
   end
 
   create_table "glips", force: :cascade do |t|
@@ -222,7 +225,10 @@ ActiveRecord::Schema.define(version: 20170708141726) do
     t.text     "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "image"
+    t.string   "slug"
     t.index ["group_id"], name: "index_podcasts_on_group_id"
+    t.index ["slug"], name: "index_podcasts_on_slug", unique: true
     t.index ["user_id"], name: "index_podcasts_on_user_id"
   end
 
