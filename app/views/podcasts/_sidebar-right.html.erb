@@ -1,13 +1,19 @@
 
   <div class="avatar-show">
     <%= 
-      if @podcast.user.picture?
-        link_to user_path(@podcast.user) do
-          image_tag @podcast.user.picture, width: 84, alt: 'user avatar'
+      if @podcast.group_id?
+        link_to group_path(@group) do
+          image_tag @group.icon, width: 84, alt: 'group icon'
         end
       else
-        link_to user_path(@podcast.user) do
-          image_tag 'default_avatar.jpg', width: 84, alt: 'default user avatar'
+        if @podcast.user.picture?
+          link_to user_path(@podcast.user) do
+            image_tag @podcast.user.picture, width: 84, alt: 'user avatar'
+          end
+        else
+          link_to user_path(@podcast.user) do
+            image_tag 'default_avatar.jpg', width: 84, alt: 'default user avatar'
+          end
         end
       end
     %>
@@ -18,7 +24,9 @@
   
   <div class="details-show">
       created by
-   <h4 style="display:inline;"><%= link_to @podcast.user.username, user_path(@podcast.user) %></h4>&nbsp;<%= time_ago_in_words(@podcast.created_at) %> ago
+   <h4 style="display:inline;"><%= link_to @podcast.user.username, user_path(@podcast.user) %></h4>
+   &nbsp;<%= time_ago_in_words(@podcast.created_at) %> ago for 
+   <%= link_to @group.title, group_path(@group) %>
       <br />
       <% @podcast.tag_list.map.each do |tag| %>
         <div class="tags"><%= link_to tag, tag_path(tag) %></div>
