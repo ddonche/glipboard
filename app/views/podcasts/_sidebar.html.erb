@@ -1,3 +1,11 @@
-<div class="content-center">
-  <%= image_tag @podcast.image, width: 160, alt: 'podcast image' %>
+<div class="podcast-image">
+  <div class="content-center">
+    <%= image_tag @podcast.image, width: 280, alt: 'podcast image' %><br />
+  </div>
+</div>
+<br />
+<div class="side-box">
+  <div class="podcast-description">
+  <%= @podcast.content %><br />
+  </div>
 </div>

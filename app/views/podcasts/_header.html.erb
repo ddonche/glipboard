@@ -1,7 +1,7 @@
-<% if (user_signed_in? && (current_user.id == @podcast.user_id)) %>
+<% if (user_signed_in? && (current_user.id == @podcast.user.id)) %>
   <div class="content-alter">
-    <div class="small-bold" style="display: inline-block;">
-      <%= link_to edit_podcast_path(@podcast) do %><i class="fa fa-pencil" title="edit"></i>&nbsp;Edit<% end %>
+    <div class="small-bold">
+      <%= link_to edit_podcast_path(@podcast) do %><i class="fa fa-pencil"></i>&nbsp;Edit Podcast<% end %>
     </div>
   </div>
 <% end %>
@@ -10,32 +10,10 @@
   <%= @podcast.title %>
 </div>
 
-<div class="avatar-show">
-  <%= 
-    if @podcast.user.picture?
-      link_to user_path(@podcast.user) do
-        image_tag @podcast.user.picture, width: 84, alt: 'user avatar'
-      end
-    else
-      link_to user_path(@podcast.user) do
-        image_tag 'default_avatar.jpg', width: 84, alt: 'default user avatar'
-      end
-    end
-  %>
-    <% if user_signed_in? && current_user.id != @podcast.user_id %>
-      <div id="small-follow"><%= render 'users/follow_form' if user_signed_in? %></div>
-    <% else %>
-      <div class="small">You can do it!</div>
-    <% end %>
+<div class="podcast-left">
+  <%= render 'sidebar' %>
 </div>
 
-<div class="details-show">
-    created by
- <h4 style="display:inline;"><%= link_to @podcast.user.username, user_path(@podcast.user) %></h4>&nbsp;<%= time_ago_in_words(@podcast.created_at) %> ago
-    <br />
-    <% @podcast.tag_list.map.each do |tag| %>
-      <div class="tags"><%= link_to tag, tag_path(tag) %></div>
-    <% end %><br />
-    <i class="fa fa-book" title="episodes"></i>&nbsp;&nbsp;<%= @podcast.episodes.count %>&nbsp;Episodes<br />
-    
+<div class="podcast-right">
+  <%= render 'sidebar-right' %>
 </div>

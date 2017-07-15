@@ -7,17 +7,9 @@
       <meta property="og:image" content="<%= @podcast.image.url %>" />
     <% end %>
 <% end %>
+
 <div id="content-wrap">
   
-    <div class="left-column">
-      <%= render 'header' %>
-      <div class="content-show">
-        <%= @podcast.content %>
-      </div>      
-    </div>
-    
-  <div class="right-column">
-    <%= render 'sidebar' %>
-  </div>
+  <%= render 'header' %>
 
 </div>
