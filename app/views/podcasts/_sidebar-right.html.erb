@@ -13,8 +13,6 @@
     %>
       <% if user_signed_in? && current_user.id != @podcast.user_id %>
         <div id="small-follow"><%= render 'users/follow_form' %></div>
-      <% else %>
-        <div class="small">You can do it!</div>
       <% end %>
   </div>
   
@@ -25,5 +23,17 @@
       <% @podcast.tag_list.map.each do |tag| %>
         <div class="tags"><%= link_to tag, tag_path(tag) %></div>
       <% end %><br />
+
       <i class="fa fa-microphone" title="episodes"></i>&nbsp;&nbsp;<%= @podcast.episodes.count %>&nbsp;Episodes<br />
   </div>
+<% if (user_signed_in? && (current_user.id == @podcast.user.id)) %>
+    <div class="small-bold-red" style="display:inline-block;">
+      <%= link_to new_podcast_episode_path(@podcast) do %><i class="fa fa-microphone"></i>&nbsp;New Episode<% end %>
+    </div>
+    <div class="small-bold-red" style="display: inline-block;">
+      <%= link_to edit_podcast_path(@podcast) do %><i class="fa fa-pencil"></i>&nbsp;Edit Podcast<% end %>
+    </div>
+<% end %>
+    <div class="small-bold-red" style="display:inline-block;">
+      <%= link_to new_podcast_path do %><i class="fa fa-plus"></i>&nbsp;Create New Podcast<% end %>
+    </div>

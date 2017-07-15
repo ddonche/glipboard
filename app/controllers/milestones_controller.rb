@@ -35,7 +35,7 @@ class MilestonesController < ApplicationController
   def complete
     @milestone.update_attribute(:completed_at, Time.now)
     @log_content = "Completed a milestone: #{@milestone.content}"
-    Log.create!(glip_id: @glip.id, content: @log_content)
+    Log.create!(glip_id: @glip.id, content: @log_content, user_id: current_user.id)
     voltaire_up(1, :reputation, @glip.user_id)
     redirect_to glip_path(@glip)
   end

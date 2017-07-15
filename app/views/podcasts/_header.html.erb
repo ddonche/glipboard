@@ -1,10 +1,4 @@
-<% if (user_signed_in? && (current_user.id == @podcast.user.id)) %>
-  <div class="content-alter">
-    <div class="small-bold">
-      <%= link_to edit_podcast_path(@podcast) do %><i class="fa fa-pencil"></i>&nbsp;Edit Podcast<% end %>
-    </div>
-  </div>
-<% end %>
+
 
 <div class="title-box">
   <%= @podcast.title %>
