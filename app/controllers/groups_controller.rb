@@ -20,6 +20,7 @@ class GroupsController < ApplicationController
     @sticky_posts = @group.posts.where({ sticky: "sticky" })
     @categories = @group.categories
     @creator = User.friendly.find(@group.creator_id)
+    @podcast = Podcast.where( { group_id: @group.id })
   end
   
   def members

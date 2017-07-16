@@ -23,14 +23,11 @@
     <div class="small"><b><div id="markdown"><%= link_to "#", :remote => true do %><i class="fa fa-chevron-down"  aria-hidden="true"></i>&nbsp;Formatting Help<% end %></b></div></div><br />
     
     <% if current_user.id == @group.creator_id %>
-      <%= f.radio_button :sticky, 'sticky' %> 
-      <%= label :sticky_status, 'Pin This Post' %>
-      <%= f.radio_button :comments_disabled, 'comments_disabled' %>
-      <%= label :disabled_status, 'Disable Comments' %>
+      <%= f.check_box :sticky, {:class => "myclass", :style => "mystyle"}, "sticky", "normal" %> Pin This Post
+      <%= f.check_box :comments_disabled, {:class => "myclass", :style => "mystyle"}, "comments_disabled", "comments_enabled" %> Disable Comments
       <div class="small"><em>You can pin this post to the top and/or disabled comments.</em></div><br />  
     <% end %>
     
     <p><%= f.submit 'Submit Post' %></p>
   <% end %>
 </div>
-  
