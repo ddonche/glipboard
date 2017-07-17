@@ -72,7 +72,7 @@ class EpisodesController < ApplicationController
   private
 
   def set_episode
-    @episode = Episode.find(params[:id])
+    @episode = Episode.friendly.find(params[:id])
   end
   
   def set_podcast
