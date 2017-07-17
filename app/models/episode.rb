@@ -5,6 +5,7 @@ class Episode < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
   
   mount_uploader :image, ImageUploader
+  mount_uploader :audio, AudioUploader
   
   validates_presence_of :title, :content, :podcast_id, :audio
   validate :maximum_amount_of_tags

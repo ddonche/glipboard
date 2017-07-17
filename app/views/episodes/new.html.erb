@@ -1,0 +1,46 @@
+<div id="content-wrap">
+  <div class="left-column">
+    <div class="title-box">
+      New <%= @podcast.title %> Episode
+    </div>
+  
+    <div class="log-form">
+            
+      <%= simple_form_for [@podcast, @episode] do |f| %>
+          
+        <% if @episode.errors.any? %>
+          <div class="alert">
+            <h2><%= pluralize(@episode.errors.count, "error") %> prohibited this episode from being saved:</h2>
+         
+            <ul>
+            <% @episode.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+            
+        <%= f.text_field :title, placeholder: 'Episode Title' %><br />
+        
+        <%= f.text_area :content, placeholder: 'Content', rows: 3 %><br />
+
+        <%= f.text_field :tag_list, placeholder: 'Add up to 5 tags (separated by commas)', value: @episode.tag_list.join(", ") %>
+        <div class="small"><em>Example: business, entrepreneurship, marketing, SEO</em></div><br />
+
+        <label class="upload-button">Upload Episode Image <%= f.file_field :image %></label>
+        <div class="small"><br/><em>Image must be square and no greater than 2MB.</em></div>
+        
+        <label class="upload-button">Upload Audio File <%= f.file_field :audio %></label>
+        <div class="small"><br/><em>Audio must be in mp3 or wav format.</em></div>
+            
+        <%= f.submit %>
+            
+      <% end %>
+      
+    </div>
+  </div>
+  
+  <div class="right-column">
+    
+  </div>
+</div>
