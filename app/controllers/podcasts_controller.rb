@@ -16,6 +16,7 @@ class PodcastsController < ApplicationController
     @page_title = @podcast.title
     @user = @podcast.user
     @group = Group.find(@podcast.group_id)
+    @episodes = @podcast.episodes
   end
 
   def new

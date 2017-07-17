@@ -45,3 +45,16 @@
     <div class="small-bold-red" style="display:inline-block;">
       <%= link_to new_podcast_path do %><i class="fa fa-plus"></i>&nbsp;Create New Podcast<% end %>
     </div>
+    
+<% @episodes.each do |episode| %>
+  <div class = "table">
+    <div class = "table-row">
+      <div class="tiny-table-cell">
+        <%= link_to episode.title, podcast_episode_path(@podcast, episode) %>
+      </div>
+      <div class="tiny-table-cell">
+        <%= episode.created_at.strftime("%b %d, %Y") %>
+      </div>
+    </div>
+  </div>
+<% end %>

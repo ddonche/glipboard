@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170714052946) do
+ActiveRecord::Schema.define(version: 20170717023120) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20170714052946) do
     t.datetime "updated_at", null: false
     t.string   "image"
     t.string   "slug"
+    t.string   "audio"
     t.index ["slug"], name: "index_episodes_on_slug", unique: true
   end
 
