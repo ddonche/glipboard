@@ -20,6 +20,14 @@
   <%= @glip.title %>
 </div>
 
+<div class="image">
+  <%= 
+    if @glip.image?
+      image_tag @glip.image, width: 705, height: 340
+    end
+  %>
+</div>
+
 <div class="avatar-show">
   <%= 
     if @glip.user.picture?

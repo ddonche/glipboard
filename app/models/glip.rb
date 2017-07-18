@@ -18,6 +18,8 @@ class Glip < ApplicationRecord
   validates_presence_of :title, :content, :completion_criteria
   validate :maximum_amount_of_tags
   
+  mount_uploader :image, ImageUploader
+  
   acts_as_taggable
   acts_as_votable
   extend FriendlyId
