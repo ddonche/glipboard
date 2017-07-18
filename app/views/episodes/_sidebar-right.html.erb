@@ -3,7 +3,10 @@
   <div class="episode-details">
     created by
     <h4 style="display:inline;"><%= link_to @episode.user.username, user_path(@episode.user) %></h4>
-    &nbsp;<%= time_ago_in_words(@episode.created_at) %> ago | linked to <%= link_to @group.title, group_path(@group) %>
+    &nbsp;<%= time_ago_in_words(@episode.created_at) %> ago 
+    <% if @podcast.group_id? %>
+      | linked to <%= link_to @group.title, group_path(@group) %>
+    <% end %>
     <br />
       <% @episode.tag_list.map.each do |tag| %>
         <div class="tags"><%= link_to tag, tag_path(tag) %></div>

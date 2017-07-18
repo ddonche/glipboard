@@ -1,6 +1,6 @@
 class EpisodesController < ApplicationController
   before_action :set_episode, except: [:new, :create]
-  before_action :set_podcast, only: [:new, :create, :edit, :update, :destroy, :upvote, :downvote]
+  before_action :set_podcast, only: [:show, :new, :create, :edit, :update, :destroy, :upvote, :downvote]
   before_action :set_group, except: [:show, :create, :new]
   before_action :authenticate_user!, except: [:index, :show]
 
@@ -8,7 +8,9 @@ class EpisodesController < ApplicationController
   end
   
   def show
-    @group = Group.friendly.find(@episode.podcast.group_id)
+    if @podcast.group_id?
+      @group = Group.friendly.find(@episode.podcast.group_id)
+    end
   end
 
   def new
