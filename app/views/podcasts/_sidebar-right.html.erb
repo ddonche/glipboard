@@ -32,7 +32,9 @@
         <div class="tags"><%= link_to tag, tag_path(tag) %></div>
       <% end %><br />
 
-      <i class="fa fa-microphone" title="episodes"></i>&nbsp;&nbsp;<%= @podcast.episodes.count %>&nbsp;Episodes<br />
+      <i class="fa fa-microphone" title="episodes"></i>&nbsp;&nbsp;<%= @podcast.episodes.count %>&nbsp;Episodes
+      <i class="fa fa-rss" title="feed" style="margin-left: 6px;"></i>&nbsp;&nbsp;<%= link_to "Feed", podcast_feed_path(@podcast) %>
+      <br />
   </div>
     
 <% @episodes.each do |episode| %>

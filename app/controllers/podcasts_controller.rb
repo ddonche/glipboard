@@ -18,6 +18,14 @@ class PodcastsController < ApplicationController
     @group = Group.find(@podcast.group_id)
     @episodes = @podcast.episodes
   end
+  
+  def feed
+    @podcast = Podcast.friendly.find(params[:podcast_id])
+    @episodes = @podcast.episodes
+    respond_to do |format|
+      format.rss { render :layout => false }
+    end
+  end
 
   def new
     @podcast = current_user.podcasts.build

@@ -66,6 +66,7 @@ Rails.application.routes.draw do
   end
   
   resources :podcasts do
+    match '/feed', to: 'podcasts#feed', via: 'get', format: 'rss'
     resources :episodes do
       member do
         put 'like', to: 'episodes#upvote'
