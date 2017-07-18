@@ -17,6 +17,14 @@
   <%= @article.title %>
 </div>
 
+<div class="image">
+  <%= 
+    if @article.image?
+      image_tag @article.image, width: 705, height: 340
+    end
+  %>
+</div>
+
 <div class="avatar-show">
   <%= 
     if @article.user.picture?
