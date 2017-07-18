@@ -85,11 +85,13 @@
           <div class="table-cell"><%= time_ago_in_words(pager.created_at) %> </div>
           
           <div class="table-cell">
-            <% if pager.model_name.human != "Group" %>
+            <% if pager.model_name.human != "Group" && pager.model_name.human != "Podcast" %>
             <%= link_to pager.user.username, user_path(pager.user) %>
                 &nbsp;<%= number_to_human(pager.user.reputation, :format => '%n%u', :precision => 2, :units => { :thousand => 'K' }) %>
+            <% elsif pager.model_name.human == "Group" %>
+              <i class="fa fa-user"></i>&nbsp;&nbsp;<%= pager.users.size %> Members
             <% else %>
-              <%= pager.users.size %> Members
+              <i class="fa fa-microphone" title="episodes"></i>&nbsp;&nbsp;<%= pager.episodes.size %> Episodes
             <% end %>
           </div>
           
