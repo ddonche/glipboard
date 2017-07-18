@@ -1,7 +1,7 @@
 class EpisodesController < ApplicationController
   before_action :set_episode, except: [:new, :create]
   before_action :set_podcast, only: [:new, :create, :edit, :update, :destroy, :upvote, :downvote]
-  before_action :set_group, except: [:show]
+  before_action :set_group, except: [:show, :create, :new]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
