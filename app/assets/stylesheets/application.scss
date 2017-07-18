@@ -413,6 +413,19 @@ input[type=button], input[type=submit], input[type=reset] {
   }
 }
 
+.podcast-button {
+  padding: 4px 9px;
+  text-align: center;
+  color: #8be52b;
+  border: 1px solid #8be52b;
+  a {
+    color: #8be52b;
+  }
+  a:hover {
+    color: #dc0000;
+  }
+}
+
 .group-button {
   padding: 4px 9px;
   text-align: center;

@@ -17,6 +17,10 @@
               <%= link_to like_article_path(pager), method: :put do %><i class="fa fa-chevron-up"></i><% end %>&nbsp;<%= pager.get_upvotes.size %>&nbsp;&nbsp;
               <%= link_to dislike_article_path(pager), method: :put do %><i class="fa fa-chevron-down"></i><% end %>&nbsp;<%= pager.get_downvotes.size %>
             </div>
+           <% elsif pager.model_name.human == "Podcast" %>
+            <div class="table-cell">
+              <%= image_tag pager.image, width: 40, alt: 'podcast image' %>
+            </div>
           <% else %>
             <div class="table-cell">
               <%= 
@@ -28,16 +32,21 @@
               %>  
             </div>
           <% end %>
-          
-          <% if pager.model_name.human != "Group" %>
-            <div class="table-cell">
-              <i class="fa fa-comments"></i>&nbsp;&nbsp;
-              <%= pager.comments.count %>
-            </div>
+          <% if pager.model_name.human != "Podcast" %>
+            <% if pager.model_name.human != "Group" %>
+              <div class="table-cell">
+                <i class="fa fa-comments"></i>&nbsp;&nbsp;
+                <%= pager.comments.count %>
+              </div>
+            <% else %>
+              <div class="table-cell">
+                <i class="fa fa-comments"></i>&nbsp;&nbsp;
+                <%= pager.posts.count %>
+              </div>
+            <% end %>
           <% else %>
             <div class="table-cell">
-              <i class="fa fa-comments"></i>&nbsp;&nbsp;
-              <%= pager.posts.count %>
+              
             </div>
           <% end %>
           
@@ -46,6 +55,8 @@
               <div class="glip-button">glip</div>
             <% elsif pager.model_name.human == "Article" %>
               <div class="article-button">article</div>
+            <% elsif pager.model_name.human == "Podcast" %>
+              <div class="podcast-button">podcast</div>
             <% else %>
               <div class="group-button">group</div>
             <% end %>
@@ -65,7 +76,11 @@
             <% else %>
             <% end %>
             
-            <%= link_to pager.title.truncate(40), pager %></div>
+            <% if pager.model_name.human == "Podcast" %>
+              <%= link_to pager.title.truncate(40), podcast_path(pager) %></div>
+            <% else %>
+              <%= link_to pager.title.truncate(40), pager %></div>
+            <% end %>
           
           <div class="table-cell"><%= time_ago_in_words(pager.created_at) %> </div>
           

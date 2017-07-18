@@ -1,11 +1,11 @@
 <div id="content-wrap">
-  <div class="title-box">New Podcast</div>
+  <div class="title-box">Editing <%= @podcast.title %></div>
 
   <%= render 'form', podcast: @podcast %>
   
       <div class="log-form">
         <div class="center">
-          <%= link_to 'Podcasts', podcasts_path %>
+          <%= link_to 'Cancel', podcast_path(@podcast) %>
         </div>
       </div>
 
