@@ -7,7 +7,7 @@ class Episode < ApplicationRecord
   mount_uploader :image, ImageUploader
   mount_uploader :audio, AudioUploader
   
-  validates_presence_of :title, :content, :podcast_id, :audio
+  validates_presence_of :title, :content, :podcast_id, :audio, :tag_list
   validate :maximum_amount_of_tags
   
   acts_as_taggable

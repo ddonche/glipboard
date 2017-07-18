@@ -34,20 +34,6 @@
 
       <i class="fa fa-microphone" title="episodes"></i>&nbsp;&nbsp;<%= @podcast.episodes.count %>&nbsp;Episodes<br />
   </div>
-  
-<div class="podcast-button-wrapper" style="display: block; text-align: center;">  
-  <% if (user_signed_in? && (current_user.id == @podcast.user.id)) %>
-    <div class="small-bold-red" style="display:inline-block;">
-      <%= link_to new_podcast_episode_path(@podcast) do %><i class="fa fa-microphone"></i>&nbsp;New Episode<% end %>
-    </div>
-    <div class="small-bold-red" style="display: inline-block;">
-      <%= link_to edit_podcast_path(@podcast) do %><i class="fa fa-pencil"></i>&nbsp;Edit Podcast<% end %>
-    </div>
-  <% end %>
-    <div class="small-bold-red" style="display:inline-block;">
-      <%= link_to new_podcast_path do %><i class="fa fa-plus"></i>&nbsp;Create New Podcast<% end %>
-    </div>
-</div>
     
 <% @episodes.each do |episode| %>
   <div class = "table">

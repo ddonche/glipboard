@@ -10,6 +10,16 @@
 
 <div id="content-wrap" style="width: 95%;">
   
-  <%= render 'header' %>
+  <div class="title-box">
+    <%= @podcast.title %>
+  </div>
+  
+  <div class="podcast-left">
+    <%= render 'sidebar' %>
+  </div>
+  
+  <div class="podcast-right">
+    <%= render 'sidebar-right' %>
+  </div>
 
 </div>

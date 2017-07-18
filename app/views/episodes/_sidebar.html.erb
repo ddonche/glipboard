@@ -1,10 +1,10 @@
 <div class="podcast-button-wrapper" style="display: block; text-align: center;">  
-  <% if (user_signed_in? && (current_user.id == @podcast.user.id)) %>
+  <% if (user_signed_in? && (current_user.id == @episode.user.id)) %>
     <div class="small-bold-red" style="display:inline-block;">
-      <%= link_to new_podcast_episode_path(@podcast) do %><i class="fa fa-microphone"></i>&nbsp;New Episode<% end %>
+      <%= link_to new_podcast_episode_path(@episode.podcast) do %><i class="fa fa-microphone"></i>&nbsp;New Episode<% end %>
     </div>
     <div class="small-bold-red" style="display: inline-block;">
-      <%= link_to edit_podcast_path(@podcast) do %><i class="fa fa-pencil"></i>&nbsp;Edit Podcast<% end %>
+      <%= link_to edit_podcast_episode_path(@episode.podcast, @episode) do %><i class="fa fa-pencil"></i>&nbsp;Edit Episode<% end %>
     </div>
   <% end %>
     <div class="small-bold-red" style="display:inline-block;">
@@ -13,12 +13,13 @@
 </div>
 <div class="podcast-image">
   <div class="content-center">
-    <%= image_tag @podcast.image, width: 280, alt: 'podcast image' %><br />
+    <%= image_tag @episode.image, width: 280, alt: 'podcast episode image' %><br />
   </div>
 </div>
+
 <br />
 <div class="side-box">
   <div class="podcast-description">
-  <%= @podcast.content %><br />
+  <%= @episode.podcast.content %><br />
   </div>
 </div>

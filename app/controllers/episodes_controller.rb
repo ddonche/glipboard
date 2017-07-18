@@ -1,9 +1,14 @@
 class EpisodesController < ApplicationController
   before_action :set_episode, except: [:new, :create]
   before_action :set_podcast, only: [:new, :create, :edit, :update, :destroy, :upvote, :downvote]
+  before_action :set_group, except: [:show]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
+  end
+  
+  def show
+    @group = Group.friendly.find(@episode.podcast.group_id)
   end
 
   def new
@@ -25,7 +30,7 @@ class EpisodesController < ApplicationController
   end
   
   def edit   
-    @episode = Episode.find(params[:id])
+    @episode = Episode.friendly.find(params[:id])
   end
   
   def update
@@ -79,7 +84,11 @@ class EpisodesController < ApplicationController
     @podcast = Podcast.friendly.find(params[:podcast_id])
   end
   
+  def set_group
+    @group = Group.friendly.find(@podcast.group_id)
+  end
+  
   def episode_params
-    params.require(:episode).permit(:title, :content, :user_id, :podcast_id, :image, :audio)
+    params.require(:episode).permit(:title, :content, :user_id, :podcast_id, :image, :audio, :tag_list)
   end
 end
