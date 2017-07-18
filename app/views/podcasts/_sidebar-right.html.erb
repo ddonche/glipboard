@@ -25,8 +25,11 @@
   <div class="details-show">
       created by
    <h4 style="display:inline;"><%= link_to @podcast.user.username, user_path(@podcast.user) %></h4>
-   &nbsp;<%= time_ago_in_words(@podcast.created_at) %> ago for 
+   &nbsp;<%= time_ago_in_words(@podcast.created_at) %> ago 
+   <% if @podcast.group_id? %>
+   for 
    <h4 style="display:inline;"><%= link_to @group.title, group_path(@group) %></h4>
+   <% end %>
       <br />
       <% @podcast.tag_list.map.each do |tag| %>
         <div class="tags"><%= link_to tag, tag_path(tag) %></div>

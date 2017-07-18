@@ -15,7 +15,9 @@ class PodcastsController < ApplicationController
   def show
     @page_title = @podcast.title
     @user = @podcast.user
-    @group = Group.find(@podcast.group_id)
+    if @podcast.group_id?
+      @group = Group.find(@podcast.group_id)
+    end
     @episodes = @podcast.episodes
   end
   
