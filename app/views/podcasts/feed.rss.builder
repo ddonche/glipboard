@@ -1,5 +1,5 @@
 title       = @podcast.title
-author      = @podcast.user.username
+author      = @podcast.user
 description = @podcast.content
 image       = @podcast.image.url
 
@@ -12,12 +12,12 @@ xml.rss version: "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.
     xml.language 'en'
     xml.pubDate @episodes.first.created_at.to_s(:rfc822)
     xml.lastBuildDate @episodes.first.created_at.to_s(:rfc822)
-    xml.itunes :author, author
+    xml.itunes :author, author.username
     xml.itunes :explicit, 'explicit'
     xml.itunes :image, image
     xml.itunes :owner do
-      xml.itunes :name, author
-      xml.itunes :email, 'chris@gorails.com'
+      xml.itunes :name, author.username
+      xml.itunes :email, author.email
     end
     xml.itunes :block, 'no'
     xml.itunes :category, text: 'Technology' do
@@ -38,6 +38,13 @@ xml.rss version: "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.
         xml.itunes :subtitle, truncate(episode.content, length: 150)
         xml.itunes :summary, episode.content
         xml.itunes :explicit, 'yes'
+        
+        text = podcast.description
+        if podcast.image
+          image_tag = "<p><img src='" + podcast.image.url + "' /></p>" if post.image
+          text = image_tag + text
+        end
+        xml.description "<p>" + text + "</p>"
       end
     end
   end
