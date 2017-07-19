@@ -39,9 +39,9 @@ xml.rss version: "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.
         xml.itunes :summary, episode.content
         xml.itunes :explicit, 'yes'
         
-        text = podcast.description
-        if podcast.image
-          image_tag = "<p><img src='" + podcast.image.url + "' /></p>" if post.image
+        text = @podcast.content
+        if @podcast.image
+          image_tag = "<p><img src='" + @podcast.image.url + "' /></p>" if @podcast.image
           text = image_tag + text
         end
         xml.description "<p>" + text + "</p>"
