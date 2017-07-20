@@ -328,7 +328,7 @@ input[type=button], input[type=submit], input[type=reset] {
     cursor: pointer;
 }
 
-.table{
+.table {
   display: table;
   width:100%;
   border-collapse:collapse;
@@ -337,6 +337,7 @@ input[type=button], input[type=submit], input[type=reset] {
     display: table-row;
     border-bottom: #e5e5e5 1px solid;
   }
+  
     .table-cell, .table-head{
       display: table-cell;
       padding: 1em;

@@ -33,6 +33,7 @@ xml.rss version: "2.0", "xmlns:itunes" => "http://www.itunes.com/dtds/podcast-1.
         xml.summary episode.content.truncate(300)
         xml.pubDate episode.created_at.to_s(:rfc822)
         xml.link podcast_episode_url(@podcast, episode)
+        xml.enclosure :url => episode.audio, :length => episode.file_size, :type => 'audio/mp3' 
         xml.guid({isPermaLink: "false"}, episode.slug)
         xml.itunes :author, author
         xml.itunes :subtitle, truncate(episode.content, length: 150)
