@@ -32,6 +32,21 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
   
+  def glips
+    @groups = @user.groups
+    @glips = @user.glips.page(params[:page]).per(15)
+  end
+  
+  def articles
+    @groups = @user.groups
+    @articles = @user.articles.page(params[:page]).per(15)
+  end
+  
+  def logs
+    @groups = @user.groups
+    @logs = @user.logs.page(params[:page]).per(25)
+  end
+  
   def membership
     @groups = @user.groups.page(params[:page]).per(25)
     render 'show_groups'

@@ -97,6 +97,10 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :following, :followers
+      get :glips
+      get :articles
+      get :groups
+      get :logs
     end
   end
   

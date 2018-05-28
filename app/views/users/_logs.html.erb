@@ -1,0 +1,24 @@
+<div class= "logs">
+    <div class= "table">
+      <% @logs.each do |log| %>
+          
+          <div class="table-row">
+            <div class="table-cell">
+              <div class="log-button">log</div>
+            </div>
+            <div class="table-cell">
+              <%= link_to log.glip.title.truncate(40), log.glip %>&nbsp;&nbsp;<%= log.content.truncate(80) %>
+            </div>
+            <div class="table-cell">
+              <%= time_ago_in_words(log.created_at) %> ago
+            </div>
+          </div>
+        
+      <% end %>
+
+    </div>
+  </div>
+  <br />
+  <div class ="pagination-container">
+    <%= paginate @logs %>
+  </div>
