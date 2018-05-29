@@ -15,6 +15,7 @@ class ParticipationsController < ApplicationController
       format.html { redirect_to glip_path(@last.id), notice: "You joined! Don't forget to customize it with your own content, milestones, tags, etc." }
       format.js { redirect_to glip_path(@last.id), notice: "You joined! Don't forget to customize it with your own content, milestones, tags, etc." }
     end
+    UserNotifier.send_joinglip_email(@glip.user).deliver_later
   end
 
   def destroy
