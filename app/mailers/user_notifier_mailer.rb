@@ -7,4 +7,10 @@ class UserNotifier < ActionMailer::Base
     mail( :to => @glip.user.email,
     :subject => 'Someone has participated in your Glip!' )
   end
+  
+  private
+  
+  def set_glip
+    @glip  = Glip.find(params[:id])
+  end
 end

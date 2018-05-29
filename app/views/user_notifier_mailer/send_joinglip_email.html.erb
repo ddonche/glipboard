@@ -5,6 +5,6 @@
   </head>
   <body>
     <h1>Someone has participated in your Glip!</h1>
-    <p>Someone just joined you on <%= @glip.title %></p>
+    <p>Someone just joined you on <%= link to @glip.title, glip_url(@glip_id) %></p>
   </body>
 </html>
