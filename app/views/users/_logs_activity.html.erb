@@ -1,0 +1,18 @@
+<div class="side-box">
+    <div class="side-content">
+      <div class="title-box" style="font-size: 16px; text-align: center;">Log Totals for <%= link_to @user.username, user_path(@user) %></div>
+
+      <% @log_glips.each do |glip| %>
+        <div class="small">
+          <div class="table">
+          <div class="table-row">
+            <div class="tiny-table-cell" style="width: 70%;"><%= link_to glip.title, glip_path(glip) %></div>
+            <div class="tiny-table-cell" style="width: 30%; float: right;"><%= glip.logs.count %></div>
+          </div>
+          </div>
+        </div>
+      <% end %><br />
+    <%= link_to_previous_page @log_glips, '<< Previous' %>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to_next_page @log_glips, 'Next >>' %>
+      
+    </div>
+</div>

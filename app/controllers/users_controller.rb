@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     @almost_everything = (@articles + @glips).sort{|b,a| a.updated_at <=> b.updated_at }
     @everything_prepage = (@almost_everything + @logs).sort{|b,a| a.updated_at <=> b.updated_at }
     @everything = Kaminari.paginate_array(@everything_prepage).page(params[:page]).per(20)
+    @log_glips = @user.glips.order("created_at DESC").page(params[:page]).per(10)
   end
   
   def following
@@ -40,16 +41,19 @@ class UsersController < ApplicationController
   def glips
     @groups = @user.groups
     @glips = @user.glips.page(params[:page]).per(15)
+    @log_glips = @user.glips.order("created_at DESC").page(params[:page]).per(10)
   end
   
   def articles
     @groups = @user.groups
     @articles = @user.articles.page(params[:page]).per(15)
+    @log_glips = @user.glips.order("created_at DESC").page(params[:page]).per(10)
   end
   
   def logs
     @groups = @user.groups
     @logs = @user.logs.page(params[:page]).per(25)
+    @log_glips = @user.glips.order("created_at DESC").page(params[:page]).per(10)
   end
   
   def membership
