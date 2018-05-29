@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
-  before_action :set_user, except: [:index]
+  before_action :set_user, except: [:index, :reputable]
 
   def index
     @page_title = "Glipboarders"
     @users = User.confirmed.order('created_at DESC').page(params[:page]).per(20)
+  end
+  
+  def reputable
+    @page_title = "Most Reputable Glipboarders"
+    @users = User.confirmed.order(reputation: :desc).page(params[:page]).per(20)
   end
   
   def show

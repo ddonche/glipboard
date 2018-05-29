@@ -1,7 +1,13 @@
 <div id ="index-nav-container">
-  <div class = "table-row">
-    <div class="table-cell"><h3>Latest Glips</h3></div>
-  </div>
+      <div class = "table-row">
+        <div class="table-cell"><h3>Latest Glips</h3></div>
+        <div class="table-cell"><div class="index-top-buttons"><div class="latest-button"><%= link_to "all content", content_path %></div></div></div>
+        <div class="table-cell"><div class="index-top-buttons"><div class="current-button"><%= link_to "glips", glips_path %></div></div></div>
+        <div class="table-cell"><div class="index-top-buttons"><div class="article-button"><%= link_to "articles", articles_path %></div></div></div>
+        <div class="table-cell"><div class="index-top-buttons"><div class="group-button"><%= link_to "groups", groups_path %></div></div></div>
+        <div class="table-cell"><div class="index-top-buttons"><div class="user-button"><%= link_to "users", users_path %></div></div></div>
+        <div class="table-cell"><div class="index-top-buttons"><div class="all-button"><%= link_to "tags", tags_path %></div></div></div>
+      </div>
 </div>
 
 <div class ="pagination-container">

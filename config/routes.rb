@@ -86,6 +86,7 @@ Rails.application.routes.draw do
   get 'tags', to: 'tags#index'
   match '/users', to: 'users#index', via: 'get'
   match '/users/:id', to: 'users#show', via: 'get'
+  match '/reputable', to: 'users#reputable', via: 'get'
   match '/featured', to: 'articles#featured', via: 'get'
   match '/drafts', to: 'articles#drafts', via: 'get'
   match '/help', to: 'pages#help', via: 'get'

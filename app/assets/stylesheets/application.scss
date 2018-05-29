@@ -416,6 +416,19 @@ input[type=button], input[type=submit], input[type=reset] {
   }
 }
 
+.latest-button {
+  padding: 4px 9px;
+  text-align: center;
+  color: #900c3f;
+  border: 1px solid #900c3f;
+  a {
+    color: #900c3f;
+  }
+  a:hover {
+    color: #dc0000;
+  }
+}
+
 .podcast-button {
   padding: 4px 9px;
   text-align: center;
