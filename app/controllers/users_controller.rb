@@ -44,6 +44,12 @@ class UsersController < ApplicationController
     @log_glips = @user.glips.order("created_at DESC").page(params[:page]).per(10)
   end
   
+  def groups
+    @groups = Group.imaged.order('created_at DESC').page(params[:page]).per(25)
+    @new_groups = Group.unimaged.order('created_at DESC').page(params[:page]).per(25)
+    @log_glips = @user.glips.order("created_at DESC").page(params[:page]).per(10)
+  end
+  
   def articles
     @groups = @user.groups
     @articles = @user.articles.page(params[:page]).per(15)
