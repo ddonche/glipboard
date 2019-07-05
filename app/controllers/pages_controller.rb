@@ -24,5 +24,8 @@ class PagesController < ApplicationController
   
   def errors
   end
+  
+  def conduct
+  end
 
 end

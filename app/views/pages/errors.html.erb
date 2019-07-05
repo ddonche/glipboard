@@ -4,8 +4,12 @@
   <div class="right-column">
     <div class="side-box">
       <div class="side-content">
-        <div class="title-box" style="font-size: 16px; text-align: center;">See our Help Page</div>
-            <li><%= link_to help_path %></li>
+        <div class="title-box" style="font-size: 16px; text-align: center;">Helpful Resources</div>
+            <li><%= link_to "Help", help_path %></li>
+            <li><%= link_to "About Privileges", 'http://www.glipboard.com/help#Privileges' %></li>
+            <li><%= link_to "Glipboard Support Group", 'http://www.glipboard.com/groups/glipboard-support' %></li>
+            <li><%= link_to "About Glipboard", about_path %></li>
+            <li><%= link_to "Code of Conduct", conduct_path %></li>
       </div>
     </div>
   </div>
@@ -18,8 +22,8 @@
       <h2>Insufficient Reputation</h2>
       The most likely reason is you do not have enough reputation to do what you wanted to do. Continue using the site and try 
       again when your reputation is higher.<br /><br />
-      What's should you do now? How about writing an article that may be helpful to others? Would you like to try it?
-      <h2>Up the Ante</h2>
+      What should you do now? How about writing an article that may be helpful to others? Would you like to try it?
+      <h2>Write an Article</h2>
       
       <%= link_to "Yes, I'd like to help others!", new_article_path %><br />
       <%= link_to "No thanks, just take me home now.", root_path %>

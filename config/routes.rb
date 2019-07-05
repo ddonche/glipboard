@@ -95,6 +95,7 @@ Rails.application.routes.draw do
   match '/congrats', to: 'pages#congrats', via: 'get'
   match '/content', to: 'pages#content', via: 'get'
   match '/errors', to: 'pages#errors', via: 'get'
+  match '/conduct', to: 'pages#conduct', via: 'get'
 
   #devise_for :users, :path_prefix => 'd'
   resources :users do
