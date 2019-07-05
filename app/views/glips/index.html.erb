@@ -35,9 +35,12 @@
           
             <div class="table-cell">
               <% if glip.status == "incomplete" %>
-                <i class="fa fa-star-half-o" title="incomplete"></i>
+                <i class="fa fa-star-half-alt" title="incomplete"></i>
               <% else %>
                 <i class="fa fa-star" style="color: #dc0000;" title="complete"></i>
+              <% end %>
+              <% if glip.active == "abandoned" %>
+                <i class="fas fa-skull" title="abandoned"></i>
               <% end %>
               <%= link_to glip.title.truncate(40), glip %>
             </div>

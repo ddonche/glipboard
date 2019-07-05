@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170717023120) do
+ActiveRecord::Schema.define(version: 20190704224943) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20170717023120) do
     t.integer  "user_id"
     t.string   "slug"
     t.integer  "status",     default: 0
-    t.integer  "glip_id"
     t.integer  "feature",    default: 0
     t.string   "image"
     t.index ["slug"], name: "index_articles_on_slug", unique: true
@@ -98,6 +97,7 @@ ActiveRecord::Schema.define(version: 20170717023120) do
     t.datetime "deadline"
     t.integer  "parent_id"
     t.string   "image"
+    t.integer  "active",              default: 0
     t.index ["slug"], name: "index_glips_on_slug", unique: true
   end
 
@@ -331,14 +331,10 @@ ActiveRecord::Schema.define(version: 20170717023120) do
     t.string   "city"
     t.string   "thumbnail"
     t.string   "birthdate"
-    t.string   "provider"
-    t.string   "uid"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["provider"], name: "index_users_on_provider"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
-    t.index ["uid"], name: "index_users_on_uid"
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 

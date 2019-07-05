@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       put 'like', to: 'glips#upvote'
       put 'dislike', to: 'glips#downvote'
       get :toggle_status
+      get :toggle_active
       get :helpers
     end
     resources :comments do

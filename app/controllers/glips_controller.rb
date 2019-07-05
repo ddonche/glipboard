@@ -1,5 +1,5 @@
 class GlipsController < ApplicationController
-  before_action :set_glip, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :helpers, :toggle_status]
+  before_action :set_glip, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :helpers, :toggle_status, :toggle_active]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -104,6 +104,15 @@ class GlipsController < ApplicationController
       voltaire_down(5, :reputation, @glip.user_id)
       redirect_to glip_path(@glip), notice: 'Glip status has been updated.'
     end
+  end
+  
+  def toggle_active
+    if @glip.active?
+      @glip.abandoned! 
+    elsif @glip.abandoned?
+      @glip.active!
+    end
+    redirect_to glip_path(@glip), notice: 'Glip active status has been updated.'
   end
   
   def upvote

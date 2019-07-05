@@ -1,5 +1,6 @@
 class Glip < ApplicationRecord
   enum status: { incomplete: 0, complete: 1 }
+  enum active: { active: 0, abandoned: 1 }
   enum verified: { unverified: 0, verified: 1 }
   
   belongs_to :user, optional: true
