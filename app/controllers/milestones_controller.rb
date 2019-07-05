@@ -15,9 +15,9 @@ class MilestonesController < ApplicationController
     @milestone = @glip.milestones.new(milestone_params)
     respond_to do |format|
       if @milestone.save
-        format.html { redirect_to :back, notice: 'Was success created.' }
+        format.html { redirect_to :back, notice: 'Your milestone was successfully created.' }
       else
-        format.html { redirect_to :back, alert: "Was problem with milestone. Maybe too long? Cannot exceed 100 characters." }
+        format.html { redirect_to :back, alert: "Problem with milestone. Maybe too long? Cannot exceed 100 characters." }
       end
     end
   end
