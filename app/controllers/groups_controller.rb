@@ -32,8 +32,12 @@ class GroupsController < ApplicationController
   end
 
   def new
-    @creator_id = current_user.id
-    @group = Group.new
+    if current_user.reputation >= 100
+      @creator_id = current_user.id
+      @group = Group.new
+    else
+      redirect_to errors_path
+    end
   end
 
   def edit

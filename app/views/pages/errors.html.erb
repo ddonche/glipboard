@@ -1,0 +1,27 @@
+<div id="content-wrap">
+  
+<div class="content-wrap">
+  <div class="right-column">
+    <div class="side-box">
+      <div class="side-content">
+        <div class="title-box" style="font-size: 16px; text-align: center;">See our Help Page</div>
+            <li><%= link_to help_path %></li>
+      </div>
+    </div>
+  </div>
+  
+  <div class="left-column">
+    <div class="title-box">
+      There Was an Error
+    </div>
+      Something went wrong with what you were trying to do. Chances are you do not have the privileges to perform that action.
+      <h2>Insufficient Reputation</h2>
+      The most likely reason is you do not have enough reputation to do what you wanted to do. Continue using the site and try 
+      again when your reputation is higher.<br /><br />
+      What's should you do now? How about writing an article that may be helpful to others? Would you like to try it?
+      <h2>Up the Ante</h2>
+      
+      <%= link_to "Yes, I'd like to help others!", new_article_path %><br />
+      <%= link_to "No thanks, just take me home now.", root_path %>
+  </div>
+</div>

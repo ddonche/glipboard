@@ -3,11 +3,16 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    redirect_to conversation_path(@conversation) and return if @conversation
-    @message = current_user.messages.build
+    if current_user.reputation >= 20
+      redirect_to conversation_path(@conversation) and return if @conversation
+      @message = current_user.messages.build
+    else
+      redirect_to errors_path
+    end
   end
 
   def create
+    
     @conversation ||= Conversation.create(sender_id: current_user.id,
                                           receiver_id: @receiver.id)
     @message = current_user.messages.build(message_params)
