@@ -34,7 +34,7 @@ gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 gem 'ckeditor', '~> 4.2', '>= 4.2.4'
 
 group :development, :test do
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 1.4.1'
   gem 'byebug', platform: :mri
   gem 'faker', '~> 1.7', '>= 1.7.3'
   gem 'pry', '~> 0.10.3'
