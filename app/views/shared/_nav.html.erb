@@ -34,8 +34,9 @@
     <li><%= link_to 'Users', users_path %></li>
 		
 		<% if current_user %>
-		<li class="has-dropdown" style="font-style: italic; float: right; margin-right: 60px;">
-		  <%= link_to current_user do %>
+
+		<li class="has-dropdown" style="font-style: italic; float: right; margin-right: 90px;">
+			<%= link_to current_user do %>
         <%= current_user.username %>&nbsp;
         <%= current_user.reputation %>&nbsp;
         <i class="fa fa-chevron-down"  aria-hidden="true"></i>
@@ -57,6 +58,19 @@
 			</div>
 			<!-- /Submenu dropdown -->
 		</li>
+		<li class="has-dropdown" style="float: right;">
+			<%= 
+        if current_user.picture?
+          link_to current_user do
+            image_tag current_user.picture, width: 24, alt: 'user avatar'
+          end
+        else
+          link_to current_user do
+            image_tag 'default_avatar.jpg', width: 24, alt: 'default user avatar'
+          end
+        end
+      %>
+    </li>
 		<li style="float: right;"><%= link_to notifications_path do %>
 		  <% if @notifications.any? %>
 		    <i class="fa fa-bell" aria-hidden="true" style="color: #dc0000;"></i>
