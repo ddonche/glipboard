@@ -7,8 +7,11 @@
               <div class="glip-button">glip</div>
             </div>
             <div class="table-cell">
+              <% if glip.active == "abandoned" %>
+                <i class="fas fa-skull" title="abandoned"></i>
+              <% end %>
               <% if glip.status == "incomplete" %>
-                <i class="fa fa-star-half-o"></i>&nbsp;<%= link_to glip.title.truncate(80), glip %>
+                <i class="fa fa-star-half-alt"></i>&nbsp;<%= link_to glip.title.truncate(80), glip %>
               <% else %>
                 <i class="fa fa-star"></i>&nbsp;<%= link_to glip.title.truncate(80), glip %>
               <% end %>
