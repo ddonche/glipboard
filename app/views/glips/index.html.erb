@@ -7,6 +7,11 @@
         <div class="table-cell"><div class="index-top-buttons"><div class="group-button"><%= link_to "groups", groups_path %></div></div></div>
         <div class="table-cell"><div class="index-top-buttons"><div class="user-button"><%= link_to "users", users_path %></div></div></div>
         <div class="table-cell"><div class="index-top-buttons"><div class="all-button"><%= link_to "tags", tags_path %></div></div></div>
+        <div class="table-cell">
+          <div class="fake-submit">
+            <i class="fa fa-plus"></i>&nbsp;<%= link_to 'Create a New Glip', new_glip_path %>
+          </div>
+        </div>
       </div>
 </div>
 

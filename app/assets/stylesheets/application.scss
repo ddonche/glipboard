@@ -186,6 +186,17 @@ ul {
   }
 }
 
+.side-content-bulleted {
+  margin: 15px;
+  font-size: .75em;
+  li {
+    list-style-type: bulleted;
+    line-height: 16px;
+    padding: 3px;
+    padding-bottom: 9px;
+  }
+}
+
 .avatar-show {
   width: 100px;
   height: 130px;
