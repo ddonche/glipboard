@@ -21,8 +21,11 @@
               <div class="glip-button">glip</div>
             </div>
             <div class="table-cell">
+              <% if everything.active == "abandoned" %>
+                <i class="fas fa-skull" title="abandoned"></i>
+              <% end %>
               <% if everything.status == "incomplete" %>
-                <i class="fa fa-star-half-o"></i>&nbsp;<%= link_to everything.title.truncate(80), everything %>
+                <i class="fa fa-star-half-alt"></i>&nbsp;<%= link_to everything.title.truncate(80), everything %>
               <% else %>
                 <i class="fa fa-star"></i>&nbsp;<%= link_to everything.title.truncate(80), everything %>
               <% end %>
