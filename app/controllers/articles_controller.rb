@@ -1,9 +1,9 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy, :upvote, :downvote, 
-                                      :helped, :toggle_feature, :toggle_status, :toggle_blog]
+                                      :helped, :toggle_feature, :toggle_status]
   before_action :authenticate_user!, except: [:index, :show, :featured]
   access all: [:show, :index, :new, :create, :featured, :update, :edit, :destroy, :toggle_status], 
-                user: {except: [:toggle_feature, :toggle_blog]}, admin: :all
+                user: {except: [:toggle_feature]}, admin: :all
   
   def index
     @page_title = "Articles"

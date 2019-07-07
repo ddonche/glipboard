@@ -1,0 +1,19 @@
+<div id="content-wrap">
+  <% if current_user == @article.user %>
+    <div class="left-column">
+      <%= render 'header' %>
+      <%= render 'form', article: @article %>
+      <div class="log-form">
+        <div class="center">
+          <%= link_to 'Cancel', @article %>
+        </div>
+      </div>
+      
+      <%= render "articles/comments" %>
+
+    </div>
+
+  <% else %>
+    <div class="alert">You do not have permission to access this page.</div>
+  <% end %>
+</div>

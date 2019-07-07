@@ -1,0 +1,21 @@
+<div class="content-show">
+  <div id="posts-form">
+    <h4><em><i class="fa fa-comments"></i>&nbsp;&nbsp;<%= @blog.comments.count %> Comments<a id="comment"></a></em></h4>
+  </div>
+
+    <% if user_signed_in? %>
+      <%= render "comments/form" %><br/>
+    <% else %>
+      <div class="small"><em>You must be logged in to comment.</em></div>
+    <% end %>
+    
+    <%= render "comments/comments" %>
+
+  <% if @blog.comments.count != 0 %>
+  
+    <%= link_to new_blog_comment_path(@blog), :remote => true do %>
+      <a href="#comment">New Comment</a>
+    <% end %>
+
+  <% end %>
+</div>

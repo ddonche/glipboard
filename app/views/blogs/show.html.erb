@@ -1,0 +1,22 @@
+<%= content_for(:meta_og) do %>
+    <meta property="og:title" content="<%= @blog.title %>" />
+    <meta property="og:type" content="article" />
+    <meta property="og:published_time" content="<%= @blog.created_at.strftime('%Y-%m-%d %H:%M') %>" />
+    <meta property="og:description" content="<%= strip_tags(@blog.body.truncate(250)) %>" />
+    <% if @blog.image %>
+      <meta property="og:image" content="<%= @blog.image.url %>" />
+    <% end %>
+<% end %>
+<div id="content-wrap">
+  
+  <div class="left-column">
+    <%= render 'header' %>
+    <%= render 'content' %>
+    <%= render 'comments' %>
+  </div>
+    
+  <div class="right-column">
+    <%= render 'sidebar' %>
+  </div>
+
+</div>

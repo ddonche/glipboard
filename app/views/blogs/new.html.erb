@@ -1,0 +1,43 @@
+<div id="content-wrap">
+  
+<div class="content-wrap">
+  <div class="right-column">
+    <div class="side-box">
+      <div class="side-content-bulleted">
+        <div class="title-box" style="font-size: 16px; text-align: center;">Writing a Great Article</div>
+          
+          <h3>You are helping people!</h3>
+          <p style="line-height: 16px;">The goal of any article should be to help people achieve their goals <i>or</i> 
+          to teach them something that they may be trying to learn. </p>
+          
+          <h3>Considerations</h3>
+          <ul>
+            <li>Am I laying out a clear path of success or making the information clear?</li>
+            <li>Am I including suggestions on how to implement my ideas in a Glipboard-friendly way
+            (example milestones, timelines, etc.)?</li>
+            <li>Am I including links to additional resources others might find helpful?</li>
+            <li>Did I explain what makes me qualified to offer this advice (personal experience, education, certification, etc.)?</li>
+          </ul>
+          
+          <h3>Gain Reputation!</h3>
+          <p style="line-height: 16px;">The more helpful your article is, the more reputation points you'll receive. You'll gain 10 
+          points every time someone marks your article as helpful to their Glip, and if enough people find your article helpful, it 
+          will become featured...which means even more reputation points! The more reputation you have, the more privileges you can
+          unlock.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="left-column">
+    <div class="title-box">
+      New Blog Post
+    </div>
+      <%= render 'form', blog: @blog %>
+  
+      <div class="log-form">
+        <div class="center">
+          <%= link_to 'Back', blogs_path %>
+        </div>
+      </div>
+  </div>
+</div>

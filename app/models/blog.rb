@@ -1,27 +1,18 @@
-class Article < ApplicationRecord
+class Blog < ApplicationRecord
   enum status: { draft: 0, published: 1 }
-  enum feature: { standard: 0, featured: 1 }
 
   belongs_to :user, required: true
   has_many :comments, as: :commentable, dependent: :destroy
-  has_many :mentorships, dependent: :destroy
-  has_many :glips, through: :mentorships
-  
-  validates_presence_of :title, :content
+
+  validates_presence_of :title, :body
   validate :maximum_amount_of_tags
   
   mount_uploader :image, ImageUploader
   
   acts_as_taggable
-  acts_as_votable
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
   delegate :username, to: :user, prefix: true
-  
-   # Defines Glips that were helped
-  def helped
-    helped << glip
-  end
   
   def slug_candidates
     [

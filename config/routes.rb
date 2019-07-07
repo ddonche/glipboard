@@ -11,8 +11,20 @@ Rails.application.routes.draw do
       put 'dislike', to: 'articles#downvote'
       get :toggle_feature
       get :toggle_status
-      get :toggle_blog
       get :helped
+    end
+    resources :comments do
+      member do
+        put 'like', to: 'comments#upvote'
+        put 'dislike', to: 'comments#downvote'
+      end
+      resources :notations
+    end
+  end
+  
+  resources :blogs do
+    member do
+      get :toggle_status
     end
     resources :comments do
       member do

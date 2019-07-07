@@ -1,0 +1,45 @@
+<div id="content-wrap">
+    
+    <div class ="pagination-container">
+      <%= paginate @articles %>
+    </div>
+    <div class="left-column">
+      
+      <div class="title-box">
+        Drafts
+      </div>
+          
+        <% if @articles.count > 0 %>
+          <%= link_to 'New Draft', new_article_path %><br />
+            <% @articles.each do |article| %>
+              
+                <div class= "table">
+                    <div class="table-row">
+                      <div class="table-cell" style="width: 70%;">
+                        <%= link_to article.title, edit_article_path(article) %>
+                      </div>
+                      
+                      <div class="table-cell" style="width: 30%;">
+                        <div class="small">Updated <%= time_ago_in_words(article.updated_at) %> ago</div>
+                      </div>
+                    </div>
+                  
+                </div>
+                
+                <div class="table-row">
+                  <div class="table-cell" style="font-size: 12px;">
+                    <%= article.content.truncate(375) %>
+                  </div>
+                </div>
+                   
+            <% end %>
+            
+        <% else %>
+          You do not have any drafts. <%= link_to 'Create one', new_article_path %> now.  
+        <% end %>
+    </div>
+      <div class ="pagination-container">
+        <%= paginate @articles %>
+      </div>
+    
+</div>

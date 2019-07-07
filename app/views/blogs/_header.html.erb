@@ -1,0 +1,48 @@
+<% if (user_signed_in? && (current_user.id == @blog.user_id)) %>
+  <div class="content-alter">
+    <div class="small-bold" style="display: inline-block;"><%= link_to edit_blog_path(@blog) do %><i class="fa fa-pencil" title="edit"></i>&nbsp;Edit<% end %></div>
+    <div class="small-bold" style="display: inline-block;"><%= link_to blog_path(@blog), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash" title="delete"></i>&nbsp;Delete<% end %></div>
+  </div>
+<% end %>
+
+<div class="title-box">
+  <%= @blog.title %>
+</div>
+
+<div class="image">
+  <%= 
+    if @blog.image?
+      image_tag @blog.image, width: 705, height: 340
+    end
+  %>
+</div>
+
+<div class="avatar-show">
+  <%= 
+    if @blog.user.picture?
+      link_to user_path(@blog.user) do
+        image_tag @blog.user.picture, width: 84, alt: 'user avatar'
+      end
+    else
+      link_to user_path(@blog.user) do
+        image_tag 'default_avatar.jpg', width: 84, alt: 'default user avatar'
+      end
+    end
+  %><div id="small-follow"><%= render 'users/follow_form' if user_signed_in? %></div>
+</div>
+
+<div class="details-show">
+    posted by <h4 style="display:inline;"><%= link_to @blog.user.username, user_path(@blog.user) %></h4>&nbsp;<%= time_ago_in_words(@blog.created_at) %> ago&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <% if current_user == @blog.user %>
+      <% if @blog.status == "draft" %>
+        <i class="fa fa-lock" title="draft"></i>&nbsp;<%= link_to @blog.status, toggle_status_blog_path(@blog) %>
+      <% else %>
+      <i class="fa fa-unlock" title="published"></i>&nbsp;<%= link_to @blog.status, toggle_status_blog_path(@blog) %>
+      <% end %>
+    <% end %>
+    <br />
+    <% @blog.tag_list.map.each do |tag| %>
+      <div class="tags"><%= link_to tag, tag_path(tag) %></div>
+    <% end %><br />
+    <i class="fa fa-comments" title="comments"></i>&nbsp;&nbsp;<%= @blog.comments.count %>&nbsp;
+</div>

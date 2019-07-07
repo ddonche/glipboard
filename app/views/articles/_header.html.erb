@@ -7,16 +7,12 @@
 <div class="content-alter">
   <% if logged_in?(:admin) %>
     <%= link_to toggle_feature_article_path(@article), method: :get do %><i class="fa fa-trophy" style="color: #dc0000;" title="featured article toggle"></i><% end %>&nbsp;&nbsp;
-    <%= link_to toggle_blog_article_path(@article), method: :get do %><i class="fas fa-bullhorn" style="color: #dc0000;" title="blog toggle"></i><% end %>&nbsp;&nbsp;
   <% end %>
 </div>
 
 <div class="title-box">
     <% if @article.feature == "featured" %>
       <i class="fa fa-trophy" style="color: #dc0000;" title="featured article"></i>&nbsp;
-    <% end %>
-    <% if @article.blog == "blog" %>
-      <i class="fas fa-bullhorn" style="color: #dc0000;" title="official blog post"></i>&nbsp;
     <% end %>
   <%= @article.title %>
 </div>
