@@ -1,6 +1,7 @@
 class Article < ApplicationRecord
   enum status: { draft: 0, published: 1 }
   enum feature: { standard: 0, featured: 1 }
+  enum blog: { notblog: 0, blog: 1 }
   
   belongs_to :user, required: true
   has_many :comments, as: :commentable, dependent: :destroy

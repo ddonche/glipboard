@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190704224943) do
+ActiveRecord::Schema.define(version: 20190707051305) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20190704224943) do
     t.integer  "status",     default: 0
     t.integer  "feature",    default: 0
     t.string   "image"
+    t.integer  "blog",       default: 0
     t.index ["slug"], name: "index_articles_on_slug", unique: true
   end
 

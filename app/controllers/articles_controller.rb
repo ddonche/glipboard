@@ -1,8 +1,9 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy, :upvote, :downvote, 
-                                      :helped, :toggle_feature, :toggle_status]
+                                      :helped, :toggle_feature, :toggle_status, :toggle_blog]
   before_action :authenticate_user!, except: [:index, :show, :featured]
-  access all: [:show, :index, :new, :create, :featured, :update, :edit, :destroy, :toggle_status], user: {except: [:toggle_feature]}, admin: :all
+  access all: [:show, :index, :new, :create, :featured, :update, :edit, :destroy, :toggle_status], 
+                user: {except: [:toggle_feature, :toggle_blog]}, admin: :all
   
   def index
     @page_title = "Articles"
@@ -115,6 +116,15 @@ class ArticlesController < ApplicationController
       @article.draft!
     end
     redirect_to article_path(@article), notice: 'Article status has been updated.'
+  end
+  
+  def toggle_blog
+    if @article.notblog?
+      @article.blog!
+    elsif @article.blog?
+      @article.notblog!
+    end
+    redirect_to article_path(@article), notice: 'Article blog status updated.'
   end
   
   def upvote
