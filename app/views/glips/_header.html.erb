@@ -63,12 +63,14 @@
         <i class="fa fa-star" style="color: #dc0000;" title="complete"></i>&nbsp;<%= link_to @glip.status.upcase, toggle_status_glip_path(@glip) %>
       <% end %>
     <% else %>
-    <% end %>&nbsp;&nbsp;&nbsp;
+    <% end %>
     <% if current_user == @glip.user %>  
-      <% if @glip.active == "active" %>
-        <i class="fas fa-heartbeat" title="active"></i>&nbsp;<%= link_to @glip.active, toggle_active_glip_path(@glip) %>
-      <% else %>
-        <i class="fas fa-skull" title="abandoned"></i>&nbsp;<%= link_to @glip.active, toggle_active_glip_path(@glip) %>
+      <% unless @glip.status == "complete" %>
+        <% if @glip.active == "active" %>
+          &nbsp;&nbsp;&nbsp;<i class="fas fa-heartbeat" title="active"></i>&nbsp;<%= link_to @glip.active, toggle_active_glip_path(@glip) %>
+        <% else %>
+          &nbsp;&nbsp;&nbsp;<i class="fas fa-skull" title="abandoned"></i>&nbsp;<%= link_to @glip.active, toggle_active_glip_path(@glip) %>
+        <% end %>
       <% end %>
     <% end %>&nbsp;&nbsp;&nbsp;<i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;<b>Deadline:</b> 
     <% if @glip.deadline? %>
