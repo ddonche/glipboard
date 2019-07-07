@@ -20,7 +20,7 @@
   <% if @glip.active == "abandoned" %>
     <i class="fas fa-skull" title="abandoned"></i>
   <% end %>
-  <%= @glip.title %>
+  <%= @glip.title %><% if @glip.active == "abandoned" %><i>(abandoned)</i><% end %>
 </div>
 
 <div class="image">
@@ -84,9 +84,10 @@
     <%= link_to dislike_glip_path(@glip), method: :put, remote: true do %><i class="fa fa-chevron-down" title="downvotes"></i><% end %>&nbsp;<div id="downvote" style="display: inline;"><%= @glip.get_downvotes.size %></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <i class="fa fa-comments" title="comments"></i>&nbsp;&nbsp;<%= @glip.comments.count %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <i class="fa fa-book" title="logs"></i>&nbsp;&nbsp;<%= @glip.logs.count %>&nbsp;<%= link_to "logs", glip_logs_path(@glip) %><br />
-    
+    <br />
     <% if @glip.active == "abandoned" %>
-    <i>This glip has been <i class="fas fa-skull" title="abandoned"></i> abandoned by <%= @glip.user.username %>.</i><br />
+    <i>This glip has been <i class="fas fa-skull" title="abandoned"></i> abandoned by <%= @glip.user.username %>. You can still participate in
+    it, though.</i><br />
   <% end %>
     
 </div>
