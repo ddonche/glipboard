@@ -3,6 +3,8 @@
     <div class="fake-submit">
       <i class="fa fa-plus"></i>&nbsp;<%= link_to 'Create a New Glip', new_glip_path %>
     </div>
+    <br />
+    <%= social_share_button_tag('Share to Facebook', :url => glip_path(@glip), desc: @glip.title) %>
   </div>
 </div>
 <br />
