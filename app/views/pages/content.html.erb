@@ -39,7 +39,27 @@
     <div class="side-box" style="margin-top: 10px;">
       <div class="side-content">
         <div class="title-box" style="font-size: 16px; text-align: center;">Random Glip</div>
-            <%= link_to "Check out this Glip", help_path %><br /><br />
+        <div class="image">
+          <%= 
+            if @randomGlip.image?
+              image_tag @randomGlip.image, width: 290
+            end
+          %>
+        </div>
+          <h2>
+            <%= link_to @randomGlip.title, @randomGlip %>
+          </h2> by <%= link_to @randomGlip.user.username, @randomGlip.user %>&nbsp;<%= @randomGlip.user.reputation %><br /><br />
+            <%= strip_tags(@randomGlip.content.truncate(200)) %>
+            <br /><br />
+            <span style="font-size: 13px;">
+              <%= link_to like_glip_path(@randomGlip), method: :put do %><i class="fa fa-chevron-up"></i><% end %>
+              &nbsp;<%= number_to_human(@randomGlip.get_upvotes.size) %>&nbsp;&nbsp;
+              <%= link_to dislike_glip_path(@randomGlip), method: :put do %><i class="fa fa-chevron-down"></i><% end %>
+              &nbsp;<%= number_to_human(@randomGlip.get_downvotes.size) %>&nbsp;&nbsp;
+              <i class="fa fa-comments" style="margin-left: 20px;"></i>&nbsp;&nbsp;<%= number_to_human(@randomGlip.comments.count) %>
+              <i class="fa fa-book" style="margin-left: 20px;"></i>&nbsp;&nbsp;<%= number_to_human(@randomGlip.logs.count) %>
+            </span><br /><hr style = "margin: 10px 0;">  
+            <%= render 'home/random_participants' %>
       </div>
     </div>
   </div>

@@ -13,6 +13,7 @@ class PagesController < ApplicationController
     @blog = Blog.order("created_at").last
     @articles =  Article.where({ status: "published" })
     @glips =  Glip.original
+    @randomGlip = Glip.order("RANDOM()").first
     @almost_everything = (@articles + @glips).sort{|b,a| a.created_at <=> b.created_at }
     @everything = Kaminari.paginate_array(@almost_everything).page(params[:page]).per(25)
   end
