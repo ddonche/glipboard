@@ -10,6 +10,7 @@ class PagesController < ApplicationController
   end
   
   def content
+    @blog = Blog.order("created_at").last
     @articles =  Article.where({ status: "published" })
     @glips =  Glip.original
     @almost_everything = (@articles + @glips).sort{|b,a| a.created_at <=> b.created_at }

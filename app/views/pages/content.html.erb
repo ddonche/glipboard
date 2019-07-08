@@ -20,7 +20,19 @@
     <div class="side-box">
       <div class="side-content">
         <div class="title-box" style="font-size: 16px; text-align: center;">From the Blog</div>
-            <%= link_to "Example Blog Title", help_path %><br /><br />
+        <div class="image">
+          <%= 
+            if @blog.image?
+              image_tag @blog.image, width: 290
+            end
+          %>
+        </div>
+          <h2>
+            <%= link_to @blog.title, @blog %>
+          </h2>
+            <%= strip_tags(@blog.body.truncate(200)) %>
+            <br /><br /><i class="fa fa-comments" title="comments"></i>&nbsp;&nbsp;<%= @blog.comments.count %>
+            <div style="float: right;"><i><%= link_to "all blog posts", blogs_path %></i></div>
       </div>
     </div>
 
