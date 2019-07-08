@@ -1,0 +1,68 @@
+<div id ="index-nav-container">
+  <div class = "table-row">
+    <div class="table-cell"><h3>Latest Articles</h3></div>
+    <div class="table-cell"><div class="index-top-buttons"><div class="current-button"><%= link_to "latest", articles_path %></div></div></div>
+    <div class="table-cell"><div class="index-top-buttons"><div class="article-button"><%= link_to "featured", featured_path %></div></div></div>
+    <div class="table-cell"><div class="index-top-buttons"><div class="latest-button"><%= link_to "all content", content_path %></div></div></div>
+    <div class="table-cell"><div class="index-top-buttons"><div class="glip-button"><%= link_to "glips", glips_path %></div></div></div>
+    <div class="table-cell"><div class="index-top-buttons"><div class="group-button"><%= link_to "groups", groups_path %></div></div></div>
+    <div class="table-cell"><div class="index-top-buttons"><div class="user-button"><%= link_to "users", users_path %></div></div></div>
+    <div class="table-cell"><div class="index-top-buttons"><div class="all-button"><%= link_to "tags", tags_path %></div></div></div>
+    <div class="table-cell">
+      <div class="fake-submit">
+        <i class="fa fa-plus"></i>&nbsp;<%= link_to 'Create a New Podcast', new_podcast_path %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class ="pagination-container">
+  <%= paginate @podcasts %>
+</div>
+
+<div id ="index-container">
+  <div class= "logs">
+    <div class= "table">
+        <% @podcasts.each do |podcast| %>
+              
+          <div class="table-row">
+            <div class="table-cell">
+              <i class="fa fa-microphone" title="comments"></i>&nbsp;&nbsp;<%= podcast.episodes.count %>
+            </div>
+          
+            <div class="table-cell">
+              <%= link_to podcast.title, podcast %>
+            </div>
+            
+            <div class="table-cell">
+              <%= 
+                image_tag podcast.image, width: 20, alt: 'podcast image'
+              %> 
+            </div>
+            
+            <div class="table-cell">
+              <%= link_to podcast.user.username, user_path(podcast.user) %>
+            </div>
+            
+            <div class="table-cell">
+              <% podcast.tag_list.map.each do |tag| %>
+                <div class="tags">
+                  <%= link_to tag, tag_path(tag) %>
+                </div>
+              <% end %>
+            </div>
+            
+            <div class="table-cell">
+              <%= time_ago_in_words(podcast.created_at) %> ago
+            </div>
+          </div>
+        
+      <% end %>
+      
+    </div>
+  </div>
+</div>
+
+<div class ="pagination-container">
+  <%= paginate @podcasts %>
+</div>
