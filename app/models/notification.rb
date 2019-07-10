@@ -3,4 +3,10 @@ class Notification < ApplicationRecord
                             participation: 5, response: 6, remark: 7, follow: 8, unfollow: 9 }
   enum read: { read: true, unread: false }
   belongs_to :notified_by, class_name: 'User'
+  belongs_to :comment
+  belongs_to :notation
+  belongs_to :message
+  belongs_to :participation
+  belongs_to :response
+  belongs_to :remark
 end
