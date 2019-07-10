@@ -1,8 +1,7 @@
 class PrivateMessageMailer < ApplicationMailer
-    def send_email_to_reciever(receiver, sender)
+    def send_email_to_reciever(receiver)
         @recipient = receiver
-        @sender = sender
 
-        mail(to: @recipient.email, subject: "New private message on Glipboard from #{@sender.username}")
+        mail(to: @recipient.email, subject: "New private message on Glipboard")
     end
 end
