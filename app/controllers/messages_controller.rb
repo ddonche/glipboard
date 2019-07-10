@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
     @message = current_user.messages.build(message_params)
     @message.conversation_id = @conversation.id
     @message.save!
-    PrivateMessageMailer.send_email_to_reciever(@receiver).deliver_later
+    PrivateMessageMailer.send_email_to_reciever(@receiver).deliver_now
 
     Notification.create!(message_id: @message.id, recipient_id: @conversation.receiver_id,
                       conversation_id: @conversation.id,
