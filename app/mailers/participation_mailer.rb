@@ -5,11 +5,10 @@ class ParticipationMailer < ApplicationMailer
   #
   #   en.comment_mailer.new_comment.subject
   #
-  def new_participation(participation)
-    @participation = participation
-    @glip = @participation.glip
+  def new_participation(glip)
+    @glip = glip
 
     mail to: @glip.user.email, 
-    subject: "#{@participation.user.username} has joined you on #{@glip.title}"
+    subject: "Someone has joined you on #{@glip.title}"
   end
 end
