@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :find_conversation!
+  before_action :find_participants!
   before_action :authenticate_user!
 
   def new
@@ -18,6 +19,7 @@ class MessagesController < ApplicationController
     @message = current_user.messages.build(message_params)
     @message.conversation_id = @conversation.id
     @message.save!
+    PrivateMessageMailer.send_email_to_reciever(@receiver, @sender).deliver_later
     Notification.create!(message_id: @message.id, recipient_id: @conversation.receiver_id,
                       conversation_id: @conversation.id,
                       notified_by_id: current_user.id, notification_type: "message")
@@ -31,6 +33,11 @@ class MessagesController < ApplicationController
     params.require(:message).permit(:body)
   end
 
+  def find_participants!
+    @receiver = User.friendly.find_by(id: params[:reciever_id])
+    @sender = User.friendly.find_by(id: params[:sender_id])
+  end
+  
   def find_conversation!
     if params[:receiver_id]
       @receiver = User.friendly.find_by(id: params[:receiver_id])
