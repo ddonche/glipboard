@@ -10,6 +10,6 @@ class CommentMailer < ApplicationMailer
     @commentable = @comment.commentable
 
     mail to: @commentable.user.email, 
-    subject: "New comment on "#{@commentable.title}"
+    subject: "Someone left you a comment on Glipboard."
   end
 end

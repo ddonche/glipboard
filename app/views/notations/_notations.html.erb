@@ -10,8 +10,11 @@
         <% if @commentable = @glip %>
           <%= link_to glip_comment_notation_path(@glip, comment, notation), method: :delete, data: { confirm: "Are you sure?" } do %>
           <i class="fa fa-trash" title="delete"></i><% end %>
-        <% else %>
+        <% elsif @commentable = @article %>
           <%= link_to article_comment_notation_path(@article, comment, notation), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <i class="fa fa-trash" title="delete"></i><% end %>
+        <% else %>
+          <%= link_to blog_comment_notation_path(@blog, comment, notation), method: :delete, data: { confirm: "Are you sure?" } do %>
         <i class="fa fa-trash" title="delete"></i><% end %>
         <% end %>
       <% end %>

@@ -20,10 +20,12 @@ class NotationsController < ApplicationController
           Notification.create!(glip_id: @commentable.id, comment_id: @comment.id, 
                                 notation_id: @notation.id, recipient_id: @comment.user_id, 
                                 notified_by_id: current_user.id, notification_type: "notation")
-        else
+        elsif
           Notification.create!(article_id: @commentable.id, comment_id: @comment.id, 
                                 notation_id: @notation.id, recipient_id: @comment.user_id, 
                                 notified_by_id: current_user.id, notification_type: "notation")
+        else
+          
         end
       end
       redirect_to @commentable

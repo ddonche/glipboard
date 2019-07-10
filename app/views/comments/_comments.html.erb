@@ -9,11 +9,16 @@
         <div id="upvote-<%= comment.id %>" style="display: inline;"><%= comment.get_upvotes.size %></div><br /><br />
         <div id="downvote-<%= comment.id %>" style="display: inline;"><%= comment.get_downvotes.size %></div><br />
         <%= link_to dislike_glip_comment_path(@glip, comment), method: :put, remote: true do %><i class="fa fa-chevron-down" title="downvotes"></i><% end %>
-      <% else %>
+      <% elsif @commentable = @article %>
         <%= link_to like_article_comment_path(@article, comment), method: :put, remote: true do %><i class="fa fa-chevron-up" title="upvotes"></i><% end %><br />
         <div id="upvote-<%= comment.id %>" style="display: inline;"><%= comment.get_upvotes.size %></div><br /><br />
         <div id="downvote-<%= comment.id %>" style="display: inline;"><%= comment.get_downvotes.size %></div><br />
         <%= link_to dislike_article_comment_path(@article, comment), method: :put, remote: true do %><i class="fa fa-chevron-down" title="downvotes"></i><% end %>
+      <% else %>
+        <%= link_to like_blog_comment_path(@blog, comment), method: :put, remote: true do %><i class="fa fa-chevron-up" title="upvotes"></i><% end %><br />
+        <div id="upvote-<%= comment.id %>" style="display: inline;"><%= comment.get_upvotes.size %></div><br /><br />
+        <div id="downvote-<%= comment.id %>" style="display: inline;"><%= comment.get_downvotes.size %></div><br />
+        <%= link_to dislike_blog_comment_path(@blog, comment), method: :put, remote: true do %><i class="fa fa-chevron-down" title="downvotes"></i><% end %>
       <% end %>
     </div>
   </div>
@@ -46,9 +51,12 @@
           <% if @commentable = @glip %>
             <%= link_to edit_glip_comment_path(@glip, comment) do %><i class="fa fa-pencil" title="edit"></i><% end %> &nbsp;&nbsp;
             <%= link_to glip_comment_path(@glip, comment), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash" title="delete"></i><% end %><br />
-          <% else %>
+          <% elsif @commentable = @article %>
             <%= link_to edit_article_comment_path(@article, comment) do %><i class="fa fa-pencil" title="edit"></i><% end %> &nbsp;&nbsp;
             <%= link_to article_comment_path(@article, comment), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash" title="delete"></i><% end %><br />
+          <% else %>
+            <%= link_to edit_blog_comment_path(@blog, comment) do %><i class="fa fa-pencil" title="edit"></i><% end %> &nbsp;&nbsp;
+            <%= link_to blog_comment_path(@blog, comment), method: :delete, data: { confirm: "Are you sure?" } do %><i class="fa fa-trash" title="delete"></i><% end %><br />
           <% end %>
         </div>
       <% end %>
@@ -68,8 +76,10 @@
       <div class="notation-reply">
       <% if @commentable = @glip %>
         <%= link_to "reply", new_glip_comment_notation_path(@glip, comment) %>
-      <% else %>
+      <% elsif @commentable = @article %>
         <%= link_to "reply", new_article_comment_notation_path(@article, comment) %>
+      <% else %>
+        <%= link_to "reply", new_blog_comment_notation_path(@blog, comment) %>
       <% end %>
       </div>
     </div>
