@@ -7,9 +7,9 @@ class CommentMailer < ApplicationMailer
   #
   def new_comment(comment)
     @comment = comment
-    @glip = @comment.glip
+    @commentable = @comment.commentable
 
-    mail to: @glip.user.email, 
-    subject: "New comment on your Glip #{@glip.title}"
+    mail to: @commentable.user.email, 
+    subject: "New comment on your Glip #{@commentable.title}"
   end
 end
