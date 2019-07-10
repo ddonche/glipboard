@@ -1,0 +1,9 @@
+<p>A new comment was posted on your Glip "<%= @glip.title %>".</p>
+<blockquote>
+    <em><%= @comment.content %></em>
+    Posted by: <%= @comment.user.username %>
+</blockquote>
+<p>
+To reply to this comment, please visit your Glip at:<br/>
+
+    <%= link_to "Glip Page", @glip %><br?><br/>

@@ -1,0 +1,9 @@
+A new comment was posted on your Glip "<%= @Glip.title %>".
+
+    <%= @comment.content %>
+    Posted by: <%= @comment.user.username %>
+    
+To reply to this comment, please visit your Glip at:
+
+    <%= glip_url(@glip) %>
+    

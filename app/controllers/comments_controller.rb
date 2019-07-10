@@ -19,6 +19,7 @@ class CommentsController < ApplicationController
     if @comment.save
       unless @commentable.user_id == @comment.user_id
         if @commentable.model_name.human == "Glip"
+          CommentMailer.new_comment(@comment).deliver_now
           Notification.create!(glip_id: @commentable.id, comment_id: @comment.id, 
                                 recipient_id: @commentable.user_id, notified_by_id: current_user.id, 
                                 notification_type: "comment")
