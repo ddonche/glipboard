@@ -51,7 +51,7 @@ class User < ApplicationRecord
   has_many :logs, dependent: :destroy
   has_many :participations, dependent: :destroy
   has_many :participant_glips, through: :participations, :source => :glip
-  has_many :notifications, dependent: :destroy
+  has_many :notifications, foreign_key: 'notified_by_id', dependent: :destroy
   has_many :podcasts, dependent: :destroy
   has_many :episodes, dependent: :destroy
 
