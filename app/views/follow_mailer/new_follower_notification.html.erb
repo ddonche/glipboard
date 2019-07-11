@@ -1,0 +1,22 @@
+<p>Hey, <%= @user.username %>, you have a new follower on Glipboard!</p>
+<br />
+<%= @follower.username %> started following you.<br />
+<%= 
+    if @follower.picture?
+      image_tag @follower.picture, width: 250, alt: 'user avatar'
+    else
+      image_tag 'default_avatar.jpg', width: 250, alt: 'default user avatar'
+    end
+    %>
+<br />
+<p>
+To view their profile, visit:<br/>
+<%= user_url(@follower) %>
+</p>
+
+
+
+
+     
+    
+

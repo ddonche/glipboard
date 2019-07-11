@@ -1,0 +1,12 @@
+A new comment was posted on "<%= @commentable.title %>".
+
+    <%= @comment.content %>
+    Posted by: <%= @comment.user.username %>
+    
+To reply to this comment, please visit your at:
+    <% if @commentable.model_name.human == "Glip" %>
+        <%= glip_url(@commentable) %>
+    <% else %>
+        <%= article_url(@commentable) %>
+    <% end %>
+    

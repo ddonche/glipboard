@@ -4,6 +4,7 @@ class RelationshipsController < ApplicationController
   def create
     @user = User.find(params[:followed_id])
     current_user.follow(@user)
+    FollowMailer.new_follower_notification(@user, current_user).deliver_later
     Notification.create!(recipient_id: @user.id, 
                       notified_by_id: current_user.id, notification_type: "follow")
     voltaire_up(1, :reputation, @user)
