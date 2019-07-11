@@ -5,9 +5,9 @@ class FollowMailer < ApplicationMailer
   #
   #   en.comment_mailer.new_comment.subject
   #
-  def new_follower_notification(user, follower)
+  def new_follower_notification(user, current_user)
     @user = user
-    @follower = follower
+    @follower = current_user
 
     mail to: @user.email, 
     subject: "#{@follower.username} is now following you on Glipboard!"
