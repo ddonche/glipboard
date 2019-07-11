@@ -33,12 +33,26 @@
             <%= strip_tags(@blog.body.truncate(200)) %>
             <br /><br /><i class="fa fa-comments" title="comments"></i>&nbsp;&nbsp;<%= @blog.comments.count %>
             <div style="float: right;"><i><%= link_to "all blog posts", blogs_path %></i></div>
+      
+      <hr>
+      <% @latest_blogs.each do |blog| %>
+        <div class="table-row">
+          <div class="tiny-table-cell">
+            <%= link_to blog_path(blog) do
+                image_tag blog.image, width: 30, alt: 'blog image', title: blog.title
+            end %>
+          </div>
+          <div class="tiny-table-cell" style="display:inline-block;">
+            <%= link_to blog.title, blog_path(blog) %>
+          </div>
+        </div>
+      <% end %>
       </div>
     </div>
 
     <div class="side-box" style="margin-top: 10px;">
       <div class="side-content">
-        <div class="title-box" style="font-size: 16px; text-align: center;">Random Glip</div>
+        <div class="title-box" style="font-size: 16px; text-align: center;">Consider Joining These Glips</div>
         <div class="image">
           <%= 
             image_tag @randomGlip.image, width: 290

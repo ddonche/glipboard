@@ -21,6 +21,7 @@ class BlogsController < ApplicationController
 
   def show
     @page_title = @blog.title
+    @latest_blogs = Blog.all.order('created_at DESC').limit(6)
     @user = @blog.user
     @commentable = @blog
     @comments = @commentable.comments.order("created_at DESC")

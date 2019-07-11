@@ -12,6 +12,7 @@ class PagesController < ApplicationController
   def content
     @blog = Blog.order("created_at").last
     @articles =  Article.where({ status: "published" })
+    @latest_blogs = Blog.where({ status: "published" }).order('created_at DESC').limit(6)
     @glips =  Glip.original
     @randomGlip = Glip.where.not(image: [nil, ""]).order("RANDOM()").first
     @almost_everything = (@articles + @glips).sort{|b,a| a.created_at <=> b.created_at }
