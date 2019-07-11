@@ -5,15 +5,18 @@
     @participants = @randomGlip.participants.order("participations.created_at DESC").limit(12)
   end
 %>
-
-<% @participants.each do |participant| %>
-  <%= link_to participant do %>
-    <%= 
-      if participant.picture?
-        image_tag participant.picture, width: 20, title: participant.username
-      else
-        image_tag 'default_avatar.jpg', width: 20, title: participant.username
-      end
-      %>
+  <% if @participants.count < 1 %>
+    No participants yet. Join!
+  <% else %>
+    <% @participants.each do |participant| %>
+      <%= link_to participant do %>
+        <%= 
+          if participant.picture?
+            image_tag participant.picture, width: 20, title: participant.username
+          else
+            image_tag 'default_avatar.jpg', width: 20, title: participant.username
+          end
+          %>
+      <% end %>
   <% end %>
 <% end %>
