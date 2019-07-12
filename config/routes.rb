@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'errors/not_found'
+
+  get 'errors/internal_server_error'
+
   mount Ckeditor::Engine => '/ckeditor'
   root to: "home#index"
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }, 
@@ -129,4 +133,7 @@ Rails.application.routes.draw do
   resources :messages, only: [:new, :create]
   resources :conversations, only: [:index, :show]
   match '/conversations', to: 'conversations#index', via: 'get'
+  
+  match "/404", :to => "errors#not_found", :via => :all
+  match "/500", :to => "errors#internal_server_error", :via => :all
 end
