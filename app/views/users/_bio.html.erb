@@ -15,13 +15,13 @@
     <div class="post-content">
       <% if user_signed_in? %>
         <% if logged_in?(:admin) %>
-          <%= @user.email %> <br/>
+          Email: <%= @user.email %> | User ID: <%= @user.id %><br/>
         <% end %>
         <% if current_user.id == @user.id %>
           <%= link_to "Edit Profile", edit_user_registration_path(@user) %>
         <% else %>
           <% if current_user.reputation >= 20 %>
-            <%= link_to 'message', new_message_path(receiver_id: @user.id) %>
+            <br /><%= link_to 'send private message', new_message_path(receiver_id: @user.id) %>
           <% end %>
         <% end %>
       <% end %>
