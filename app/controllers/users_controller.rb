@@ -58,7 +58,7 @@ class UsersController < ApplicationController
   
   def articles
     @groups = @user.groups
-    @articles = @user.articles.page(params[:page]).per(15)
+    @articles = @user.articles.where({ status: "published" }).page(params[:page]).per(15)
     @log_glips = @user.glips.order("created_at DESC").page(params[:page]).per(10)
   end
   
