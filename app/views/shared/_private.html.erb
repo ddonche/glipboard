@@ -1,0 +1,30 @@
+<div id="content-wrap">
+  
+<div class="content-wrap">
+  <div class="right-column">
+    <div class="side-box">
+      <div class="side-content">
+        <div class="title-box" style="font-size: 16px; text-align: center;">Helpful Resources</div>
+            <li><%= link_to "Help", help_path %></li>
+            <li><%= link_to "About Privileges", 'http://www.glipboard.com/help#Privileges' %></li>
+            <li><%= link_to "Glipboard Support Group", 'http://www.glipboard.com/groups/glipboard-support' %></li>
+            <li><%= link_to "About Glipboard", about_path %></li>
+            <li><%= link_to "Code of Conduct", conduct_path %></li>
+      </div>
+    </div>
+  </div>
+  
+  <div class="left-column">
+    <div class="title-box">
+      This is Private
+    </div>
+      You do not have permission to access this page.
+      <h2>A Likely Scenario</h2>
+      The most likely reason is you are trying to access a page that may have been recently changed to private.<br /><br />
+      What should you do now? How about create a new Glip? What is something you've always wanted to do?
+      <h2>Create a Glip</h2>
+      
+      <%= link_to "Yes, I'd like to make a new Glip!", new_glip_path %><br />
+      <%= link_to "No thanks, just take me home now.", root_path %>
+  </div>
+</div>

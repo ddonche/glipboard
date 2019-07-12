@@ -32,6 +32,12 @@
     <%= f.text_field :tag_list, placeholder: 'Add up to 5 tags (separated by commas)', value: @glip.tag_list.join(", ") %>
     <div class="small"><em>Example: fitness, weight loss, marathon</em></div><br />
     
+    <%= f.radio_button :privacy, 'shown' %> 
+    <%= label :privacy_shown, 'Public' %>
+    <%= f.radio_button :privacy, 'hidden' %>
+    <%= label :privacy_hidden, 'Private' %>
+    <div class="small"><em>Private Glips are visible only to you.</em></div><br />
+    
     <fieldset>
       <legend>Image</legend>
         <br />

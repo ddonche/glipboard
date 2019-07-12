@@ -7,8 +7,12 @@
       <meta property="og:image" content="<%= @glip.image.url %>" />
     <% end %>
 <% end %>
+
+<% if (@glip.privacy == "hidden") && (current_user != @glip.user) %>
+    <%= render 'shared/private' %>
+<% else %>
+
 <div id="content-wrap">
-  
     <div class="left-column">
       <%= render 'header' %>
       <%= render 'content' %>      
@@ -20,3 +24,4 @@
   </div>
 
 </div>
+<% end %>

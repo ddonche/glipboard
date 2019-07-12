@@ -1,0 +1,30 @@
+<% if current_user != @user %>
+  <%= render 'shared/private' %>
+<% else %>
+    <div class="user-left-column">
+      <%= render 'bio' %>
+      <%= render 'logs_activity' %>
+    </div>
+        
+    <div class="user-right-column">
+    
+      <div id ="index-nav-container">
+            <div class = "table-row">
+              <div class="table-cell"><%= @user.username %>'s Content</div>
+              <div class="table-cell"><div class="index-top-buttons"><div class="all-button"><%= link_to "latest", user_path(@user) %></div></div></div>
+              <div class="table-cell"><div class="index-top-buttons"><div class="glip-button"><%= link_to "glips", glips_user_path(@user) %></div></div></div>
+              <% if current_user = @user %>
+              <div class="table-cell"><div class="index-top-buttons"><div class="glip-button"><%= link_to "private glips", private_glips_user_path(@user) %></div></div></div>
+              <% end %>
+              <div class="table-cell"><div class="index-top-buttons"><div class="article-button"><%= link_to "articles", articles_user_path(@user) %></div></div></div>
+              <div class="table-cell"><div class="index-top-buttons"><div class="group-button"><%= link_to "groups", "#" %></div></div></div>
+              <div class="table-cell"><div class="index-top-buttons"><div class="log-button"><%= link_to "logs", logs_user_path(@user) %></div></div></div>
+            </div>
+      </div>
+      
+      <div id="user-content-index">
+        <%= render 'users/private_glips' %>
+      </div>
+      
+    </div>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190707153345) do
+ActiveRecord::Schema.define(version: 20190711232746) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 20190707153345) do
     t.integer  "parent_id"
     t.string   "image"
     t.integer  "active",              default: 0
+    t.integer  "privacy",             default: 0
     t.index ["slug"], name: "index_glips_on_slug", unique: true
   end
 

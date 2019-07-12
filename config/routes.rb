@@ -115,6 +115,7 @@ Rails.application.routes.draw do
     member do
       get :following, :followers
       get :glips
+      get :private_glips
       get :articles
       get :groups
       get :logs

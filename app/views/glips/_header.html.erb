@@ -20,7 +20,7 @@
   <% if @glip.active == "abandoned" %>
     <i class="fas fa-skull" title="abandoned"></i>
   <% end %>
-  <%= @glip.title %><% if @glip.active == "abandoned" %><i>(abandoned)</i><% end %>
+  <%= @glip.title %><% if @glip.privacy == "hidden" %><i>(private)</i><% end %><% if @glip.active == "abandoned" %><i>(abandoned)</i><% end %>
 </div>
 
 <div class="image">

@@ -1,13 +1,14 @@
 class GlipsController < ApplicationController
-  before_action :set_glip, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :helpers, :toggle_status, :toggle_active]
+  before_action :set_glip, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :helpers, 
+                                  :toggle_status, :toggle_active]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @page_title = "Glips"
     if params[:tag]
-      @glips = Glip.tagged_with(params[:tag])
+      @glips = Glip.where({ privacy: "shown" }).tagged_with(params[:tag])
     else
-      @glips = Glip.original.order('created_at DESC').page(params[:page]).per(20)
+      @glips = Glip.where({ privacy: "shown" }).original.order('created_at DESC').page(params[:page]).per(20)
     end
   end
 
@@ -145,6 +146,7 @@ class GlipsController < ApplicationController
     end
 
     def glip_params
-      params.require(:glip).permit(:title, :content, :user_id, :tag_list, :deadline, :completion_criteria, :parent_id, :image)
+      params.require(:glip).permit(:title, :content, :user_id, :tag_list, :deadline, :completion_criteria, 
+                                    :parent_id, :image, :privacy)
     end
 end

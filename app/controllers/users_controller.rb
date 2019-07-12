@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def show
     @page_title = @user.username
     @articles = @user.articles.where({ status: "published" })
-    @glips = @user.glips
+    @glips = @user.glips.where({ privacy: "shown" })
     @logs = @user.logs
     @groups = @user.groups
     @almost_everything = (@articles + @glips).sort{|b,a| a.updated_at <=> b.updated_at }
@@ -40,7 +40,13 @@ class UsersController < ApplicationController
   
   def glips
     @groups = @user.groups
-    @glips = @user.glips.page(params[:page]).per(15)
+    @glips = @user.glips.where({ privacy: "shown" }).page(params[:page]).per(15)
+    @log_glips = @user.glips.order("created_at DESC").page(params[:page]).per(10)
+  end
+  
+  def private_glips
+    @groups = @user.groups
+    @glips = @user.glips.where({ privacy: "hidden" }).page(params[:page]).per(15)
     @log_glips = @user.glips.order("created_at DESC").page(params[:page]).per(10)
   end
   
