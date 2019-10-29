@@ -17,7 +17,7 @@ gem 'jbuilder', '~> 2.5'
 
 # gems I've installed my damn self
 gem 'simple_form', '~> 3.4'
-gem 'devise', '~> 4.6', '>= 4.6.2'
+gem 'devise', '~> 4.7'
 gem 'petergate', '~> 1.7', '>= 1.7.5'
 gem 'carrierwave', '~> 1.0'
 gem 'carrierwave-aws', '~> 1.1'
